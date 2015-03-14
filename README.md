@@ -67,8 +67,8 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ## Usage
 
-### `reactCookie.load(name: string)`
-### `reactCookie.save(name: string, val, [opt])`
+### `reactCookie.load(name)`
+### `reactCookie.save(name, val, [opt])`
 
 ## opt
 Support all the cookie options from the RFC.
