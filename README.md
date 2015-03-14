@@ -60,6 +60,11 @@ var MyApp = React.createClass({
 module.exports = MyApp;
 ```
 
+## Without CommonJS
+You can use react-cookie with anything by using the global variable `reactCookie`.
+
+*Note that `window` need to exists to use `reactCookie`.*
+
 ## Usage
 
 ### `reactCookie.load(name: string)`
