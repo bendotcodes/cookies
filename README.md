@@ -62,7 +62,7 @@ module.exports = MyApp;
 
 ## Usage
 
-### `reactCookie.get(name: string)`
+### `reactCookie.load(name: string)`
 ### `reactCookie.save(name: string, val, [opt])`
 
 ## opt
