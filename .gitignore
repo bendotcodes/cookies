@@ -1,8 +1,18 @@
-# WebStorm non-sharable files
-.idea/workspace.xml
-
 # Log files
 *.log
 
 # NPM modules
 node_modules
+
+# Dist files
+dist
+
+# Sublime project
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# WebStorm project
+.idea
