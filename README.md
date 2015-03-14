@@ -21,7 +21,7 @@ export default class MyApp extends React.component {
 
   onLogin(userId) {
     this.state.userId = userId;
-    cookie.save('userId', nextState.userId);
+    cookie.save('userId', userId);
   }
 
   render() {
@@ -46,7 +46,7 @@ var MyApp = React.createClass({
 
   onLogin: function(userId) {
     this.state.userId = userId;
-    cookie.save('userId', nextState.userId);
+    cookie.save('userId', userId);
   },
 
   render: function() {
