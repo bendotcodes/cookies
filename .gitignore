@@ -1,0 +1,8 @@
+# WebStorm non-sharable files
+.idea/workspace.xml
+
+# Log files
+*.log
+
+# NPM modules
+node_modules

@@ -1,0 +1,33 @@
+{
+  "name": "react-cookie",
+  "version": "0.1.0",
+  "description": "Load and save cookies within your React application",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eXon/react-cookie.git"
+  },
+  "bugs": "https://github.com/eXon/react-cookie/issues",
+  "keywords": [
+    "cookie",
+    "cookies",
+    "react",
+    "reactjs",
+    "jsx"
+  ],
+  "author": "Benoit Tremblay <trembl.ben@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "browserify index.js > dist/react-cookie.js & uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js"
+  },
+  "dependencies": {
+    "cookie": "^0.1.2"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.3",
+    "uglify-js": "^2.4.17"
+  }
+}
