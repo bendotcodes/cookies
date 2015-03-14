@@ -1,0 +1,4 @@
+# Exclude everything but the contents of the dist directory.
+**/*
+!index.js
+!dist/**
