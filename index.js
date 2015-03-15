@@ -1,6 +1,6 @@
 var cookie = require('cookie');
 
-var _cookies = cookie.parse((document && document.cookie) ? document.cookie : '');
+var _cookies = cookie.parse((typeof document !== 'undefined') ? document.cookie : '');
 
 for (var key in _cookies) {
   try {
@@ -15,10 +15,11 @@ function load(name) {
 }
 
 function save(name, val, opt) {
-  // Cookies only work in the browser
-  if (!document || !document.cookie) return;
-
   _cookies[name] = val;
+  
+  // Cookies only work in the browser
+  if (typeof document === 'undefined') return;
+  
   document.cookie = cookie.serialize(name, val, opt);
 }
 
