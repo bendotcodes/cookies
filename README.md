@@ -12,7 +12,7 @@ Bower: `bower install react-cookie`
 import React from 'react';
 import cookie from 'react-cookie';
 
-export default class MyApp extends React.component {
+export default class MyApp extends React.Component {
 
   constructor(props) {
     super(props);
