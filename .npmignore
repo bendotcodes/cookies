@@ -1,0 +1,17 @@
+# Include the dist folder for NPM
+
+# Log files
+*.log
+
+# NPM modules
+node_modules
+
+# Sublime project
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+
+# WebStorm project
+.idea
