@@ -4,6 +4,9 @@
 # NPM modules
 node_modules
 
+# Build output
+dist
+
 # Sublime project
 *.tmlanguage.cache
 *.tmPreferences.cache

@@ -1,7 +1,7 @@
 {
   "name": "react-cookie",
   "main": "dist/react-cookie.js",
-  "version": "0.1.6",
+  "version": "0.1.2",
   "homepage": "https://github.com/eXon/react-cookie",
   "authors": [
     "Benoit Tremblay <trembl.ben@gmail.com>"
