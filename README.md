@@ -4,7 +4,7 @@ Load and save cookies within your React application
 ## Download
 NPM: `npm install react-cookie`<br />
 Bower: `bower install react-cookie`<br />
-CDN: `<script src="https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.1.4/react-cookie.min.js"></script>
+CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.1.4/react-cookie.min.js`
 
 # Examples
 
