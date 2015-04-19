@@ -16,10 +16,13 @@ function load(name) {
 
 function save(name, val, opt) {
   _cookies[name] = val;
-  
+
   // Cookies only work in the browser
   if (typeof document === 'undefined') return;
   
+  // allow you to work with cookies as objects.
+  if (typeof val === 'object') val = JSON.stringify(val);
+
   document.cookie = cookie.serialize(name, val, opt);
 }
 
