@@ -33,7 +33,8 @@ function remove(name) {
 
 var reactCookie = {
   load: load,
-  save: save
+  save: save,
+  remove: remove
 };
 
 if (typeof module !== 'undefined') {
