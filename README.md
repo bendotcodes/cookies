@@ -6,7 +6,7 @@ If you are within a non-browser environment, it will do nothing and not crash.
 ## Download
 NPM: `npm install react-cookie`<br />
 Bower: `bower install react-cookie`<br />
-CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.1.7/react-cookie.min.js`
+CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.1.8/react-cookie.min.js`
 
 # Examples
 
