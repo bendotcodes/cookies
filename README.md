@@ -1,5 +1,7 @@
 # react-cookie
-Load and save cookies within your React application
+Load, save and remove cookies within your React application
+
+If you are within a non-browser environment, it will do nothing and not crash.
 
 ## Download
 NPM: `npm install react-cookie`<br />
@@ -23,6 +25,10 @@ export default class MyApp extends React.Component {
   onLogin(userId) {
     this.state.userId = userId;
     cookie.save('userId', userId);
+  }
+
+  onLogout() {
+    cookie.remove('userId');
   }
 
   render() {
@@ -50,6 +56,10 @@ var MyApp = React.createClass({
     cookie.save('userId', userId);
   },
 
+  onLogout: function() {
+    cookie.remove('userId');
+  },
+
   render: function() {
     return (
       <LoginPanel onSuccess={this.onLogin} />
@@ -70,6 +80,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ### `reactCookie.load(name)`
 ### `reactCookie.save(name, val, [opt])`
+### `reactCookie.remove(name)`
 
 ## opt
 Support all the cookie options from the RFC.

@@ -19,11 +19,16 @@ function save(name, val, opt) {
 
   // Cookies only work in the browser
   if (typeof document === 'undefined') return;
-  
+
   // allow you to work with cookies as objects.
   if (typeof val === 'object') val = JSON.stringify(val);
 
   document.cookie = cookie.serialize(name, val, opt);
+}
+
+function remove(name) {
+  if (typeof document === 'undefined') return;
+  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 var reactCookie = {
