@@ -21,7 +21,8 @@ function save(name, val, opt) {
   if (typeof document === 'undefined') return;
 
   // allow you to work with cookies as objects.
-  if (typeof val === 'object') val = JSON.stringify(val);
+  // make sure a serialized value returns as serialized again
+  if (typeof val === 'object' || typeof val === 'string') val = JSON.stringify(val);
 
   document.cookie = cookie.serialize(name, val, opt);
 }
