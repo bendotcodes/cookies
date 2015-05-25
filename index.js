@@ -1,47 +1,68 @@
 var cookie = require('cookie');
 
-var _cookies = cookie.parse((typeof document !== 'undefined') ? document.cookie : '');
+var _rawCookies = {};
+var _cookies = {};
 
-for (var key in _cookies) {
-  try {
-    _cookies[key] = JSON.parse(_cookies[key]);
-  } catch(e) {
-    // Not serialized object
-  }
+if (typeof document !== 'undefined') {
+  setRawCookie(document.cookie);
 }
 
-function load(name) {
+function load(name, doNotParse) {
+  if (doNotParse) {
+    return _rawCookies[name];
+  }
+
   return _cookies[name];
 }
 
 function save(name, val, opt) {
   _cookies[name] = val;
-
-  // Cookies only work in the browser
-  if (typeof document === 'undefined') return;
+  _rawCookies[name] = val;
 
   // allow you to work with cookies as objects.
-  // make sure a serialized value returns as serialized again
-  if (typeof val === 'object' || typeof val === 'string') val = JSON.stringify(val);
+  if (typeof val === 'object') {
+    _rawCookies[name] = JSON.stringify(val);
+  }
 
-  document.cookie = cookie.serialize(name, val, opt);
+  // Cookies only work in the browser
+  if (typeof document !== 'undefined') {
+    document.cookie = cookie.serialize(name, val, opt);
+  }
 }
 
 function remove(name) {
-  if (typeof document === 'undefined') return;
-  document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  delete _rawCookies[name];
+  delete _cookies[name];
+
+  if (typeof document !== 'undefined') {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
+}
+
+function setRawCookie(rawCookie) {
+  var rawCookies = cookie.parse(rawCookie);
+
+  for (var key in rawCookies) {
+    _rawCookies[key] = rawCookies[key];
+
+    try {
+      _cookies[key] = JSON.parse(rawCookies[key]);
+    } catch(e) {
+      // Not serialized object
+      _cookies[key] = rawCookies[key];
+    }
+  }
 }
 
 var reactCookie = {
   load: load,
   save: save,
-  remove: remove
+  remove: remove,
+  setRawCookie: setRawCookie
 };
-
-if (typeof module !== 'undefined') {
-  module.exports = reactCookie
-}
 
 if (typeof window !== 'undefined') {
   window['reactCookie'] = reactCookie;
 }
+
+module.exports = reactCookie;

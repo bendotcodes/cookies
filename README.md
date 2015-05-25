@@ -1,7 +1,7 @@
 # react-cookie
 Load, save and remove cookies within your React application
 
-If you are within a non-browser environment, it will do nothing and not crash.
+If you are within a non-browser environment, you can use `reactCookie.setRawCookie(req.headers.cookie)`
 
 ## Download
 NPM: `npm install react-cookie`<br />
@@ -78,9 +78,10 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ## Usage
 
-### `reactCookie.load(name)`
+### `reactCookie.load(name, [doNotParse])`
 ### `reactCookie.save(name, val, [opt])`
 ### `reactCookie.remove(name)`
+### `reactCookie.setRawCookie(cookies)`
 
 ## opt
 Support all the cookie options from the RFC.

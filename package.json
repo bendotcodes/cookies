@@ -1,10 +1,11 @@
 {
   "name": "react-cookie",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "Load and save cookies within your React application",
   "main": "dist/react-cookie.min.js",
   "files": [
-    "index.js"
+    "dist/react-cookie.js",
+    "dist/react-cookie.min.js"
   ],
   "repository": {
     "type": "git",
@@ -21,13 +22,15 @@
   "author": "Benoit Tremblay <trembl.ben@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir dist & browserify index.js > dist/react-cookie.js & uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js"
+    "build": "mkdir dist & browserify index.js > dist/react-cookie.js & uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js",
+    "test": "node_modules/.bin/minijasminenode2 test.js"
   },
   "dependencies": {
     "cookie": "^0.1.2"
   },
   "devDependencies": {
     "browserify": "^9.0.3",
+    "minijasminenode2": "^1.0.0",
     "uglify-js": "^2.4.17"
   }
 }
