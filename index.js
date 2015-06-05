@@ -40,6 +40,10 @@ function remove(name) {
 }
 
 function setRawCookie(rawCookie) {
+  if (!rawCookie) {
+    return;
+  }
+
   var rawCookies = cookie.parse(rawCookie);
 
   for (var key in rawCookies) {

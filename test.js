@@ -1,6 +1,14 @@
 var reactCookie = require('./index');
 
 describe('load', function() {
+  it('should not crash if cookies undefined', function() {
+    expect(function() {
+      reactCookie.setRawCookie(undefined);
+    }).not.toThrow();
+
+    expect(reactCookie.load('test')).toBe(undefined);
+  });
+
   it('should read the cookie', function() {
     reactCookie.setRawCookie('test=test');
     expect(reactCookie.load('test')).toBe('test');
@@ -18,7 +26,7 @@ describe('load', function() {
 });
 
 describe('save', function() {
-  it('should not crash if not in the browser ', function() {
+  it('should not crash if not in the browser', function() {
     expect(function() {
       reactCookie.save('test', 'test');
     }).not.toThrow();
