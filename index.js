@@ -26,7 +26,7 @@ function save(name, val, opt) {
 
   // Cookies only work in the browser
   if (typeof document !== 'undefined') {
-    document.cookie = cookie.serialize(name, val, opt);
+    document.cookie = cookie.serialize(name, _rawCookies[name], opt);
   }
 }
 
