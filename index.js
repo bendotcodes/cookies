@@ -40,6 +40,9 @@ function remove(name) {
 }
 
 function setRawCookie(rawCookie) {
+  _rawCookies = {};
+  _cookies = {};
+
   if (!rawCookie) {
     return;
   }
