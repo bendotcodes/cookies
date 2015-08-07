@@ -80,7 +80,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ### `reactCookie.load(name, [doNotParse])`
 ### `reactCookie.save(name, val, [opt])`
-### `reactCookie.remove(name)`
+### `reactCookie.remove(name, [path])`
 ### `reactCookie.setRawCookie(cookies)`
 
 ## opt
