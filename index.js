@@ -1,27 +1,28 @@
 var cookie = require('cookie');
 
-var _rawCookies = {};
-var _cookies = {};
-
-if (typeof document !== 'undefined') {
-  setRawCookie(document.cookie);
-}
+var _rawCookie = {};
 
 function load(name, doNotParse) {
-  if (doNotParse) {
-    return _rawCookies[name];
+  var cookies = cookie.parse(rawCookie);
+  var cookie = cookies[name] || _rawCookie[name];
+
+  if (!doNotParse) {
+    try {
+      cookie = JSON.parse(cookie);
+    } catch(e) {
+      // Not serialized object
+    }
   }
 
-  return _cookies[name];
+  return cookie;
 }
 
 function save(name, val, opt) {
-  _cookies[name] = val;
-  _rawCookies[name] = val;
+  _rawCookie[name] = val;
 
   // allow you to work with cookies as objects.
   if (typeof val === 'object') {
-    _rawCookies[name] = JSON.stringify(val);
+    _rawCookie[name] = JSON.stringify(val);
   }
 
   // Cookies only work in the browser
@@ -31,8 +32,7 @@ function save(name, val, opt) {
 }
 
 function remove(name) {
-  delete _rawCookies[name];
-  delete _cookies[name];
+  delete _rawCookie[name];
 
   if (typeof document !== 'undefined') {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -40,21 +40,8 @@ function remove(name) {
 }
 
 function setRawCookie(rawCookie) {
-  if (!rawCookie) {
-    return;
-  }
-
-  var rawCookies = cookie.parse(rawCookie);
-
-  for (var key in rawCookies) {
-    _rawCookies[key] = rawCookies[key];
-
-    try {
-      _cookies[key] = JSON.parse(rawCookies[key]);
-    } catch(e) {
-      // Not serialized object
-      _cookies[key] = rawCookies[key];
-    }
+  if (rawCookie) {
+    _rawCookie = cookie.parse(rawCookie);
   }
 }
 
