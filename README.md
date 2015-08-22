@@ -10,7 +10,7 @@ If you are within a non-browser or Node.js environment, you can use `reactCookie
 ## Download
 NPM: `npm install react-cookie`<br />
 Bower: `bower install react-cookie`<br />
-CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.2.6/react-cookie.min.js`
+CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.3.4/react-cookie.min.js`
 
 # Examples
 
