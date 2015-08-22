@@ -1,6 +1,6 @@
 {
   "name": "react-cookie",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Load and save cookies within your React application",
   "main": "index.js",
   "files": [
