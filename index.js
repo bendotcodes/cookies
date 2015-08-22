@@ -33,7 +33,7 @@ function save(name, val, opt) {
 
   // Cookies only work in the browser
   if (typeof document !== 'undefined') {
-    document.cookie = cookie.serialize(name, _rawCookies[name], opt);
+    document.cookie = cookie.serialize(name, _rawCookie[name], opt);
   }
 
   if (_res && _res.cookie) {
