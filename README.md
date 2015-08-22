@@ -6,7 +6,7 @@ If you are within a non-browser environment, you can use `reactCookie.setRawCook
 ## Download
 NPM: `npm install react-cookie`<br />
 Bower: `bower install react-cookie`<br />
-CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.2.5/react-cookie.min.js`
+CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.2.6/react-cookie.min.js`
 
 # Examples
 
@@ -80,7 +80,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ### `reactCookie.load(name, [doNotParse])`
 ### `reactCookie.save(name, val, [opt])`
-### `reactCookie.remove(name)`
+### `reactCookie.remove(name, [path])`
 ### `reactCookie.setRawCookie(cookies)`
 
 ## opt

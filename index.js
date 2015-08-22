@@ -31,18 +31,22 @@ function save(name, val, opt) {
   }
 }
 
-function remove(name) {
+function remove(name, path) {
   delete _rawCookie[name];
 
   if (typeof document !== 'undefined') {
-    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    var removeCookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+    if (path) {
+      removeCookie += ' path=' + path;
+    }
+
+    document.cookie = removeCookie;
   }
 }
 
 function setRawCookie(rawCookie) {
-  if (rawCookie) {
-    _rawCookie = cookie.parse(rawCookie);
-  }
+  _rawCookie = cookie.parse(rawCookie);
 }
 
 var reactCookie = {

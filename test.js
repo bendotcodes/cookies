@@ -55,8 +55,4 @@ describe('remove', function() {
       reactCookie.remove('test');
     }).not.toThrow();
   });
-
-  it('should set the date in the past', function() {
-
-  });
 });
