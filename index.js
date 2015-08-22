@@ -4,18 +4,23 @@ var _rawCookie = {};
 var _res = undefined;
 
 function load(name, doNotParse) {
-  var cookies = cookie.parse(rawCookie);
-  var cookie = cookies[name] || _rawCookie[name];
+  var cookies;
+
+  if (typeof document !== 'undefined') {
+    cookies = cookie.parse(document.cookie);
+  }
+
+  var cookieVal = cookies[name] || _rawCookie[name];
 
   if (!doNotParse) {
     try {
-      cookie = JSON.parse(cookie);
+      cookieVal = JSON.parse(cookieVal);
     } catch(e) {
       // Not serialized object
     }
   }
 
-  return cookie;
+  return cookieVal;
 }
 
 function save(name, val, opt) {
