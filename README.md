@@ -3,6 +3,9 @@ Load, save and remove cookies within your React application
 
 If you are within a non-browser environment, you can use `reactCookie.setRawCookie(req.headers.cookie)`
 
+You can also plug it directly with a Node.js request by adding just before the renderToString: `reactCookie.plugToRequest(req, res);` <br />
+*(require the cookieParser middleware)*
+
 ## Download
 NPM: `npm install react-cookie`<br />
 Bower: `bower install react-cookie`<br />

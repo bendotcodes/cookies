@@ -1,6 +1,7 @@
 var cookie = require('cookie');
 
 var _rawCookie = {};
+var _res = undefined;
 
 function load(name, doNotParse) {
   var cookies = cookie.parse(rawCookie);
@@ -29,6 +30,10 @@ function save(name, val, opt) {
   if (typeof document !== 'undefined') {
     document.cookie = cookie.serialize(name, _rawCookies[name], opt);
   }
+
+  if (_res && _res.cookie) {
+    _res.cookie(name, val, opt);
+  }
 }
 
 function remove(name, path) {
@@ -43,17 +48,31 @@ function remove(name, path) {
 
     document.cookie = removeCookie;
   }
+
+  if (_res && _res.clearCookie) {
+    var opt = path ? { path: path } : undefined;
+    _res.clearCookie(name, opt);
+  }
 }
 
 function setRawCookie(rawCookie) {
   _rawCookie = cookie.parse(rawCookie);
 }
 
+function plugToRequest(req, res) {
+  if (req && req.headers && req.headers.cookie) {
+    setRawCookie(req.headers.cookie);
+  }
+
+  _res = res;
+}
+
 var reactCookie = {
   load: load,
   save: save,
   remove: remove,
-  setRawCookie: setRawCookie
+  setRawCookie: setRawCookie,
+  plugToRequest: plugToRequest
 };
 
 if (typeof window !== 'undefined') {
