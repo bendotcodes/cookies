@@ -4,13 +4,13 @@ var _rawCookie = {};
 var _res = undefined;
 
 function load(name, doNotParse) {
-  var cookies;
+  var cookies = {};
 
   if (typeof document !== 'undefined') {
     cookies = cookie.parse(document.cookie);
   }
 
-  var cookieVal = cookies[name] || _rawCookie[name];
+  var cookieVal = (cookies && cookies[name]) || _rawCookie[name];
 
   if (!doNotParse) {
     try {
@@ -65,8 +65,12 @@ function setRawCookie(rawCookie) {
 }
 
 function plugToRequest(req, res) {
-  if (req && req.headers && req.headers.cookie) {
-    setRawCookie(req.headers.cookie);
+  if (req) {
+    if (req.cookie) {
+      _rawCookie = req.cookie;
+    } else if (req.headers && req.headers.cookie) {
+      setRawCookie(req.headers.cookie);
+    }
   }
 
   _res = res;
