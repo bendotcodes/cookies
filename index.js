@@ -41,17 +41,20 @@ function save(name, val, opt) {
   }
 }
 
-function remove(name, path) {
+function remove(name, opt) {
   delete _rawCookie[name];
 
   if (typeof document !== 'undefined') {
-    var removeCookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-
-    if (path) {
-      removeCookie += ' path=' + path;
+    if (typeof opt === 'undefined') {
+      opt = {};
+    } else if (typeof opt === 'string') {
+      // Will be deprecated in future versions
+      opt = { path: opt };
     }
 
-    document.cookie = removeCookie;
+    opt.expires = new Date(1970, 1, 1, 0, 0, 1);
+
+    document.cookie = cookie.serialize(name, '', opt);
   }
 
   if (_res && _res.clearCookie) {
