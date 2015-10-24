@@ -61,16 +61,20 @@ function remove(name, path) {
 }
 
 function setRawCookie(rawCookie) {
-  _rawCookie = cookie.parse(rawCookie);
+  if (rawCookie) {
+    _rawCookie = cookie.parse(rawCookie);
+  } else {
+    _rawCookie = {};
+  }
 }
 
 function plugToRequest(req, res) {
-  if (req) {
-    if (req.cookie) {
-      _rawCookie = req.cookie;
-    } else if (req.headers && req.headers.cookie) {
-      setRawCookie(req.headers.cookie);
-    }
+  if (req.cookie) {
+    _rawCookie = req.cookie;
+  } else if (req.headers && req.headers.cookie) {
+    setRawCookie(req.headers.cookie);
+  } else {
+    _rawCookie = {};
   }
 
   _res = res;
