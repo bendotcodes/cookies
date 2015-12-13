@@ -4,13 +4,8 @@ var _rawCookie = {};
 var _res = undefined;
 
 function load(name, doNotParse) {
-  var cookies = {};
-
-  if (typeof document !== 'undefined') {
-    cookies = cookie.parse(document.cookie);
-  }
-
-  var cookieVal = (cookies && cookies[name]) || _rawCookie[name];
+  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
+  var cookieVal = cookies && cookies[name];
 
   if (!doNotParse) {
     try {
