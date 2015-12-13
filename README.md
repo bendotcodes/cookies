@@ -14,20 +14,18 @@ CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.3.4/react-cookie.min
 
 # Examples
 
-## ES6
 ```js
-import React from 'react';
+import { Component } from 'react';
 import cookie from 'react-cookie';
 
-export default class MyApp extends React.Component {
-
+export default class MyApp extends Component {
   constructor(props) {
     super(props);
     this.state = { userId: cookie.load('userId') };
   }
 
   onLogin(userId) {
-    this.state.userId = userId;
+    this.setState({ userId });
     cookie.save('userId', userId);
   }
 
@@ -40,39 +38,7 @@ export default class MyApp extends React.Component {
       <LoginPanel onSuccess={this.onLogin.bind(this)} />
     );
   }
-
 }
-```
-
-## ES5
-```js
-var React = require('react');
-var cookie = require('react-cookie');
-
-var MyApp = React.createClass({
-
-  getInitialState: function() {
-    return { userId: cookie.load('userId') };
-  },
-
-  onLogin: function(userId) {
-    this.state.userId = userId;
-    cookie.save('userId', userId);
-  },
-
-  onLogout: function() {
-    cookie.remove('userId');
-  },
-
-  render: function() {
-    return (
-      <LoginPanel onSuccess={this.onLogin} />
-    );
-  }
-
-});
-
-module.exports = MyApp;
 ```
 
 ## Without CommonJS
