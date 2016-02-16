@@ -26,11 +26,11 @@ export default class MyApp extends Component {
 
   onLogin(userId) {
     this.setState({ userId });
-    cookie.save('userId', userId);
+    cookie.save('userId', userId, { path: '/' });
   }
 
   onLogout() {
-    cookie.remove('userId');
+    cookie.remove('userId', { path: '/' });
   }
 
   render() {
