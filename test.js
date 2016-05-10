@@ -63,8 +63,13 @@ describe('ReactCookie', function() {
   });
 
   describe('plugToRequest', function() {
-    it('should load the request cookies', function() {
+    it('should load the request cookie', function() {
       reactCookie.plugToRequest({ cookie: { test: 123 } });
+      expect(reactCookie.load('test')).toBe(123);
+    });
+    
+    it('should load the request cookies', function() {
+      reactCookie.plugToRequest({ cookies: { test: 123 } });
       expect(reactCookie.load('test')).toBe(123);
     });
 
