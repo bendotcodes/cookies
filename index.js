@@ -67,6 +67,8 @@ function setRawCookie(rawCookie) {
 function plugToRequest(req, res) {
   if (req.cookie) {
     _rawCookie = req.cookie;
+  } else if (req.cookies) {
+    _rawCookie = req.cookies;
   } else if (req.headers && req.headers.cookie) {
     setRawCookie(req.headers.cookie);
   } else {
