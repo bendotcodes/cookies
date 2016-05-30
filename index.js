@@ -3,15 +3,27 @@ var cookie = require('cookie');
 var _rawCookie = {};
 var _res = undefined;
 
+function parseCookie(cookie) {
+  try {
+    cookie = JSON.parse(cookie);
+  } catch(e) {
+    // Not serialized object
+  }
+  return cookie;
+}
+
 function load(name, doNotParse) {
   var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
-  var cookieVal = cookies && cookies[name];
+  var cookieVal = name ? cookies[name] : cookies;
 
   if (!doNotParse) {
-    try {
-      cookieVal = JSON.parse(cookieVal);
-    } catch(e) {
-      // Not serialized object
+    if (name) {
+      cookieVal = parseCookie(cookieVal);
+    } else {
+      cookieVal = Object.keys(cookies).reduce(function(result, cookieName) {
+        result[cookieName] = parseCookie(cookies[cookieName]);
+        return result;
+      }, {})
     }
   }
 
