@@ -2,10 +2,14 @@
 Load, save and remove cookies within your React application
 
 ## Isomorphic cookies!
-You can also plug it directly with a Node.js request by adding just before the renderToString: `reactCookie.plugToRequest(req, res);`<br />
+You can also plug it directly with a Node.js request by adding just before the renderToString: `var unplug = reactCookie.plugToRequest(req, res);`<br />
 *(require the cookieParser middleware)*
 
+To ensure long running async operations do not attempt to alter cookies after the request has been sent, call the `unplug` function that is returned in a finally block in your router.
+
 If you are within a non-browser or Node.js environment, you can use `reactCookie.setRawCookie(req.headers.cookie)`
+
+
 
 ## Download
 NPM: `npm install react-cookie`<br />
@@ -51,7 +55,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 ### `reactCookie.load(name, [doNotParse])`
 ### `reactCookie.save(name, val, [opt])`
 ### `reactCookie.remove(name, [opt])`
-### `reactCookie.plugToRequest(req, res)`
+### `reactCookie.plugToRequest(req, res): unplug()`
 ### `reactCookie.setRawCookie(cookies)`
 
 ## opt
