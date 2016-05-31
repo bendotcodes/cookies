@@ -67,7 +67,7 @@ describe('ReactCookie', function() {
       reactCookie.plugToRequest({ cookie: { test: 123 } });
       expect(reactCookie.load('test')).toBe(123);
     });
-    
+
     it('should load the request cookies', function() {
       reactCookie.plugToRequest({ cookies: { test: 123 } });
       expect(reactCookie.load('test')).toBe(123);
@@ -85,5 +85,19 @@ describe('ReactCookie', function() {
       reactCookie.plugToRequest({});
       expect(reactCookie.load('test')).toBeUndefined();
     });
+
+    describe('unplug', function () {
+      it('should return an unplug function', function() {
+        var unplug = reactCookie.plugToRequest({ headers: { cookie: 'test=123' } });
+        expect(typeof unplug).toBe('function')
+      })
+
+      it('should clear reference to request cookie when called', function() {
+        var unplug = reactCookie.plugToRequest({ headers: { cookie: 'test=123' } });
+        expect(reactCookie.load('test')).toBe(123);
+        unplug()
+        expect(reactCookie.load('test')).toBeUndefined();
+      })
+    })
   });
 });
