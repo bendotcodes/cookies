@@ -30,6 +30,21 @@ describe('ReactCookie', function() {
     });
   });
 
+  describe('select', function() {
+    it('should not crash if cookies undefined', function() {
+      expect(function() {
+        reactCookie.setRawCookie(undefined);
+      }).not.toThrow();
+
+      expect(reactCookie.select(/^test/g)).toEqual({});
+    });
+
+    it('should select and read all the matching cookies into an object', function() {
+      reactCookie.setRawCookie('test=foo;something=bar;foo=bar');
+      expect(reactCookie.select(/(test|foo)/)).toEqual({ test: 'foo', foo: 'bar' });
+    });
+  })
+
   describe('save', function() {
     it('should not crash if not in the browser', function() {
       expect(function() {

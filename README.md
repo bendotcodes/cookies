@@ -25,7 +25,10 @@ import cookie from 'react-cookie';
 export default class MyApp extends Component {
   constructor(props) {
     super(props);
-    this.state = { userId: cookie.load('userId') };
+
+    this.state =  { userId: cookie.load('userId')
+                  , sessionCookies: cookie.select(/^session.*/i)
+                  };
   }
 
   onLogin(userId) {
@@ -35,6 +38,7 @@ export default class MyApp extends Component {
 
   onLogout() {
     cookie.remove('userId', { path: '/' });
+    Object.keys(this.state.sessionCookies).forEach(name => cookie.remove(name, { path: '/' }))
   }
 
   render() {
@@ -53,6 +57,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 ## Usage
 
 ### `reactCookie.load(name, [doNotParse])`
+### `reactCookie.select(/regex/)`
 ### `reactCookie.save(name, val, [opt])`
 ### `reactCookie.remove(name, [opt])`
 ### `reactCookie.plugToRequest(req, res): unplug()`

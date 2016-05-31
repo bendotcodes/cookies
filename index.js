@@ -3,6 +3,29 @@ var cookie = require('cookie');
 var _rawCookie = {};
 var _res = undefined;
 
+if (typeof Object.assign != 'function') {
+  Object.assign = function(target) {
+    'use strict';
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    target = Object(target);
+    for (var index = 1; index < arguments.length; index++) {
+      var source = arguments[index];
+      if (source != null) {
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+    }
+    return target;
+  };
+}
+
+
 function load(name, doNotParse) {
   var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
   var cookieVal = cookies && cookies[name];
@@ -16,6 +39,21 @@ function load(name, doNotParse) {
   }
 
   return cookieVal;
+}
+
+function select(regex) {
+  var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
+  if(!cookies)
+    return []
+  console.info(cookies)
+  return Object.keys(cookies)
+    .reduce(function(accumulator, name) {
+      if(!regex.test(name))
+        return accumulator
+      var newCookie = {}
+      newCookie[name] = cookies[name]
+      return Object.assign({}, accumulator, newCookie)
+    }, {})
 }
 
 function save(name, val, opt) {
@@ -83,6 +121,7 @@ function plugToRequest(req, res) {
 
 var reactCookie = {
   load: load,
+  select: select,
   save: save,
   remove: remove,
   setRawCookie: setRawCookie,
