@@ -76,6 +76,9 @@ function plugToRequest(req, res) {
   }
 
   _res = res;
+  return function unplug() {
+    _rawCookie = {};
+  }
 }
 
 var reactCookie = {

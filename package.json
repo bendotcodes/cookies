@@ -23,7 +23,8 @@
   "author": "Benoit Tremblay <trembl.ben@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p dist && browserify index.js > dist/react-cookie.js && uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js",
+    "prebuild": "rimraf dist",
+    "build": "mkdirp dist && browserify index.js > dist/react-cookie.js && uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js",
     "test": "node_modules/.bin/minijasminenode2 test.js"
   },
   "dependencies": {
@@ -31,7 +32,10 @@
   },
   "devDependencies": {
     "browserify": "^9.0.3",
+    "jasmine-core": "^2.4.1",
     "minijasminenode2": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.2",
     "uglify-js": "^2.4.17"
   }
 }
