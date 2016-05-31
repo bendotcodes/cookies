@@ -43,6 +43,11 @@ describe('ReactCookie', function() {
       reactCookie.setRawCookie('test=foo;something=bar;foo=bar');
       expect(reactCookie.select(/(test|foo)/)).toEqual({ test: 'foo', foo: 'bar' });
     });
+
+    it('should read all cookies into an object if no parameter is passed', function() {
+      reactCookie.setRawCookie('test=foo;something=bar;foo=bar');
+      expect(reactCookie.select()).toEqual({ test: 'foo', something: 'bar', foo: 'bar' });
+    });
   })
 
   describe('save', function() {

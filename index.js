@@ -44,11 +44,10 @@ function load(name, doNotParse) {
 function select(regex) {
   var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
   if(!cookies)
-    return []
-  console.info(cookies)
+    return {}
   return Object.keys(cookies)
     .reduce(function(accumulator, name) {
-      if(!regex.test(name))
+      if(regex && !regex.test(name))
         return accumulator
       var newCookie = {}
       newCookie[name] = cookies[name]
