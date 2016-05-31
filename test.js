@@ -18,10 +18,26 @@ describe('ReactCookie', function() {
       reactCookie.setRawCookie('test=test');
       expect(reactCookie.load('test')).toBe('test');
     });
+    
+    it('should load all cookies if name is not provided', function() {
+      reactCookie.setRawCookie('test=test;foo=foo');
+      expect(reactCookie.load()).toEqual({test: 'test', foo: 'foo'});
+    });
+
+    it('should prevent cookies object mutation', function() {
+      reactCookie.setRawCookie('test=test;foo=foo');
+      reactCookie.load().test = 'newValue';
+      expect(reactCookie.load()).toEqual({test: 'test', foo: 'foo'});
+    });
 
     it('should parse if an object', function() {
       reactCookie.setRawCookie('test={"test": true}');
       expect(reactCookie.load('test').test).toBe(true);
+    });
+
+    it('should load all cookies parsed if name is not provided', function() {
+      reactCookie.setRawCookie('test={"test": true};foo=foo');
+      expect(reactCookie.load()).toEqual({test: {test: true}, foo: 'foo'});
     });
 
     it('should not parse if we ask not to', function() {

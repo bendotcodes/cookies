@@ -48,7 +48,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 
 ## Usage
 
-### `reactCookie.load(name, [doNotParse])`
+### `reactCookie.load([name], [doNotParse])`
 ### `reactCookie.save(name, val, [opt])`
 ### `reactCookie.remove(name, [opt])`
 ### `reactCookie.plugToRequest(req, res)`
