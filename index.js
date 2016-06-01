@@ -1,8 +1,5 @@
 var cookie = require('cookie');
 
-var _rawCookie = {};
-var _res = undefined;
-
 if (typeof Object.assign != 'function') {
   Object.assign = function(target) {
     'use strict';
@@ -25,6 +22,16 @@ if (typeof Object.assign != 'function') {
   };
 }
 
+var _rawCookie = {};
+var _res = undefined;
+
+function _isResWritable() {
+  if(!_res)
+    return false
+  if(_res.headersSent === true)
+    return false
+  return true
+}
 
 function load(name, doNotParse) {
   var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
@@ -68,7 +75,7 @@ function save(name, val, opt) {
     document.cookie = cookie.serialize(name, _rawCookie[name], opt);
   }
 
-  if (_res && _res.cookie) {
+  if (_isResWritable() && _res.cookie) {
     _res.cookie(name, val, opt);
   }
 }
@@ -88,7 +95,7 @@ function remove(name, opt) {
     document.cookie = cookie.serialize(name, '', opt);
   }
 
-  if (_res && _res.clearCookie) {
+  if (_isResWritable() && _res.clearCookie) {
     _res.clearCookie(name, opt);
   }
 }
@@ -114,6 +121,7 @@ function plugToRequest(req, res) {
 
   _res = res;
   return function unplug() {
+    _res = null;
     _rawCookie = {};
   }
 }

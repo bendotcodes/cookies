@@ -1,4 +1,6 @@
 var reactCookie = require('./index');
+var rewire = require('rewire')
+
 
 describe('ReactCookie', function() {
   beforeEach(function() {
@@ -82,42 +84,69 @@ describe('ReactCookie', function() {
     });
   });
 
-  describe('plugToRequest', function() {
-    it('should load the request cookie', function() {
-      reactCookie.plugToRequest({ cookie: { test: 123 } });
-      expect(reactCookie.load('test')).toBe(123);
+
+  describe('serverCookie', function() {
+
+    var serverCookie = null
+    beforeEach(function() {
+      /** Import with rewire so we can check on private variable values */
+      serverCookie = rewire('./index')
+    })
+    afterEach(function() {
+      serverCookie = null
+    })
+
+
+    describe('plugToRequest', function() {
+      it('should load the request cookie', function() {
+        serverCookie.plugToRequest({ cookie: { test: 123 } });
+        expect(serverCookie.load('test')).toBe(123);
+      });
+
+      it('should load the request cookies', function() {
+        serverCookie.plugToRequest({ cookies: { test: 123 } });
+        expect(serverCookie.load('test')).toBe(123);
+      });
+
+      it('should load the raw cookie header', function() {
+        serverCookie.plugToRequest({ headers: { cookie: 'test=123' } });
+        expect(serverCookie.load('test')).toBe(123);
+      });
+
+      it('should clear the cookies if their is none', function() {
+        serverCookie.setRawCookie('test=123');
+        expect(serverCookie.load('test')).toBe(123);
+
+        serverCookie.plugToRequest({});
+        expect(serverCookie.load('test')).toBeUndefined();
+      });
     });
 
-    it('should load the request cookies', function() {
-      reactCookie.plugToRequest({ cookies: { test: 123 } });
-      expect(reactCookie.load('test')).toBe(123);
-    });
-
-    it('should load the raw cookie header', function() {
-      reactCookie.plugToRequest({ headers: { cookie: 'test=123' } });
-      expect(reactCookie.load('test')).toBe(123);
-    });
-
-    it('should clear the cookies if their is none', function() {
-      reactCookie.setRawCookie('test=123');
-      expect(reactCookie.load('test')).toBe(123);
-
-      reactCookie.plugToRequest({});
-      expect(reactCookie.load('test')).toBeUndefined();
-    });
 
     describe('unplug', function () {
       it('should return an unplug function', function() {
-        var unplug = reactCookie.plugToRequest({ headers: { cookie: 'test=123' } });
+        var unplug = serverCookie.plugToRequest({ headers: { cookie: 'test=123' } });
         expect(typeof unplug).toBe('function')
       })
 
-      it('should clear reference to request cookie when called', function() {
-        var unplug = reactCookie.plugToRequest({ headers: { cookie: 'test=123' } });
-        expect(reactCookie.load('test')).toBe(123);
-        unplug()
-        expect(reactCookie.load('test')).toBeUndefined();
+      it('should set _res private variable when plugToRequest is called', function() {
+        var req = { headers: { cookie: 'test=123' } }
+        var res = { headersSent: false }
+        var unplug = serverCookie.plugToRequest(req, res);
+        expect(serverCookie.__get__('_res')).toBe(res)
+
       })
-    })
+
+      it('should clear reference to response cookie when called', function() {
+        var req = { headers: { cookie: 'test=123' } }
+        var res = { headersSent: false }
+        var unplug = serverCookie.plugToRequest(req, res);
+        expect(serverCookie.load('test')).toBe(123);
+        expect(serverCookie.__get__('_res')).toBe(res)
+        unplug()
+        expect(serverCookie.load('test')).toBeUndefined();
+        expect(serverCookie.__get__('_res')).toBe(null)
+      })
+    });
   });
 });
