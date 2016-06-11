@@ -26,8 +26,7 @@ export default class MyApp extends Component {
   constructor(props) {
     super(props);
 
-    this.state =  { userId: cookie.load('userId')
-                  };
+    this.state =  { userId: cookie.load('userId') };
   }
 
   onLogin(userId) {
