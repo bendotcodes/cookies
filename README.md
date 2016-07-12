@@ -64,7 +64,7 @@ You can use react-cookie with anything by using the global variable `reactCookie
 ### `reactCookie.setRawCookie(cookies)`
 
 ## opt
-Support all the cookie options from the RFC.
+Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).
 
 ### path
 > cookie path
