@@ -90,6 +90,9 @@ function remove(name, opt) {
   } else if (typeof opt === 'string') {
     // Will be deprecated in future versions
     opt = { path: opt };
+  } else {
+    // Prevent mutation of opt below
+    opt = Object.assign({}, opt);
   }
 
   if (typeof document !== 'undefined') {
