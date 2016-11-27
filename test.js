@@ -26,6 +26,12 @@ describe('ReactCookie', function() {
       expect(reactCookie.load('test').test).toBe(true);
     });
 
+    it('should not parse if not an object', function() {
+      reactCookie.setRawCookie('test=1230.00');
+      expect(reactCookie.load('test')).toBe('1230.00');
+      console.log(JSON.parse(reactCookie.load('test')));
+    });
+
     it('should not parse if we ask not to', function() {
       reactCookie.setRawCookie('test={"test": true}');
       expect(typeof reactCookie.load('test', true)).toBe('string');
@@ -110,12 +116,12 @@ describe('ReactCookie', function() {
 
       it('should load the raw cookie header', function() {
         serverCookie.plugToRequest({ headers: { cookie: 'test=123' } });
-        expect(serverCookie.load('test')).toBe(123);
+        expect(serverCookie.load('test')).toBe('123');
       });
 
       it('should clear the cookies if their is none', function() {
         serverCookie.setRawCookie('test=123');
-        expect(serverCookie.load('test')).toBe(123);
+        expect(serverCookie.load('test')).toBe('123');
 
         serverCookie.plugToRequest({});
         expect(serverCookie.load('test')).toBeUndefined();
@@ -141,7 +147,7 @@ describe('ReactCookie', function() {
         var req = { headers: { cookie: 'test=123' } }
         var res = { headersSent: false }
         var unplug = serverCookie.plugToRequest(req, res);
-        expect(serverCookie.load('test')).toBe(123);
+        expect(serverCookie.load('test')).toBe('123');
         expect(serverCookie.__get__('_res')).toBe(res)
         unplug()
         expect(serverCookie.load('test')).toBeUndefined();

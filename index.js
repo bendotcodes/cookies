@@ -37,6 +37,10 @@ function load(name, doNotParse) {
   var cookies = (typeof document === 'undefined') ? _rawCookie : cookie.parse(document.cookie);
   var cookieVal = cookies && cookies[name];
 
+  if (typeof doNotParse === 'undefined') {
+    doNotParse = !cookieVal || (cookieVal[0] !== '{' && cookieVal[0] !== '[');
+  }
+
   if (!doNotParse) {
     try {
       cookieVal = JSON.parse(cookieVal);
