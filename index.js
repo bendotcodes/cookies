@@ -101,6 +101,7 @@ function remove(name, opt) {
 
   if (typeof document !== 'undefined') {
     opt.expires = new Date(1970, 1, 1, 0, 0, 1);
+    opt.maxAge = 0;
     document.cookie = cookie.serialize(name, '', opt);
   }
 
