@@ -1,18 +1,14 @@
 {
   "name": "react-cookie",
-  "version": "0.4.9",
+  "version": "1.0.0",
   "description": "Load and save cookies within your React application",
-  "main": "index.js",
-  "files": [
-    "index.js",
-    "dist/react-cookie.js",
-    "dist/react-cookie.min.js"
-  ],
+  "main": "build/cookie.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eXon/react-cookie.git"
+    "url": "https://github.com/thereactivestack/react-cookie.git"
   },
-  "bugs": "https://github.com/eXon/react-cookie/issues",
+  "bugs": "https://github.com/thereactivestack/react-cookie/issues",
+  "homepage": "https://github.com/thereactivestack/react-cookie#readme",
   "keywords": [
     "cookie",
     "cookies",
@@ -20,23 +16,35 @@
     "reactjs",
     "jsx"
   ],
-  "author": "Benoit Tremblay <trembl.ben@gmail.com>",
+  "author": "Benoit Tremblay <benoit@thereactivestack.com>",
   "license": "MIT",
   "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "mkdirp dist && browserify index.js > dist/react-cookie.js && uglifyjs dist/react-cookie.js -o dist/react-cookie.min.js",
-    "test": "node_modules/.bin/minijasminenode2 test.js"
+    "lint": "eslint --ext .js .",
+    "test": "npm run lint && jest",
+    "watch": "jest --watch",
+    "build": "babel src -d build --ignore __tests__"
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm test"
+    }
   },
   "dependencies": {
-    "cookie": "^0.3.1"
+    "cookie": "^0.3.1",
+    "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "browserify": "^9.0.3",
-    "jasmine-core": "^2.4.1",
-    "minijasminenode2": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "rewire": "^2.5.1",
-    "rimraf": "^2.5.2",
-    "uglify-js": "^2.4.17"
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^17.0.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "babel-register": "^6.18.0",
+    "eslint": "^3.10.2",
+    "eslint-config-cyprex": "^1.0.1",
+    "eslint-plugin-react": "^6.7.1",
+    "ghooks": "^1.3.2",
+    "jest": "^17.0.3"
   }
 }

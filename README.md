@@ -1,4 +1,6 @@
 # react-cookie
+[![npm version](https://badge.fury.io/js/react-cookie.svg)](https://badge.fury.io/js/react-cookie)
+[![Build Status](https://travis-ci.org/thereactivestack/react-cookie.svg?branch=master)](https://travis-ci.org/thereactivestack/react-cookie)
 Load, save and remove cookies within your React application
 
 ## Isomorphic cookies!
@@ -11,10 +13,8 @@ If you are within a non-browser or Node.js environment, you can use `reactCookie
 
 
 
-## Download
-NPM: `npm install react-cookie`<br />
-Bower: `bower install react-cookie`<br />
-CDN: `https://cdnjs.cloudflare.com/ajax/libs/react-cookie/0.4.3/react-cookie.min.js`
+## Install
+`npm install react-cookie`
 
 # Examples
 

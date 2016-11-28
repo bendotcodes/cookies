@@ -1,18 +1,4 @@
-# Log files
-*.log
-
-# NPM modules
 node_modules
-
-# Build output
-dist
-
-# Sublime project
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-
-# WebStorm project
-.idea
+*.log
+/build/**/*.js
+.DS_Store
