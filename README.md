@@ -1,6 +1,7 @@
 # react-cookie
 [![npm version](https://badge.fury.io/js/react-cookie.svg)](https://badge.fury.io/js/react-cookie)
 [![Build Status](https://travis-ci.org/thereactivestack/react-cookie.svg?branch=master)](https://travis-ci.org/thereactivestack/react-cookie)
+<br />
 Load, save and remove cookies within your React application
 
 ## Isomorphic cookies!
