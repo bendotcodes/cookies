@@ -3,13 +3,13 @@ node_js:
 - '6'
 cache:
   directories:
-    - node_modules
-before_deploy: "npm run build"
+  - node_modules
+before_deploy: npm run build
 deploy:
   provider: npm
   email: trembl.ben@gmail.com
   api_key:
-    secure: GxIOS2kOnuq3GiSN2MkdHIVlGI6hqRsP6xpXY9pcHqsjklbTxQuHt/RBUtUUy+wNXNTJEIUYHDNkzuIETGKFkIzNdsVOciMlP6QZG8e7PmDtbvOONomU6fKe0sJ1/XGKsLFZHTY/TFzAQJXeD2u69ODUK40xA+b4cc45Iux6uQcceXdz2VUaMtMLLHWQJL+nuw8vaBJlJo7DaU2pVlkBnGYc1uDEaYJibEZOO25fevErec4Lh06o+ZrQUqK7BZS+5pfjHPqnzFK4/ipzdUFsfxJFIaIqM2rO4R5eCk0vefUzGfNOGyDbzLihvkoujzEOK6VAzX9Zz7/kCY/YfzzWabUDbzBVS5CS9ri36FWAxR5oMXzJfF+DBUxZoS0oudxb7UpTiF3L4IvdY7l57gv/zcoplq1629uc4dS2Bd0tIcBpAk4Ilhzi3hnEt2MSZN7yBflwAxqsNmKrg2HboK7GVb/eRFjyT6CV1kZeVMO+UpbO1ppLPrbgmXHLsqFIceTBJpwYB2g01vgDJrAfXwUCsxXUNynNiKJICgdjEZEmgfidqjBWpfJfxXzlpWkzIv3mVI2bRTr4x44qTqMdF1J7zj/W4gNCIIPsUItK7ssgyp4do3o9hMy34JtfRwKy9KEwZB8ji5WhK7V29NdA3vkIbywHjTz/wzXE3OXxQL6J6i4=
+    secure: iOCCqvMy1BHUh+wb+FtVtwvtwGU01p7gj79FtQH8pNvsKVOZP/1bzyzKrVxlKmQ6Hc8kA3N9Mgg2BKhikHjJq0TZuFaFanmpYoCcsarjY0Tq4tR11dpAIUMdQk4awgJ2DWbvP7vyGP1KFiukC4NaSKVomtdyeZGoi/V891wEY7I=
   on:
     tags: true
     repo: thereactivestack/react-cookie
