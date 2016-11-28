@@ -5,12 +5,12 @@
 Load, save and remove cookies within your React application
 
 ## Isomorphic cookies!
-You can also plug it directly with a Node.js request by adding just before the renderToString: `var unplug = reactCookie.plugToRequest(req, res);`<br />
+You can also plug it directly with a Node.js request by adding just before the renderToString: `var unplug = cookie.plugToRequest(req, res);`<br />
 *(require the cookieParser middleware)*
 
 To ensure long running async operations do not attempt to alter cookies after the request has been sent, call the `unplug` function that is returned in a finally block in your router.
 
-If you are within a non-browser or Node.js environment, you can use `reactCookie.setRawCookie(req.headers.cookie)`
+If you are within a non-browser or Node.js environment, you can use `cookie.setRawCookie(req.headers.cookie)`
 
 
 
@@ -50,19 +50,14 @@ export default class MyApp extends Component {
 }
 ```
 
-## Without CommonJS
-You can use react-cookie with anything by using the global variable `reactCookie`.
-
-*Note that `window` need to exists to use `reactCookie`.*
-
 ## Usage
 
-### `reactCookie.load(name, [doNotParse])`
-### `reactCookie.select([regex])`
-### `reactCookie.save(name, val, [opt])`
-### `reactCookie.remove(name, [opt])`
-### `reactCookie.plugToRequest(req, res): unplug()`
-### `reactCookie.setRawCookie(cookies)`
+### `cookie.load(name, [doNotParse])`
+### `cookie.select([regex])`
+### `cookie.save(name, val, [opt])`
+### `cookie.remove(name, [opt])`
+### `cookie.plugToRequest(req, res): unplug()`
+### `cookie.setRawCookie(cookies)`
 
 ## opt
 Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).

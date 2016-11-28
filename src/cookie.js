@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import objectAssign from 'object-assign';
 
-const IS_NODE = typeof document !== 'undefined' || (typeof module !== 'undefined' && module.exports);
+const IS_NODE = typeof document === 'undefined' || (typeof module !== 'undefined' && module.exports);
 let _rawCookie = {};
 let _res = undefined;
 
