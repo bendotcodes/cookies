@@ -47,7 +47,7 @@ Make sure it is the raw string from the request headers.<br />
 Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).
 
 ### path
-> cookie path
+> cookie path<br />
 > Use `/` as the path if you want your cookie to be accessible on all pages.
 
 ### expires
@@ -57,7 +57,7 @@ Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/r
 > relative max age of the cookie from when the client receives it **(seconds)**
 
 ### domain
-> domain for the cookie
+> domain for the cookie<br />
 > Use `https://*.yourdomain.com` if you want to access the cookie in all your subdomains.
 
 ### secure
