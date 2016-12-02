@@ -43,7 +43,7 @@ Load the user cookies so you can do server-rendering and match the same result.<
 Use `setRawCookie(headers.cookie)` just before your `renderToString`.<br />
 Make sure it is the raw string from the request headers.<br />
 
-### Options
+## Options
 Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).
 
 ### path
