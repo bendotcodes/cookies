@@ -2,31 +2,82 @@
 [![npm version](https://badge.fury.io/js/react-cookie.svg)](https://badge.fury.io/js/react-cookie)
 [![Build Status](https://travis-ci.org/thereactivestack/react-cookie.svg?branch=master)](https://travis-ci.org/thereactivestack/react-cookie)
 <br />
-Load, save and remove cookies within your React application
-
-## Isomorphic cookies!
-You can also plug it directly with a Node.js request by adding just before the renderToString: `var unplug = cookie.plugToRequest(req, res);`<br />
-*(require the cookieParser middleware)*
-
-To ensure long running async operations do not attempt to alter cookies after the request has been sent, call the `unplug` function that is returned in a finally block in your router.
-
-If you are within a non-browser or Node.js environment, you can use `cookie.setRawCookie(req.headers.cookie)`
-
-
+Load, save and remove cookies on the browser or Node.js
 
 ## Install
-`npm install react-cookie`
+`npm install react-cookie --save`
 
-# Examples
+## Isomorphic cookies!
+To be able to access user cookies while doing server-rendering, you can use `plugToRequest` or `setRawCookie`.
+
+## API
+### `cookie.load(name, [doNotParse])`
+Load the cookie value.<br />
+<br />
+Returns `undefined` if the cookie does not exist.<br />
+Deserialize any cookie starting with { or [.
+
+
+### `cookie.select([regex])`
+Find all the cookies with a name that match the regex.<br />
+<br />
+Returns an `object` with the cookie name as the key.
+
+### `cookie.save(name, val, [option])`
+Set a cookie
+
+### `cookie.remove(name, [option])`
+Remove a cookie
+
+### `cookie.plugToRequest(req, res): unplug()`
+Load the user cookies so you can do server-rendering and match the same result.<br />
+Also send back to the user the new cookies.<br />
+Work with connect or express.js by using the cookieParser middleware first.<br />
+Use `const unplug = plugToRequest(req, res)` just before your `renderToString`.<br />
+<br />
+Returns `unplug()` function so it stops setting cookies on the response.
+
+
+### `cookie.setRawCookie(cookies)`
+Load the user cookies so you can do server-rendering and match the same result.<br />
+Use `setRawCookie(headers.cookie)` just before your `renderToString`.<br />
+Make sure it is the raw string from the request headers.<br />
+
+### Options
+Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).
+
+### path
+> cookie path
+Use `/` as the path if you want your cookie to be accessible on all pages.
+
+### expires
+> absolute expiration date for the cookie **(Date object)**
+
+### maxAge
+> relative max age of the cookie from when the client receives it **(seconds)**
+
+### domain
+> domain for the cookie
+Use `https://*.yourdomain.com` if you want to access the cookie in all your subdomains.
+
+### secure
+> Is only accessible through HTTPS? **true or false**
+
+
+### httpOnly
+> Is only the server can access the cookie? **true or false**
+
+# Example
 
 ```js
 import { Component } from 'react';
 import cookie from 'react-cookie';
 
-export default class MyApp extends Component {
-  constructor(props) {
-    super(props);
+import LoginPanel from './LoginPanel';
+import Dashboard from './Dashboard';
 
+export default class MyApp extends Component {
+  componentWillMount() {
     this.state =  { userId: cookie.load('userId') };
   }
 
@@ -37,48 +88,17 @@ export default class MyApp extends Component {
 
   onLogout() {
     cookie.remove('userId', { path: '/' });
-
-    /** Clear all cookies starting with 'session' (to get all cookies, omit regex argument) */
-    Object.keys(cookie.select(/^session.*/i)).forEach(name => cookie.remove(name, { path: '/' }))
   }
 
   render() {
-    return (
-      <LoginPanel onSuccess={this.onLogin.bind(this)} />
-    );
+    if (!this.state.userId) {
+      return <LoginPanel onSuccess={this.onLogin.bind(this)} />;
+    }
+
+    return <Dashboard userId={this.state.userId} />;
   }
 }
 ```
-
-## Usage
-
-### `cookie.load(name, [doNotParse])`
-### `cookie.select([regex])`
-### `cookie.save(name, val, [opt])`
-### `cookie.remove(name, [opt])`
-### `cookie.plugToRequest(req, res): unplug()`
-### `cookie.setRawCookie(cookies)`
-
-## opt
-Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1).
-
-### path
-> cookie path
-
-### expires
-> absolute expiration date for the cookie (Date object)
-
-### maxAge
-> relative max age of the cookie from when the client receives it (seconds)
-
-### domain
-> domain for the cookie
-
-### secure
-> true or false
-
-### httpOnly
-> true or false
 
 ## License
 This project is under the MIT license. You are free to do whatever you want with it.
