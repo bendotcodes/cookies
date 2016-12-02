@@ -8,28 +8,28 @@ Load, save and remove cookies on the browser or Node.js
 `npm install react-cookie --save`
 
 ## Isomorphic cookies!
-To be able to access user cookies while doing server-rendering, you can use `plugToRequest` or `setRawCookie`.
+To be able to access user cookies while doing server-rendering, you can use [`plugToRequest`](#cookieplugtorequestreq-res-unplug) or [`setRawCookie`](#cookiesetrawcookiecookies).
 
 ## API
-### `cookie.load(name, [doNotParse])`
+### load(name, [doNotParse])
 Load the cookie value.<br />
 <br />
 Returns `undefined` if the cookie does not exist.<br />
-Deserialize any cookie starting with { or [.
+Deserialize any cookie starting with { or [ unless `dotNotParse` is `true`.
 
 
-### `cookie.select([regex])`
+### select([regex])
 Find all the cookies with a name that match the regex.<br />
 <br />
 Returns an `object` with the cookie name as the key.
 
-### `cookie.save(name, val, [option])`
+### save(name, val, [[options]](#options))
 Set a cookie
 
-### `cookie.remove(name, [option])`
+### remove(name, [[options]](#options))
 Remove a cookie
 
-### `cookie.plugToRequest(req, res): unplug()`
+### plugToRequest(req, res): unplug()
 Load the user cookies so you can do server-rendering and match the same result.<br />
 Also send back to the user the new cookies.<br />
 Work with connect or express.js by using the cookieParser middleware first.<br />
@@ -38,7 +38,7 @@ Use `const unplug = plugToRequest(req, res)` just before your `renderToString`.<
 Returns `unplug()` function so it stops setting cookies on the response.
 
 
-### `cookie.setRawCookie(cookies)`
+### setRawCookie(cookies)
 Load the user cookies so you can do server-rendering and match the same result.<br />
 Use `setRawCookie(headers.cookie)` just before your `renderToString`.<br />
 Make sure it is the raw string from the request headers.<br />
