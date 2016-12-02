@@ -8,7 +8,7 @@ Load, save and remove cookies on the browser or Node.js
 `npm install react-cookie --save`
 
 ## Isomorphic cookies!
-To be able to access user cookies while doing server-rendering, you can use [`plugToRequest`](#cookieplugtorequestreq-res-unplug) or [`setRawCookie`](#cookiesetrawcookiecookies).
+To be able to access user cookies while doing server-rendering, you can use [`plugToRequest`](#user-content-plugtorequestreq-res-unplug) or [`setRawCookie`](#user-content-setrawcookiecookies).
 
 ## API
 ### load(name, [doNotParse])
@@ -23,10 +23,10 @@ Find all the cookies with a name that match the regex.<br />
 <br />
 Returns an `object` with the cookie name as the key.
 
-### save(name, val, [[options]](#options))
+### save(name, val, [[options]](#user-content-options))
 Set a cookie
 
-### remove(name, [[options]](#options))
+### remove(name, [[options]](#user-content-options))
 Remove a cookie
 
 ### plugToRequest(req, res): unplug()
