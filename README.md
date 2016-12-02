@@ -48,7 +48,7 @@ Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/r
 
 ### path
 > cookie path
-Use `/` as the path if you want your cookie to be accessible on all pages.
+> Use `/` as the path if you want your cookie to be accessible on all pages.
 
 ### expires
 > absolute expiration date for the cookie **(Date object)**
@@ -58,11 +58,10 @@ Use `/` as the path if you want your cookie to be accessible on all pages.
 
 ### domain
 > domain for the cookie
-Use `https://*.yourdomain.com` if you want to access the cookie in all your subdomains.
+> Use `https://*.yourdomain.com` if you want to access the cookie in all your subdomains.
 
 ### secure
 > Is only accessible through HTTPS? **true or false**
-
 
 ### httpOnly
 > Is only the server can access the cookie? **true or false**
