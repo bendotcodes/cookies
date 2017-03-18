@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import objectAssign from 'object-assign';
+import IS_NODE from 'is-node';
 
-const IS_NODE = typeof document === 'undefined' || (process && process.env && process.env.NODE_ENV === 'test');
 let _rawCookie = {};
 let _res = undefined;
 
