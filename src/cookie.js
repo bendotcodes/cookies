@@ -9,8 +9,8 @@ function _isResWritable() {
   return _res && !_res.headersSent;
 }
 
-export function load(name, doNotParse) {
-  const cookies = IS_NODE ? _rawCookie : cookie.parse(document.cookie);
+export function load(name, doNotParse, opt) {
+  const cookies = IS_NODE ? _rawCookie : cookie.parse(document.cookie, opt);
   let cookieVal = cookies && cookies[name];
 
   if (typeof doNotParse === 'undefined') {
