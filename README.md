@@ -58,7 +58,8 @@ Support all the cookie options from the [RFC 6265](https://tools.ietf.org/html/r
 
 ### domain
 > domain for the cookie<br />
-> Use `https://*.yourdomain.com` if you want to access the cookie in all your subdomains.
+> Use `sub.domain.com` if you want to access the cookie on a specific sub-domain only.
+> Use `.yourdomain.com` if you want to access the cookie in all your subdomains.
 
 ### secure
 > Is only accessible through HTTPS? **true or false**
