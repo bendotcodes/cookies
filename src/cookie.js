@@ -65,6 +65,12 @@ export function save(name, val, opt) {
   }
 
   if (_isResWritable() && _res.cookie) {
+    const expressOpt = { ...opt };
+    if (expressOpt.maxAge) {
+      // the standard for maxAge is seconds but express uses milliseconds
+      expressOpt.maxAge = opt.maxAge * 1000;
+    }
+
     _res.cookie(name, val, opt);
   }
 }
