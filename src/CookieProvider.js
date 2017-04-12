@@ -12,10 +12,6 @@ export default class CookieProvider extends Component {
     pollInterval: number,
   };
 
-  static defaultProps = {
-    pollInterval: 100,
-  };
-
   state = {
     cookies: this.readCookies(),
   };
@@ -31,7 +27,7 @@ export default class CookieProvider extends Component {
   }
 
   componentWillMount() {
-    if (!isNode) {
+    if (!isNode && this.props.pollInterval > 0) {
       this.interval = setInterval(
         this.updateCookies.bind(this),
         this.props.pollInterval,
@@ -40,7 +36,7 @@ export default class CookieProvider extends Component {
   }
 
   componentWillUnmount() {
-    if (!isNode) {
+    if (this.interval) {
       clearInterval(this.interval);
     }
   }
