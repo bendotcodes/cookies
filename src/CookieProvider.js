@@ -1,12 +1,11 @@
 import { Component } from 'react';
 import { any, string, func, object, number } from 'prop-types';
-import invariant from 'invariant';
 import cookie from 'cookie';
 import isNode from 'is-node';
 
 export default class CookieProvider extends Component {
   static propTypes = {
-    header: string,
+    header: isNode ? string.isRequired : string,
     children: any,
     decode: func,
     pollInterval: number,
@@ -42,11 +41,6 @@ export default class CookieProvider extends Component {
   }
 
   readCookies() {
-    invariant(
-      !isNode || typeof this.props.header === 'string',
-      'You must specify the header to the <CookieProvider> on the server-side',
-    );
-
     const cookieString = isNode
       ? this.props.header
       : this.props.header || document.cookie;
