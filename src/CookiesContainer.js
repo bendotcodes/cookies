@@ -3,7 +3,7 @@ import { any, string, func, object, number } from 'prop-types';
 import cookie from 'cookie';
 import isNode from 'is-node';
 
-export default class CookieProvider extends Component {
+export default class CookiesContainer extends Component {
   static propTypes = {
     header: isNode ? string.isRequired : string,
     children: any,

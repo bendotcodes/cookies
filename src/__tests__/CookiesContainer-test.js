@@ -3,7 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { object } from 'prop-types';
 
-import CookieProvider from '../CookieProvider';
+import CookiesContainer from '../CookiesContainer';
 import { cleanCookies } from './utils';
 
 function DumpCookies(props, { cookies }) {
@@ -14,12 +14,12 @@ DumpCookies.contextTypes = {
   cookies: object.isRequired,
 };
 
-describe('<CookieProvider>', () => {
+describe('<CookiesContainer>', () => {
   it('should read the cookie values', () => {
     cleanCookies();
     document.cookie = 'testingCookie=yes';
 
-    const wrapper = mount(<CookieProvider><DumpCookies /></CookieProvider>);
+    const wrapper = mount(<CookiesContainer><DumpCookies /></CookiesContainer>);
     const cookies = JSON.parse(wrapper.text());
     expect(cookies.testingCookie).toBe('yes');
   });
@@ -27,7 +27,7 @@ describe('<CookieProvider>', () => {
   // TODO: Find a way to test this
   /*it('detect new cookie', done => {
     cleanCookies();
-    const wrapper = mount(<CookieProvider><DumpCookies /></CookieProvider>);
+    const wrapper = mount(<CookiesContainer><DumpCookies /></CookiesContainer>);
     document.cookie = 'testingCookie=yes';
 
     setTimeout(
@@ -41,15 +41,15 @@ describe('<CookieProvider>', () => {
   });*/
 });
 
-describe('<CookieProvider> using cookieHeader', () => {
+describe('<CookiesContainer> using cookieHeader', () => {
   it('should read the cookie values', () => {
     cleanCookies();
     const cookieHeader = 'testingCookie=yes';
 
     const wrapper = mount(
-      <CookieProvider header={cookieHeader}>
+      <CookiesContainer header={cookieHeader}>
         <DumpCookies />
-      </CookieProvider>,
+      </CookiesContainer>,
     );
     const cookies = JSON.parse(wrapper.text());
     expect(cookies.testingCookie).toBe('yes');
