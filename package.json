@@ -13,6 +13,7 @@
     "eslint-plugin-flowtype": "^2.30.4",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
+    "husky": "^0.13.3",
     "jasmine-core": "^2.5.2",
     "karma": "^1.6.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -26,6 +27,7 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "precommit": "npm test",
     "test": "lerna run test",
     "build": "lerna run build"
   }
