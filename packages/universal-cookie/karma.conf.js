@@ -28,7 +28,7 @@ module.exports = config => {
     }
   });
 
-  /*if (process.env.TRAVIS)*/ {
+  if (process.env.TRAVIS) {
     const customLaunchers = {
       sl_iphone: {
         base: 'SauceLabs',
