@@ -1,3 +1,6 @@
 {
-  "extends": "cyprex/react"
+  "extends": "cyprex/react",
+  "env": {
+    "jasmine": true
+  }
 }
