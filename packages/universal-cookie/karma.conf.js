@@ -93,24 +93,6 @@ module.exports = config => {
         platform: 'Windows 7',
         version: '12.12'
       },
-      sl_windowsxp_ie8: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows XP',
-        version: '8.0'
-      },
-      sl_windowsxp_ie7: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows XP',
-        version: '7.0'
-      },
-      sl_windowsxp_ie6: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows XP',
-        version: '6.0'
-      },
       sl_linux_opera: {
         base: 'SauceLabs',
         browserName: 'opera',
