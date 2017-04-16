@@ -1,5 +1,5 @@
 node_modules
 *.log
-/lib
+lib
 .DS_Store
 yarn.lock
