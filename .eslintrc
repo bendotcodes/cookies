@@ -1,5 +1,5 @@
 {
-  "extends": "cyprex/react",
+  "extends": "reactivestack",
   "env": {
     "jasmine": true
   }

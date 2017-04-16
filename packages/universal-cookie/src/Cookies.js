@@ -2,7 +2,7 @@ import cookie from 'cookie';
 import objectAssign from 'object-assign';
 import { isNode } from './utils';
 
-export default class CookiesContext {
+export default class Cookies {
   constructor(cookies, hooks) {
     if (isNode()) {
       if (typeof cookies === 'string') {

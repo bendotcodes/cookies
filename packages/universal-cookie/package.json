@@ -1,0 +1,33 @@
+{
+  "name": "universal-cookie",
+  "version": "2.0.0",
+  "description": "Universal cookies made easy for client and server side",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reactivestack/cookies.git"
+  },
+  "bugs": "https://github.com/reactivestack/cookies/issues",
+  "homepage": "https://github.com/reactivestack/cookies/packages/universal-cookie/#readme",
+  "keywords": [
+    "universal",
+    "isomophic",
+    "cookie"
+  ],
+  "author": "Benoit Tremblay <benoit@reactivestack.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rimraf lib && babel src -d lib --ignore __tests__",
+    "lint": "eslint --ext .js .",
+    "test": "npm run lint && karma start --single-run",
+    "watch": "karma start"
+  },
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "is-node": "^1.0.2",
+    "object-assign": "^4.1.0"
+  }
+}
