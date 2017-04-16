@@ -9,6 +9,6 @@
 [![npm version](https://badge.fury.io/js/react-cookie.svg)](https://badge.fury.io/js/react-cookie)
 [![Build Status](https://travis-ci.org/reactivestack/cookies.svg?branch=master)](https://travis-ci.org/reactivestack/cookies)
 <br />
-[![Sauce Test Status](https://saucelabs.com/buildstatus/coookies)](https://saucelabs.com/u/coookies)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## V2 Coming Soon!
