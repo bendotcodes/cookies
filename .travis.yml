@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+- '6'
+cache:
+  directories:
+  - node_modules
+branches:
+  only:
+  - master
+  - v2
+env:
+  global: 
+dd:
+  secure: bs53rdpQgMb9XS0UpRww818ORloPTylFfnaRHHhsyNrjK/MMw+Fj4MTcbPCqYoqjTkLzy/xjM08nYE2kSEUvuJS5xrGxiBu0XuYjsjvdNHtfNAz7i8Q95QnLlmuaaWtujBPftwruth2tLZgLWDdGe7bVjGmlmSX9DCS5lpdM5qc=
