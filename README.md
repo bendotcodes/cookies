@@ -1,19 +1,19 @@
 <h3 align="center">
-  [react-cookie](/packages/react-cookie)
+  <a href="packages/react-cookie">react-cookie</a>
 </h3>
 
 <p align="center">
   Universal cookies for <a href="https://facebook.github.io/react">React</a><br />
-  [![npm version](https://badge.fury.io/js/react-cookie.svg)](https://badge.fury.io/js/react-cookie)
+  <a href="https://badge.fury.io/js/react-cookie"><img src="https://badge.fury.io/js/react-cookie.svg" /></a>
 </p>
 
 <h3 align="center">
-  [universal-cookie](/packages/universal-cookie)
+  <a href="packages/universal-cookie">universal-cookie</a>
 </h3>
 
 <p align="center">
   Universal cookies for JavaScript<br />
-  [![npm version](https://badge.fury.io/js/universal-cookie.svg)](https://badge.fury.io/js/universal-cookie)
+  <a href="https://badge.fury.io/js/universal-cookie"><img src="https://badge.fury.io/js/universal-cookie.svg" /></a>
 </p>
 
 [![Build Status](https://travis-ci.org/reactivestack/cookies.svg?branch=master)](https://travis-ci.org/reactivestack/cookies)
