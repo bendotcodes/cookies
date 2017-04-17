@@ -1,5 +1,5 @@
 {
-  "presets": ["latest", "stage-2"],
+  "presets": ["latest", "stage-2", "react"],
   "plugins": [
     "add-module-exports"
   ]

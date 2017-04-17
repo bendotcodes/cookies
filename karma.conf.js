@@ -4,7 +4,7 @@ module.exports = config => {
   config.set({
     browsers: ['Chrome'],
     frameworks: ['jasmine'],
-    reporters: ['kjhtml'],
+    reporters: ['spec', 'kjhtml'],
     files: ['tests.webpack.js'],
     preprocessors: {
       'tests.webpack.js': ['webpack', 'sourcemap']
@@ -119,6 +119,6 @@ module.exports = config => {
     config.singleRun = true;
     config.customLaunchers = customLaunchers;
     config.browsers = Object.keys(customLaunchers);
-    config.reporters = ['dots', 'saucelabs'];
+    config.reporters = ['spec', 'saucelabs'];
   }
 };

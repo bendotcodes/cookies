@@ -6,6 +6,7 @@
     "babel-loader": "^6.4.1",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "eslint": "^3.19.0",
     "eslint-config-reactivestack": "^1.0.0",
@@ -21,6 +22,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "karma-sauce-launcher": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
+    "karma-spec-reporter": "^0.0.31",
     "karma-webpack": "^2.0.3",
     "lerna": "2.0.0-beta.38",
     "rimraf": "^2.6.1",
@@ -29,7 +31,9 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "precommit": "npm test",
-    "test": "lerna run test",
+    "lint": "eslint --ext .js .",
+    "test": "npm run lint && karma start --single-run",
+    "watch": "karma start",
     "build": "lerna run build"
   }
 }

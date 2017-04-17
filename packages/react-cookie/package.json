@@ -1,7 +1,7 @@
 {
-  "name": "universal-cookie",
+  "name": "react-cookie",
   "version": "2.0.0",
-  "description": "Universal cookies for JavaScript",
+  "description": "Universal cookies for React",
   "main": "lib/index.js",
   "files": [
     "lib"
@@ -11,11 +11,12 @@
     "url": "https://github.com/reactivestack/cookies.git"
   },
   "bugs": "https://github.com/reactivestack/cookies/issues",
-  "homepage": "https://github.com/reactivestack/cookies/packages/universal-cookie/#readme",
+  "homepage": "https://github.com/reactivestack/cookies/packages/react-cookie/#readme",
   "keywords": [
     "universal",
     "isomophic",
-    "cookie"
+    "cookie",
+    "react"
   ],
   "author": "Benoit Tremblay <benoit@reactivestack.com>",
   "license": "MIT",
@@ -23,8 +24,14 @@
     "build": "rimraf lib && babel src -d lib --ignore __tests__"
   },
   "dependencies": {
-    "cookie": "^0.3.1",
-    "is-node": "^1.0.2",
-    "object-assign": "^4.1.0"
+    "hoist-non-react-statics": "^1.2.0",
+    "prop-types": "^15.0.0",
+    "react": "^15.0.0",
+    "universal-cookie": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "react-dom": "^15.0.0",
+    "rimraf": "^2.6.1"
   }
 }

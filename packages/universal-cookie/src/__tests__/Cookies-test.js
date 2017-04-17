@@ -1,5 +1,5 @@
 import Cookies from '../Cookies';
-import { cleanCookies } from './utils';
+import { cleanCookies } from '../utils';
 
 describe('Cookies', () => {
   beforeEach(() => {
