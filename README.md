@@ -21,7 +21,7 @@
 </h3>
 
 <p align="center">
-  Universal cookies for Express<br />
+  Plug universal cookies to Express<br />
   <a href="https://badge.fury.io/js/universal-cookie-express"><img src="https://badge.fury.io/js/universal-cookie-express.svg" /></a>
 </p>
 

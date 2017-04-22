@@ -1,5 +1,5 @@
 <h3 align="center">
-  <a href="packages/universal-cookie">universal-cookie</a>
+  universal-cookie
 </h3>
 
 <p align="center">
@@ -12,20 +12,14 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
-**State management integration**
  - [`react-cookie`](../packages/react-cookie)
- - [`redux-cookie`](https://www.npmjs.com/package/redux-cookie)
-
-**Server integration**
  - [`universal-cookie-express`](../packages/universal-cookie-express`)
 
 ## Getting started
 
 `npm install universal-cookie`
 
-## API
-
-Cookies class
+## API - Cookies class
 
 ### constructor([cookieHeader])
 Create a cookies context
@@ -34,6 +28,11 @@ Create a cookies context
 ### get(name, [options])
 Get a cookie value
  - name (string): cookie name
+ - options (object):
+   - doNotParse (boolean): do not convert the cookie into an object no matter what
+
+### getAll([options])
+Get all cookies
  - options (object):
    - doNotParse (boolean): do not convert the cookie into an object no matter what
 
