@@ -18,105 +18,6 @@
 
 `npm install react-cookie`
 
-## Example
-```js
-// src/components/App.js
-import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
-
-import NameForm from './NameForm';
-
-class App extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
-
-  componentWillMount() {
-    const { cookies } = this.props;
-
-    this.state = {
-      name: cookies.get('name') || 'Ben'
-    };
-  }
-
-  handleNameChange(name) {
-    const { cookies } = this.props;
-
-    cookies.set('name', name, { path: '/' });
-    this.setState({ name });
-  }
-
-  render() {
-    const { name } = this.state;
-
-    return (
-      <div>
-        <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
-        {this.state.name && <h1>Hello {this.state.name}!</h1>}
-      </div>
-    );
-  }
-}
-
-export default withCookies(App);
-
-// src/server.js
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { CookiesProvider } from 'react-cookie';
-
-import Html from './components/Html';
-import App from './components/App';
-
-export default function middleware(req, res) {
-  const markup = ReactDOMServer.renderToString(
-    <CookiesProvider cookies={req.universalCookies}>
-      <App />
-    </CookiesProvider>
-  );
-
-  const html = ReactDOMServer.renderToStaticMarkup(<Html markup={markup} />);
-
-  res.send('<!DOCTYPE html>' + html);
-}
-
-// src/client.js
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { CookiesProvider } from 'react-cookie';
-
-import App from './components/App';
-
-const appEl = document.getElementById('main-app');
-
-ReactDOM.render(
-  <CookiesProvider>
-    <App />
-  </CookiesProvider>,
-  appEl
-);
-
-// server.js
-require('babel-register');
-
-const express = require('express');
-const serverMiddleware = require('./src/server').default;
-const cookiesMiddleware = require('universal-cookie-express');
-
-const app = express();
-
-app
-  .use('/assets', express.static('dist'))
-  .use(cookiesMiddleware())
-  .use(serverMiddleware);
-
-app.listen(8080, function() {
-  console.log('Listening on 8080...'); // eslint-disable-line no-console
-});
-
-```
-
 ## `<CookiesProvider />`
 Set the user cookies
 
@@ -133,7 +34,7 @@ Get a cookie value
  - options (object):
    - doNotParse (boolean): do not convert the cookie into an object no matter what
 
-### `getAll([options])``
+### `getAll([options])`
 Get all cookies
  - options (object):
    - doNotParse (boolean): do not convert the cookie into an object no matter what
@@ -149,3 +50,102 @@ Set a cookie value
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
+
+  ## Example
+  ```js
+  // src/components/App.js
+  import React, { Component } from 'react';
+  import { instanceOf } from 'prop-types';
+  import { withCookies, Cookies } from 'react-cookie';
+
+  import NameForm from './NameForm';
+
+  class App extends Component {
+    static propTypes = {
+      cookies: instanceOf(Cookies).isRequired
+    };
+
+    componentWillMount() {
+      const { cookies } = this.props;
+
+      this.state = {
+        name: cookies.get('name') || 'Ben'
+      };
+    }
+
+    handleNameChange(name) {
+      const { cookies } = this.props;
+
+      cookies.set('name', name, { path: '/' });
+      this.setState({ name });
+    }
+
+    render() {
+      const { name } = this.state;
+
+      return (
+        <div>
+          <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
+          {this.state.name && <h1>Hello {this.state.name}!</h1>}
+        </div>
+      );
+    }
+  }
+
+  export default withCookies(App);
+
+  // src/server.js
+  import React from 'react';
+  import ReactDOMServer from 'react-dom/server';
+  import { CookiesProvider } from 'react-cookie';
+
+  import Html from './components/Html';
+  import App from './components/App';
+
+  export default function middleware(req, res) {
+    const markup = ReactDOMServer.renderToString(
+      <CookiesProvider cookies={req.universalCookies}>
+        <App />
+      </CookiesProvider>
+    );
+
+    const html = ReactDOMServer.renderToStaticMarkup(<Html markup={markup} />);
+
+    res.send('<!DOCTYPE html>' + html);
+  }
+
+  // src/client.js
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import { CookiesProvider } from 'react-cookie';
+
+  import App from './components/App';
+
+  const appEl = document.getElementById('main-app');
+
+  ReactDOM.render(
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>,
+    appEl
+  );
+
+  // server.js
+  require('babel-register');
+
+  const express = require('express');
+  const serverMiddleware = require('./src/server').default;
+  const cookiesMiddleware = require('universal-cookie-express');
+
+  const app = express();
+
+  app
+    .use('/assets', express.static('dist'))
+    .use(cookiesMiddleware())
+    .use(serverMiddleware);
+
+  app.listen(8080, function() {
+    console.log('Listening on 8080...'); // eslint-disable-line no-console
+  });
+
+  ```

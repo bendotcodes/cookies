@@ -21,22 +21,22 @@
 
 ## API - Cookies class
 
-### constructor([cookieHeader])
+### `constructor([cookieHeader])``
 Create a cookies context
  - cookieHeader (string|object): specify the cookie header on the server only
 
-### get(name, [options])
+### `get(name, [options])`
 Get a cookie value
  - name (string): cookie name
  - options (object):
    - doNotParse (boolean): do not convert the cookie into an object no matter what
 
-### getAll([options])
+### `getAll([options])`
 Get all cookies
  - options (object):
    - doNotParse (boolean): do not convert the cookie into an object no matter what
 
-### set(name, value, [options])
+### `set(name, value, [options])`
 Set a cookie value
 - name (string): cookie name
 - value (string|object): save the value and stringify the object if needed
