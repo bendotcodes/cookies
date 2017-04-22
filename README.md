@@ -12,7 +12,7 @@
 </h3>
 
 <p align="center">
-  Hook cookies get/set on Express for server-rendering<br />
+  Universal cookies for JavaScript<br />
   <a href="https://badge.fury.io/js/universal-cookie"><img src="https://badge.fury.io/js/universal-cookie.svg" /></a>
 </p>
 
@@ -21,7 +21,7 @@
 </h3>
 
 <p align="center">
-  Plug universal cookies to Express<br />
+  Hook cookies get/set on Express for server-rendering<br />
   <a href="https://badge.fury.io/js/universal-cookie-express"><img src="https://badge.fury.io/js/universal-cookie-express.svg" /></a>
 </p>
 
