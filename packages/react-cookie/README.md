@@ -12,7 +12,8 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
- - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express)
+ - [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
+ - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express) - Hook cookies get/set on Express for server-rendering
 
 ## Getting started
 
