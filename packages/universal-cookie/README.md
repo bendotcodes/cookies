@@ -13,7 +13,7 @@
 
 ## Integrations
  - [`react-cookie`](../react-cookie)
- - [`universal-cookie-express`](../universal-cookie-express`)
+ - [`universal-cookie-express`](../universal-cookie-express)
 
 ## Getting started
 
