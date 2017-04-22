@@ -52,7 +52,50 @@ Set a cookie value
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
 
-## Example
+## Simple Example
+```js
+import React, { Component } from 'react';
+import { instanceOf } from 'prop-types';
+import { CookiesProvider, withCookies, Cookies } from 'react-cookie';
+
+import NameForm from './NameForm';
+
+class App extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+  componentWillMount() {
+    const { cookies } = this.props;
+
+    this.state = {
+      name: cookies.get('name') || 'Ben'
+    };
+  }
+
+  handleNameChange(name) {
+    const { cookies } = this.props;
+
+    cookies.set('name', name, { path: '/' });
+    this.setState({ name });
+  }
+
+  render() {
+    const { name } = this.state;
+
+    return (
+      <CookiesProvider>
+        <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
+        {this.state.name && <h1>Hello {this.state.name}!</h1>}
+      </CookiesProvider>
+    );
+  }
+}
+
+export default withCookies(App);
+```
+
+## Server-Rendering Example
 ```js
 // src/components/App.js
 import React, { Component } from 'react';
