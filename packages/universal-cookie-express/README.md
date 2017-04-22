@@ -13,12 +13,12 @@
 
 ## Integrations
 **State management integration**
- - [`universal-cookie`](../universal-cookie)
- - [`react-cookie`](../react-cookie)
+ - [`universal-cookie`](https://www.npmjs.com/package/universal-cookie)
+ - [`react-cookie`](https://www.npmjs.com/package/react-cookie)
 
 ## Getting started
 
-`npm install universal-cookie-express`
+`npm install universal-cookie-express --save`
 
 ## Usage
 `cookiesMiddleware()` express middleware set `req.universalCookie`

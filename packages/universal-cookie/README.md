@@ -12,8 +12,8 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
- - [`react-cookie`](../react-cookie)
- - [`universal-cookie-express`](../universal-cookie-express)
+ - [`react-cookie`](https://www.npmjs.com/package/react-cookie)
+ - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express)
 
 ## Getting started
 

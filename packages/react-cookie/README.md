@@ -12,7 +12,7 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
- - [`universal-cookie-express`](../universal-cookie-express)
+ - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express)
 
 ## Getting started
 
