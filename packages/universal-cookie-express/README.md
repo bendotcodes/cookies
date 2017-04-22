@@ -13,8 +13,8 @@
 
 ## Integrations
 **State management integration**
- - [`universal-cookie`](../packages/universal-cookie)
- - [`react-cookie`](../packages/react-cookie)
+ - [`universal-cookie`](../universal-cookie)
+ - [`react-cookie`](../react-cookie)
 
 ## Getting started
 
