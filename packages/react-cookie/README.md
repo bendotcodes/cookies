@@ -21,7 +21,7 @@
 ## `<CookiesProvider />`
 Set the user cookies
 
-On the server, the `cookies` props must be set using `req.universalCookie` or `new Cookie(cookieHeader)`
+On the server, the `cookies` props must be set using `req.universalCookies` or `new Cookie(cookieHeader)`
 
 ## `withCookies(Component)`
 Give access to cookies by providing it using the `cookies` prop.
