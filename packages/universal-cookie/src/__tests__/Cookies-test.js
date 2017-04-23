@@ -43,10 +43,16 @@ describe('Cookies', () => {
     });
 
     describe('set(name, value, [options])', () => {
-      it('takes effect', () => {
+      it('works for string', () => {
         const cookiesContext = new Cookies();
         cookiesContext.set('test', 'meow');
         expect(cookiesContext.get('test')).toBe('meow');
+      });
+
+      it('works for obejct', () => {
+        const cookiesContext = new Cookies();
+        cookiesContext.set('test', { cat: 'meow' });
+        expect(cookiesContext.get('test').cat).toBe('meow');
       });
     });
 

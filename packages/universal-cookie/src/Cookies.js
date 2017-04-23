@@ -36,7 +36,7 @@ export default class Cookies {
   }
 
   set(name, value, options) {
-    if (typeof val === 'object') {
+    if (typeof value === 'object') {
       value = JSON.stringify(value);
     }
 
