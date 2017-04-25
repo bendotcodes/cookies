@@ -2,7 +2,7 @@ import Cookies from 'universal-cookie';
 
 export default function universalCookieMiddleware() {
   return function(req, res, next) {
-    req.universalCookies = new Cookies(req.headers.cookie, {
+    req.universalCookies = new Cookies(req.headers.cookie || '', {
       onSet(name, value, options) {
         if (!req.cookie || res.headersSent) {
           return;
