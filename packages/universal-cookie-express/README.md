@@ -35,6 +35,6 @@ app
   .use(cookiesMiddleware())
   .use(function(req, res) {
     // get the user cookies using universal-cookie
-    req.universalCookie.get('myCat')
+    req.universalCookies.get('myCat')
   });
 ```
