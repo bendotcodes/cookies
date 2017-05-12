@@ -14,7 +14,7 @@ export default function universalCookieMiddleware() {
           expressOpt.maxAge = options.maxAge * 1000;
         }
 
-        res.cookie(name, value, options);
+        res.cookie(name, value, expressOpt);
       },
       onRemove(name, options) {
         if (!res.clearCookie || res.headersSent) {
