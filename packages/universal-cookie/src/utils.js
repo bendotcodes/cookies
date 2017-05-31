@@ -1,4 +1,7 @@
-import IS_NODE from 'is-node';
+// Are we in the browser or node.js?
+// Only reliable way to know is checking if we can access the browser cookies
+const IS_NODE = typeof document === 'undefined' ||
+  typeof document.cookie === 'undefined';
 
 export function isNode() {
   return process.env.NODE_ENV === 'test' &&
