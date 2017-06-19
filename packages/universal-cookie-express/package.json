@@ -11,7 +11,7 @@
     "url": "https://github.com/reactivestack/cookies.git"
   },
   "bugs": "https://github.com/reactivestack/cookies/issues",
-  "homepage": "https://github.com/reactivestack/cookies/packages/universal-cookie-express/#readme",
+  "homepage": "https://github.com/reactivestack/cookies/tree/master/packages/universal-cookie#readme",
   "keywords": [
     "universal",
     "isomophic",
