@@ -17,7 +17,7 @@
 </p>
 
 <h3 align="center">
-  <a href="packages/universal-cookie">universal-cookie-express</a>
+  <a href="packages/universal-cookie-express">universal-cookie-express</a>
 </h3>
 
 <p align="center">
