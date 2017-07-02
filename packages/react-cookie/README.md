@@ -65,6 +65,21 @@ Remove a cookie
 
 ## Simple Example
 ```js
+// Root.jsx
+import React from 'react';
+import App from './App';
+
+export default function Root() {
+  return (
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
+  );
+}
+```
+
+```js
+// App.jsx
 import React, { Component } from 'react';
 import { instanceOf } from 'prop-types';
 import { CookiesProvider, withCookies, Cookies } from 'react-cookie';
@@ -95,10 +110,10 @@ class App extends Component {
     const { name } = this.state;
 
     return (
-      <CookiesProvider>
+      <div>
         <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
         {this.state.name && <h1>Hello {this.state.name}!</h1>}
-      </CookiesProvider>
+      </div>
     );
   }
 }
