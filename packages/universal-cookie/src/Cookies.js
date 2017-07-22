@@ -72,7 +72,7 @@ export default class Cookies {
 function isParsingCookie(value, doNotParse) {
   if (typeof doNotParse === 'undefined') {
     // We guess if the cookie start with { or [, it has been serialized
-    doNotParse = !value || (value[0] !== '{' && value[0] !== '[');
+    doNotParse = !value || (value[0] !== '{' && value[0] !== '[') && value[0] !== '"';
   }
 
   return !doNotParse;

@@ -25,6 +25,14 @@ describe('Cookies', () => {
 
         expect(cookiesContext.get('testingCookie')).toBe('yes');
       });
+
+      it('read the double quotations value', () => {
+        const cookiesContext = new Cookies();
+
+        document.cookie = 'testingCookie="yes"';
+
+        expect(cookiesContext.get('testingCookie')).toBe('yes');
+      });
     });
 
     describe('getAll([options])', () => {
