@@ -5,7 +5,8 @@ import { isNode } from 'universal-cookie/lib/utils';
 
 export default class CookiesProvider extends Component {
   static propTypes = {
-    children: node
+    children: node,
+    cookies: instanceOf(Cookies)
   };
 
   static childContextTypes = {
@@ -15,7 +16,7 @@ export default class CookiesProvider extends Component {
   constructor(props) {
     super(props);
 
-    if (isNode()) {
+    if (props.cookies) {
       this.cookies = props.cookies;
     } else {
       this.cookies = new Cookies();
