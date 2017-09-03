@@ -1,35 +1,45 @@
 import cookie from 'cookie';
 import objectAssign from 'object-assign';
-import { isNode } from './utils';
+import { HAS_DOCUMENT_COOKIE } from './utils';
 
 export default class Cookies {
   constructor(cookies, hooks) {
-    if (isNode()) {
-      if (typeof cookies === 'string') {
-        this.cookies = cookie.parse(cookies);
-      } else if (typeof cookies === 'object') {
-        this.cookies = cookies;
-      } else {
-        throw new Error('Missing the cookie header or object');
-      }
-    } else if (cookies) {
-      throw new Error('The browser should not provide the cookies');
+    if (typeof cookies === 'string') {
+      this.cookies = cookie.parse(cookies);
+    } else if (typeof cookies === 'object') {
+      this.cookies = cookies;
+    } else {
+      this.cookies = {};
     }
 
     this.hooks = hooks;
   }
 
+  _updateBrowserValues() {
+    if (!HAS_DOCUMENT_COOKIE) {
+      return;
+    }
+
+    const newCookies = cookie.parse(document.cookie);
+
+    // Make sure we keep the other cookies
+    // In test, sometimes we have an empty document.cookie
+    for (let name in newCookies) {
+      this.cookies[name] = newCookies[name];
+    }
+  }
+
   get(name, options = {}) {
-    const values = this.cookies || cookie.parse(document.cookie);
-    return readCookie(values[name], options);
+    this._updateBrowserValues();
+    return readCookie(this.cookies[name], options);
   }
 
   getAll(options = {}) {
-    const values = this.cookies || cookie.parse(document.cookie);
+    this._updateBrowserValues();
     const result = {};
 
-    for (let name in values) {
-      result[name] = readCookie(values[name], options);
+    for (let name in this.cookies) {
+      result[name] = readCookie(this.cookies[name], options);
     }
 
     return result;
@@ -44,9 +54,9 @@ export default class Cookies {
       this.hooks.onSet(name, value, options);
     }
 
-    if (isNode()) {
-      this.cookies[name] = value;
-    } else {
+    this.cookies[name] = value;
+
+    if (HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, value, options);
     }
   }
@@ -61,9 +71,9 @@ export default class Cookies {
       this.hooks.onRemove(name, finalOptions);
     }
 
-    if (isNode()) {
-      delete this.cookies[name];
-    } else {
+    delete this.cookies[name];
+
+    if (HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, '', finalOptions);
     }
   }
@@ -72,7 +82,8 @@ export default class Cookies {
 function isParsingCookie(value, doNotParse) {
   if (typeof doNotParse === 'undefined') {
     // We guess if the cookie start with { or [, it has been serialized
-    doNotParse = !value || (value[0] !== '{' && value[0] !== '[') && value[0] !== '"';
+    doNotParse =
+      !value || (value[0] !== '{' && value[0] !== '[' && value[0] !== '"');
   }
 
   return !doNotParse;

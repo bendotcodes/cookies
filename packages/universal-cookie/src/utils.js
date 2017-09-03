@@ -1,14 +1,6 @@
-// Are we in the browser or node.js?
-// Only reliable way to know is checking if we can access the browser cookies
-const IS_NODE = typeof document === 'undefined' ||
-  typeof document.cookie === 'undefined';
-
-export function isNode() {
-  return process.env.NODE_ENV === 'test' &&
-    typeof global.MOCK_IS_NODE !== 'undefined'
-    ? global.MOCK_IS_NODE
-    : IS_NODE;
-}
+// Can we get/set cookies on document.cookie?
+export const HAS_DOCUMENT_COOKIE =
+  typeof document === 'object' && typeof document.cookie === 'string';
 
 export function cleanCookies() {
   document.cookie.split(';').forEach(function(c) {

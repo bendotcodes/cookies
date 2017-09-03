@@ -6,159 +6,115 @@ describe('Cookies', () => {
     cleanCookies();
   });
 
-  describe('on the browser', () => {
-    describe('constructor()', () => {
-      it('takes no parameter', () => {
-        expect(() => {
-          new Cookies('testingCookie=yes');
-        }).toThrow(new Error('The browser should not provide the cookies'));
-      });
+  describe('constructor()', () => {
+    it('read a cookie object', () => {
+      const cookiesValues = { test: 'meow' };
+      const cookies = new Cookies(cookiesValues);
+      expect(cookies.get('test')).toBe(cookiesValues.test);
     });
 
-    describe('get(name, [options])', () => {
-      it('read the real-time value', () => {
-        const cookiesContext = new Cookies();
+    it('read a cookie string', () => {
+      const cookieValue = 'meow';
+      const cookiesValues = 'test=' + cookieValue;
+      const cookies = new Cookies(cookiesValues);
 
-        // Set the cookie after context creation to make sure we don't cache values
-        // We want to make sure the value is up-to-date with other libraries
-        document.cookie = 'testingCookie=yes';
-
-        expect(cookiesContext.get('testingCookie')).toBe('yes');
-      });
-
-      it('read the double quotations value', () => {
-        const cookiesContext = new Cookies();
-
-        document.cookie = 'testingCookie="yes"';
-
-        expect(cookiesContext.get('testingCookie')).toBe('yes');
-      });
+      expect(cookies.get('test')).toBe(cookieValue);
     });
 
-    describe('getAll([options])', () => {
-      it('read the real-time values', () => {
-        const cookiesContext = new Cookies();
+    it('hooks on set', () => {
+      const hooks = {
+        onSet: () => {}
+      };
 
-        // Set the cookie after context creation to make sure we don't cache values
-        // We want to make sure the value is up-to-date with other libraries
-        document.cookie = 'testingCookie=yes';
-        document.cookie = 'testingCookie2=yup';
-        const cookies = cookiesContext.getAll();
+      const setSpy = spyOn(hooks, 'onSet');
+      const cookies = new Cookies('', hooks);
+      cookies.set('test', 'meow');
 
-        expect(cookies.testingCookie).toBe('yes');
-        expect(cookies.testingCookie2).toBe('yup');
-      });
+      expect(setSpy).toHaveBeenCalled();
     });
 
-    describe('set(name, value, [options])', () => {
-      it('works for string', () => {
-        const cookiesContext = new Cookies();
-        cookiesContext.set('test', 'meow');
-        expect(cookiesContext.get('test')).toBe('meow');
-      });
+    it('hooks on remove', () => {
+      const hooks = {
+        onRemove: () => {}
+      };
 
-      it('works for obejct', () => {
-        const cookiesContext = new Cookies();
-        cookiesContext.set('test', { cat: 'meow' });
-        expect(cookiesContext.get('test').cat).toBe('meow');
-      });
-    });
+      const removeSpy = spyOn(hooks, 'onRemove');
+      const cookieHeader = 'testingCookie=yes';
+      const cookies = new Cookies(cookieHeader, hooks);
+      cookies.remove('testingCookie');
 
-    describe('remove(name, [options])', () => {
-      it('takes effect', () => {
-        document.cookie = 'testingCookie=yes';
-        const cookiesContext = new Cookies();
-        cookiesContext.remove('testingCookie');
-        expect(cookiesContext.get('testingCookie')).toBe(undefined);
-      });
+      expect(removeSpy).toHaveBeenCalled();
     });
   });
 
-  describe('on the server', () => {
-    beforeEach(() => {
-      global.MOCK_IS_NODE = true;
+  describe('get(name, [optioons])', () => {
+    it('read the real-time value', () => {
+      const cookieValue = 'rreow';
+      const cookies = new Cookies();
+
+      // Set the cookie after context creation to make sure we don't cache values
+      // We want to make sure the value is up-to-date with other libraries
+      document.cookie = 'test=' + cookieValue;
+
+      expect(cookies.get('test')).toBe(cookieValue);
     });
 
-    afterEach(() => {
-      delete global.MOCK_IS_NODE;
+    it('parse serialized string', () => {
+      const cookieValue = 'boom';
+      const cookies = new Cookies({ test: '"' + cookieValue + '"' });
+
+      expect(cookies.get('test')).toBe(cookieValue);
     });
 
-    describe('constructor(cookieHeader, [hooks])', () => {
-      it('contains cookie header or object', () => {
-        expect(() => {
-          new Cookies();
-        }).toThrow(new Error('Missing the cookie header or object'));
-      });
-
-      it('hooks on set', () => {
-        const hooks = {
-          onSet: () => {}
-        };
-
-        const setSpy = spyOn(hooks, 'onSet');
-        const cookiesContext = new Cookies('', hooks);
-        cookiesContext.set('test', 'meow');
-
-        expect(setSpy).toHaveBeenCalled();
-      });
-
-      it('hooks on remove', () => {
-        const hooks = {
-          onRemove: () => {}
-        };
-
-        const removeSpy = spyOn(hooks, 'onRemove');
-        const cookieHeader = 'testingCookie=yes';
-        const cookiesContext = new Cookies(cookieHeader, hooks);
-        cookiesContext.remove('testingCookie');
-
-        expect(removeSpy).toHaveBeenCalled();
-      });
+    it('parse serialized object', () => {
+      const cookies = new Cookies({ test: '{}' });
+      expect(typeof cookies.get('test')).toBe('object');
     });
 
-    describe('get(name, [options])', () => {
-      it('read from the provided cookie header', () => {
-        const cookieHeader = 'testingCookie=yes';
-        const cookiesContext = new Cookies(cookieHeader);
-        expect(cookiesContext.get('testingCookie')).toBe('yes');
-      });
+    it('parse serialized array', () => {
+      const cookies = new Cookies({ test: '[]' });
+      const result = cookies.get('test');
 
-      it('read from the provided cookie object', () => {
-        const cookies = {
-          testingCookie: 'yes'
-        };
+      expect(typeof result).toBe('object');
+      expect(Array.isArray(result)).toBeTruthy();
+    });
+  });
 
-        const cookiesContext = new Cookies(cookies);
-        expect(cookiesContext.get('testingCookie')).toBe('yes');
-      });
+  describe('getAll([options])', () => {
+    it('read the real-time values', () => {
+      const cookies = new Cookies();
+
+      // Set the cookie after context creation to make sure we don't cache values
+      // We want to make sure the value is up-to-date with other libraries
+      document.cookie = 'testingCookie=yes';
+      document.cookie = 'testingCookie2=yup';
+      const result = cookies.getAll();
+
+      expect(result.testingCookie).toBe('yes');
+      expect(result.testingCookie2).toBe('yup');
+    });
+  });
+
+  describe('set(name, value, [options])', () => {
+    it('works for string', () => {
+      const cookies = new Cookies();
+      cookies.set('test', 'meow');
+      expect(cookies.get('test')).toBe('meow');
     });
 
-    describe('getAll([options])', () => {
-      it('read all values', () => {
-        const cookieHeader = 'testingCookie=yes; testingCookie2=yup';
-        const cookiesContext = new Cookies(cookieHeader);
-        const cookies = cookiesContext.getAll();
-
-        expect(cookies.testingCookie).toBe('yes');
-        expect(cookies.testingCookie2).toBe('yup');
-      });
+    it('works for obejct', () => {
+      const cookies = new Cookies();
+      cookies.set('test', { cat: 'meow' });
+      expect(cookies.get('test').cat).toBe('meow');
     });
+  });
 
-    describe('set(name, value, [options])', () => {
-      it('takes effect', () => {
-        const cookiesContext = new Cookies('');
-        cookiesContext.set('test', 'meow');
-        expect(cookiesContext.get('test')).toBe('meow');
-      });
-    });
-
-    describe('remove(name, [options])', () => {
-      it('takes effect', () => {
-        const cookieHeader = 'testingCookie=yes';
-        const cookiesContext = new Cookies(cookieHeader);
-        cookiesContext.remove('testingCookie');
-        expect(cookiesContext.get('testingCookie')).toBe(undefined);
-      });
+  describe('remove(name, [options])', () => {
+    it('takes effect', () => {
+      document.cookie = 'testingCookie=yes';
+      const cookies = new Cookies();
+      cookies.remove('testingCookie');
+      expect(cookies.get('testingCookie')).toBe(undefined);
     });
   });
 });

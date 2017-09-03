@@ -23,7 +23,7 @@
 
 ### `constructor([cookieHeader])`
 Create a cookies context
- - cookieHeader (string|object): specify the cookie header on the server only
+ - cookieHeader (string|object): specify the cookie header or object
 
 ### `get(name, [options])`
 Get a cookie value

@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import { instanceOf, node } from 'prop-types';
 import Cookies from 'universal-cookie';
-import { isNode } from 'universal-cookie/lib/utils';
 
 export default class CookiesProvider extends Component {
   static propTypes = {
@@ -32,8 +31,4 @@ export default class CookiesProvider extends Component {
   render() {
     return this.props.children;
   }
-}
-
-if (isNode()) {
-  CookiesProvider.propTypes.cookies = instanceOf(Cookies).isRequired;
 }

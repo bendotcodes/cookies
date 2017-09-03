@@ -37,14 +37,6 @@ describe('withCookies(Component)', () => {
   });
 
   describe('on the server', () => {
-    beforeEach(() => {
-      global.MOCK_IS_NODE = true;
-    });
-
-    afterEach(() => {
-      delete global.MOCK_IS_NODE;
-    });
-
     it('provides the cookies', () => {
       const cookies = new Cookies('test="big fat cat"');
       const Component = withCookies(TestComponent);
