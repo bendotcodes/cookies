@@ -84,8 +84,7 @@ describe('Cookies', () => {
 
       it('hooks on set', () => {
         const hooks = {
-          onSet: () => {},
-          onRemove: () => {}
+          onSet: () => {}
         };
 
         const setSpy = spyOn(hooks, 'onSet');
@@ -97,7 +96,6 @@ describe('Cookies', () => {
 
       it('hooks on remove', () => {
         const hooks = {
-          onSet: () => {},
           onRemove: () => {}
         };
 

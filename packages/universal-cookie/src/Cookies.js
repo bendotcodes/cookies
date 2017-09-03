@@ -60,7 +60,7 @@ export default class Cookies {
     if (isNode()) {
       delete this.cookies[name];
 
-      if (this.hooks && this.hooks.onSet) {
+      if (this.hooks && this.hooks.onRemove) {
         this.hooks.onRemove(name, finalOptions);
       }
     } else {
