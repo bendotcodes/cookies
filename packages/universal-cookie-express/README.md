@@ -21,7 +21,7 @@
 `npm install universal-cookie-express --save`
 
 ## Usage
-`cookiesMiddleware()` express middleware set `req.universalCookie`
+`cookiesMiddleware()` express middleware set `req.universalCookies`
 
 ## Example
 
