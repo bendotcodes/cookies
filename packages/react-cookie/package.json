@@ -1,6 +1,6 @@
 {
   "name": "react-cookie",
-  "version": "2.0.9",
+  "version": "2.1.0",
   "description": "Universal cookies for React",
   "main": "lib/index.js",
   "files": [
@@ -26,7 +26,7 @@
   "dependencies": {
     "hoist-non-react-statics": "^1.2.0",
     "prop-types": "^15.0.0",
-    "universal-cookie": "^2.0.9"
+    "universal-cookie": "^2.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
