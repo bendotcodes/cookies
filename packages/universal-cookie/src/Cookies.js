@@ -12,11 +12,11 @@ export default class Cookies {
       } else {
         throw new Error('Missing the cookie header or object');
       }
-
-      this.hooks = hooks;
     } else if (cookies) {
       throw new Error('The browser should not provide the cookies');
     }
+
+    this.hooks = hooks;
   }
 
   get(name, options = {}) {
@@ -40,12 +40,12 @@ export default class Cookies {
       value = JSON.stringify(value);
     }
 
+    if (this.hooks && this.hooks.onSet) {
+      this.hooks.onSet(name, value, options);
+    }
+
     if (isNode()) {
       this.cookies[name] = value;
-
-      if (this.hooks && this.hooks.onSet) {
-        this.hooks.onSet(name, value, options);
-      }
     } else {
       document.cookie = cookie.serialize(name, value, options);
     }
@@ -57,12 +57,12 @@ export default class Cookies {
       maxAge: 0
     }));
 
+    if (this.hooks && this.hooks.onRemove) {
+      this.hooks.onRemove(name, finalOptions);
+    }
+
     if (isNode()) {
       delete this.cookies[name];
-
-      if (this.hooks && this.hooks.onRemove) {
-        this.hooks.onRemove(name, finalOptions);
-      }
     } else {
       document.cookie = cookie.serialize(name, '', finalOptions);
     }
