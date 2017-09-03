@@ -15,7 +15,8 @@ export default function withCookies(Component) {
     );
   }
 
-  Wrapper.displayName = `withCookies(${Component.displayName || Component.name})`;
+  Wrapper.displayName = `withCookies(${Component.displayName ||
+    Component.name})`;
   Wrapper.WrappedComponent = Component;
 
   Wrapper.propTypes = {
