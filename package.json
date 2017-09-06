@@ -27,6 +27,7 @@
     "lerna": "2.0.0-beta.38",
     "prettier": "^1.6.1",
     "rimraf": "^2.6.1",
+    "size-limit": "^0.11.0",
     "webpack": "^2.4.1"
   },
   "scripts": {
@@ -34,8 +35,24 @@
     "precommit": "npm run format && npm test",
     "lint": "eslint --ext .js .",
     "format": "prettier **/*.js --single-quote --write",
-    "test": "npm run lint && npm run build && karma start --single-run",
+    "test":
+      "npm run lint && npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
-    "build": "lerna run build"
-  }
+    "build": "lerna run build",
+    "size": "size-limit"
+  },
+  "size-limit": [
+    {
+      "path": "./packages/universal-cookie/lib/index.js",
+      "limit": "2 KB"
+    },
+    {
+      "path": "./packages/universal-cookie-express/lib/index.js",
+      "limit": "2.1 KB"
+    },
+    {
+      "path": "./packages/react-cookie/lib/index.js",
+      "limit": "10 KB"
+    }
+  ]
 }
