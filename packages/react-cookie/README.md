@@ -68,6 +68,7 @@ Remove a cookie
 // Root.jsx
 import React from 'react';
 import App from './App';
+import { CookiesProvider } from 'react-cookie';
 
 export default function Root() {
   return (
@@ -82,7 +83,7 @@ export default function Root() {
 // App.jsx
 import React, { Component } from 'react';
 import { instanceOf } from 'prop-types';
-import { CookiesProvider, withCookies, Cookies } from 'react-cookie';
+import { withCookies, Cookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
