@@ -6,7 +6,7 @@ export default class Cookies {
   constructor(cookies, hooks) {
     if (typeof cookies === 'string') {
       this.cookies = cookie.parse(cookies);
-    } else if (typeof cookies === 'object') {
+    } else if (cookies != null && typeof cookies === 'object') {
       this.cookies = cookies;
     } else {
       this.cookies = {};
