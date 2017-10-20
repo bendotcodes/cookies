@@ -67,7 +67,7 @@ export default class Cookies {
   }
 }
 
-export function parseCookies(cookies) {
+function parseCookies(cookies) {
   if (typeof cookies === 'string') {
     return cookie.parse(cookies);
   } else if (typeof cookies === 'object') {
@@ -87,7 +87,7 @@ function isParsingCookie(value, doNotParse) {
   return !doNotParse;
 }
 
-export function readCookie(value, options = {}) {
+function readCookie(value, options = {}) {
   if (isParsingCookie(value, options.doNotParse)) {
     try {
       return JSON.parse(value);
