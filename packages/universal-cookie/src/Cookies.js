@@ -1,23 +1,16 @@
 import cookie from 'cookie';
 import objectAssign from 'object-assign';
-import { HAS_DOCUMENT_COOKIE } from './utils';
+import { hasDocumentCookie } from './utils';
 
 export default class Cookies {
-  constructor(cookies, hooks, skipUpdateForTest = false) {
-    if (typeof cookies === 'string') {
-      this.cookies = cookie.parse(cookies);
-    } else if (typeof cookies === 'object') {
-      this.cookies = cookies;
-    } else {
-      this.cookies = {};
-    }
-
-    this.skipUpdate = skipUpdateForTest;
+  constructor(cookies, hooks) {
+    this.cookies = parseCookies(cookies);
     this.hooks = hooks;
+    this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
   }
 
   _updateBrowserValues() {
-    if (!HAS_DOCUMENT_COOKIE || this.skipUpdate) {
+    if (!this.HAS_DOCUMENT_COOKIE) {
       return;
     }
 
@@ -51,7 +44,7 @@ export default class Cookies {
 
     this.cookies[name] = value;
 
-    if (HAS_DOCUMENT_COOKIE) {
+    if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, value, options);
     }
   }
@@ -68,9 +61,19 @@ export default class Cookies {
 
     delete this.cookies[name];
 
-    if (HAS_DOCUMENT_COOKIE) {
+    if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, '', finalOptions);
     }
+  }
+}
+
+export function parseCookies(cookies) {
+  if (typeof cookies === 'string') {
+    return cookie.parse(cookies);
+  } else if (typeof cookies === 'object') {
+    return cookies;
+  } else {
+    return {};
   }
 }
 
@@ -84,7 +87,7 @@ function isParsingCookie(value, doNotParse) {
   return !doNotParse;
 }
 
-function readCookie(value, options) {
+export function readCookie(value, options = {}) {
   if (isParsingCookie(value, options.doNotParse)) {
     try {
       return JSON.parse(value);

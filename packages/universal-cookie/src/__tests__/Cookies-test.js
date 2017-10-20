@@ -1,4 +1,4 @@
-import Cookies from '../Cookies';
+import Cookies, { parseCookies, readCookie } from '../Cookies';
 import { cleanCookies } from '../utils';
 
 describe('Cookies', () => {
@@ -9,16 +9,16 @@ describe('Cookies', () => {
   describe('constructor()', () => {
     it('read a cookie object', () => {
       const cookiesValues = { test: 'meow' };
-      const cookies = new Cookies(cookiesValues, undefined, true);
-      expect(cookies.get('test')).toBe(cookiesValues.test);
+      const cookies = parseCookies(cookiesValues);
+      expect(readCookie(cookies.test)).toBe(cookiesValues.test);
     });
 
     it('read a cookie string', () => {
       const cookieValue = 'meow';
       const cookiesValues = 'test=' + cookieValue;
-      const cookies = new Cookies(cookiesValues, undefined, true);
+      const cookies = parseCookies(cookiesValues);
 
-      expect(cookies.get('test')).toBe(cookieValue);
+      expect(readCookie(cookies.test)).toBe(cookieValue);
     });
 
     it('hooks on set', () => {
@@ -61,19 +61,18 @@ describe('Cookies', () => {
 
     it('parse serialized string', () => {
       const cookieValue = 'boom';
-      const cookies = new Cookies({ test: '"' + cookieValue + '"' }, undefined, true);
-
-      expect(cookies.get('test')).toBe(cookieValue);
+      const cookies = parseCookies({ test: '"' + cookieValue + '"' });
+      expect(readCookie(cookies.test)).toBe(cookieValue);
     });
 
     it('parse serialized object', () => {
-      const cookies = new Cookies({ test: '{}' }, undefined, true);
-      expect(typeof cookies.get('test')).toBe('object');
+      const cookies = parseCookies({ test: '{}' });
+      expect(typeof readCookie(cookies.test)).toBe('object');
     });
 
     it('parse serialized array', () => {
-      const cookies = new Cookies({ test: '[]' }, undefined, true);
-      const result = cookies.get('test');
+      const cookies = parseCookies({ test: '[]' });
+      const result = readCookie(cookies.test);
 
       expect(typeof result).toBe('object');
       expect(Array.isArray(result)).toBeTruthy();

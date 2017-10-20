@@ -1,6 +1,7 @@
 // Can we get/set cookies on document.cookie?
-export const HAS_DOCUMENT_COOKIE =
-  typeof document === 'object' && typeof document.cookie === 'string';
+export function hasDocumentCookie() {
+  return typeof document === 'object' && typeof document.cookie === 'string';
+}
 
 export function cleanCookies() {
   document.cookie.split(';').forEach(function(c) {
