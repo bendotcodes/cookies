@@ -9,14 +9,14 @@ describe('Cookies', () => {
   describe('constructor()', () => {
     it('read a cookie object', () => {
       const cookiesValues = { test: 'meow' };
-      const cookies = new Cookies(cookiesValues);
+      const cookies = new Cookies(cookiesValues, undefined, true);
       expect(cookies.get('test')).toBe(cookiesValues.test);
     });
 
     it('read a cookie string', () => {
       const cookieValue = 'meow';
       const cookiesValues = 'test=' + cookieValue;
-      const cookies = new Cookies(cookiesValues);
+      const cookies = new Cookies(cookiesValues, undefined, true);
 
       expect(cookies.get('test')).toBe(cookieValue);
     });
@@ -61,18 +61,18 @@ describe('Cookies', () => {
 
     it('parse serialized string', () => {
       const cookieValue = 'boom';
-      const cookies = new Cookies({ test: '"' + cookieValue + '"' });
+      const cookies = new Cookies({ test: '"' + cookieValue + '"' }, undefined, true);
 
       expect(cookies.get('test')).toBe(cookieValue);
     });
 
     it('parse serialized object', () => {
-      const cookies = new Cookies({ test: '{}' });
+      const cookies = new Cookies({ test: '{}' }, undefined, true);
       expect(typeof cookies.get('test')).toBe('object');
     });
 
     it('parse serialized array', () => {
-      const cookies = new Cookies({ test: '[]' });
+      const cookies = new Cookies({ test: '[]' }, undefined, true);
       const result = cookies.get('test');
 
       expect(typeof result).toBe('object');

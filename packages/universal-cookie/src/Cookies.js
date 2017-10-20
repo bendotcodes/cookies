@@ -3,7 +3,7 @@ import objectAssign from 'object-assign';
 import { HAS_DOCUMENT_COOKIE } from './utils';
 
 export default class Cookies {
-  constructor(cookies, hooks) {
+  constructor(cookies, hooks, skipUpdateForTest = false) {
     if (typeof cookies === 'string') {
       this.cookies = cookie.parse(cookies);
     } else if (typeof cookies === 'object') {
@@ -12,21 +12,16 @@ export default class Cookies {
       this.cookies = {};
     }
 
+    this.skipUpdate = skipUpdateForTest;
     this.hooks = hooks;
   }
 
   _updateBrowserValues() {
-    if (!HAS_DOCUMENT_COOKIE) {
+    if (!HAS_DOCUMENT_COOKIE || this.skipUpdate) {
       return;
     }
 
-    const newCookies = cookie.parse(document.cookie);
-
-    // Make sure we keep the other cookies
-    // In test, sometimes we have an empty document.cookie
-    for (let name in newCookies) {
-      this.cookies[name] = newCookies[name];
-    }
+    this.cookies = cookie.parse(document.cookie);
   }
 
   get(name, options = {}) {

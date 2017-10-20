@@ -38,7 +38,7 @@ describe('withCookies(Component)', () => {
 
   describe('on the server', () => {
     it('provides the cookies', () => {
-      const cookies = new Cookies('test="big fat cat"');
+      const cookies = new Cookies('test="big fat cat"', undefined, true);
       const Component = withCookies(TestComponent);
 
       const html = ReactDOMServer.renderToString(
