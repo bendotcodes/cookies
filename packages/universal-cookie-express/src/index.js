@@ -1,8 +1,8 @@
 import Cookies from 'universal-cookie';
 
-export default function universalCookieMiddleware() {
+export default function universalCookieMiddleware(cookiePropName = 'universalCookies') {
   return function(req, res, next) {
-    req.universalCookies = new Cookies(req.headers.cookie || '', {
+    req[cookiePropName] = new Cookies(req.headers.cookie || '', {
       onSet(name, value, options) {
         if (!res.cookie || res.headersSent) {
           return;
