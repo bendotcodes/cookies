@@ -26,15 +26,15 @@
 ## Example
 
 ```js
-const koa = require('koa');
+const Koa = require('koa');
 const cookiesMiddleware = require('universal-cookie-koa');
 
-const app = koa();
+const app = new Koa();
 
 app
   .use(cookiesMiddleware())
-  .use(function(req, res) {
+  .use(function(ctx) {
     // get the user cookies using universal-cookie
-    req.universalCookies.get('myCat')
+    ctx.request.universalCookies.get('myCat')
   });
 ```
