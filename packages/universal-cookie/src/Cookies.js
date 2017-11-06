@@ -27,6 +27,13 @@ export default class Cookies {
     for (let name in newCookies) {
       this.cookies[name] = newCookies[name];
     }
+
+    // check for manually deleted cookies
+    for (let name in this.cookies) {
+      if (newCookies[name] === undefined) {
+        delete this.cookies[name];
+      }
+    }
   }
 
   get(name, options = {}) {
