@@ -9,6 +9,10 @@ describe('Cookies', () => {
   describe('constructor()', () => {
     it('read a cookie object', () => {
       const cookiesValues = { test: 'meow' };
+
+      // add cookie to document to match browser cookies when passed to constructor
+      document.cookie = 'test=' + cookiesValues.test;
+
       const cookies = new Cookies(cookiesValues);
       expect(cookies.get('test')).toBe(cookiesValues.test);
     });
@@ -17,6 +21,9 @@ describe('Cookies', () => {
       const cookieValue = 'meow';
       const cookiesValues = 'test=' + cookieValue;
       const cookies = new Cookies(cookiesValues);
+
+      // add cookie to document to match browser cookies when passed to constructor
+      document.cookie = cookiesValues;
 
       expect(cookies.get('test')).toBe(cookieValue);
     });
@@ -47,7 +54,7 @@ describe('Cookies', () => {
     });
   });
 
-  describe('get(name, [optioons])', () => {
+  describe('get(name, [options])', () => {
     it('read the real-time value', () => {
       const cookieValue = 'rreow';
       const cookies = new Cookies();
@@ -63,16 +70,27 @@ describe('Cookies', () => {
       const cookieValue = 'boom';
       const cookies = new Cookies({ test: '"' + cookieValue + '"' });
 
+      // add cookie to document to match browser cookies when passed to constructor
+      document.cookie = 'test=' + cookieValue;
+
       expect(cookies.get('test')).toBe(cookieValue);
     });
 
     it('parse serialized object', () => {
       const cookies = new Cookies({ test: '{}' });
+
+      // add cookie to document to match browser cookies when passed to constructor
+      document.cookie = 'test=' + JSON.stringify({});
+
       expect(typeof cookies.get('test')).toBe('object');
     });
 
     it('parse serialized array', () => {
       const cookies = new Cookies({ test: '[]' });
+
+      // add cookie to document to match browser cookies when passed to constructor
+      document.cookie = 'test=' + JSON.stringify([]);
+
       const result = cookies.get('test');
 
       expect(typeof result).toBe('object');

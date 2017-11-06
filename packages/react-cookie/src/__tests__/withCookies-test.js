@@ -38,6 +38,10 @@ describe('withCookies(Component)', () => {
 
   describe('on the server', () => {
     it('provides the cookies', () => {
+      document.__defineGetter__('cookie', function() {
+        return undefined;
+      });
+
       const cookies = new Cookies('test="big fat cat"');
       const Component = withCookies(TestComponent);
 
