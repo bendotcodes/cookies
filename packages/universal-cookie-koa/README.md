@@ -1,10 +1,10 @@
 <h3 align="center">
-  universal-cookie-express
+  universal-cookie-koa
 </h3>
 
 <p align="center">
-  Hook cookies get/set on Express for server-rendering<br />
-  <a href="https://badge.fury.io/js/universal-cookie-express"><img src="https://badge.fury.io/js/universal-cookie-express.svg" /></a>
+  Hook cookies get/set on Koa for server-rendering<br />
+  <a href="https://badge.fury.io/js/universal-cookie-koa"><img src="https://badge.fury.io/js/universal-cookie-koa.svg" /></a>
 </p>
 
 [![Build Status](https://travis-ci.org/reactivestack/cookies.svg?branch=master)](https://travis-ci.org/reactivestack/cookies)
