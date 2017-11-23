@@ -87,18 +87,6 @@ module.exports = config => {
         platform: 'Windows 7',
         version: '9.0'
       },
-      sl_windows7_opera: {
-        base: 'SauceLabs',
-        browserName: 'opera',
-        platform: 'Windows 7',
-        version: '12.12'
-      },
-      sl_linux_opera: {
-        base: 'SauceLabs',
-        browserName: 'opera',
-        platform: 'Linux',
-        version: '12.15'
-      },
       sl_linux_firefox: {
         base: 'SauceLabs',
         browserName: 'firefox',
