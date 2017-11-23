@@ -1,6 +1,6 @@
 {
   "name": "react-cookie-demo",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": "true",
   "license": "MIT",
   "main": "server.js",
@@ -12,9 +12,9 @@
     "express": "^4.15.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
-    "react-cookie": "^2.1.1",
+    "react-cookie": "^2.1.2",
     "react-dom": "^15.5.4",
-    "universal-cookie-express": "^2.1.0"
+    "universal-cookie-express": "^2.1.2"
   },
   "devDependencies": {
     "babel-loader": "^7.0.0",

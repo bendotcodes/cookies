@@ -1,24 +1,30 @@
 {
   "name": "universal-cookie-koa",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "Hook cookies get/set on Koa for server-rendering",
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/reactivestack/cookies.git"
   },
   "bugs": "https://github.com/reactivestack/cookies/issues",
-  "homepage":
-    "https://github.com/reactivestack/cookies/tree/master/packages/universal-cookie-koa#readme",
-  "keywords": ["universal", "isomophic", "cookie", "koa"],
+  "homepage": "https://github.com/reactivestack/cookies/tree/master/packages/universal-cookie-koa#readme",
+  "keywords": [
+    "universal",
+    "isomophic",
+    "cookie",
+    "koa"
+  ],
   "author": "Benoit Tremblay <benoit@reactivestack.com>",
   "license": "MIT",
   "scripts": {
     "build": "rimraf lib && babel src -d lib --ignore __tests__"
   },
   "dependencies": {
-    "universal-cookie": "^2.1.0"
+    "universal-cookie": "^2.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
