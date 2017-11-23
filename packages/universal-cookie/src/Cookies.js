@@ -70,7 +70,7 @@ export default class Cookies {
 function parseCookies(cookies) {
   if (typeof cookies === 'string') {
     return cookie.parse(cookies);
-  } else if (typeof cookies === 'object') {
+  } else if (typeof cookies === 'object' && cookies !== null) {
     return cookies;
   } else {
     return {};
