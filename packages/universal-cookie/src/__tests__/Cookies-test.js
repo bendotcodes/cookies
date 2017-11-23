@@ -10,6 +10,9 @@ describe('Cookies', () => {
     it('read a cookie object', () => {
       const cookiesValues = { test: 'meow' };
       const cookies = new Cookies(cookiesValues);
+      // we always call this in tests when ran from a context that
+      // doesn't have document.cookie set properly
+      cookies.HAS_DOCUMENT_COOKIE = false;
       expect(cookies.get('test')).toBe(cookiesValues.test);
     });
 
@@ -17,7 +20,7 @@ describe('Cookies', () => {
       const cookieValue = 'meow';
       const cookiesValues = 'test=' + cookieValue;
       const cookies = new Cookies(cookiesValues);
-
+      cookies.HAS_DOCUMENT_COOKIE = false;
       expect(cookies.get('test')).toBe(cookieValue);
     });
 
@@ -62,17 +65,19 @@ describe('Cookies', () => {
     it('parse serialized string', () => {
       const cookieValue = 'boom';
       const cookies = new Cookies({ test: '"' + cookieValue + '"' });
-
+      cookies.HAS_DOCUMENT_COOKIE = false;
       expect(cookies.get('test')).toBe(cookieValue);
     });
 
     it('parse serialized object', () => {
       const cookies = new Cookies({ test: '{}' });
+      cookies.HAS_DOCUMENT_COOKIE = false;
       expect(typeof cookies.get('test')).toBe('object');
     });
 
     it('parse serialized array', () => {
       const cookies = new Cookies({ test: '[]' });
+      cookies.HAS_DOCUMENT_COOKIE = false;
       const result = cookies.get('test');
 
       expect(typeof result).toBe('object');
