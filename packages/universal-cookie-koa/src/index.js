@@ -8,9 +8,9 @@ export default function universalCookieMiddleware() {
         onSet(name, value, options) {
           ctx.cookies.set(name, value, options);
         },
-        onRemove(name, options) {
+        onRemove(name) {
           ctx.cookies.set(name, null);
-        },
+        }
       }
     );
     return next();

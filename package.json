@@ -35,8 +35,7 @@
     "precommit": "npm run format && npm test",
     "lint": "eslint --ext .js .",
     "format": "prettier 'packages/**/*.js' --single-quote --write",
-    "test":
-      "npm run lint && npm run build && npm run size && karma start --single-run",
+    "test": "npm run lint && npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
     "build": "lerna run build",
     "size": "size-limit"
