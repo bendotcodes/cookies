@@ -4,7 +4,7 @@ declare module 'react-cookie' {
     export type Cookie = string;
 
     export class Cookies {
-        get: (key: string, options?: ReactCookieGetOptions) => Cookie;
+        get: (key: string, options?: ReactCookieGetOptions) => Cookie | undefined;
         getAll: (options?: ReactCookieGetAllOptions) => Cookie[];
         set(name: string, value: string, options?: ReactCookieSetOptions): void;
         remove(name: string, options?: ReactCookieRemoveOptions): void;
@@ -41,6 +41,6 @@ declare module 'react-cookie' {
     }
 
     export type ReactCookieProps = {
-        cookies: Cookies
+        cookies?: Cookies
     };
 }
