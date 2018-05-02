@@ -13,7 +13,7 @@ export class CookiesProvider extends React.Component{ }
 
 type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
 
-export function withCookies<T extends ReactCookieProps>(Component: React.ComponentType<T>): React.ComponentType<Omit<T, keyof ReactCookieProps>>;
+export declare function withCookies<T extends ReactCookieProps>(Component: React.ComponentType<T>): React.ComponentType<Omit<T, keyof ReactCookieProps>>;
 
 export interface ReactCookieGetOptions {
     doNotParse?: boolean;
