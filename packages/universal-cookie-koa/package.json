@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-koa",
-  "version": "2.1.2",
+  "version": "2.1.5",
   "description": "Hook cookies get/set on Koa for server-rendering",
   "main": "lib/index.js",
   "files": [
@@ -24,7 +24,7 @@
     "build": "rimraf lib && babel src -d lib --ignore __tests__"
   },
   "dependencies": {
-    "universal-cookie": "^2.1.2"
+    "universal-cookie": "^2.1.5"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
