@@ -1,6 +1,6 @@
 {
   "name": "react-cookie",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Universal cookies for React",
   "main": "lib/index.js",
   "typings": "index.d.ts",
