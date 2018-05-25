@@ -9,8 +9,8 @@ export class Cookies {
     remove(name: string, options?: ReactCookieRemoveOptions): void;
 }
 
-export class CookiesProvider extends React.Component{ }
-
+export class CookiesProvider extends React.Component<ReactCookieProps, any> {}
+type Diff<T, U> = T extends U ? never : T;
 type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
 
 export declare function withCookies<T extends ReactCookieProps>(Component: React.ComponentType<T>): React.ComponentType<Omit<T, keyof ReactCookieProps>>;
@@ -42,5 +42,5 @@ export interface ReactCookieRemoveOptions {
 }
 
 export type ReactCookieProps = {
-    cookies: Cookies
+    cookies?: Cookies
 };
