@@ -3,6 +3,13 @@ import * as React from 'react';
 export type Cookie = string;
 
 export class Cookies {
+    constructor(
+        cookieHeader?: string | object | null,
+        hooks?: {
+            onSet: (name: string, value: string, options?: ReactCookieSetOptions) => void;
+            onRemove: (name: string, options?: ReactCookieRemoveOptions) => void;
+        },
+    );
     get: (key: string, options?: ReactCookieGetOptions) => Cookie | undefined;
     getAll: (options?: ReactCookieGetAllOptions) => Cookie[];
     set(name: string, value: string, options?: ReactCookieSetOptions): void;
