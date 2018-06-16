@@ -18,7 +18,9 @@ function AllCookiesComponent({ allCookies }) {
   return (
     <ul>
       {Object.keys(allCookies).map(name => (
-        <li key={name}>{name}: {allCookies[name]}</li>
+        <li key={name}>
+          {name}: {allCookies[name]}
+        </li>
       ))}
     </ul>
   );

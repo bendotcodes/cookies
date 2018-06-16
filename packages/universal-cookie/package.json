@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie",
-  "version": "2.1.5",
+  "version": "2.2.0",
   "description": "Universal cookies for JavaScript",
   "main": "lib/index.js",
   "files": [

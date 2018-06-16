@@ -124,7 +124,7 @@ describe('Cookies', () => {
   });
 
   describe('addChangeListener', () => {
-    it('detect setting a cookie', (done) => {
+    it('detect setting a cookie', done => {
       const cookies = new Cookies();
 
       cookies.addChangeListener(({ name, value, options }) => {
@@ -137,7 +137,7 @@ describe('Cookies', () => {
       cookies.set('test', 'meow', { path: '/' });
     });
 
-    it('detect removing a cookie', (done) => {
+    it('detect removing a cookie', done => {
       const cookies = new Cookies();
 
       cookies.addChangeListener(({ name, value, options }) => {
@@ -150,7 +150,7 @@ describe('Cookies', () => {
       cookies.remove('test', { path: '/' });
     });
 
-    it('stop when removing listener', (done) => {
+    it('stop when removing listener', done => {
       const cookies = new Cookies();
 
       const f = () => {

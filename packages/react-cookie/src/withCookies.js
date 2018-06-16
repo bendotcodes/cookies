@@ -5,7 +5,8 @@ import hoistStatics from 'hoist-non-react-statics';
 
 export default function withCookies(WrapperComponent) {
   class Wrapper extends Component {
-    static displayName = `withCookies(${Component.displayName || Component.name})`;
+    static displayName = `withCookies(${Component.displayName ||
+      Component.name})`;
     static WrapperComponent = WrapperComponent;
 
     static propTypes = {
@@ -27,7 +28,7 @@ export default function withCookies(WrapperComponent) {
 
     onChange = () => {
       this.forceUpdate();
-    }
+    };
 
     render() {
       const { wrappedComponentRef, ...remainingProps } = this.props;
