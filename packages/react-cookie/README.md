@@ -92,9 +92,10 @@ class App extends Component {
     cookies: instanceOf(Cookies).isRequired
   };
 
-  componentWillMount() {
-    const { cookies } = this.props;
+  constructor(props) {
+    super(props);
 
+    const { cookies } = props;
     this.state = {
       name: cookies.get('name') || 'Ben'
     };
@@ -136,9 +137,10 @@ class App extends Component {
     cookies: instanceOf(Cookies).isRequired
   };
 
-  componentWillMount() {
-    const { cookies } = this.props;
+  constructor(props) {
+    super(props);
 
+    const { cookies } = props;
     this.state = {
       name: cookies.get('name') || 'Ben'
     };
