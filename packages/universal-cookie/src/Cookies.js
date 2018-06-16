@@ -3,6 +3,8 @@ import objectAssign from 'object-assign';
 import { hasDocumentCookie } from './utils';
 
 export default class Cookies {
+  changeListeners = [];
+
   constructor(cookies, hooks) {
     this.cookies = parseCookies(cookies);
     this.hooks = hooks;
@@ -47,6 +49,8 @@ export default class Cookies {
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, value, options);
     }
+
+    this._emitChange({ name, value, options });
   }
 
   remove(name, options) {
@@ -63,6 +67,25 @@ export default class Cookies {
 
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, '', finalOptions);
+    }
+
+    this._emitChange({ name, value: undefined, options });
+  }
+
+  _emitChange(params) {
+    for (let i = 0; i < this.changeListeners.length; ++i) {
+      this.changeListeners[i](params);
+    }
+  }
+
+  addChangeListener(callback) {
+    this.changeListeners.push(callback);
+  }
+
+  removeChangeListener(callback) {
+    const idx = this.changeListeners.indexOf(callback);
+    if (idx >= 0) {
+      this.changeListeners.splice(idx, 1);
     }
   }
 }

@@ -122,4 +122,48 @@ describe('Cookies', () => {
       expect(cookies.get('testingCookie')).toBe(undefined);
     });
   });
+
+  describe('addChangeListener', () => {
+    it('detect setting a cookie', (done) => {
+      const cookies = new Cookies();
+
+      cookies.addChangeListener(({ name, value, options }) => {
+        expect(name).toBe('test');
+        expect(value).toBe('meow');
+        expect(options.path).toBe('/');
+        done();
+      });
+
+      cookies.set('test', 'meow', { path: '/' });
+    });
+
+    it('detect removing a cookie', (done) => {
+      const cookies = new Cookies();
+
+      cookies.addChangeListener(({ name, value, options }) => {
+        expect(name).toBe('test');
+        expect(value).toBeUndefined();
+        expect(options.path).toBe('/');
+        done();
+      });
+
+      cookies.remove('test', { path: '/' });
+    });
+
+    it('stop when removing listener', (done) => {
+      const cookies = new Cookies();
+
+      const f = () => {
+        throw new Error('Listener not properly removed');
+      };
+      cookies.addChangeListener(f);
+      cookies.removeChangeListener(f);
+
+      cookies.remove('test', 'boom!');
+
+      setTimeout(() => {
+        done();
+      });
+    });
+  });
 });

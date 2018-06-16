@@ -1,31 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { instanceOf, func } from 'prop-types';
 import Cookies from 'universal-cookie';
 import hoistStatics from 'hoist-non-react-statics';
 
-export default function withCookies(Component) {
-  function Wrapper(props, { cookies }) {
-    const { wrappedComponentRef, ...remainingProps } = props;
-    return (
-      <Component
-        {...remainingProps}
-        cookies={cookies}
-        ref={wrappedComponentRef}
-      />
-    );
+export default function withCookies(WrapperComponent) {
+  class Wrapper extends Component {
+    static displayName = `withCookies(${Component.displayName || Component.name})`;
+    static WrapperComponent = WrapperComponent;
+
+    static propTypes = {
+      wrappedComponentRef: func
+    };
+
+    static contextTypes = {
+      cookies: instanceOf(Cookies).isRequired
+    };
+
+    constructor(props, context) {
+      super(props);
+      context.cookies.addChangeListener(this.onChange);
+    }
+
+    componentWillUnmount() {
+      this.context.cookies.removeChangeListener(this.onChange);
+    }
+
+    onChange = () => {
+      this.forceUpdate();
+    }
+
+    render() {
+      const { wrappedComponentRef, ...remainingProps } = this.props;
+      const allCookies = this.context.cookies.getAll();
+
+      return (
+        <WrapperComponent
+          {...remainingProps}
+          cookies={this.context.cookies}
+          allCookies={allCookies}
+          ref={wrappedComponentRef}
+        />
+      );
+    }
   }
 
-  Wrapper.displayName = `withCookies(${Component.displayName ||
-    Component.name})`;
-  Wrapper.WrappedComponent = Component;
-
-  Wrapper.propTypes = {
-    wrappedComponentRef: func
-  };
-
-  Wrapper.contextTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
-
-  return hoistStatics(Wrapper, Component);
+  return hoistStatics(Wrapper, WrapperComponent, { WrappedComponent: true });
 }

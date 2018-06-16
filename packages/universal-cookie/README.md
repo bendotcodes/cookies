@@ -59,6 +59,13 @@ Remove a cookie
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
 
+### `addChangeListener(callback)`
+Add a listener to when a cookie is set or removed.
+ - callback (function): Call that will be called with the first argument containing `name`, `value` and `options` of the changed cookie.
+
+### `removeChangeListener(callback)`
+Remove a listener from the change callback.
+
 ## Browser Example
 
 ```js
