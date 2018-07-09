@@ -10,7 +10,14 @@ interface ISetOptions {
   secure?: boolean;
 }
 
+interface IHooks {
+  onSet?: (name: string, finalOptions: ISetOptions) => any;
+  onRemove?: (name: string, finalOptions: ISetOptions) => any;
+}
+
 export default class Cookies {
+  public constructor(cookies?: string | object, hooks?: IHooks);
+
   public get(name: string, options?: IGetOptions): string;
 
   public getAll(options?: IGetOptions): { [key: string]: string };
