@@ -5,4 +5,5 @@ export type ReactCookieProps = {
     cookies: Cookies,
     allCookies: { [name: string]: Cookie }
     children?: any,
+    ref?: React.RefObject<{}>
 };

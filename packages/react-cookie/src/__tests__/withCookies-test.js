@@ -34,6 +34,14 @@ TestComponent.propTypes = {
   cookies: instanceOf(Cookies).isRequired
 };
 
+class TestRefComponent extends React.Component {
+  testValue = 'Suki is pretty'
+
+  render() {
+    return <div>{this.testValue}</div>;
+  }
+}
+
 describe('withCookies(Component)', () => {
   beforeEach(() => {
     cleanCookies();
@@ -96,6 +104,22 @@ describe('withCookies(Component)', () => {
       expect(node.innerHTML).toContain('value1');
       expect(node.innerHTML).toContain('test2');
       expect(node.innerHTML).toContain('value2');
+    });
+
+    it('forward the ref', () => {
+      const cookies = new Cookies();
+      const Component = withCookies(TestRefComponent);
+      const node = document.createElement('div');
+      const ref = React.createRef();
+
+      ReactDOM.render(
+        <CookiesProvider cookies={cookies}>
+          <Component ref={ref} />
+        </CookiesProvider>,
+        node
+      );
+
+      expect(ref.current.testValue).toBe('Suki is pretty');
     });
   });
 

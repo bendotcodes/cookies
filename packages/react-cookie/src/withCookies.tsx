@@ -22,6 +22,7 @@ export default function withCookies<T extends ReactCookieProps>(WrapperComponent
 
     listen(cookies: Cookies) {
       if (cookies !== this.cookies) {
+        this.unlisten();
         this.cookies = cookies;
         this.cookies.addChangeListener(this.onChange);
       }
@@ -42,14 +43,16 @@ export default function withCookies<T extends ReactCookieProps>(WrapperComponent
         <Consumer>
           {(cookies: Cookies) => {
             this.listen(cookies);
+            const { forwardedRef, ...restProps } = this.props;
 
             const allCookies = cookies.getAll();
             return (
               <WrapperComponent
-                {...this.props}
-                cookies={cookies}
-                allCookies={allCookies}
-              />
+              {...restProps}
+              ref={forwardedRef}
+              cookies={cookies}
+              allCookies={allCookies}
+            />
             );
           }}
         </Consumer>
@@ -57,5 +60,9 @@ export default function withCookies<T extends ReactCookieProps>(WrapperComponent
     }
   }
 
-  return hoistStatics(CookieWrapper, WrapperComponent, { WrappedComponent: true });
+  const CookieWrapperWithRef = React.forwardRef((props, ref) => {
+    return <CookieWrapper {...props} forwardedRef={ref} />;
+  });
+
+  return hoistStatics(CookieWrapperWithRef, WrapperComponent, { WrappedComponent: true });
 }
