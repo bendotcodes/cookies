@@ -3,6 +3,7 @@
   "version": "2.2.0",
   "description": "Universal cookies for JavaScript",
   "main": "lib/index.js",
+  "typings": "index.d.ts",
   "files": [
     "lib"
   ],
