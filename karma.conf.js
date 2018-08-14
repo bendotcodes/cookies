@@ -10,9 +10,10 @@ module.exports = config => {
       'tests.webpack.js': ['webpack', 'sourcemap']
     },
     webpack: {
+      mode: 'development',
       devtool: 'inline-source-map',
       module: {
-        loaders: [
+        rules: [
           { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
         ]
       },

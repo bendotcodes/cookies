@@ -26,14 +26,14 @@
     "build": "rimraf lib && babel src -d lib --ignore __tests__"
   },
   "dependencies": {
-    "hoist-non-react-statics": "^2.3.1",
-    "prop-types": "^15.0.0",
+    "hoist-non-react-statics": "^3.0.0",
+    "prop-types": "^15.6.2",
     "universal-cookie": "^2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "react": "^15.0.0",
-    "react-dom": "^15.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "rimraf": "^2.6.1"
   },
   "peerDependencies": {

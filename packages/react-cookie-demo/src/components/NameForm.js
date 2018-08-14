@@ -4,7 +4,7 @@ import { func, string } from 'prop-types';
 export default function NameForm({ name, onChange }) {
   return (
     <div>
-      <h1>What's your name?</h1>
+      <h1>What&apos;s your name?</h1>
       <form
         onSubmit={e => {
           e.preventDefault();

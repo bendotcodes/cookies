@@ -162,6 +162,9 @@ describe('Cookies', () => {
       cookies.remove('test', 'boom!');
 
       setTimeout(() => {
+        // The test throws if it fails
+        // No exception in this test
+        expect().nothing();
         done();
       });
     });
