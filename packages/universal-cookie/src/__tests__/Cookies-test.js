@@ -23,31 +23,6 @@ describe('Cookies', () => {
       cookies.HAS_DOCUMENT_COOKIE = false;
       expect(cookies.get('test')).toBe(cookieValue);
     });
-
-    it('hooks on set', () => {
-      const hooks = {
-        onSet: () => {}
-      };
-
-      const setSpy = spyOn(hooks, 'onSet');
-      const cookies = new Cookies('', hooks);
-      cookies.set('test', 'meow');
-
-      expect(setSpy).toHaveBeenCalled();
-    });
-
-    it('hooks on remove', () => {
-      const hooks = {
-        onRemove: () => {}
-      };
-
-      const removeSpy = spyOn(hooks, 'onRemove');
-      const cookieHeader = 'testingCookie=yes';
-      const cookies = new Cookies(cookieHeader, hooks);
-      cookies.remove('testingCookie');
-
-      expect(removeSpy).toHaveBeenCalled();
-    });
   });
 
   describe('get(name, [optioons])', () => {

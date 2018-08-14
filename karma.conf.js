@@ -14,8 +14,12 @@ module.exports = config => {
       devtool: 'inline-source-map',
       module: {
         rules: [
-          { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+          { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
+          { test: /\.tsx?$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' }
         ]
+      },
+      resolve: {
+        extensions: ['.ts', '.tsx', '.js', '.jsx']
       },
       plugins: [
         new webpack.DefinePlugin({

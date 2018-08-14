@@ -1,13 +1,23 @@
-import cookie from 'cookie';
-import objectAssign from 'object-assign';
-import { hasDocumentCookie } from './utils';
+import * as cookie from 'cookie';
+import * as objectAssign from 'object-assign';
+
+import { parseCookies, readCookie, hasDocumentCookie } from './utils';
+import { 
+  Cookie, 
+  CookieGetOptions, 
+  CookieSetOptions, 
+  CookieChangeListener, 
+  CookieChangeOptions 
+} from './types';
 
 export default class Cookies {
-  changeListeners = [];
+  cookies: { [name: string]: Cookie };
+  changeListeners: CookieChangeListener[] = [];
 
-  constructor(cookies, hooks) {
+  HAS_DOCUMENT_COOKIE: boolean;
+
+  constructor(cookies?: string | object | null) {
     this.cookies = parseCookies(cookies);
-    this.hooks = hooks;
     this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
   }
 
@@ -19,14 +29,14 @@ export default class Cookies {
     this.cookies = cookie.parse(document.cookie);
   }
 
-  get(name, options = {}) {
+  get(name: string, options: CookieGetOptions = {}) {
     this._updateBrowserValues();
     return readCookie(this.cookies[name], options);
   }
 
-  getAll(options = {}) {
+  getAll(options: CookieGetOptions = {}) {
     this._updateBrowserValues();
-    const result = {};
+    const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
       result[name] = readCookie(this.cookies[name], options);
@@ -35,16 +45,12 @@ export default class Cookies {
     return result;
   }
 
-  set(name, value, options) {
+  set(name: string, value: Cookie, options?: CookieSetOptions) {
     if (typeof value === 'object') {
       value = JSON.stringify(value);
     }
 
-    if (this.hooks && this.hooks.onSet) {
-      this.hooks.onSet(name, value, options);
-    }
-
-    this.cookies[name] = value;
+    this.cookies = objectAssign({}, this.cookies, { [name]: value });
 
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, value, options);
@@ -53,16 +59,13 @@ export default class Cookies {
     this._emitChange({ name, value, options });
   }
 
-  remove(name, options) {
+  remove(name: string, options?: CookieSetOptions) {
     const finalOptions = (options = objectAssign({}, options, {
       expires: new Date(1970, 1, 1, 0, 0, 1),
       maxAge: 0
     }));
 
-    if (this.hooks && this.hooks.onRemove) {
-      this.hooks.onRemove(name, finalOptions);
-    }
-
+    this.cookies = objectAssign({}, this.cookies);
     delete this.cookies[name];
 
     if (this.HAS_DOCUMENT_COOKIE) {
@@ -72,52 +75,20 @@ export default class Cookies {
     this._emitChange({ name, value: undefined, options });
   }
 
-  _emitChange(params) {
+  _emitChange(params: CookieChangeOptions) {
     for (let i = 0; i < this.changeListeners.length; ++i) {
       this.changeListeners[i](params);
     }
   }
 
-  addChangeListener(callback) {
+  addChangeListener(callback: CookieChangeListener) {
     this.changeListeners.push(callback);
   }
 
-  removeChangeListener(callback) {
+  removeChangeListener(callback: CookieChangeListener) {
     const idx = this.changeListeners.indexOf(callback);
     if (idx >= 0) {
       this.changeListeners.splice(idx, 1);
     }
   }
-}
-
-function parseCookies(cookies) {
-  if (typeof cookies === 'string') {
-    return cookie.parse(cookies);
-  } else if (typeof cookies === 'object' && cookies !== null) {
-    return cookies;
-  } else {
-    return {};
-  }
-}
-
-function isParsingCookie(value, doNotParse) {
-  if (typeof doNotParse === 'undefined') {
-    // We guess if the cookie start with { or [, it has been serialized
-    doNotParse =
-      !value || (value[0] !== '{' && value[0] !== '[' && value[0] !== '"');
-  }
-
-  return !doNotParse;
-}
-
-function readCookie(value, options = {}) {
-  if (isParsingCookie(value, options.doNotParse)) {
-    try {
-      return JSON.parse(value);
-    } catch (e) {
-      // At least we tried
-    }
-  }
-
-  return value;
 }

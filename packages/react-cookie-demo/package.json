@@ -1,14 +1,14 @@
 {
   "name": "react-cookie-demo",
   "version": "2.2.0",
-  "private": "true",
+  "private": true,
   "license": "MIT",
   "main": "server.js",
   "scripts": {
     "build": "webpack"
   },
   "dependencies": {
-    "babel-register": "^6.24.1",
+    "@babel/register": "^7.0.0-rc.1",
     "express": "^4.15.2",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
@@ -17,10 +17,13 @@
     "universal-cookie-express": "^2.2.0"
   },
   "devDependencies": {
-    "babel-loader": "^7.0.0",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "webpack": "^2.4.1"
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/preset-react": "^7.0.0-rc.1",
+    "@babel/preset-stage-2": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta.4",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0"
   }
 }

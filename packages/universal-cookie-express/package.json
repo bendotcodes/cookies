@@ -21,13 +21,13 @@
   "author": "Benoit Tremblay <benoit@reactivestack.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --ignore __tests__"
+    "build": "rimraf lib && tsc"
   },
   "dependencies": {
     "universal-cookie": "^2.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "rimraf": "^2.6.1"
+    "rimraf": "^2.6.1",
+    "typescript": "^3.0.1"
   }
 }

@@ -3,7 +3,6 @@
   "version": "2.2.0",
   "description": "Universal cookies for JavaScript",
   "main": "lib/index.js",
-  "typings": "index.d.ts",
   "files": [
     "lib"
   ],
@@ -21,14 +20,15 @@
   "author": "Benoit Tremblay <benoit@reactivestack.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --ignore __tests__"
+    "build": "rimraf lib && tsc"
   },
   "dependencies": {
+    "@types/cookie": "^0.3.1",
+    "@types/object-assign": "^4.0.30",
     "cookie": "^0.3.1",
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
     "rimraf": "^2.6.1"
   }
 }

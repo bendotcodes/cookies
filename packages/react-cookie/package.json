@@ -3,7 +3,6 @@
   "version": "2.2.0",
   "description": "Universal cookies for React",
   "main": "lib/index.js",
-  "typings": "index.d.ts",
   "files": [
     "lib",
     "index.d.ts"
@@ -23,20 +22,21 @@
   "author": "Benoit Tremblay <benoit@reactivestack.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --ignore __tests__"
+    "build": "rimraf lib && tsc --jsx react"
   },
   "dependencies": {
+    "@types/hoist-non-react-statics": "^3.0.1",
     "hoist-non-react-statics": "^3.0.0",
     "prop-types": "^15.6.2",
     "universal-cookie": "^2.2.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "rimraf": "^2.6.1"
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
+    "rimraf": "^2.6.1",
+    "typescript": "^3.0.1"
   },
   "peerDependencies": {
-    "react": ">= 15"
+    "react": ">= 16.3.0"
   }
 }

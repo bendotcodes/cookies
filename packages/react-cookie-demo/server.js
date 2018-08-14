@@ -1,4 +1,4 @@
-require('babel-register');
+require('@babel/register');
 
 const express = require('express');
 const serverMiddleware = require('./src/server').default;
