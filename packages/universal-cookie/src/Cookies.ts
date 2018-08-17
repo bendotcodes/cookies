@@ -11,17 +11,17 @@ import {
 } from './types';
 
 export default class Cookies {
-  cookies: { [name: string]: Cookie };
-  changeListeners: CookieChangeListener[] = [];
+  private cookies: { [name: string]: Cookie };
+  private changeListeners: CookieChangeListener[] = [];
 
-  HAS_DOCUMENT_COOKIE: boolean;
+  private HAS_DOCUMENT_COOKIE: boolean;
 
   constructor(cookies?: string | object | null) {
     this.cookies = parseCookies(cookies);
     this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
   }
 
-  _updateBrowserValues() {
+  private _updateBrowserValues() {
     if (!this.HAS_DOCUMENT_COOKIE) {
       return;
     }
@@ -29,12 +29,18 @@ export default class Cookies {
     this.cookies = cookie.parse(document.cookie);
   }
 
-  get(name: string, options: CookieGetOptions = {}) {
+  private _emitChange(params: CookieChangeOptions) {
+    for (let i = 0; i < this.changeListeners.length; ++i) {
+      this.changeListeners[i](params);
+    }
+  }
+
+  public get(name: string, options: CookieGetOptions = {}) {
     this._updateBrowserValues();
     return readCookie(this.cookies[name], options);
   }
 
-  getAll(options: CookieGetOptions = {}) {
+  public getAll(options: CookieGetOptions = {}) {
     this._updateBrowserValues();
     const result: { [name: string]: any } = {};
 
@@ -45,7 +51,7 @@ export default class Cookies {
     return result;
   }
 
-  set(name: string, value: Cookie, options?: CookieSetOptions) {
+  public set(name: string, value: Cookie, options?: CookieSetOptions) {
     if (typeof value === 'object') {
       value = JSON.stringify(value);
     }
@@ -59,7 +65,7 @@ export default class Cookies {
     this._emitChange({ name, value, options });
   }
 
-  remove(name: string, options?: CookieSetOptions) {
+  public remove(name: string, options?: CookieSetOptions) {
     const finalOptions = (options = objectAssign({}, options, {
       expires: new Date(1970, 1, 1, 0, 0, 1),
       maxAge: 0
@@ -75,17 +81,11 @@ export default class Cookies {
     this._emitChange({ name, value: undefined, options });
   }
 
-  _emitChange(params: CookieChangeOptions) {
-    for (let i = 0; i < this.changeListeners.length; ++i) {
-      this.changeListeners[i](params);
-    }
-  }
-
-  addChangeListener(callback: CookieChangeListener) {
+  public addChangeListener(callback: CookieChangeListener) {
     this.changeListeners.push(callback);
   }
 
-  removeChangeListener(callback: CookieChangeListener) {
+  public removeChangeListener(callback: CookieChangeListener) {
     const idx = this.changeListeners.indexOf(callback);
     if (idx >= 0) {
       this.changeListeners.splice(idx, 1);
