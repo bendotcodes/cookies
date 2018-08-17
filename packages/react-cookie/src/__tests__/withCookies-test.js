@@ -35,7 +35,7 @@ TestComponent.propTypes = {
 };
 
 class TestRefComponent extends React.Component {
-  testValue = 'Suki is pretty'
+  testValue = 'Suki is pretty';
 
   render() {
     return <div>{this.testValue}</div>;
