@@ -35,74 +35,29 @@ module.exports = config => {
 
   if (process.env.TRAVIS) {
     const customLaunchers = {
-      sl_iphone: {
+      'SL_Chrome': {
         base: 'SauceLabs',
-        browserName: 'iphone',
-        platform: 'OS X 10.10',
-        version: '8.2',
-        deviceName: 'iPhone Simulator'
+        browserName: 'chrome',
+        version: '48.0',
+        platform: 'Linux'
       },
-      sl_ipad: {
+      'SL_Firefox': {
         base: 'SauceLabs',
-        browserName: 'iphone',
-        platform: 'OS X 10.10',
-        version: '8.2',
-        deviceName: 'iPad Simulator'
+        browserName: 'firefox',
+        version: '50.0',
+        platform: 'Windows 10'
       },
-      sl_android: {
+      'SL_InternetExplorer': {
         base: 'SauceLabs',
-        browserName: 'android',
-        platform: 'Linux',
-        version: '5.1',
-        deviceName: 'Android Emulator'
+        browserName: 'internet explorer',
+        version: '11.0',
+        platform: 'Windows 7'
       },
-      sl_mac_safari: {
+      'SL_Safari': {
         base: 'SauceLabs',
         browserName: 'safari',
-        platform: 'OS X 10.10',
-        version: '8.0'
-      },
-      sl_mac_firefox: {
-        base: 'SauceLabs',
-        browserName: 'firefox',
-        platform: 'OS X 10.10',
-        version: '36.0'
-      },
-      sl_mac_chrome: {
-        base: 'SauceLabs',
-        browserName: 'chrome',
-        platform: 'OS X 10.10',
-        versiono: '41.0'
-      },
-      sl_windows7_ie11: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows 7',
-        version: '11.0'
-      },
-      sl_windows7_ie10: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows 7',
+        platform: 'OS X 10.11',
         version: '10.0'
-      },
-      sl_windows7_ie9: {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        platform: 'Windows 7',
-        version: '9.0'
-      },
-      sl_linux_firefox: {
-        base: 'SauceLabs',
-        browserName: 'firefox',
-        platform: 'Linux',
-        version: '37.0'
-      },
-      sl_linux_chrome: {
-        base: 'SauceLabs',
-        browserName: 'chrome',
-        platform: 'Linux',
-        version: '41.0'
       }
     };
 
