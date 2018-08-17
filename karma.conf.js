@@ -47,12 +47,6 @@ module.exports = config => {
         version: 'latest-1',
         platform: 'Linux'
       },
-      'SL_Chrome_latest-2': {
-        base: 'SauceLabs',
-        browserName: 'chrome',
-        version: 'latest-2',
-        platform: 'Linux'
-      },
       'SL_Firefox_latest': {
         base: 'SauceLabs',
         browserName: 'firefox',
@@ -63,12 +57,6 @@ module.exports = config => {
         base: 'SauceLabs',
         browserName: 'firefox',
         version: 'latest-1',
-        platform: 'Windows 10'
-      },
-      'SL_Firefox_latest-2': {
-        base: 'SauceLabs',
-        browserName: 'firefox',
-        version: 'latest-2',
         platform: 'Windows 10'
       },
       'SL_Edge_Latest': {
@@ -82,18 +70,6 @@ module.exports = config => {
         browserName: 'microsoftedge',
         version: 'latest-1',
         platform: 'Windows 10'
-      },
-      'SL_Edge_Latest-2': {
-        base: 'SauceLabs',
-        browserName: 'microsoftedge',
-        version: 'latest-2',
-        platform: 'Windows 10'
-      },
-      'SL_InternetExplorer': {
-        base: 'SauceLabs',
-        browserName: 'internet explorer',
-        version: '11.0',
-        platform: 'Windows 7'
       },
       'SL_Safari_10': {
         base: 'SauceLabs',
@@ -120,13 +96,6 @@ module.exports = config => {
         browserName: 'android',
         platform: 'Linux',
         version: 'latest-1',
-        deviceName: 'Android Emulator'
-      },
-      'SL_Android_latest-2': {
-        base: 'SauceLabs',
-        browserName: 'android',
-        platform: 'Linux',
-        version: 'latest-2',
         deviceName: 'Android Emulator'
       }
     };
