@@ -73,19 +73,19 @@ module.exports = config => {
       },
       'SL_Edge_Latest': {
         base: 'SauceLabs',
-        browserName: 'microsoft edge',
+        browserName: 'microsoftedge',
         version: 'latest',
         platform: 'Windows 10'
       },
       'SL_Edge_Latest-1': {
         base: 'SauceLabs',
-        browserName: 'microsoft edge',
+        browserName: 'microsoftedge',
         version: 'latest-1',
         platform: 'Windows 10'
       },
       'SL_Edge_Latest-2': {
         base: 'SauceLabs',
-        browserName: 'microsoft edge',
+        browserName: 'microsoftedge',
         version: 'latest-2',
         platform: 'Windows 10'
       },
