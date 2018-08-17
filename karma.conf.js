@@ -77,13 +77,6 @@ module.exports = config => {
         platform: 'OS X 10.11',
         version: '10.0'
       },
-      'SL_iOS_latest': {
-        base: 'SauceLabs',
-        browserName: 'iphone',
-        platform: 'iOS 11.2',
-        version: 'latest',
-        deviceName: 'iPad Simulator'
-      },
       'SL_Android_latest': {
         base: 'SauceLabs',
         browserName: 'android',
