@@ -13,7 +13,7 @@ export default function universalCookieMiddleware() {
         res.clearCookie(change.name, change.options);
       } else {
         const expressOpt = Object.assign({}, change.options);
-        if (expressOpt.maxAge) {
+        if (expressOpt.maxAge && change.options && change.options.maxAge) {
           // the standard for maxAge is seconds but express uses milliseconds
           expressOpt.maxAge = change.options.maxAge * 1000;
         }
