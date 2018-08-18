@@ -26,8 +26,6 @@
 
 `npm install react-cookie`
 
-**NOTE**: You need React >= 16.3.0
-
 or in the browser (global variable `ReactCookie`):
 
 ```html
