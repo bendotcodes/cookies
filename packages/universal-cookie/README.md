@@ -19,7 +19,11 @@
 
 `npm install universal-cookie`
 
- - Includes ES6, CommonJS and UMD (`UniversalCookie` as a global variable) version
+ or in the browser (global variable `UniversalCookie`):
+
+```html
+<script crossorigin src="https://unpkg.com/universal-cookie@3/umd/universalCookie.min.js"></script>
+```
 
 ## API - Cookies class
 

@@ -19,7 +19,13 @@
 
 `npm install react-cookie`
 
-- Includes ES6, CommonJS and UMD (`ReactCookie` as a global variable) version
+or in the browser (global variable `ReactCookie`):
+
+```html
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.js"></script>
+<script crossorigin src="https://unpkg.com/universal-cookie@3/umd/universalCookie.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-cookie@3/umd/reactCookie.min.js"></script>
+```
 
 ## `<CookiesProvider />`
 Set the user cookies

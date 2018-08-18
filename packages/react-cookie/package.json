@@ -36,8 +36,7 @@
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.0.1",
     "hoist-non-react-statics": "^3.0.0",
-    "prop-types": "^15.6.2",
-    "universal-cookie": "^3.0.0"
+    "universal-cookie": "^3.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
