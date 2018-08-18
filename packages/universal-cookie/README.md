@@ -19,6 +19,8 @@
 
 `npm install universal-cookie`
 
+ - Includes ES6, CommonJS and UMD (`UniversalCookie` as a global variable) version
+
 ## API - Cookies class
 
 ### `constructor([cookieHeader])`

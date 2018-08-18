@@ -1,6 +1,10 @@
 node_modules
 *.log
+es6
+cjs
+umd
 lib
 dist
 .DS_Store
 yarn.lock
+package-lock.json

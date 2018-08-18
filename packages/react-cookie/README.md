@@ -19,6 +19,8 @@
 
 `npm install react-cookie`
 
+- Includes ES6, CommonJS and UMD (`ReactCookie` as a global variable) version
+
 ## `<CookiesProvider />`
 Set the user cookies
 

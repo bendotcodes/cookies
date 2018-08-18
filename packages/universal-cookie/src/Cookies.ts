@@ -1,5 +1,4 @@
 import * as cookie from 'cookie';
-import * as objectAssign from 'object-assign';
 
 import { parseCookies, readCookie, hasDocumentCookie } from './utils';
 import { 
@@ -9,6 +8,10 @@ import {
   CookieChangeListener, 
   CookieChangeOptions 
 } from './types';
+
+// We can't please Rollup and TypeScript at the same time
+// Only way to make both of them work
+const objectAssign = require('object-assign');
 
 export default class Cookies {
   private cookies: { [name: string]: Cookie };

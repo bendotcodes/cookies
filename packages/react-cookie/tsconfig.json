@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es6",
     "declaration": true,
-    "outDir": "./lib",
-    "strict": true
+    "outDir": "./es6",
+    "strict": true,
+    "jsx": "react",
+    "moduleResolution": "node"
   },
   "files": [
     "./src/index.ts"
