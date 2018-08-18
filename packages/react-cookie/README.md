@@ -15,9 +15,18 @@
  - [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
  - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express) - Hook cookies get/set on Express for server-rendering
 
+## Minimum requirement
+### react-cookie @ v3.0+
+ - React.js >= 16.3.0 (new context API + forward ref)
+
+### react-cookie @ v0.0-v2.2
+ - React.js >= 15
+
 ## Getting started
 
 `npm install react-cookie`
+
+**NOTE**: You need React >= 16.3.0
 
 or in the browser (global variable `ReactCookie`):
 
