@@ -12,5 +12,5 @@ app
   .use(serverMiddleware);
 
 app.listen(8080, function() {
-  console.log('Listening on 8080...'); // eslint-disable-line no-console
+  console.log('Listening on 8080...');
 });
