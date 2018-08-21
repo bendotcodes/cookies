@@ -11,6 +11,7 @@ export interface CookieSetOptions {
   domain?: string;
   secure?: boolean;
   httpOnly?: boolean;
+  sameSite?: boolean | string;
 }
 export interface CookieChangeOptions {
   name: string;
