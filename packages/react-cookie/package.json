@@ -1,6 +1,6 @@
 {
   "name": "react-cookie",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Universal cookies for React",
   "main": "cjs/index.js",
   "module": "es6/index.js",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.0.1",
     "hoist-non-react-statics": "^3.0.0",
-    "universal-cookie": "^3.0.3"
+    "universal-cookie": "^3.0.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
