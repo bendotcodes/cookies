@@ -35,12 +35,24 @@ export function isParsingCookie(value: Cookie, doNotParse?: boolean) {
 }
 
 export function readCookie(value: Cookie, options: CookieGetOptions = {}) {
-  if (isParsingCookie(value, options.doNotParse)) {
+  const cleanValue = cleanupCookieValue(value);
+  if (isParsingCookie(cleanValue, options.doNotParse)) {
     try {
-      return JSON.parse(value);
+      return JSON.parse(cleanValue);
     } catch (e) {
       // At least we tried
     }
+  }
+
+  // Ignore clean value if we failed the deserialization
+  // It is not relevant anymore to trim those values
+  return value;
+}
+
+function cleanupCookieValue(value: Cookie): Cookie {
+  // express prepend j: before serializing a cookie
+  if (value && value[0] === 'j' && value[1] === ':') {
+    return value.substr(2);
   }
 
   return value;

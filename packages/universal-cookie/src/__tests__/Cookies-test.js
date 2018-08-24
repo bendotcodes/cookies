@@ -58,6 +58,12 @@ describe('Cookies', () => {
       expect(typeof result).toBe('object');
       expect(Array.isArray(result)).toBeTruthy();
     });
+
+    it('parse serialized by express', () => {
+      const cookies = new Cookies({ test: 'j:{}' });
+      cookies.HAS_DOCUMENT_COOKIE = false;
+      expect(typeof cookies.get('test')).toBe('object');
+    });
   });
 
   describe('getAll([options])', () => {
@@ -82,7 +88,7 @@ describe('Cookies', () => {
       expect(cookies.get('test')).toBe('meow');
     });
 
-    it('works for obejct', () => {
+    it('works for object', () => {
       const cookies = new Cookies();
       cookies.set('test', { cat: 'meow' });
       expect(cookies.get('test').cat).toBe('meow');
