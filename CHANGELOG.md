@@ -1,6 +1,7 @@
 # CHANGELOG
 
 ## vNEXT
+ - `universal-cookie`: Trim j: prefix so we can deserialize cookies serialized by express
 
 ## v3.0.4
  - `react-cookie`: Fix `withCookies` to no require props on the wrapped component
