@@ -68,6 +68,7 @@ Set a cookie value
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
+  - sameSite (boolean|lax|strict): Strict or Lax enforcement
 
 ### `remove(name, [options])`
 Remove a cookie
@@ -79,6 +80,7 @@ Remove a cookie
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
+  - sameSite (boolean|lax|strict): Strict or Lax enforcement
 
 ## Simple Example
 ```js
