@@ -8,7 +8,8 @@
     "lib",
     "es6",
     "cjs",
-    "umd"
+    "umd",
+    "index.d.ts"
   ],
   "repository": {
     "type": "git",
