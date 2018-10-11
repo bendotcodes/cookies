@@ -33,6 +33,7 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
     unlisten() {
       if (this.cookies) {
         this.cookies.removeChangeListener(this.onChange);
+        this.cookies = undefined;
       }
     }
 
