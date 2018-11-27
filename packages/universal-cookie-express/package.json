@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-express",
-  "version": "3.0.4",
+  "version": "3.0.6",
   "description": "Hook cookies get/set on Express for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
@@ -31,7 +31,7 @@
     "build-legacy": "babel es6 -D -d lib"
   },
   "dependencies": {
-    "universal-cookie": "^3.0.4"
+    "universal-cookie": "^3.0.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
