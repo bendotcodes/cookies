@@ -20,8 +20,8 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
       this.forceUpdate();
     }
 
-    listen(cookies: Cookies) {
-      cookies.addChangeListener(this.onChange);
+    listen() {
+      this.props.cookies.addChangeListener(this.onChange);
     }
 
     unlisten() {
@@ -29,12 +29,12 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
     }
 
     componentDidMount() {
-      this.listen(this.props.cookies);
+      this.listen();
     }
 
     componentDidUpdate(prevProps: any) {
       if (prevProps.cookies !== this.props.cookies) {
-        this.listen(this.props.cookies);
+        this.listen();
       }
     }
 
