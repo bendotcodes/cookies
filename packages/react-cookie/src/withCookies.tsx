@@ -15,34 +15,27 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
     static displayName = `withCookies(${name})`;
     static WrapperComponent = WrapperComponent;
 
-    cookies?: Cookies;
-
     onChange = () => {
       // Make sure to update children with new values
       this.forceUpdate();
     }
 
     listen(cookies: Cookies) {
-      if (cookies !== this.cookies) {
-        this.unlisten();
-        this.cookies = cookies;
-        this.cookies.addChangeListener(this.onChange);
-      }
+      cookies.addChangeListener(this.onChange);
     }
 
     unlisten() {
-      if (this.cookies) {
-        this.cookies.removeChangeListener(this.onChange);
-        this.cookies = undefined;
-      }
+      this.props.cookies.removeChangeListener(this.onChange);
     }
 
     componentDidMount() {
       this.listen(this.props.cookies);
     }
 
-    componentDidUpdate() {
-      this.listen(this.props.cookies);
+    componentDidUpdate(prevProps: any) {
+      if (prevProps.cookies !== this.props.cookies) {
+        this.listen(this.props.cookies);
+      }
     }
 
     componentWillUnmount() {
