@@ -2,6 +2,8 @@
 
 ## vNEXT
 
+- `react-cookie`: Fix wrong typing on CookiesProvider
+
 ## v3.0.6
 
 - Fix the build (was missing important files)
