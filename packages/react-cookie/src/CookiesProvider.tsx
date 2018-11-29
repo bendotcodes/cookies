@@ -4,7 +4,10 @@ import { ReactCookieProps } from './types';
 
 import { Provider } from './CookiesContext';
 
-export default class CookiesProvider extends React.Component<ReactCookieProps, any> {
+export default class CookiesProvider extends React.Component<
+  ReactCookieProps,
+  any
+> {
   cookies: Cookies;
 
   constructor(props: ReactCookieProps) {
@@ -18,10 +21,6 @@ export default class CookiesProvider extends React.Component<ReactCookieProps, a
   }
 
   render() {
-    return (
-      <Provider value={this.cookies}>
-        {this.props.children}
-      </Provider>
-    );
+    return <Provider value={this.cookies}>{this.props.children}</Provider>;
   }
 }

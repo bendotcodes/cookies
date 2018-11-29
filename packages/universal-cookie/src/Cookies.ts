@@ -1,12 +1,12 @@
 import * as cookie from 'cookie';
 
 import { parseCookies, readCookie, hasDocumentCookie } from './utils';
-import { 
-  Cookie, 
-  CookieGetOptions, 
-  CookieSetOptions, 
-  CookieChangeListener, 
-  CookieChangeOptions 
+import {
+  Cookie,
+  CookieGetOptions,
+  CookieSetOptions,
+  CookieChangeListener,
+  CookieChangeOptions
 } from './types';
 
 // We can't please Rollup and TypeScript at the same time

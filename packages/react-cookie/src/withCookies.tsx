@@ -1,13 +1,21 @@
-import Cookies from 'universal-cookie';
+import Cookies, { Cookie } from 'universal-cookie';
 import * as React from 'react';
 
 import { Consumer } from './CookiesContext';
-import { ReactCookieProps } from './types';
 
 // Only way to make function modules work with both TypeScript and Rollup
 const hoistStatics = require('hoist-non-react-statics');
 
-export default function withCookies<T>(WrapperComponent: React.ComponentType<T & ReactCookieProps>): React.ComponentType<T> {
+type WrapperProps = {
+  cookies: Cookies;
+  allCookies: { [name: string]: Cookie };
+  children?: any;
+  ref?: React.RefObject<{}>;
+};
+
+export default function withCookies<T>(
+  WrapperComponent: React.ComponentType<T & WrapperProps>
+): React.ComponentType<T> {
   // @ts-ignore
   const name = WrapperComponent.displayName || WrapperComponent.name;
 
@@ -18,7 +26,7 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
     onChange = () => {
       // Make sure to update children with new values
       this.forceUpdate();
-    }
+    };
 
     listen() {
       this.props.cookies.addChangeListener(this.onChange);
@@ -68,5 +76,7 @@ export default function withCookies<T>(WrapperComponent: React.ComponentType<T &
     }
   );
 
-  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrapperComponent, { WrappedComponent: true });
+  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrapperComponent, {
+    WrappedComponent: true
+  });
 }

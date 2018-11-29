@@ -33,7 +33,7 @@
   "scripts": {
     "postinstall": "lerna bootstrap",
     "precommit": "npm run format && npm test",
-    "format": "prettier 'packages/**/*.js' --single-quote --write",
+    "format": "prettier 'packages/**/*.js' 'packages/**/*.ts' 'packages/**/*.tsx' --single-quote --write",
     "test": "npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
     "build": "lerna run build",
