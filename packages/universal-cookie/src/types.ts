@@ -11,12 +11,12 @@ export interface CookieSetOptions {
   domain?: string;
   secure?: boolean;
   httpOnly?: boolean;
-  sameSite?: boolean | "lax" | "strict";
+  sameSite?: boolean | 'lax' | 'strict';
 }
 export interface CookieChangeOptions {
   name: string;
-  value?: any,
-  options?: CookieSetOptions
+  value?: any;
+  options?: CookieSetOptions;
 }
 
 export type CookieChangeListener = (options: CookieChangeOptions) => void;
