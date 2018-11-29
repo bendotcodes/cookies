@@ -23,25 +23,26 @@ export default function withCookies<T>(
     static displayName = `withCookies(${name})`;
     static WrapperComponent = WrapperComponent;
 
-    cookies?: Cookies;
-
     onChange = () => {
       // Make sure to update children with new values
       this.forceUpdate();
     };
 
-    listen(cookies: Cookies) {
-      if (cookies !== this.cookies) {
-        this.unlisten();
-        this.cookies = cookies;
-        this.cookies.addChangeListener(this.onChange);
-      }
+    listen() {
+      this.props.cookies.addChangeListener(this.onChange);
     }
 
     unlisten() {
-      if (this.cookies) {
-        this.cookies.removeChangeListener(this.onChange);
-        this.cookies = undefined;
+      this.props.cookies.removeChangeListener(this.onChange);
+    }
+
+    componentDidMount() {
+      this.listen();
+    }
+
+    componentDidUpdate(prevProps: any) {
+      if (prevProps.cookies !== this.props.cookies) {
+        this.listen();
       }
     }
 
@@ -50,32 +51,32 @@ export default function withCookies<T>(
     }
 
     render() {
+      const { forwardedRef, cookies, ...restProps } = this.props;
+      const allCookies = cookies.getAll();
       return (
-        <Consumer>
-          {(cookies: Cookies) => {
-            this.listen(cookies);
-            const { forwardedRef, ...restProps } = this.props;
-
-            const allCookies = cookies.getAll();
-            return (
-              <WrapperComponent
-                {...restProps}
-                ref={forwardedRef}
-                cookies={cookies}
-                allCookies={allCookies}
-              />
-            );
-          }}
-        </Consumer>
+        <WrapperComponent
+          {...restProps}
+          ref={forwardedRef}
+          cookies={cookies}
+          allCookies={allCookies}
+        />
       );
     }
   }
 
-  const CookieWrapperWithRef = React.forwardRef((props, ref) => {
-    return <CookieWrapper {...props} forwardedRef={ref} />;
-  });
+  const CookieWrapperWithRefAndCookieConsumer = React.forwardRef(
+    (props, ref) => {
+      return (
+        <Consumer>
+          {(cookies: Cookies) => (
+            <CookieWrapper cookies={cookies} {...props} forwardedRef={ref} />
+          )}
+        </Consumer>
+      );
+    }
+  );
 
-  return hoistStatics(CookieWrapperWithRef, WrapperComponent, {
+  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrapperComponent, {
     WrappedComponent: true
   });
 }
