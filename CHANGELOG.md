@@ -2,6 +2,10 @@
 
 ## vNEXT
 
+## v3.0.6
+
+- Fix the build (was missing important files)
+
 ## v3.0.5
 
 - `universal-cookie`: Trim j: prefix so we can deserialize cookies serialized by express
