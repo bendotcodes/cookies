@@ -3,6 +3,7 @@
 ## vNEXT
 
 - `react-cookie`: Fix wrong typing on CookiesProvider
+- `react-cookie`: Fix memory leak on server-side rendering
 
 ## v3.0.6
 

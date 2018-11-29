@@ -32,8 +32,8 @@ export default function withCookies<T>(
       this.props.cookies.addChangeListener(this.onChange);
     }
 
-    unlisten() {
-      this.props.cookies.removeChangeListener(this.onChange);
+    unlisten(cookies?: Cookies) {
+      (cookies || this.props.cookies).removeChangeListener(this.onChange);
     }
 
     componentDidMount() {
@@ -42,6 +42,7 @@ export default function withCookies<T>(
 
     componentDidUpdate(prevProps: any) {
       if (prevProps.cookies !== this.props.cookies) {
+        this.unlisten(prevProps.cookies);
         this.listen();
       }
     }
