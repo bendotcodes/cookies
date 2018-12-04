@@ -2,6 +2,8 @@
 
 ## vNEXT
 
+- `react-cookie`: Revert breaking change on withCookies typing
+
 ## v3.0.7
 
 - `react-cookie`: Fix wrong typing on CookiesProvider
