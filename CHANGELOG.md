@@ -2,6 +2,8 @@
 
 ## vNEXT
 
+## v3.0.8
+
 - `react-cookie`: Revert breaking change on withCookies typing
 
 ## v3.0.7
