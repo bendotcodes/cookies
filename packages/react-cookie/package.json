@@ -40,13 +40,13 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-rc.1",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
     "rimraf": "^2.6.1",
     "rollup": "^0.64.1",
     "typescript": "^3.0.1"
   },
   "peerDependencies": {
-    "react": ">= 16.3.0"
+    "react": ">= 16.8.0"
   }
 }

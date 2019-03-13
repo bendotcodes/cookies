@@ -48,7 +48,9 @@ export default function withCookies<T>(
     render() {
       const { forwardedRef, cookies, ...restProps } = this.props;
       const allCookies = cookies.getAll();
+
       return (
+        // @ts-ignore
         <WrapperComponent
           {...restProps}
           ref={forwardedRef}
