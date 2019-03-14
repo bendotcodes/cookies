@@ -28,6 +28,8 @@ const useCookies = () => {
 
   React.useEffect(() => {
     listen();
+
+    return unlisten;
   }, []);
 
   React.useEffect(() => {
