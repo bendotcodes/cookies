@@ -50,7 +50,7 @@ export default function withCookies<T>(
       const allCookies = cookies.getAll();
       return (
         <WrapperComponent
-          {...restProps}
+          {...restProps as T}
           ref={forwardedRef}
           cookies={cookies}
           allCookies={allCookies}
