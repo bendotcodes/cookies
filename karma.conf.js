@@ -62,13 +62,6 @@ module.exports = config => {
         browserName: 'safari',
         platform: 'OS X 10.11',
         version: '10.0'
-      },
-      SL_Android_latest: {
-        base: 'SauceLabs',
-        browserName: 'android',
-        platform: 'Linux',
-        version: 'latest',
-        deviceName: 'Android Emulator'
       }
     };
 
