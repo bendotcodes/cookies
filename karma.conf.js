@@ -15,7 +15,11 @@ module.exports = config => {
       module: {
         rules: [
           { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
-          { test: /\.tsx?$/, exclude: /node_modules/, loader: 'awesome-typescript-loader' }
+          {
+            test: /\.tsx?$/,
+            exclude: /node_modules/,
+            loader: 'awesome-typescript-loader'
+          }
         ]
       },
       resolve: {
@@ -35,60 +39,35 @@ module.exports = config => {
 
   if (process.env.TRAVIS) {
     const customLaunchers = {
-      'SL_Chrome_latest': {
+      SL_Chrome_latest: {
         base: 'SauceLabs',
         browserName: 'chrome',
         version: 'latest',
         platform: 'Linux'
       },
-      'SL_Chrome_latest-1': {
-        base: 'SauceLabs',
-        browserName: 'chrome',
-        version: 'latest-1',
-        platform: 'Linux'
-      },
-      'SL_Firefox_latest': {
+      SL_Firefox_latest: {
         base: 'SauceLabs',
         browserName: 'firefox',
         version: 'latest',
         platform: 'Windows 10'
       },
-      'SL_Firefox_latest-1': {
-        base: 'SauceLabs',
-        browserName: 'firefox',
-        version: 'latest-1',
-        platform: 'Windows 10'
-      },
-      'SL_Edge_Latest': {
+      SL_Edge_Latest: {
         base: 'SauceLabs',
         browserName: 'microsoftedge',
         version: 'latest',
         platform: 'Windows 10'
       },
-      'SL_Edge_Latest-1': {
-        base: 'SauceLabs',
-        browserName: 'microsoftedge',
-        version: 'latest-1',
-        platform: 'Windows 10'
-      },
-      'SL_Safari_10': {
+      SL_Safari_10: {
         base: 'SauceLabs',
         browserName: 'safari',
         platform: 'OS X 10.11',
         version: '10.0'
       },
-      'SL_Android_latest': {
+      SL_Android_latest: {
         base: 'SauceLabs',
         browserName: 'android',
         platform: 'Linux',
         version: 'latest',
-        deviceName: 'Android Emulator'
-      },
-      'SL_Android_latest-1': {
-        base: 'SauceLabs',
-        browserName: 'android',
-        platform: 'Linux',
-        version: 'latest-1',
         deviceName: 'Android Emulator'
       }
     };
