@@ -44,12 +44,12 @@ Set the user cookies
 
 On the server, the `cookies` props must be set using `req.universalCookies` or `new Cookie(cookieHeader)`
 
-## `useCookies()`
+## `useCookies([dependencies])`
 
 Access and modify cookies using React hooks.
 
 ```jsx
-const [cookies, setCookie, removeCookie] = useCookies([dependencies]);
+const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 ```
 
 **React hooks are available starting from React 16.8**

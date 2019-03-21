@@ -1,6 +1,14 @@
 # CHANGELOG
 
-## vNEXT
+##vNEXT
+
+## v3.1.1
+
+- `react-cookie`: Fix documentation
+
+## v3.1.0
+
+- `react-cookie`: Add useCookies to support React hooks
 
 ## v3.0.8
 
