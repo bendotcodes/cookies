@@ -1,40 +1,21 @@
-import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
+import React from 'react';
+import { useCookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-class App extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
+function App() {
+  const [cookies, setCookie] = useCookies();
 
-  constructor(props) {
-    super(props);
-
-    const { cookies } = props;
-    this.state = {
-      name: cookies.get('name') || 'Ben'
-    };
+  function onChange(newName) {
+    setCookie('name', newName, { path: '/' });
   }
 
-  handleNameChange(name) {
-    const { cookies } = this.props;
-
-    cookies.set('name', name, { path: '/' });
-    this.setState({ name });
-  }
-
-  render() {
-    const { name } = this.state;
-
-    return (
-      <div>
-        <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
-        {this.state.name && <h1>Hello {this.state.name}!</h1>}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <NameForm name={cookies.name} onChange={onChange} />
+      {cookies.name && <h1>Hello {cookies.name}!</h1>}
+    </div>
+  );
 }
 
-export default withCookies(App);
+export default App;

@@ -12,15 +12,19 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
- - [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
- - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express) - Hook cookies get/set on Express for server-rendering
+
+- [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
+- [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express) - Hook cookies get/set on Express for server-rendering
 
 ## Minimum requirement
+
 ### react-cookie @ v3.0+
- - React.js >= 16.3.0 (new context API + forward ref)
+
+- React.js >= 16.3.0 (new context API + forward ref)
 
 ### react-cookie @ v0.0-v2.2
- - React.js >= 15
+
+- React.js >= 15
 
 ## Getting started
 
@@ -35,30 +39,82 @@ or in the browser (global variable `ReactCookie`):
 ```
 
 ## `<CookiesProvider />`
+
 Set the user cookies
 
 On the server, the `cookies` props must be set using `req.universalCookies` or `new Cookie(cookieHeader)`
 
+## `useCookies()`
+
+Access and modify cookies using React hooks.
+
+```jsx
+const [cookies, setCookie, removeCookie] = useCookies();
+```
+
+**React hooks are available starting from React 16.8**
+
+### `cookies`
+
+Javascript object with all your cookies. The key is the cookie name.
+
+### `setCookie(name, value, [options])`
+
+Set a cookie value
+
+- name (string): cookie name
+- value (string|object): save the value and stringify the object if needed
+- options (object): Support all the cookie options from RFC 6265
+  - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
+  - expires (Date): absolute expiration date for the cookie
+  - maxAge (number): relative max age of the cookie from when the client receives it in second
+  - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
+  - secure (boolean): Is only accessible through HTTPS?
+  - httpOnly (boolean): Is only the server can access the cookie?
+  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+
+### `removeCookie(name, [options])`
+
+Remove a cookie
+
+- name (string): cookie name
+- options (object): Support all the cookie options from RFC 6265
+  - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
+  - expires (Date): absolute expiration date for the cookie
+  - maxAge (number): relative max age of the cookie from when the client receives it in second
+  - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
+  - secure (boolean): Is only accessible through HTTPS?
+  - httpOnly (boolean): Is only the server can access the cookie?
+  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+
 ## `withCookies(Component)`
+
 Give access to your cookies anywhere. Add the following props to your component:
- - cookies: Cookies instance allowing you to get, set and remove cookies.
- - allCookies: All your current cookies in an object.
+
+- cookies: Cookies instance allowing you to get, set and remove cookies.
+- allCookies: All your current cookies in an object.
 
 ## Cookies
 
 ### `get(name, [options])`
+
 Get a cookie value
- - name (string): cookie name
- - options (object):
-   - doNotParse (boolean): do not convert the cookie into an object no matter what
+
+- name (string): cookie name
+- options (object):
+  - doNotParse (boolean): do not convert the cookie into an object no matter what
 
 ### `getAll([options])`
+
 Get all cookies
- - options (object):
-   - doNotParse (boolean): do not convert the cookie into an object no matter what
+
+- options (object):
+  - doNotParse (boolean): do not convert the cookie into an object no matter what
 
 ### `set(name, value, [options])`
+
 Set a cookie value
+
 - name (string): cookie name
 - value (string|object): save the value and stringify the object if needed
 - options (object): Support all the cookie options from RFC 6265
@@ -71,7 +127,9 @@ Set a cookie value
   - sameSite (boolean|lax|strict): Strict or Lax enforcement
 
 ### `remove(name, [options])`
+
 Remove a cookie
+
 - name (string): cookie name
 - options (object): Support all the cookie options from RFC 6265
   - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
@@ -82,7 +140,50 @@ Remove a cookie
   - httpOnly (boolean): Is only the server can access the cookie?
   - sameSite (boolean|lax|strict): Strict or Lax enforcement
 
-## Simple Example
+## Simple Example with React hooks
+
+```js
+// Root.jsx
+import React from 'react';
+import App from './App';
+import { CookiesProvider } from 'react-cookie';
+
+export default function Root() {
+  return (
+    <CookiesProvider>
+      <App />
+    </CookiesProvider>
+  );
+}
+```
+
+```js
+// App.jsx
+import React from 'react';
+import { useCookies } from 'react-cookie';
+
+import NameForm from './NameForm';
+
+function App() {
+  const [cookies, setCookie] = useCookies();
+
+  function onChange(newName) {
+    setCookie('name', newName, { path: '/' });
+  }
+
+  return (
+    <div>
+      <NameForm name={cookies.name} onChange={onChange} />
+      {cookies.name && <h1>Hello {cookies.name}!</h1>}
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Simple Example with Higher-Order Component
+
 ```js
 // Root.jsx
 import React from 'react';
@@ -143,48 +244,30 @@ export default withCookies(App);
 ```
 
 ## Server-Rendering Example
+
 ```js
 // src/components/App.js
-import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
+import React from 'react';
+import { useCookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-class App extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
-  };
+function App() {
+  const [cookies, setCookie] = useCookies();
 
-  constructor(props) {
-    super(props);
-
-    const { cookies } = props;
-    this.state = {
-      name: cookies.get('name') || 'Ben'
-    };
+  function onChange(newName) {
+    setCookie('name', newName, { path: '/' });
   }
 
-  handleNameChange(name) {
-    const { cookies } = this.props;
-
-    cookies.set('name', name, { path: '/' });
-    this.setState({ name });
-  }
-
-  render() {
-    const { name } = this.state;
-
-    return (
-      <div>
-        <NameForm name={name} onChange={this.handleNameChange.bind(this)} />
-        {this.state.name && <h1>Hello {this.state.name}!</h1>}
-      </div>
-    );
-  }
+  return (
+    <div>
+      <NameForm name={cookies.name} onChange={onChange} />
+      {cookies.name && <h1>Hello {cookies.name}!</h1>}
+    </div>
+  );
 }
 
-export default withCookies(App);
+export default App;
 ```
 
 ```js

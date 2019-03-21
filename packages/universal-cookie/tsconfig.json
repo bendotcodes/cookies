@@ -2,11 +2,10 @@
   "compilerOptions": {
     "target": "es5",
     "module": "es6",
+    "moduleResolution": "node",
     "declaration": true,
     "outDir": "./es6",
     "strict": true
   },
-  "files": [
-    "./src/index.ts"
-  ]
+  "files": ["./src/index.ts"]
 }

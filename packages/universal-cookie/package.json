@@ -39,8 +39,9 @@
     "object-assign": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-rc.1",
+    "@babel/cli": "^7.0.0",
     "rimraf": "^2.6.1",
-    "rollup": "^0.64.1"
+    "rollup": "^0.64.1",
+    "typescript": "^3.0.1"
   }
 }
