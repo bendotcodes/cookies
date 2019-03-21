@@ -38,7 +38,12 @@
     "format": "prettier 'packages/**/*.js' 'packages/**/*.ts' 'packages/**/*.tsx' --single-quote --write",
     "test": "npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
-    "build": "yarn workspaces run build",
+    "build": "npm run build-universal && npm run build-react && npm run build-express && npm run build-koa && npm run build-demo",
+    "build-universal": "cd packages/universal-cookie && npm run build",
+    "build-react": "cd packages/react-cookie && npm run build",
+    "build-express": "cd packages/universal-cookie-express && npm run build",
+    "build-koa": "cd packages/universal-cookie-koa && npm run build",
+    "build-demo": "cd packages/react-cookie-demo && npm run build",
     "size": "size-limit"
   },
   "size-limit": [
