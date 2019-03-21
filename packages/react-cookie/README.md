@@ -49,10 +49,14 @@ On the server, the `cookies` props must be set using `req.universalCookies` or `
 Access and modify cookies using React hooks.
 
 ```jsx
-const [cookies, setCookie, removeCookie] = useCookies();
+const [cookies, setCookie, removeCookie] = useCookies([dependencies]);
 ```
 
 **React hooks are available starting from React 16.8**
+
+### `dependencies` (optional)
+
+Let you optionally specify a list of cookie names your component depend on or that should trigger a re-render. If unspecified, it will render on every cookie change.
 
 ### `cookies`
 
@@ -165,7 +169,7 @@ import { useCookies } from 'react-cookie';
 import NameForm from './NameForm';
 
 function App() {
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie] = useCookies(['name']);
 
   function onChange(newName) {
     setCookie('name', newName, { path: '/' });
@@ -253,7 +257,7 @@ import { useCookies } from 'react-cookie';
 import NameForm from './NameForm';
 
 function App() {
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie] = useCookies(['name']);
 
   function onChange(newName) {
     setCookie('name', newName, { path: '/' });

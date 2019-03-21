@@ -4,10 +4,9 @@ import { act } from 'react-dom/test-utils';
 import ReactDOMServer from 'react-dom/server';
 import { CookiesProvider, withCookies, useCookies, Cookies } from '../';
 import { cleanCookies } from 'universal-cookie/lib/utils';
-import { doesNotReject } from 'assert';
 
-function TestComponent() {
-  const [cookies] = useCookies();
+function TestComponent({ dependencies }) {
+  const [cookies] = useCookies(dependencies);
   return <div>{cookies.test}</div>;
 }
 
@@ -32,7 +31,7 @@ describe('useCookies', () => {
       expect(node.innerHTML).toContain('big fat cat');
     });
 
-    xit('update when a cookie change', () => {
+    it('update when a cookie change', () => {
       const cookies = new Cookies();
       const node = document.createElement('div');
 
@@ -42,18 +41,92 @@ describe('useCookies', () => {
         </CookiesProvider>
       );
 
-      cookies.set('test', 'big fat cat Pacman');
-      ReactDOM.render(toRender, node);
+      act(() => {
+        cookies.set('test', 'big fat cat Pacman');
+        ReactDOM.render(toRender, node);
+      });
+
       expect(node.innerHTML).toContain('big fat cat Pacman');
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
+        ReactDOM.render(toRender, node);
       });
 
       expect(node.innerHTML).toContain('mean lean cat Suki');
-    }).pend(
-      'Figure out how to trigger the React hook effect again in the test'
-    );
+    });
+
+    it('clear the change subscription on unmount', () => {
+      const cookies = new Cookies();
+      const node = document.createElement('div');
+
+      act(() => {
+        ReactDOM.render(
+          <CookiesProvider cookies={cookies}>
+            <TestComponent />
+          </CookiesProvider>,
+          node
+        );
+      });
+
+      expect(cookies.changeListeners.length).toBe(1);
+
+      act(() => {
+        ReactDOM.render(null, node);
+      });
+
+      expect(cookies.changeListeners.length).toBe(0);
+    });
+
+    it('re-render if a dependency changes', () => {
+      const cookies = new Cookies();
+      const node = document.createElement('div');
+
+      const toRender = (
+        <CookiesProvider cookies={cookies}>
+          <TestComponent dependencies={['test']} />
+        </CookiesProvider>
+      );
+
+      act(() => {
+        cookies.set('test', 'big fat cat Pacman');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('big fat cat Pacman');
+
+      act(() => {
+        cookies.set('test', 'mean lean cat Suki');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('mean lean cat Suki');
+    });
+
+    it('does not re-render if no dependency changes', () => {
+      const cookies = new Cookies();
+      const node = document.createElement('div');
+
+      const toRender = (
+        <CookiesProvider cookies={cookies}>
+          <TestComponent dependencies={[]} />
+        </CookiesProvider>
+      );
+
+      act(() => {
+        cookies.set('test', 'big fat cat Pacman');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('big fat cat Pacman');
+
+      act(() => {
+        cookies.set('test', 'mean lean cat Suki');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('big fat cat Pacman');
+    });
   });
 
   describe('on the server', () => {

@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import NameForm from './NameForm';
 
 function App() {
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie] = useCookies(['name']);
 
   function onChange(newName) {
     setCookie('name', newName, { path: '/' });

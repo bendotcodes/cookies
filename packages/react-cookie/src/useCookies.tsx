@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
-export default function useCookies(): [
-  { [name: string]: string },
+export default function useCookies(
+  dependencies?: string[]
+): [
+  { [name: string]: any },
   (name: string, value: Cookie, options?: CookieSetOptions) => void,
   (name: string, options?: CookieSetOptions) => void
 ] {
@@ -18,7 +20,11 @@ export default function useCookies(): [
   useEffect(
     () => {
       function onChange() {
-        setCookies(cookies!.getAll());
+        const newCookies = cookies.getAll();
+
+        if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
+          setCookies(cookies.getAll());
+        }
       }
 
       cookies.addChangeListener(onChange);
@@ -31,4 +37,22 @@ export default function useCookies(): [
   );
 
   return [allCookies, cookies.set.bind(cookies), cookies.remove.bind(cookies)];
+}
+
+function shouldUpdate(
+  dependencies: string[] | null,
+  newCookies: { [name: string]: any },
+  oldCookies: { [name: string]: any }
+) {
+  if (!dependencies) {
+    return true;
+  }
+
+  for (let dependency of dependencies) {
+    if (newCookies[dependency] !== oldCookies[dependency]) {
+      return true;
+    }
+  }
+
+  return false;
 }
