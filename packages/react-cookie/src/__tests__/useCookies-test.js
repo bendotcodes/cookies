@@ -103,6 +103,38 @@ describe('useCookies', () => {
       expect(node.innerHTML).toContain('mean lean cat Suki');
     });
 
+    it('re-render if a dependency changes multiple times', () => {
+      const cookies = new Cookies();
+      const node = document.createElement('div');
+
+      const toRender = (
+        <CookiesProvider cookies={cookies}>
+          <TestComponent dependencies={['test']} />
+        </CookiesProvider>
+      );
+
+      act(() => {
+        cookies.set('test', 'big fat cat Pacman');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('big fat cat Pacman');
+
+      act(() => {
+        cookies.set('test', 'mean lean cat Suki');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('mean lean cat Suki');
+
+      act(() => {
+        cookies.set('test', 'good old Yuki');
+        ReactDOM.render(toRender, node);
+      });
+
+      expect(node.innerHTML).toContain('good old Yuki');
+    });
+
     it('does not re-render if no dependency changes', () => {
       const cookies = new Cookies();
       const node = document.createElement('div');
