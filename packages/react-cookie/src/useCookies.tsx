@@ -2,6 +2,8 @@ import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
+type Cookies = {[name: string]: Cookie};
+
 export default function useCookies(
   dependencies?: string[]
 ): [
@@ -15,31 +17,20 @@ export default function useCookies(
   }
 
   const initialCookies = cookies.getAll();
-  const [allCookies, setCookies] = useState(initialCookies);
+  const [allCookies, setCookies] = useState<Cookies>(initialCookies);
+
+  //ref is necessary, because it can be mutated, which makes it's latest "current" value always accessible to
+  //onChange function below even if useEffect called only after first render
+  const compareAndSetRef = useRef<(newCookies: Cookies) => void>(() => {});
 
   //we create new callback each time allCookies changes to avoid closure remembering old allCookies value
-  const compareAndSetCbDeps = [cookies, allCookies];
-  const compareAndSet = useCallback(
-    (newCookies) => {
+  compareAndSetRef.current = useCallback(
+    (newCookies: Cookies) => {
       if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
         setCookies(cookies.getAll());
       }
     },
-    compareAndSetCbDeps
-  );
-
-  //ref is necessary, because it can be mutated, which makes it's "current" value accessible to onChange function below
-  const compareAndSetRef = useRef(compareAndSet);
-
-  //setting new "current" value to ref, so onChange function below will always get latest compareAndSet callback
-  useEffect(
-    () => {
-      compareAndSetRef.current = compareAndSet;
-    },
-    //it's important for useCallback above and this useEffect to share same dependencies,
-    //because otherwise ref may not be updated and onChange function may read old "current"
-    //value with callback's scope closed over old allCookies
-    compareAndSetCbDeps
+    [cookies, allCookies]
   );
 
   useEffect(
@@ -64,8 +55,8 @@ export default function useCookies(
 
 function shouldUpdate(
   dependencies: string[] | null,
-  newCookies: { [name: string]: any },
-  oldCookies: { [name: string]: any }
+  newCookies: Cookies,
+  oldCookies: Cookies
 ) {
   if (!dependencies) {
     return true;
