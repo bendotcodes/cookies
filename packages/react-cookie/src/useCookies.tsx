@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState, useRef } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
@@ -16,15 +16,24 @@ export default function useCookies(
 
   const initialCookies = cookies.getAll();
   const [allCookies, setCookies] = useState(initialCookies);
+  const previousCookiesRef = useRef(allCookies);
 
   useEffect(
     () => {
       function onChange() {
         const newCookies = cookies.getAll();
 
-        if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
+        if (
+          shouldUpdate(
+            dependencies || null,
+            newCookies,
+            previousCookiesRef.current
+          )
+        ) {
           setCookies(cookies.getAll());
         }
+
+        previousCookiesRef.current = newCookies;
       }
 
       cookies.addChangeListener(onChange);
