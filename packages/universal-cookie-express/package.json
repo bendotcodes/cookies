@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-express",
-  "version": "3.1.0",
+  "version": "3.1.2",
   "description": "Hook cookies get/set on Express for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
