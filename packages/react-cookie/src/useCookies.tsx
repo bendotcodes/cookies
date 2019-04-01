@@ -30,7 +30,7 @@ export default function useCookies(
             previousCookiesRef.current
           )
         ) {
-          setCookies(cookies.getAll());
+          setCookies(newCookies);
         }
 
         previousCookiesRef.current = newCookies;
