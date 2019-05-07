@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef } from 'react';
+import { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
@@ -45,7 +45,10 @@ export default function useCookies(
     [cookies]
   );
 
-  return [allCookies, cookies.set.bind(cookies), cookies.remove.bind(cookies)];
+  const setCookie = useMemo(() => cookies.set.bind(cookies), [cookies]);
+  const removeCookie = useMemo(() => cookies.remove.bind(cookies), [cookies]);
+
+  return [allCookies, setCookie, removeCookie];
 }
 
 function shouldUpdate(
