@@ -18,7 +18,6 @@ export default class Cookies {
   private changeListeners: CookieChangeListener[] = [];
 
   private HAS_DOCUMENT_COOKIE: boolean;
-  public TESTING_ONETWO = 2;
 
   constructor(cookies?: string | object | null) {
     this.cookies = parseCookies(cookies);
