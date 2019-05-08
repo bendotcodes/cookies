@@ -2,6 +2,12 @@
 
 ##vNEXT
 
+## v4.0.0
+
+- `universal-cookie`: Remove useless testing variable
+- `react-cookie`: Memoize setCookie/removeCookie so that it doesn't change unnecessarily
+- `react-cookie`: Go back to withCookies orignial type
+
 ## v3.1.1
 
 - `react-cookie`: Fix documentation
