@@ -9,7 +9,8 @@
     "cjs",
     "umd",
     "lib",
-    "index.d.ts"
+    "index.d.ts",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",

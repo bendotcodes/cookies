@@ -3,6 +3,7 @@
 ##vNEXT
 
 - Upgrade dependencies to last versions
+- Publish MIT license to NPM with the code (#224)
 
 ## v4.0.0
 
