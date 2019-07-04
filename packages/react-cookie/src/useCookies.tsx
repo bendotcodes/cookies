@@ -18,32 +18,29 @@ export default function useCookies(
   const [allCookies, setCookies] = useState(initialCookies);
   const previousCookiesRef = useRef(allCookies);
 
-  useEffect(
-    () => {
-      function onChange() {
-        const newCookies = cookies.getAll();
+  useEffect(() => {
+    function onChange() {
+      const newCookies = cookies.getAll();
 
-        if (
-          shouldUpdate(
-            dependencies || null,
-            newCookies,
-            previousCookiesRef.current
-          )
-        ) {
-          setCookies(newCookies);
-        }
-
-        previousCookiesRef.current = newCookies;
+      if (
+        shouldUpdate(
+          dependencies || null,
+          newCookies,
+          previousCookiesRef.current
+        )
+      ) {
+        setCookies(newCookies);
       }
 
-      cookies.addChangeListener(onChange);
+      previousCookiesRef.current = newCookies;
+    }
 
-      return () => {
-        cookies.removeChangeListener(onChange);
-      };
-    },
-    [cookies]
-  );
+    cookies.addChangeListener(onChange);
+
+    return () => {
+      cookies.removeChangeListener(onChange);
+    };
+  }, [cookies]);
 
   const setCookie = useMemo(() => cookies.set.bind(cookies), [cookies]);
   const removeCookie = useMemo(() => cookies.remove.bind(cookies), [cookies]);

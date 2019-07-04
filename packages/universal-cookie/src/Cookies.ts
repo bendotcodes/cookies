@@ -38,11 +38,15 @@ export default class Cookies {
     }
   }
 
+  public get(name: string, options?: CookieGetOptions): any;
+  public get<T>(name: string, options?: CookieGetOptions): T;
   public get(name: string, options: CookieGetOptions = {}) {
     this._updateBrowserValues();
     return readCookie(this.cookies[name], options);
   }
 
+  public getAll(options?: CookieGetOptions): any;
+  public getAll<T>(options?: CookieGetOptions): T;
   public getAll(options: CookieGetOptions = {}) {
     this._updateBrowserValues();
     const result: { [name: string]: any } = {};

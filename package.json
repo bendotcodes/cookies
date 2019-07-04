@@ -34,7 +34,7 @@
     "webpack": "^4.16.5"
   },
   "scripts": {
-    "format": "prettier 'packages/**/*.js' 'packages/**/*.ts' 'packages/**/*.tsx' --single-quote --write",
+    "format": "prettier packages/**/*.js packages/**/*.ts packages/**/*.tsx --single-quote --write",
     "test": "npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
     "build": "npm run build-universal && npm run build-react && npm run build-express && npm run build-koa && npm run build-demo",

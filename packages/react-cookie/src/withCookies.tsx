@@ -53,7 +53,7 @@ export default function withCookies<T extends ReactCookieProps>(
       const allCookies = cookies.getAll();
       return (
         <WrapperComponent
-          {...restProps as T}
+          {...(restProps as T)}
           ref={forwardedRef}
           cookies={cookies}
           allCookies={allCookies}
