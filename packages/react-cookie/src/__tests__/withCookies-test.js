@@ -121,6 +121,11 @@ describe('withCookies(Component)', () => {
 
       expect(ref.current.testValue).toBe('Suki is pretty');
     });
+
+    it('provide the WrappedComponent', () => {
+      const Component = withCookies(TestComponent);
+      expect(Component.WrappedComponent).toBe(TestComponent);
+    });
   });
 
   describe('on the server', () => {

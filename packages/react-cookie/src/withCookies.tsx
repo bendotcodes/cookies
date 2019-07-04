@@ -11,14 +11,13 @@ type Diff<T, U> = T extends U ? never : T;
 type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
 
 export default function withCookies<T extends ReactCookieProps>(
-  WrapperComponent: React.ComponentType<T>
+  WrappedComponent: React.ComponentType<T>
 ): React.ComponentType<Omit<T, keyof ReactCookieProps>> {
   // @ts-ignore
-  const name = WrapperComponent.displayName || WrapperComponent.name;
+  const name = WrappedComponent.displayName || WrappedComponent.name;
 
   class CookieWrapper extends React.Component<any, any> {
     static displayName = `withCookies(${name})`;
-    static WrapperComponent = WrapperComponent;
 
     onChange = () => {
       // Make sure to update children with new values
@@ -52,7 +51,7 @@ export default function withCookies<T extends ReactCookieProps>(
       const { forwardedRef, cookies, ...restProps } = this.props;
       const allCookies = cookies.getAll();
       return (
-        <WrapperComponent
+        <WrappedComponent
           {...(restProps as T)}
           ref={forwardedRef}
           cookies={cookies}
@@ -62,7 +61,7 @@ export default function withCookies<T extends ReactCookieProps>(
     }
   }
 
-  const CookieWrapperWithRefAndCookieConsumer = React.forwardRef(
+  const CookieWrapperWithRefAndCookieConsumer: any = React.forwardRef(
     (props, ref) => {
       return (
         <Consumer>
@@ -74,7 +73,7 @@ export default function withCookies<T extends ReactCookieProps>(
     }
   );
 
-  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrapperComponent, {
-    WrappedComponent: true
-  });
+  CookieWrapperWithRefAndCookieConsumer.WrappedComponent = WrappedComponent;
+
+  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrappedComponent);
 }

@@ -33,9 +33,18 @@
 or in the browser (global variable `ReactCookie`):
 
 ```html
-<script crossorigin src="https://unpkg.com/react@16/umd/react.production.js"></script>
-<script crossorigin src="https://unpkg.com/universal-cookie@3/umd/universalCookie.min.js"></script>
-<script crossorigin src="https://unpkg.com/react-cookie@3/umd/reactCookie.min.js"></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react@16/umd/react.production.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/universal-cookie@3/umd/universalCookie.min.js"
+></script>
+<script
+  crossorigin
+  src="https://unpkg.com/react-cookie@3/umd/reactCookie.min.js"
+></script>
 ```
 
 ## `<CookiesProvider />`
@@ -97,6 +106,16 @@ Give access to your cookies anywhere. Add the following props to your component:
 
 - cookies: Cookies instance allowing you to get, set and remove cookies.
 - allCookies: All your current cookies in an object.
+
+Your original static properties will be hoisted on the returned component. You can also access the original component by using the `WrappedComponent` static property. Example:
+
+```jsx
+function MyComponent() {
+  return null;
+}
+const NewComponent = withRouter(MyComponent);
+NewComponent.WrappedComponent === MyComponent;
+```
 
 ## Cookies
 

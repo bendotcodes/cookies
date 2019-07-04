@@ -5,6 +5,7 @@
 - Upgrade dependencies to last versions
 - Publish MIT license to NPM with the code (#224)
 - `universal-cookie`: Add support for generic type with reading cookies (#222)
+- `react-cookie`: Add `WrappedComponent` static property when using `withRouter` (#225)
 
 ## v4.0.0
 
