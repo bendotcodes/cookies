@@ -126,6 +126,19 @@ describe('withCookies(Component)', () => {
       const Component = withCookies(TestComponent);
       expect(Component.WrappedComponent).toBe(TestComponent);
     });
+
+    it('format withCookies() with display name first', () => {
+      const MyNameComponent = () => null;
+      MyNameComponent.displayName = 'MyDisplayName';
+      const Component = withCookies(MyNameComponent);
+      expect(Component.displayName).toBe('withCookies(MyDisplayName)');
+    });
+
+    it('format withCookies() with name as fallback', () => {
+      const MyNameComponent = () => null;
+      const Component = withCookies(MyNameComponent);
+      expect(Component.displayName).toBe('withCookies(MyNameComponent)');
+    });
   });
 
   describe('on the server', () => {

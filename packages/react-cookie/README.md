@@ -113,7 +113,7 @@ Your original static properties will be hoisted on the returned component. You c
 function MyComponent() {
   return null;
 }
-const NewComponent = withRouter(MyComponent);
+const NewComponent = withCookies(MyComponent);
 NewComponent.WrappedComponent === MyComponent;
 ```
 

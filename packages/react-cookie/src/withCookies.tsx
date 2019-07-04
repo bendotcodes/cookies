@@ -18,6 +18,7 @@ export default function withCookies<T extends ReactCookieProps>(
 
   class CookieWrapper extends React.Component<any, any> {
     static displayName = `withCookies(${name})`;
+    static WrappedComponent = WrappedComponent;
 
     onChange = () => {
       // Make sure to update children with new values
@@ -61,19 +62,18 @@ export default function withCookies<T extends ReactCookieProps>(
     }
   }
 
-  const CookieWrapperWithRefAndCookieConsumer: any = React.forwardRef(
-    (props, ref) => {
-      return (
-        <Consumer>
-          {(cookies: Cookies) => (
-            <CookieWrapper cookies={cookies} {...props} forwardedRef={ref} />
-          )}
-        </Consumer>
-      );
-    }
-  );
+  const ForwardedComponent: any = React.forwardRef((props: any, ref: any) => {
+    return (
+      <Consumer>
+        {(cookies: Cookies) => (
+          <CookieWrapper cookies={cookies} {...props} forwardedRef={ref} />
+        )}
+      </Consumer>
+    );
+  });
 
-  CookieWrapperWithRefAndCookieConsumer.WrappedComponent = WrappedComponent;
+  ForwardedComponent.displayName = CookieWrapper.displayName;
+  ForwardedComponent.WrappedComponent = CookieWrapper.WrappedComponent;
 
-  return hoistStatics(CookieWrapperWithRefAndCookieConsumer, WrappedComponent);
+  return hoistStatics(ForwardedComponent, WrappedComponent);
 }
