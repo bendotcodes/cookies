@@ -2,6 +2,8 @@
 
 ##vNEXT
 
+- Upgrade dependencies to last versions
+
 ## v4.0.0
 
 - `universal-cookie`: Remove useless testing variable

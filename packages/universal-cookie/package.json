@@ -33,15 +33,15 @@
     "build-legacy": "babel es6 -D -d lib"
   },
   "dependencies": {
-    "@types/cookie": "^0.3.1",
+    "@types/cookie": "^0.3.3",
     "@types/object-assign": "^4.0.30",
-    "cookie": "^0.3.1",
-    "object-assign": "^4.1.0"
+    "cookie": "^0.4.0",
+    "object-assign": "^4.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "rimraf": "^2.6.1",
-    "rollup": "^0.64.1",
+    "rollup": "^1.16.4",
     "typescript": "^3.0.1"
   }
 }

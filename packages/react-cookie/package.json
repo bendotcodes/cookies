@@ -43,7 +43,7 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "rimraf": "^2.6.1",
-    "rollup": "^0.64.1",
+    "rollup": "^1.16.4",
     "typescript": "^3.0.1"
   },
   "peerDependencies": {

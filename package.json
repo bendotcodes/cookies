@@ -12,29 +12,28 @@
     "awesome-typescript-loader": "^5.2.0",
     "babel-loader": "^8.0.0",
     "babel-plugin-add-module-exports": "^1.0.0",
-    "husky": "^0.14.3",
+    "husky": "^3.0.0",
     "jasmine-core": "^3.2.0",
-    "karma": "^3.0.0",
+    "karma": "^4.1.0",
     "karma-chrome-launcher": "^2.0.0",
-    "karma-jasmine": "^1.1.2",
+    "karma-jasmine": "^2.0.1",
     "karma-jasmine-html-reporter": "^1.3.0",
-    "karma-sauce-launcher": "^1.1.0",
+    "karma-sauce-launcher": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "^0.0.32",
-    "karma-webpack": "^3.0.0",
+    "karma-webpack": "^4.0.2",
     "prettier": "^1.14.2",
     "rimraf": "^2.6.1",
-    "rollup": "^0.64.1",
-    "rollup-plugin-commonjs": "^9.1.5",
-    "rollup-plugin-node-resolve": "^3.3.0",
+    "rollup": "^1.16.4",
+    "rollup-plugin-commonjs": "^10.0.1",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-uglify": "^4.0.0",
-    "size-limit": "^0.19.2",
+    "rollup-plugin-uglify": "^6.0.2",
+    "size-limit": "^1.3.7",
     "typescript": "^3.0.1",
     "webpack": "^4.16.5"
   },
   "scripts": {
-    "precommit": "npm run format && npm test",
     "format": "prettier 'packages/**/*.js' 'packages/**/*.ts' 'packages/**/*.tsx' --single-quote --write",
     "test": "npm run build && npm run size && karma start --single-run",
     "watch": "karma start",
@@ -45,6 +44,11 @@
     "build-koa": "cd packages/universal-cookie-koa && npm run build",
     "build-demo": "cd packages/react-cookie-demo && npm run build",
     "size": "size-limit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run format && npm test"
+    }
   },
   "size-limit": [
     {
