@@ -17,11 +17,14 @@ export default class Cookies {
   private cookies: { [name: string]: Cookie };
   private changeListeners: CookieChangeListener[] = [];
 
-  private HAS_DOCUMENT_COOKIE: boolean;
+  private HAS_DOCUMENT_COOKIE: boolean = false;
 
   constructor(cookies?: string | object | null) {
     this.cookies = parseCookies(cookies);
-    this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
+
+    new Promise(() => {
+      this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
+    }).catch(() => {});
   }
 
   private _updateBrowserValues() {

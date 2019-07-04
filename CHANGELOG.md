@@ -5,6 +5,7 @@
 - Upgrade dependencies to last versions
 - Publish MIT license to NPM with the code (#224)
 - `universal-cookie`: Add support for generic type with reading cookies (#222)
+- `universal-cookie`: Disable accessing browser cookies on JSDOM (#227)
 - `react-cookie`: Add `WrappedComponent` static property when using `withCookies` (#225)
 - `react-cookie`: Fix display name to include the original component name
 
