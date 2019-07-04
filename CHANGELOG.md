@@ -2,6 +2,8 @@
 
 ##vNEXT
 
+##v4.0.1
+
 - Upgrade dependencies to last versions
 - Publish MIT license to NPM with the code (#224)
 - `universal-cookie`: Add support for generic type with reading cookies (#222)
