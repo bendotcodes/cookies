@@ -2,6 +2,7 @@
 
 ##vNEXT
 
+- `universal-cookie`: Add support for explicit `None` value on `sameSite` attribute
 ##v4.0.1
 
 - Upgrade dependencies to last versions

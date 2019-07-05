@@ -84,7 +84,7 @@ Set a cookie value
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
-  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+  - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `removeCookie(name, [options])`
 
@@ -98,7 +98,7 @@ Remove a cookie
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
-  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+  - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ## `withCookies(Component)`
 
@@ -147,7 +147,7 @@ Set a cookie value
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
-  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+  - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `remove(name, [options])`
 
@@ -161,7 +161,7 @@ Remove a cookie
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
-  - sameSite (boolean|lax|strict): Strict or Lax enforcement
+  - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ## Simple Example with React hooks
 
