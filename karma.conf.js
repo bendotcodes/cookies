@@ -66,7 +66,9 @@ module.exports = config => {
     };
 
     config.saceLabs = {
-      testName: 'Cookies Unit Tests'
+      testName: 'Cookies Unit Tests',
+      startConnect: false,
+      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
     };
     config.singleRun = true;
     config.customLaunchers = customLaunchers;
