@@ -4,10 +4,7 @@ import { uglify } from 'rollup-plugin-uglify';
 
 const basePlugins = [
   resolve({
-    module: true,
-    jsnext: true,
-    main: true,
-    browser: true
+    mainFields: ['module', 'jsnext:main', 'main', 'browser']
   }),
   commonjs()
 ];
