@@ -67,9 +67,7 @@ module.exports = config => {
 
     config.sauceLabs = {
       testName: 'Cookies Unit Tests',
-      startConnect: false,
-      build: process.env.TRAVIS_BUILD_NUMBER,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER
+      build: process.env.TRAVIS_BUILD_NUMBER
     };
     config.singleRun = true;
     config.customLaunchers = customLaunchers;
