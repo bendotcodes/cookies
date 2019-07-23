@@ -52,7 +52,6 @@ Set a cookie value
   - maxAge (number): relative max age of the cookie from when the client receives it in second
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Is only the server can access the cookie?
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `remove(name, [options])`
@@ -64,7 +63,6 @@ Remove a cookie
   - maxAge (number): relative max age of the cookie from when the client receives it in second
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Is only the server can access the cookie?
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `addChangeListener(callback)`
