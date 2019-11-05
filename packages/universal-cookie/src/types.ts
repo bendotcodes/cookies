@@ -12,6 +12,7 @@ export interface CookieSetOptions {
   secure?: boolean;
   httpOnly?: boolean;
   sameSite?: boolean | 'none' | 'lax' | 'strict';
+  encode?: (value: string) => string;
 }
 export interface CookieChangeOptions {
   name: string;
