@@ -49,7 +49,7 @@ Set a cookie value
 - options (object): Support all the cookie options from RFC 6265
   - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
   - expires (Date): absolute expiration date for the cookie
-  - maxAge (number): relative max age of the cookie from when the client receives it in second
+  - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
@@ -61,7 +61,7 @@ Remove a cookie
 - options (object): Support all the cookie options from RFC 6265
   - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
   - expires (Date): absolute expiration date for the cookie
-  - maxAge (number): relative max age of the cookie from when the client receives it in second
+  - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie?
