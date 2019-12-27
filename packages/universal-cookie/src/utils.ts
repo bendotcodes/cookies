@@ -1,5 +1,5 @@
 import * as cookie from 'cookie';
-import { Cookie, CookieGetOptions } from './types';
+import { Cookie, CookieGetOptions, CookieParseOptions } from './types';
 
 export function hasDocumentCookie() {
   // JSDOM does not support changing cookies, disable it for tests
@@ -33,9 +33,12 @@ export function cleanCookies() {
   });
 }
 
-export function parseCookies(cookies?: string | object | null) {
+export function parseCookies(
+  cookies?: string | object | null,
+  options?: CookieParseOptions
+) {
   if (typeof cookies === 'string') {
-    return cookie.parse(cookies);
+    return cookie.parse(cookies, options);
   } else if (typeof cookies === 'object' && cookies !== null) {
     return cookies;
   } else {
