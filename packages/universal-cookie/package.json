@@ -4,6 +4,7 @@
   "description": "Universal cookies for JavaScript",
   "main": "cjs/index.js",
   "module": "es6/index.js",
+  "sideEffects": false,
   "files": [
     "lib",
     "es6",

@@ -4,6 +4,7 @@
   "description": "Hook cookies get/set on Express for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
+  "sideEffects": false,
   "files": [
     "lib",
     "es6",
