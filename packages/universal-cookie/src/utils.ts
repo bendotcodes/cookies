@@ -2,27 +2,8 @@ import * as cookie from 'cookie';
 import { Cookie, CookieGetOptions, CookieParseOptions } from './types';
 
 export function hasDocumentCookie() {
-  // JSDOM does not support changing cookies, disable it for tests
-  if (isJsDom()) {
-    return false;
-  }
-
   // Can we get/set cookies on document.cookie?
   return typeof document === 'object' && typeof document.cookie === 'string';
-}
-
-function isJsDom(): boolean {
-  if (
-    typeof navigator !== 'object' ||
-    typeof navigator.userAgent !== 'string'
-  ) {
-    return false;
-  }
-
-  return (
-    navigator.userAgent.indexOf('Node.js') >= 0 ||
-    navigator.userAgent.indexOf('jsdom') >= 0
-  );
 }
 
 export function cleanCookies() {
