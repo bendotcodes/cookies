@@ -100,7 +100,7 @@ describe('Cookies', () => {
       document.cookie = 'testingCookie=yes';
       const cookies = new Cookies();
       cookies.remove('testingCookie');
-      expect(cookies.get('testingCookie')).toBe('');
+      expect(cookies.get('testingCookie')).toBeFalsy();
     });
   });
 
