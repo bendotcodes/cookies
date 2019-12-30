@@ -3,12 +3,22 @@ import { Cookie, CookieGetOptions } from './types';
 
 export function hasDocumentCookie() {
   // JSDOM does not support changing cookies, disable it for tests
-  if (isJsDom()) {
+  if (isJsDom() || cookieDisabledBySettings()) {
     return false;
   }
 
   // Can we get/set cookies on document.cookie?
   return typeof document === 'object' && typeof document.cookie === 'string';
+}
+
+function cookieDisabledBySettings() {
+  if (typeof navigator !== 'object') {
+      return false;
+  }
+
+  // user can disable cookie for site
+  // in browser settings
+  return navigator.cookieEnabled === false;
 }
 
 function isJsDom(): boolean {
