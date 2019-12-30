@@ -2,6 +2,12 @@
 
 ##vNEXT
 
+##v4.0.3
+
+- All: improved tree shaking by adding `"sideEffects": false`
+- `universal-cookie`: JSDOM is now using the real browser cookies
+- `universal-cookie`: You can specify your cookie parsing function
+
 ##v4.0.2
 
 - `universal-cookie`: Add support for explicit `None` value on `sameSite` attribute

@@ -1,9 +1,10 @@
 {
   "name": "react-cookie",
-  "version": "4.0.1",
+  "version": "4.0.3",
   "description": "Universal cookies for React",
   "main": "cjs/index.js",
   "module": "es6/index.js",
+  "sideEffects": false,
   "files": [
     "es6",
     "cjs",

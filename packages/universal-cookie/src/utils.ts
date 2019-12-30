@@ -1,9 +1,11 @@
 import * as cookie from 'cookie';
-import { Cookie, CookieGetOptions } from './types';
+import { Cookie, CookieGetOptions, CookieParseOptions } from './types';
 
 export function hasDocumentCookie() {
-  // JSDOM does not support changing cookies, disable it for tests
-  if (isJsDom() || cookieDisabledBySettings()) {
+  // use only in-memory cookies
+  // when user disable native cookies
+  // in browser settings
+  if (cookieDisabledBySettings()) {
     return false;
   }
 
@@ -20,21 +22,6 @@ function cookieDisabledBySettings() {
   // in browser settings
   return navigator.cookieEnabled === false;
 }
-
-function isJsDom(): boolean {
-  if (
-    typeof navigator !== 'object' ||
-    typeof navigator.userAgent !== 'string'
-  ) {
-    return false;
-  }
-
-  return (
-    navigator.userAgent.indexOf('Node.js') >= 0 ||
-    navigator.userAgent.indexOf('jsdom') >= 0
-  );
-}
-
 export function cleanCookies() {
   document.cookie.split(';').forEach(function(c) {
     document.cookie = c
@@ -43,9 +30,12 @@ export function cleanCookies() {
   });
 }
 
-export function parseCookies(cookies?: string | object | null) {
+export function parseCookies(
+  cookies?: string | object | null,
+  options?: CookieParseOptions
+) {
   if (typeof cookies === 'string') {
-    return cookie.parse(cookies);
+    return cookie.parse(cookies, options);
   } else if (typeof cookies === 'object' && cookies !== null) {
     return cookies;
   } else {

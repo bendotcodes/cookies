@@ -12,6 +12,7 @@ export default function NameForm({ name, onChange }) {
       >
         <input
           type="text"
+          placeholder="Enter your name"
           defaultValue={name}
           onChange={e => onChange(e.target.value)}
         />

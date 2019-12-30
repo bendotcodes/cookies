@@ -5,7 +5,8 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/register": "^7.0.0",
@@ -22,7 +23,11 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
+    "@testing-library/react": "^9.4.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.0",
+    "jest": "^24.9.0",
+    "react-test-renderer": "^16.12.0",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
   }

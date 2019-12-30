@@ -1,13 +1,13 @@
 import * as cookie from 'cookie';
-
-import { parseCookies, readCookie, hasDocumentCookie } from './utils';
 import {
   Cookie,
-  CookieGetOptions,
-  CookieSetOptions,
   CookieChangeListener,
-  CookieChangeOptions
+  CookieChangeOptions,
+  CookieGetOptions,
+  CookieParseOptions,
+  CookieSetOptions
 } from './types';
+import { hasDocumentCookie, parseCookies, readCookie } from './utils';
 
 // We can't please Rollup and TypeScript at the same time
 // Only way to make both of them work
@@ -19,20 +19,20 @@ export default class Cookies {
 
   private HAS_DOCUMENT_COOKIE: boolean = false;
 
-  constructor(cookies?: string | object | null) {
-    this.cookies = parseCookies(cookies);
+  constructor(cookies?: string | object | null, options?: CookieParseOptions) {
+    this.cookies = parseCookies(cookies, options);
 
     new Promise(() => {
       this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
     }).catch(() => {});
   }
 
-  private _updateBrowserValues() {
+  private _updateBrowserValues(parseOptions?: CookieParseOptions) {
     if (!this.HAS_DOCUMENT_COOKIE) {
       return;
     }
 
-    this.cookies = cookie.parse(document.cookie);
+    this.cookies = cookie.parse(document.cookie, parseOptions);
   }
 
   private _emitChange(params: CookieChangeOptions) {
@@ -43,15 +43,22 @@ export default class Cookies {
 
   public get(name: string, options?: CookieGetOptions): any;
   public get<T>(name: string, options?: CookieGetOptions): T;
-  public get(name: string, options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+  public get(
+    name: string,
+    options: CookieGetOptions = {},
+    parseOptions?: CookieParseOptions
+  ) {
+    this._updateBrowserValues(parseOptions);
     return readCookie(this.cookies[name], options);
   }
 
   public getAll(options?: CookieGetOptions): any;
   public getAll<T>(options?: CookieGetOptions): T;
-  public getAll(options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+  public getAll(
+    options: CookieGetOptions = {},
+    parseOptions?: CookieParseOptions
+  ) {
+    this._updateBrowserValues(parseOptions);
     const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
