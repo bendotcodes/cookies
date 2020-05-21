@@ -108,4 +108,8 @@ export default class Cookies {
       this.changeListeners.splice(idx, 1);
     }
   }
+  
+  public triggerChangeListeners(params: CookieChangeOptions) {
+    this._emitChange(params);
+  }
 }
