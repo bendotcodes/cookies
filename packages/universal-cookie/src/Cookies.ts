@@ -9,10 +9,6 @@ import {
 } from './types';
 import { hasDocumentCookie, parseCookies, readCookie } from './utils';
 
-// We can't please Rollup and TypeScript at the same time
-// Only way to make both of them work
-const objectAssign = require('object-assign');
-
 export default class Cookies {
   private cookies: { [name: string]: Cookie };
   private changeListeners: CookieChangeListener[] = [];
@@ -73,7 +69,7 @@ export default class Cookies {
       value = JSON.stringify(value);
     }
 
-    this.cookies = objectAssign({}, this.cookies, { [name]: value });
+    this.cookies = { ...this.cookies, [name]: value };
 
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, value, options);
@@ -83,12 +79,13 @@ export default class Cookies {
   }
 
   public remove(name: string, options?: CookieSetOptions) {
-    const finalOptions = (options = objectAssign({}, options, {
+    const finalOptions = (options = {
+      ...options,
       expires: new Date(1970, 1, 1, 0, 0, 1),
       maxAge: 0
-    }));
+    });
 
-    this.cookies = objectAssign({}, this.cookies);
+    this.cookies = { ...this.cookies };
     delete this.cookies[name];
 
     if (this.HAS_DOCUMENT_COOKIE) {

@@ -36,9 +36,7 @@
   },
   "dependencies": {
     "@types/cookie": "^0.3.3",
-    "@types/object-assign": "^4.0.30",
-    "cookie": "^0.4.0",
-    "object-assign": "^4.1.1"
+    "cookie": "^0.4.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
