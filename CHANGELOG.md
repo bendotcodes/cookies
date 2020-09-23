@@ -1,18 +1,22 @@
 # CHANGELOG
 
-##vNEXT
+## vNEXT
 
-##v4.0.3
+## v4.0.4
+
+- `universal-cookie`: Remove only usage of CommonJS require
+
+## v4.0.3
 
 - All: improved tree shaking by adding `"sideEffects": false`
 - `universal-cookie`: JSDOM is now using the real browser cookies
 - `universal-cookie`: You can specify your cookie parsing function
 
-##v4.0.2
+## v4.0.2
 
 - `universal-cookie`: Add support for explicit `None` value on `sameSite` attribute
 
-##v4.0.1
+## v4.0.1
 
 - Upgrade dependencies to last versions
 - Publish MIT license to NPM with the code (#224)
