@@ -83,7 +83,7 @@ Set a cookie value
   - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Can only the server access the cookie?
+  - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `removeCookie(name, [options])`
@@ -97,7 +97,7 @@ Remove a cookie
   - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Can only the server access the cookie?
+  - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ## `withCookies(Component)`
@@ -146,7 +146,7 @@ Set a cookie value
   - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Can only the server access the cookie?
+  - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `remove(name, [options])`
@@ -160,7 +160,7 @@ Remove a cookie
   - maxAge (number): relative max age of the cookie from when the client receives it in seconds
   - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
   - secure (boolean): Is only accessible through HTTPS?
-  - httpOnly (boolean): Can only the server access the cookie?
+  - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ## Simple Example with React hooks
