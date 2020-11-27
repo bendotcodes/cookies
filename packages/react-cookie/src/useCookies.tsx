@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
-export default function useCookies<T = { [name: string]: any }>(
+export default function useCookies<T = Record<string, any>>(
   dependencies?: string[]
 ): [
   Partial<T>,
