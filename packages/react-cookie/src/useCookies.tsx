@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useRef, useMemo } from 'react';
+import { useContext, useLayoutEffect, useState, useRef, useMemo } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
@@ -18,7 +18,7 @@ export default function useCookies(
   const [allCookies, setCookies] = useState(initialCookies);
   const previousCookiesRef = useRef(allCookies);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function onChange() {
       const newCookies = cookies.getAll();
 
