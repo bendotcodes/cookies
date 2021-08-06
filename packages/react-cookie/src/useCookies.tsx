@@ -2,7 +2,7 @@ import { useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 
-export default function useCookies<T extends string, U = {[K in T]?: string}>(
+export default function useCookies<T extends string, U = {[K in T]?: any}>(
   dependencies?: T[]
 ): [
   U,
@@ -48,7 +48,7 @@ export default function useCookies<T extends string, U = {[K in T]?: string}>(
   return [allCookies, setCookie, removeCookie];
 }
 
-function shouldUpdate<T extends string, U = {[K in T]?: string}>(
+function shouldUpdate<T extends string, U = {[K in T]?: any}>(
   dependencies: T[] | null,
   newCookies: U,
   oldCookies: U
