@@ -1,11 +1,9 @@
 import Cookies from 'universal-cookie';
 import * as React from 'react';
+import * as hoistStatics from 'hoist-non-react-statics';
 
 import { Consumer } from './CookiesContext';
 import { ReactCookieProps } from './types';
-
-// Only way to make function modules work with both TypeScript and Rollup
-const hoistStatics = require('hoist-non-react-statics');
 
 type Diff<T, U> = T extends U ? never : T;
 type Omit<T, K extends keyof T> = Pick<T, Diff<keyof T, K>>;
