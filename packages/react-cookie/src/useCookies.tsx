@@ -23,7 +23,7 @@ export default function useCookies<T extends string, U = {[K in T]?: any}>(
       const newCookies = cookies.getAll();
 
       if (
-        shouldUpdate<T|null,U>(
+        shouldUpdate<T | null, U>(
           dependencies || null,
           newCookies,
           previousCookiesRef.current
