@@ -24,4 +24,8 @@ export interface CookieParseOptions<V = string> {
   decode: (value: string) => V;
 }
 
+export interface ParsedCookies<V = string> {
+  [key: string]: V | string
+}
+
 export type CookieChangeListener<V = string> = (options: CookieChangeOptions<V>) => void;
