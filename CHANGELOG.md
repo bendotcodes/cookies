@@ -7,6 +7,7 @@
 - `react-cookie`: Switch to useLayoutEffect to load cookies before first render
 - `react-cookie`: Improved TypeScript types on useCookies
 - `react-cookie`: Fix using with ESModule
+- `universal-cookie-koa`: Fix the maxAge incongruency between the standard (seconds) and koa (ms)
 
 ## v4.0.4
 

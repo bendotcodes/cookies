@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-koa",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "description": "Hook cookies get/set on Koa for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
