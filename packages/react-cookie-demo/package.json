@@ -24,6 +24,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-stage-2": "^7.0.0",
     "@testing-library/react": "^9.4.0",
+    "@types/testing-library__dom": "^7.5.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.0",
     "jest": "^24.9.0",
