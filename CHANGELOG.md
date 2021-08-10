@@ -2,6 +2,12 @@
 
 ## vNEXT
 
+## v4.1.0
+
+- `react-cookie`: Switch to useLayoutEffect to load cookies before first render
+- `react-cookie`: Improved TypeScript types on useCookies
+- `react-cookie`: Fix using with ESModule
+
 ## v4.0.4
 
 - `universal-cookie`: Remove only usage of CommonJS require
