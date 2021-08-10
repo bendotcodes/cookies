@@ -15,7 +15,7 @@ export default function universalCookieMiddleware() {
           if (koaOpt.maxAge && change.options && change.options.maxAge) {
             // the standard for maxAge is seconds but koa uses milliseconds
             koaOpt.maxAge = change.options.maxAge * 1000;
-          };
+          }
 
           ctx.cookies.set(change.name, change.value, koaOpt);
         }
