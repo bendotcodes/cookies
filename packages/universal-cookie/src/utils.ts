@@ -1,5 +1,5 @@
 import * as cookie from 'cookie';
-import { Cookie, CookieGetOptions, CookieParseOptions } from './types';
+import { Cookie, CookieGetOptions, CookieParseOptions, ParsedCookies } from './types';
 
 export function hasDocumentCookie() {
   // Can we get/set cookies on document.cookie?
@@ -14,16 +14,16 @@ export function cleanCookies() {
   });
 }
 
-export function parseCookies(
+export function parseCookies<V = string>(
   cookies?: string | object | null,
-  options?: CookieParseOptions
+  options?: CookieParseOptions<V>
 ) {
   if (typeof cookies === 'string') {
-    return cookie.parse(cookies, options);
+    return cookie.parse(cookies, options) as ParsedCookies<V>;
   } else if (typeof cookies === 'object' && cookies !== null) {
-    return cookies;
+    return cookies as ParsedCookies<V>;
   } else {
-    return {};
+    return {} as ParsedCookies<V>;
   }
 }
 
