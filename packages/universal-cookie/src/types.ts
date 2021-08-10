@@ -4,7 +4,7 @@ export interface CookieGetOptions {
   doNotParse?: boolean;
 }
 
-export interface CookieSetOptions {
+export interface CookieSetOptions<V = string> {
   path?: string;
   expires?: Date;
   maxAge?: number;
@@ -12,16 +12,16 @@ export interface CookieSetOptions {
   secure?: boolean;
   httpOnly?: boolean;
   sameSite?: boolean | 'none' | 'lax' | 'strict';
-  encode?: (value: string) => string;
+  encode?: (value: V) => string;
 }
-export interface CookieChangeOptions {
+export interface CookieChangeOptions<V = string> {
   name: string;
   value?: any;
-  options?: CookieSetOptions;
+  options?: CookieSetOptions<V>;
 }
 
-export interface CookieParseOptions {
-  decode: (value: string) => string;
+export interface CookieParseOptions<V = string> {
+  decode: (value: string) => V;
 }
 
-export type CookieChangeListener = (options: CookieChangeOptions) => void;
+export type CookieChangeListener<V = string> = (options: CookieChangeOptions<V>) => void;
