@@ -2,7 +2,8 @@
 
 ## vNEXT
 
-- `react-cookie`: Fixed withCookies bug with CommonJS (#293)
+- `react-cookie`: Fix withCookies bug with CommonJS (#293)
+- `react-cookie`: Fix useLayoutEffect warning on SSR (#295)
 
 ## v4.1.0
 

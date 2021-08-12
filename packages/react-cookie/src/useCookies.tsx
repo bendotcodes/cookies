@@ -1,6 +1,7 @@
 import { useContext, useLayoutEffect, useState, useRef, useMemo } from 'react';
 import { Cookie, CookieSetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
+import { isInBrowser } from './utils';
 
 export default function useCookies<T extends string, U = { [K in T]?: any }>(
   dependencies?: T[]
@@ -18,29 +19,31 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   const [allCookies, setCookies] = useState(initialCookies);
   const previousCookiesRef = useRef(allCookies);
 
-  useLayoutEffect(() => {
-    function onChange() {
-      const newCookies = cookies.getAll();
+  if (isInBrowser()) {
+    useLayoutEffect(() => {
+      function onChange() {
+        const newCookies = cookies.getAll();
 
-      if (
-        shouldUpdate(
-          dependencies || null,
-          newCookies,
-          previousCookiesRef.current
-        )
-      ) {
-        setCookies(newCookies);
+        if (
+          shouldUpdate(
+            dependencies || null,
+            newCookies,
+            previousCookiesRef.current
+          )
+        ) {
+          setCookies(newCookies);
+        }
+
+        previousCookiesRef.current = newCookies;
       }
 
-      previousCookiesRef.current = newCookies;
-    }
+      cookies.addChangeListener(onChange);
 
-    cookies.addChangeListener(onChange);
-
-    return () => {
-      cookies.removeChangeListener(onChange);
-    };
-  }, [cookies]);
+      return () => {
+        cookies.removeChangeListener(onChange);
+      };
+    }, [cookies]);
+  }
 
   const setCookie = useMemo(() => cookies.set.bind(cookies), [cookies]);
   const removeCookie = useMemo(() => cookies.remove.bind(cookies), [cookies]);

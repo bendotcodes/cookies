@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import ReactDOMServer from 'react-dom/server';
-import { CookiesProvider, withCookies, useCookies, Cookies } from '../';
 import { cleanCookies } from 'universal-cookie/lib/utils';
+
+import { CookiesProvider, useCookies, Cookies } from '../';
+import * as Utils from '../utils';
 
 function TestComponent({ dependencies }) {
   const [cookies] = useCookies(dependencies);
@@ -198,6 +200,7 @@ describe('useCookies', () => {
       const cookies = new Cookies('test="big fat cat"');
       // make sure Cookies thinks document.cookie is not accessible as it would be on a server
       cookies.HAS_DOCUMENT_COOKIE = false;
+      spyOn(Utils, 'isInBrowser').and.returnValue(false);
 
       const html = ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
@@ -206,6 +209,22 @@ describe('useCookies', () => {
       );
 
       expect(html).toContain('big fat cat');
+    });
+
+    it('does not track changes', () => {
+      const cookies = new Cookies('test="big fat cat"');
+      // make sure Cookies thinks document.cookie is not accessible as it would be on a server
+      cookies.HAS_DOCUMENT_COOKIE = false;
+      spyOn(Utils, 'isInBrowser').and.returnValue(false);
+      spyOn(React, 'useLayoutEffect');
+
+      const html = ReactDOMServer.renderToString(
+        <CookiesProvider cookies={cookies}>
+          <TestComponent />
+        </CookiesProvider>
+      );
+
+      expect(React.useLayoutEffect).not.toHaveBeenCalled();
     });
   });
 });
