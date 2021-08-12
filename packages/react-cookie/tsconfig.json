@@ -6,7 +6,9 @@
     "outDir": "./es6",
     "strict": true,
     "jsx": "react",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "files": ["./src/index.ts"]
 }

@@ -2,6 +2,8 @@
 
 ## vNEXT
 
+- `react-cookie`: Fixed withCookies bug with CommonJS (#293)
+
 ## v4.1.0
 
 - `react-cookie`: Switch to useLayoutEffect to load cookies before first render

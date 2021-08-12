@@ -1,6 +1,6 @@
 import Cookies from 'universal-cookie';
 import * as React from 'react';
-import * as hoistStatics from 'hoist-non-react-statics';
+import hoistStatics from 'hoist-non-react-statics';
 
 import { Consumer } from './CookiesContext';
 import { ReactCookieProps } from './types';
