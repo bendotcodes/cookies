@@ -11,7 +11,7 @@
   "dependencies": {
     "@babel/register": "7.14.5",
     "express": "4.17.2",
-    "prop-types": "15.7.2",
+    "prop-types": "15.8.1",
     "react": "16.14.0",
     "react-cookie": "^4.0.0",
     "react-dom": "16.14.0",
