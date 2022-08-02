@@ -61,6 +61,11 @@ Access and modify cookies using React hooks.
 const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 ```
 
+Invoking the hook with an empty array provides access to all cookies.
+```jsx
+const [allCookies] = useCookies([]);
+```
+
 **React hooks are available starting from React 16.8**
 
 ### `dependencies` (optional)
