@@ -85,6 +85,7 @@ Set a cookie value
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
+  - encode (function|undefined): Optional function to encode values.
 
 ### `removeCookie(name, [options])`
 
