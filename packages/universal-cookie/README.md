@@ -14,6 +14,7 @@
 ## Integrations
  - [`react-cookie`](https://www.npmjs.com/package/react-cookie) - Universal cookies for React
  - [`universal-cookie-express`](https://www.npmjs.com/package/universal-cookie-express) - Hook cookies get/set on Express for server-rendering
+ - [`@vueuse/integrations`](https://www.npmjs.com/package/@vueuse/integrations) - Integration addon in VueUse library for Vue ecosystem
 
 ## Getting started
 
