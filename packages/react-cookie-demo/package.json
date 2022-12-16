@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/register": "7.18.9",
-    "express": "4.17.2",
+    "express": "4.17.3",
     "prop-types": "15.8.1",
     "react": "16.14.0",
     "react-cookie": "^4.0.0",
