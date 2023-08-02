@@ -17,7 +17,7 @@
     "jasmine-core": "3.99.1",
     "karma": "4.4.1",
     "karma-chrome-launcher": "3.1.1",
-    "karma-jasmine": "2.0.1",
+    "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "1.7.0",
     "karma-sauce-launcher": "4.3.6",
     "karma-sourcemap-loader": "0.3.8",
