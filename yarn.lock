@@ -6205,10 +6205,10 @@ isurl@^1.0.0-alpha5:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
 
-jasmine-core@3.99.1:
-  version "3.99.1"
-  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-3.99.1.tgz#5bfa4b2d76618868bfac4c8ff08bb26fffa4120d"
-  integrity sha512-Hu1dmuoGcZ7AfyynN3LsfruwMbxMALMka+YtZeGoLuDEySVmVAPaonkNoBRIw/ectu8b9tVQCJNgp4a4knp+tg==
+jasmine-core@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/jasmine-core/-/jasmine-core-5.1.0.tgz#2a52c92ec2e5a4bf674c3de0edbaa10c3875b6fc"
+  integrity sha512-bFMMwpKuTZXCuGd51yClFobw5SOtad1kmdWnYO8dNwYV8i01Xj0C2+nyQpSKl1EKxiPfyd1ZgBl/rsusL3aS6w==
 
 jasmine-core@^3.3:
   version "3.8.0"
