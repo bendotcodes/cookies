@@ -1,5 +1,15 @@
 {
-  "extends": [
-    "config:base"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:base"],
+  "rangeStrategy": "pin",
+  "packageRules": [
+    {
+      "packagePatterns": [".*"],
+      "schedule": ["before 6am on Friday"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch",
+      "automerge": true
+    }
   ]
 }
