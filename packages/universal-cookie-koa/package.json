@@ -38,6 +38,6 @@
   "devDependencies": {
     "@babel/cli": "7.19.3",
     "rimraf": "2.7.1",
-    "typescript": "3.9.10"
+    "typescript": "5.1.6"
   }
 }

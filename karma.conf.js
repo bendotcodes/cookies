@@ -3,11 +3,12 @@ const webpack = require('webpack');
 module.exports = config => {
   config.set({
     browsers: ['Chrome'],
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'webpack'],
+    plugins: ['karma-webpack'],
     reporters: ['spec', 'kjhtml'],
     files: ['tests.webpack.js'],
     preprocessors: {
-      'tests.webpack.js': ['webpack', 'sourcemap']
+      'tests.webpack.js': ['webpack']
     },
     webpack: {
       mode: 'development',
@@ -18,7 +19,7 @@ module.exports = config => {
           {
             test: /\.tsx?$/,
             exclude: /node_modules/,
-            loader: 'awesome-typescript-loader'
+            loader: 'ts-loader'
           }
         ]
       },
