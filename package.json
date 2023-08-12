@@ -14,14 +14,6 @@
     "babel-plugin-add-module-exports": "1.0.4",
     "husky": "3.1.0",
     "jasmine-core": "5.1.0",
-    "karma": "6.4.2",
-    "karma-chrome-launcher": "3.2.0",
-    "karma-jasmine": "5.1.0",
-    "karma-jasmine-html-reporter": "2.1.0",
-    "karma-sauce-launcher": "4.3.6",
-    "karma-sourcemap-loader": "0.4.0",
-    "karma-spec-reporter": "0.0.36",
-    "karma-webpack": "5.0.0",
     "prettier": "1.19.1",
     "rimraf": "3.0.2",
     "rollup": "1.32.1",
@@ -36,19 +28,18 @@
   },
   "scripts": {
     "format": "prettier packages/**/*.js packages/**/*.ts packages/**/*.tsx --single-quote --write",
-    "test": "npm run build && npm run size && karma start --single-run",
-    "watch": "karma start",
-    "build": "npm run build-universal && npm run build-react && npm run build-express && npm run build-koa && npm run build-demo",
-    "build-universal": "cd packages/universal-cookie && npm run build",
-    "build-react": "cd packages/react-cookie && npm run build",
-    "build-express": "cd packages/universal-cookie-express && npm run build",
-    "build-koa": "cd packages/universal-cookie-koa && npm run build",
-    "build-demo": "cd packages/react-cookie-demo && npm run build",
+    "test": "yarn build && yarn size",
+    "build": "yarn build-universal && yarn build-react && yarn build-express && yarn build-koa && yarn build-demo",
+    "build-universal": "cd packages/universal-cookie && yarn build",
+    "build-react": "cd packages/react-cookie && yarn build",
+    "build-express": "cd packages/universal-cookie-express && yarn build",
+    "build-koa": "cd packages/universal-cookie-koa && yarn build",
+    "build-demo": "cd packages/react-cookie-demo && yarn build",
     "size": "size-limit"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format && npm test"
+      "pre-commit": "yarn format && yarn test"
     }
   },
   "size-limit": [
