@@ -59,7 +59,7 @@ describe('withCookies(Component)', () => {
       act(() => {
         root.render(
           <CookiesProvider>
-          <Component />
+            <Component />
           </CookiesProvider>,
         );
       });
@@ -107,11 +107,11 @@ describe('withCookies(Component)', () => {
       cookies.set('test2', 'value2');
 
       act(() => {
-      root.render(
-        <CookiesProvider cookies={cookies}>
-          <Component />
-        </CookiesProvider>,
-      );
+        root.render(
+          <CookiesProvider cookies={cookies}>
+            <Component />
+          </CookiesProvider>,
+        );
       });
 
       expect(node.innerHTML).toContain('test1');
@@ -128,11 +128,11 @@ describe('withCookies(Component)', () => {
       const ref = React.createRef();
 
       act(() => {
-      root.render(
-        <CookiesProvider cookies={cookies}>
-          <Component ref={ref} />
-        </CookiesProvider>,
-      );
+        root.render(
+          <CookiesProvider cookies={cookies}>
+            <Component ref={ref} />
+          </CookiesProvider>,
+        );
       });
 
       expect(ref.current.testValue).toBe('Suki is pretty');

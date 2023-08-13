@@ -25,11 +25,11 @@ describe('useCookies', () => {
       const root = ReactDOM.createRoot(node);
 
       act(() => {
-      root.render(
-        <CookiesProvider>
-          <TestComponent />
-        </CookiesProvider>,
-      );
+        root.render(
+          <CookiesProvider>
+            <TestComponent />
+          </CookiesProvider>,
+        );
       });
 
       expect(node.innerHTML).toContain('big fat cat');
