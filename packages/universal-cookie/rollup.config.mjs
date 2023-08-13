@@ -1,6 +1,6 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import { uglify } from 'rollup-plugin-uglify';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import terser from '@rollup/plugin-terser';
 
 const basePlugins = [
   resolve({
@@ -26,6 +26,6 @@ export default [
       format: 'umd',
       name: 'UniversalCookie',
     },
-    plugins: [...basePlugins, uglify()],
+    plugins: [...basePlugins, terser()],
   },
 ];
