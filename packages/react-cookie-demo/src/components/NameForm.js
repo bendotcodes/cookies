@@ -6,7 +6,7 @@ export default function NameForm({ name, onChange }) {
     <div>
       <h1>What&apos;s your name?</h1>
       <form
-        onSubmit={e => {
+        onSubmit={(e) => {
           e.preventDefault();
         }}
       >
@@ -14,7 +14,7 @@ export default function NameForm({ name, onChange }) {
           type="text"
           placeholder="Enter your name"
           defaultValue={name}
-          onChange={e => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         />
       </form>
     </div>
@@ -23,5 +23,5 @@ export default function NameForm({ name, onChange }) {
 
 NameForm.propTypes = {
   name: string,
-  onChange: func.isRequired
+  onChange: func.isRequired,
 };

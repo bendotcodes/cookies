@@ -12,15 +12,18 @@
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
+
 **State management integration**
- - [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
- - [`react-cookie`](https://www.npmjs.com/package/react-cookie) - Universal cookies for React
+
+- [`universal-cookie`](https://www.npmjs.com/package/universal-cookie) - Universal cookies for JavaScript
+- [`react-cookie`](https://www.npmjs.com/package/react-cookie) - Universal cookies for React
 
 ## Getting started
 
 `npm install universal-cookie-koa --save`
 
 ## Usage
+
 `cookiesMiddleware()` koa middleware set `req.universalCookies`
 
 ## Example
@@ -31,10 +34,8 @@ const cookiesMiddleware = require('universal-cookie-koa');
 
 const app = new Koa();
 
-app
-  .use(cookiesMiddleware())
-  .use(function(ctx) {
-    // get the user cookies using universal-cookie
-    ctx.request.universalCookies.get('myCat')
-  });
+app.use(cookiesMiddleware()).use(function (ctx) {
+  // get the user cookies using universal-cookie
+  ctx.request.universalCookies.get('myCat');
+});
 ```

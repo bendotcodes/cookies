@@ -1,3 +1,5 @@
+![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+
 <h3 align="center">
   <a href="packages/react-cookie">react-cookie</a>
 </h3>
@@ -33,8 +35,3 @@
   Hook cookies get/set on Koa for server-rendering<br />
   <a href="https://badge.fury.io/js/universal-cookie-koa"><img src="https://badge.fury.io/js/universal-cookie-koa.svg" /></a>
 </p>
-
-
-[![Build Status](https://travis-ci.org/reactivestack/cookies.svg?branch=master)](https://travis-ci.org/reactivestack/cookies)
-<br />
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)

@@ -5,7 +5,7 @@ import {
   CookieChangeOptions,
   CookieGetOptions,
   CookieParseOptions,
-  CookieSetOptions
+  CookieSetOptions,
 } from './types';
 import { hasDocumentCookie, parseCookies, readCookie } from './utils';
 
@@ -42,7 +42,7 @@ export default class Cookies {
   public get(
     name: string,
     options: CookieGetOptions = {},
-    parseOptions?: CookieParseOptions
+    parseOptions?: CookieParseOptions,
   ) {
     this._updateBrowserValues(parseOptions);
     return readCookie(this.cookies[name], options);
@@ -52,7 +52,7 @@ export default class Cookies {
   public getAll<T>(options?: CookieGetOptions): T;
   public getAll(
     options: CookieGetOptions = {},
-    parseOptions?: CookieParseOptions
+    parseOptions?: CookieParseOptions,
   ) {
     this._updateBrowserValues(parseOptions);
     const result: { [name: string]: any } = {};
@@ -82,7 +82,7 @@ export default class Cookies {
     const finalOptions = (options = {
       ...options,
       expires: new Date(1970, 1, 1, 0, 0, 1),
-      maxAge: 0
+      maxAge: 0,
     });
 
     this.cookies = { ...this.cookies };

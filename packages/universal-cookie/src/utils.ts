@@ -7,7 +7,7 @@ export function hasDocumentCookie() {
 }
 
 export function cleanCookies() {
-  document.cookie.split(';').forEach(function(c) {
+  document.cookie.split(';').forEach(function (c) {
     document.cookie = c
       .replace(/^ +/, '')
       .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
@@ -16,7 +16,7 @@ export function cleanCookies() {
 
 export function parseCookies(
   cookies?: string | object | null,
-  options?: CookieParseOptions
+  options?: CookieParseOptions,
 ) {
   if (typeof cookies === 'string') {
     return cookie.parse(cookies, options);

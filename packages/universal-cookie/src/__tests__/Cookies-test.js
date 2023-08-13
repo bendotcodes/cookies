@@ -105,49 +105,51 @@ describe('Cookies', () => {
   });
 
   describe('addChangeListener', () => {
-    it('detect setting a cookie', done => {
+    it('detect setting a cookie', () => {
       const cookies = new Cookies();
 
-      cookies.addChangeListener(({ name, value, options }) => {
-        expect(name).toBe('test');
-        expect(value).toBe('meow');
-        expect(options.path).toBe('/');
-        done();
-      });
-
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
       cookies.set('test', 'meow', { path: '/' });
-    });
 
-    it('detect removing a cookie', done => {
-      const cookies = new Cookies();
-
-      cookies.addChangeListener(({ name, value, options }) => {
-        expect(name).toBe('test');
-        expect(value).toBeUndefined();
-        expect(options.path).toBe('/');
-        done();
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toBeCalledWith({
+        name: 'test',
+        value: 'meow',
+        options: {
+          path: '/',
+        },
       });
-
-      cookies.remove('test', { path: '/' });
     });
 
-    it('stop when removing listener', done => {
+    it('detect removing a cookie', () => {
       const cookies = new Cookies();
 
-      const f = () => {
-        throw new Error('Listener not properly removed');
-      };
-      cookies.addChangeListener(f);
-      cookies.removeChangeListener(f);
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+      cookies.remove('test', { path: '/' });
+
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toBeCalledWith({
+        name: 'test',
+        value: undefined,
+        options: {
+          path: '/',
+          maxAge: 0,
+          expires: new Date(1970, 1, 1, 0, 0, 1),
+        },
+      });
+    });
+
+    it('stop when removing listener', () => {
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+      cookies.removeChangeListener(onChange);
 
       cookies.remove('test', 'boom!');
-
-      setTimeout(() => {
-        // The test throws if it fails
-        // No exception in this test
-        expect().nothing();
-        done();
-      });
+      expect(onChange).not.toBeCalled();
     });
   });
 });

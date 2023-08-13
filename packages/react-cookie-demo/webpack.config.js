@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   module: {
@@ -14,8 +14,8 @@ module.exports = {
       {
         test: /\.jsx?$/,
         include: [path.resolve('./src')],
-        loader: 'babel-loader'
-      }
-    ]
-  }
+        loader: 'babel-loader',
+      },
+    ],
+  },
 };

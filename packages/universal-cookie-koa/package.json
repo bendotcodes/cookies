@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-koa",
-  "version": "4.1.0",
+  "version": "0.0.0",
   "description": "Hook cookies get/set on Koa for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
@@ -36,8 +36,8 @@
     "universal-cookie": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.19.3",
-    "rimraf": "2.7.1",
-    "typescript": "3.9.10"
+    "@babel/cli": "^7.19.3",
+    "rimraf": "^2.7.1",
+    "typescript": "^5.1.6"
   }
 }

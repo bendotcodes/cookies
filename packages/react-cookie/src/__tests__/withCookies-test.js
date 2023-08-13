@@ -11,13 +11,13 @@ function TestComponent({ cookies }) {
 }
 
 TestComponent.propTypes = {
-  cookies: instanceOf(Cookies).isRequired
+  cookies: instanceOf(Cookies).isRequired,
 };
 
 function AllCookiesComponent({ allCookies }) {
   return (
     <ul>
-      {Object.keys(allCookies).map(name => (
+      {Object.keys(allCookies).map((name) => (
         <li key={name}>
           {name}: {allCookies[name]}
         </li>
@@ -27,11 +27,11 @@ function AllCookiesComponent({ allCookies }) {
 }
 
 AllCookiesComponent.propTypes = {
-  allCookies: object.isRequired
+  allCookies: object.isRequired,
 };
 
 TestComponent.propTypes = {
-  cookies: instanceOf(Cookies).isRequired
+  cookies: instanceOf(Cookies).isRequired,
 };
 
 class TestRefComponent extends React.Component {
@@ -58,7 +58,7 @@ describe('withCookies(Component)', () => {
         <CookiesProvider>
           <Component />
         </CookiesProvider>,
-        node
+        node,
       );
 
       expect(node.innerHTML).toContain('big fat cat');
@@ -97,7 +97,7 @@ describe('withCookies(Component)', () => {
         <CookiesProvider cookies={cookies}>
           <Component />
         </CookiesProvider>,
-        node
+        node,
       );
 
       expect(node.innerHTML).toContain('test1');
@@ -116,7 +116,7 @@ describe('withCookies(Component)', () => {
         <CookiesProvider cookies={cookies}>
           <Component ref={ref} />
         </CookiesProvider>,
-        node
+        node,
       );
 
       expect(ref.current.testValue).toBe('Suki is pretty');
@@ -144,7 +144,6 @@ describe('withCookies(Component)', () => {
   describe('on the server', () => {
     it('provides the cookies', () => {
       const cookies = new Cookies('test="big fat cat"');
-      // make sure Cookies thinks document.cookie is not accessible as it would be on a server
       cookies.HAS_DOCUMENT_COOKIE = false;
 
       const Component = withCookies(TestComponent);
@@ -152,7 +151,7 @@ describe('withCookies(Component)', () => {
       const html = ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
           <Component />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
       expect(html).toContain('big fat cat');
