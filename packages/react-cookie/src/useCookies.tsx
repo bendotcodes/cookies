@@ -4,11 +4,11 @@ import CookiesContext from './CookiesContext';
 import { isInBrowser } from './utils';
 
 export default function useCookies<T extends string, U = { [K in T]?: any }>(
-  dependencies?: T[]
+  dependencies?: T[],
 ): [
   U,
   (name: T, value: Cookie, options?: CookieSetOptions) => void,
-  (name: T, options?: CookieSetOptions) => void
+  (name: T, options?: CookieSetOptions) => void,
 ] {
   const cookies = useContext(CookiesContext);
   if (!cookies) {
@@ -28,7 +28,7 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
           shouldUpdate(
             dependencies || null,
             newCookies,
-            previousCookiesRef.current
+            previousCookiesRef.current,
           )
         ) {
           setCookies(newCookies);
@@ -54,7 +54,7 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
 function shouldUpdate<U = { [K: string]: any }>(
   dependencies: Array<keyof U> | null,
   newCookies: U,
-  oldCookies: U
+  oldCookies: U,
 ) {
   if (!dependencies) {
     return true;

@@ -13,5 +13,5 @@ export default function Html({ markup }) {
 }
 
 Html.propTypes = {
-  markup: string.isRequired
+  markup: string.isRequired,
 };

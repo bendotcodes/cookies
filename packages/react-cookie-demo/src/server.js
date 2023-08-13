@@ -9,7 +9,7 @@ export default function middleware(req, res) {
   const markup = ReactDOMServer.renderToString(
     <CookiesProvider cookies={req.universalCookies}>
       <App />
-    </CookiesProvider>
+    </CookiesProvider>,
   );
 
   const html = ReactDOMServer.renderToStaticMarkup(<Html markup={markup} />);

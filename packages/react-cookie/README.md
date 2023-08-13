@@ -5,11 +5,8 @@
 <p align="center">
   Universal cookies for <a href="https://facebook.github.io/react">React</a><br />
   <a href="https://badge.fury.io/js/react-cookie"><img src="https://badge.fury.io/js/react-cookie.svg" /></a>
+  ![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
 </p>
-
-[![Build Status](https://travis-ci.org/reactivestack/cookies.svg?branch=master)](https://travis-ci.org/reactivestack/cookies)
-<br />
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/coookies.svg)](https://saucelabs.com/u/coookies)
 
 ## Integrations
 
@@ -232,7 +229,7 @@ import NameForm from './NameForm';
 
 class App extends Component {
   static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
   };
 
   constructor(props) {
@@ -240,7 +237,7 @@ class App extends Component {
 
     const { cookies } = props;
     this.state = {
-      name: cookies.get('name') || 'Ben'
+      name: cookies.get('name') || 'Ben',
     };
   }
 
@@ -306,7 +303,7 @@ export default function middleware(req, res) {
   const markup = ReactDOMServer.renderToString(
     <CookiesProvider cookies={req.universalCookies}>
       <App />
-    </CookiesProvider>
+    </CookiesProvider>,
   );
 
   const html = ReactDOMServer.renderToStaticMarkup(<Html markup={markup} />);
@@ -329,7 +326,7 @@ ReactDOM.render(
   <CookiesProvider>
     <App />
   </CookiesProvider>,
-  appEl
+  appEl,
 );
 ```
 
@@ -348,7 +345,7 @@ app
   .use(cookiesMiddleware())
   .use(serverMiddleware);
 
-app.listen(8080, function() {
+app.listen(8080, function () {
   console.log('Listening on 8080...');
 });
 ```

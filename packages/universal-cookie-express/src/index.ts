@@ -2,7 +2,7 @@
 import Cookies, { CookieChangeOptions } from 'universal-cookie';
 
 export default function universalCookieMiddleware() {
-  return function(req: any, res: any, next: () => void) {
+  return function (req: any, res: any, next: () => void) {
     req.universalCookies = new Cookies(req.headers.cookie || '');
     req.universalCookies.addChangeListener((change: CookieChangeOptions) => {
       if (!res.cookie || res.headersSent) {

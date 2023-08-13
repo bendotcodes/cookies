@@ -1,6 +1,6 @@
 {
   "name": "react-cookie-demo",
-  "version": "4.0.1",
+  "version": "0.0.0",
   "private": true,
   "license": "MIT",
   "main": "server.js",
@@ -29,7 +29,7 @@
     "babel-loader": "8.3.0",
     "jest": "24.9.0",
     "react-test-renderer": "16.14.0",
-    "webpack": "4.46.0",
-    "webpack-cli": "3.3.12"
+    "webpack": "5.88.2",
+    "webpack-cli": "5.1.4"
   }
 }
