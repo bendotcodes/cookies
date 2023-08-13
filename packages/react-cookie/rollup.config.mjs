@@ -1,7 +1,7 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import replace from 'rollup-plugin-replace';
-import { uglify } from 'rollup-plugin-uglify';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
 
 const basePlugins = [resolve(), commonjs()];
 
@@ -37,7 +37,7 @@ export default [
     plugins: [
       ...basePlugins,
       replace({ 'process.env.NODE_ENV': '"production"' }),
-      uglify(),
+      terser(),
     ],
     external,
   },
