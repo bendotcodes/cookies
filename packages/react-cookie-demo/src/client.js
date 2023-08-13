@@ -10,5 +10,5 @@ ReactDOM.render(
   <CookiesProvider>
     <App />
   </CookiesProvider>,
-  appEl
+  appEl,
 );

@@ -118,7 +118,7 @@ describe('Cookies', () => {
         value: 'meow',
         options: {
           path: '/',
-        }
+        },
       });
     });
 
@@ -136,8 +136,8 @@ describe('Cookies', () => {
         options: {
           path: '/',
           maxAge: 0,
-          expires: new Date(1970, 1, 1, 0, 0, 1)
-        }
+          expires: new Date(1970, 1, 1, 0, 0, 1),
+        },
       });
     });
 

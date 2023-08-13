@@ -2,9 +2,9 @@
 import Cookies, { CookieChangeOptions } from 'universal-cookie';
 
 export default function universalCookieMiddleware() {
-  return function(ctx: any, next: () => void) {
+  return function (ctx: any, next: () => void) {
     ctx.request.universalCookies = new Cookies(
-      ctx.request.headers.cookie || ''
+      ctx.request.headers.cookie || '',
     );
     ctx.request.universalCookies.addChangeListener(
       (change: CookieChangeOptions) => {
@@ -19,7 +19,7 @@ export default function universalCookieMiddleware() {
 
           ctx.cookies.set(change.name, change.value, koaOpt);
         }
-      }
+      },
     );
 
     return next();

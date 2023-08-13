@@ -27,7 +27,7 @@ describe('useCookies', () => {
         <CookiesProvider>
           <TestComponent />
         </CookiesProvider>,
-        node
+        node,
       );
 
       expect(node.innerHTML).toContain('big fat cat');
@@ -67,7 +67,7 @@ describe('useCookies', () => {
           <CookiesProvider cookies={cookies}>
             <TestComponent />
           </CookiesProvider>,
-          node
+          node,
         );
       });
 
@@ -207,7 +207,7 @@ describe('useCookies', () => {
       const html = ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
           <TestComponent />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
       expect(html).toContain('big fat cat');
@@ -220,7 +220,7 @@ describe('useCookies', () => {
       ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
           <TestComponent />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
       expect(React.useLayoutEffect).not.toHaveBeenCalled();

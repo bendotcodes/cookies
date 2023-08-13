@@ -4,9 +4,9 @@ import { uglify } from 'rollup-plugin-uglify';
 
 const basePlugins = [
   resolve({
-    mainFields: ['module', 'jsnext:main', 'main', 'browser']
+    mainFields: ['module', 'jsnext:main', 'main', 'browser'],
   }),
-  commonjs()
+  commonjs(),
 ];
 
 export default [
@@ -15,17 +15,17 @@ export default [
     output: {
       file: 'umd/universalCookie.js',
       format: 'umd',
-      name: 'UniversalCookie'
+      name: 'UniversalCookie',
     },
-    plugins: [...basePlugins]
+    plugins: [...basePlugins],
   },
   {
     input: 'cjs/index.js',
     output: {
       file: 'umd/universalCookie.min.js',
       format: 'umd',
-      name: 'UniversalCookie'
+      name: 'UniversalCookie',
     },
-    plugins: [...basePlugins, uglify()]
-  }
+    plugins: [...basePlugins, uglify()],
+  },
 ];

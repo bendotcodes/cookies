@@ -8,7 +8,7 @@ const basePlugins = [resolve(), commonjs()];
 const external = ['react', 'universal-cookie'];
 const globals = {
   react: 'React',
-  'universal-cookie': 'UniversalCookie'
+  'universal-cookie': 'UniversalCookie',
 };
 
 export default [
@@ -18,13 +18,13 @@ export default [
       file: 'umd/reactCookie.js',
       format: 'umd',
       name: 'ReactCookie',
-      globals
+      globals,
     },
     plugins: [
       ...basePlugins,
-      replace({ 'process.env.NODE_ENV': '"development"' })
+      replace({ 'process.env.NODE_ENV': '"development"' }),
     ],
-    external
+    external,
   },
   {
     input: 'cjs/index.js',
@@ -32,13 +32,13 @@ export default [
       file: 'umd/reactCookie.min.js',
       format: 'umd',
       name: 'ReactCookie',
-      globals
+      globals,
     },
     plugins: [
       ...basePlugins,
       replace({ 'process.env.NODE_ENV': '"production"' }),
-      uglify()
+      uglify(),
     ],
-    external
-  }
+    external,
+  },
 ];
