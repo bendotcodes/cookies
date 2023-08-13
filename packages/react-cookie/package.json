@@ -44,7 +44,7 @@
     "@babel/cli": "^7.19.3",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "rimraf": "^2.7.1",
+    "rimraf": "^5.0.1",
     "rollup": "^1.32.1",
     "typescript": "^5.1.6"
   },
