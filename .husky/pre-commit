@@ -1,0 +1,2 @@
+npx prettier . --write
+yarn test

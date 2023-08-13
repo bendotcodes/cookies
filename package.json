@@ -13,7 +13,7 @@
     "@types/jest": "^29.5.3",
     "babel-jest": "^29.6.2",
     "babel-plugin-add-module-exports": "^1.0.4",
-    "husky": "^3.1.0",
+    "husky": "^8.0.3",
     "jest": "^29.6.2",
     "jest-environment-jsdom": "^29.6.2",
     "prettier": "^3.0.1",
@@ -36,12 +36,8 @@
     "build-express": "cd packages/universal-cookie-express && yarn build",
     "build-koa": "cd packages/universal-cookie-koa && yarn build",
     "build-demo": "cd packages/react-cookie-demo && yarn build",
-    "size": "size-limit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "prettier . --write && yarn test"
-    }
+    "size": "size-limit",
+    "prepare": "husky install"
   },
   "size-limit": [
     {
