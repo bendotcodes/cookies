@@ -36,25 +36,25 @@ jobs:
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Update version for universal-cookie
-        run: yarn workspace universal-cookie version --no-git-tag-version --new-version ${VERSION} 
+        run: yarn workspace universal-cookie version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish universal-cookie to NPM
         run: yarn workspace universal-cookie npm publish
 
       - name: Update version for react-cookie
-        run: yarn workspace react-cookie version --no-git-tag-version --new-version ${VERSION} 
+        run: yarn workspace react-cookie version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish react-cookie to NPM
         run: yarn workspace react-cookie npm publish
 
       - name: Update version for universal-cookie-express
-        run: yarn workspace universal-cookie-express version --no-git-tag-version --new-version ${VERSION} 
+        run: yarn workspace universal-cookie-express version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish universal-cookie-express to NPM
         run: yarn workspace universal-cookie-express npm publish
 
       - name: Update version for universal-cookie-koa
-        run: yarn workspace universal-cookie-koa version --no-git-tag-version --new-version ${VERSION} 
+        run: yarn workspace universal-cookie-koa version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish universal-cookie-koa to NPM
         run: yarn workspace universal-cookie-koa npm publish
