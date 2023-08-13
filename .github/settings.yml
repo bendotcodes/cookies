@@ -12,7 +12,7 @@ repository:
   enable_vulnerability_alerts: true
 
 branches:
-  - name: main 
+  - name: main
     protection:
       required_pull_request_reviews: null
       required_status_checks:
