@@ -1,3 +1,5 @@
+![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+
 <h3 align="center">
   <a href="packages/react-cookie">react-cookie</a>
 </h3>
