@@ -28,7 +28,7 @@
   },
   "scripts": {
     "format": "prettier packages/**/*.js packages/**/*.ts packages/**/*.tsx --single-quote --write",
-    "test": "jest",
+    "test": "jest --coverage",
     "watch": "jest --watch",
     "build": "yarn build-universal && yarn build-react && yarn build-express && yarn build-koa && yarn build-demo",
     "build-universal": "cd packages/universal-cookie && yarn build",
