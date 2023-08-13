@@ -196,11 +196,13 @@ describe('useCookies', () => {
   });
 
   describe('on the server', () => {
+    beforeEach(() => {
+      jest.spyOn(Utils, 'isInBrowser').mockReturnValue(false);
+    });
+
     it('provides the cookies', () => {
       const cookies = new Cookies('test="big fat cat"');
-      // make sure Cookies thinks document.cookie is not accessible as it would be on a server
       cookies.HAS_DOCUMENT_COOKIE = false;
-      spyOn(Utils, 'isInBrowser').and.returnValue(false);
 
       const html = ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
@@ -213,12 +215,9 @@ describe('useCookies', () => {
 
     it('does not track changes', () => {
       const cookies = new Cookies('test="big fat cat"');
-      // make sure Cookies thinks document.cookie is not accessible as it would be on a server
-      cookies.HAS_DOCUMENT_COOKIE = false;
-      spyOn(Utils, 'isInBrowser').and.returnValue(false);
-      spyOn(React, 'useLayoutEffect');
+      jest.spyOn(React, 'useLayoutEffect');
 
-      const html = ReactDOMServer.renderToString(
+      ReactDOMServer.renderToString(
         <CookiesProvider cookies={cookies}>
           <TestComponent />
         </CookiesProvider>
