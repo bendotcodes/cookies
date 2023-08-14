@@ -1,6 +1,8 @@
 name: Publish
 
 on:
+  pull_request:
+    branches: [main]
   release:
     types: [published]
 
@@ -31,17 +33,18 @@ jobs:
 
       - name: Find version to release
         run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          echo Version: $VERSION
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "VERSION=5.0.0" >> $GITHUB_ENV
+        #  VERSION=${GITHUB_REF_NAME#v}
+        #  echo Version: $VERSION
+        #  echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-      - name: Update version for universal-cookie
-        working-directory: ./packages/universal-cookie
-        run: npm version --no-git-tag-version --new-version ${VERSION}
+        #- name: Update version for universal-cookie
+        #working-directory: ./packages/universal-cookie
+        #run: npm version --no-git-tag-version --new-version ${VERSION}
 
-      - name: Publish universal-cookie to NPM
-        working-directory: ./packages/universal-cookie
-        run: npm publish
+        #- name: Publish universal-cookie to NPM
+        #working-directory: ./packages/universal-cookie
+        #run: npm publish
 
       - name: Update version for react-cookie
         working-directory: ./packages/react-cookie
@@ -49,7 +52,7 @@ jobs:
 
       - name: Publish react-cookie to NPM
         working-directory: ./packages/react-cookie
-        run: yarn workspace react-cookie npm publish
+        run: npm publish
 
       - name: Update version for universal-cookie-express
         working-directory: ./packages/universal-cookie-express
@@ -57,7 +60,7 @@ jobs:
 
       - name: Publish universal-cookie-express to NPM
         working-directory: ./packages/universal-cookie-express
-        run: yarn workspace universal-cookie-express npm publish
+        run: npm publish
 
       - name: Update version for universal-cookie-koa
         working-directory: ./packages/universal-cookie-koa
@@ -65,4 +68,4 @@ jobs:
 
       - name: Publish universal-cookie-koa to NPM
         working-directory: ./packages/universal-cookie-koa
-        run: yarn workspace universal-cookie-koa npm publish
+        run: npm publish
