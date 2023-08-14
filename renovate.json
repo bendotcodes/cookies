@@ -4,6 +4,10 @@
   "rangeStrategy": "bump",
   "packageRules": [
     {
+      "matchDepTypes": ["peerDependencies"],
+      "enabled": false
+    },
+    {
       "packagePatterns": [".*"],
       "schedule": ["before 6am on Friday"],
       "matchUpdateTypes": ["minor", "patch"],
