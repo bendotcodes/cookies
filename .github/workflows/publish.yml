@@ -49,7 +49,7 @@ jobs:
 
       - name: Publish react-cookie to NPM
         working-directory: ./packages/react-cookie
-        run: yarn workspace react-cookie npm publish
+        run: npm publish
 
       - name: Update version for universal-cookie-express
         working-directory: ./packages/universal-cookie-express
@@ -57,7 +57,7 @@ jobs:
 
       - name: Publish universal-cookie-express to NPM
         working-directory: ./packages/universal-cookie-express
-        run: yarn workspace universal-cookie-express npm publish
+        run: npm publish
 
       - name: Update version for universal-cookie-koa
         working-directory: ./packages/universal-cookie-koa
@@ -65,4 +65,4 @@ jobs:
 
       - name: Publish universal-cookie-koa to NPM
         working-directory: ./packages/universal-cookie-koa
-        run: yarn workspace universal-cookie-koa npm publish
+        run: npm publish

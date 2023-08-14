@@ -5,7 +5,7 @@
 <p align="center">
   Universal cookies for JavaScript<br />
   <a href="https://badge.fury.io/js/universal-cookie"><img src="https://badge.fury.io/js/universal-cookie.svg" /></a>
-  ![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+  <img src="https://github.com/github/docs/actions/workflows/test.yml/badge.svg" />
 </p>
 
 ## Integrations

@@ -1,4 +1,6 @@
-![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+<p align="center">
+  <img src="https://github.com/github/docs/actions/workflows/test.yml/badge.svg" alt="Test Status" />
+</p>
 
 <h3 align="center">
   <a href="packages/react-cookie">react-cookie</a>
