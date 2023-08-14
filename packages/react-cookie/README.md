@@ -5,7 +5,7 @@
 <p align="center">
   Universal cookies for <a href="https://facebook.github.io/react">React</a><br />
   <a href="https://badge.fury.io/js/react-cookie"><img src="https://badge.fury.io/js/react-cookie.svg" /></a>
-  ![Test Status](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+  <img src="https://github.com/github/docs/actions/workflows/test.yml/badge.svg" alt="Test Status" />
 </p>
 
 ## Integrations
