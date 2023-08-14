@@ -35,11 +35,11 @@
     "build-legacy": "babel es6 -D -d lib"
   },
   "dependencies": {
-    "@types/cookie": "^0.5.0",
+    "@types/cookie": "^0.5.1",
     "cookie": "^0.5.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.19.3",
+    "@babel/cli": "^7.22.10",
     "rimraf": "^3.0.2",
     "rollup": "^3.28.0",
     "typescript": "^5.1.6"
