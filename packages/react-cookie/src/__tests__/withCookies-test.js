@@ -1,11 +1,10 @@
 import React from 'react';
 import { object } from 'prop-types';
 import { instanceOf } from 'prop-types';
-import ReactDOM from 'react-dom/client';
 import ReactDOMServer from 'react-dom/server';
-import { act } from 'react-dom/test-utils';
 import { CookiesProvider, withCookies, Cookies } from '../';
 import { cleanCookies } from 'universal-cookie/lib/utils';
+import { act, render, screen } from '@testing-library/react';
 
 function TestComponent({ cookies }) {
   return <div>{cookies.get('test')}</div>;
@@ -53,87 +52,64 @@ describe('withCookies(Component)', () => {
       document.cookie = 'test="big fat cat"';
 
       const Component = withCookies(TestComponent);
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
 
-      act(() => {
-        root.render(
-          <CookiesProvider>
-            <Component />
-          </CookiesProvider>,
-        );
-      });
+      render(
+        <CookiesProvider>
+          <Component />
+        </CookiesProvider>,
+      );
 
-      expect(node.innerHTML).toContain('big fat cat');
+      expect(screen.getByText('big fat cat')).toBeInTheDocument();
     });
 
     it('update when a cookie change', () => {
       const cookies = new Cookies();
-
-      const Component = withCookies(TestComponent);
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
-
-      const toRender = (
-        <CookiesProvider cookies={cookies}>
-          <Component />
-        </CookiesProvider>
-      );
-
       cookies.set('test', 'big fat cat Pacman');
 
+      const Component = withCookies(TestComponent);
+
+      render(
+        <CookiesProvider cookies={cookies}>
+          <Component />
+        </CookiesProvider>,
+      );
+
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
+
       act(() => {
-        root.render(toRender);
+        cookies.set('test', 'mean lean cat Suki');
       });
 
-      expect(node.innerHTML).toContain('big fat cat Pacman');
-
-      cookies.set('test', 'mean lean cat Suki');
-
-      act(() => {
-        root.render(toRender);
-      });
-
-      expect(node.innerHTML).toContain('mean lean cat Suki');
+      expect(screen.queryByText('big fat cat Pacman')).not.toBeInTheDocument();
     });
 
     it('receive all cookies in props', () => {
       const cookies = new Cookies();
       const Component = withCookies(AllCookiesComponent);
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
 
       cookies.set('test1', 'value1');
       cookies.set('test2', 'value2');
 
-      act(() => {
-        root.render(
-          <CookiesProvider cookies={cookies}>
-            <Component />
-          </CookiesProvider>,
-        );
-      });
+      render(
+        <CookiesProvider cookies={cookies}>
+          <Component />
+        </CookiesProvider>,
+      );
 
-      expect(node.innerHTML).toContain('test1');
-      expect(node.innerHTML).toContain('value1');
-      expect(node.innerHTML).toContain('test2');
-      expect(node.innerHTML).toContain('value2');
+      expect(screen.getByText('test1: value1')).toBeInTheDocument();
+      expect(screen.getByText('test2: value2')).toBeInTheDocument();
     });
 
     it('forward the ref', () => {
       const cookies = new Cookies();
       const Component = withCookies(TestRefComponent);
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
       const ref = React.createRef();
 
-      act(() => {
-        root.render(
-          <CookiesProvider cookies={cookies}>
-            <Component ref={ref} />
-          </CookiesProvider>,
-        );
-      });
+      render(
+        <CookiesProvider cookies={cookies}>
+          <Component ref={ref} />
+        </CookiesProvider>,
+      );
 
       expect(ref.current.testValue).toBe('Suki is pretty');
     });

@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
 import ReactDOMServer from 'react-dom/server';
 import { cleanCookies } from 'universal-cookie/lib/utils';
+import { act, render, screen } from '@testing-library/react';
 
 import { CookiesProvider, useCookies, Cookies } from '../';
 import * as Utils from '../utils';
@@ -21,184 +20,158 @@ describe('useCookies', () => {
     it('provides the cookies', () => {
       document.cookie = 'test="big fat cat"';
 
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
+      render(
+        <CookiesProvider>
+          <TestComponent />
+        </CookiesProvider>,
+      );
 
-      act(() => {
-        root.render(
-          <CookiesProvider>
-            <TestComponent />
-          </CookiesProvider>,
-        );
-      });
-
-      expect(node.innerHTML).toContain('big fat cat');
+      expect(screen.getByText('big fat cat')).toBeInTheDocument();
     });
 
     it('update when a cookie change', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
+      cookies.set('test', 'big fat cat Pacman');
 
-      const toRender = (
+      render(
         <CookiesProvider cookies={cookies}>
           <TestComponent />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
-      act(() => {
-        cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
-      });
-
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('mean lean cat Suki');
+      expect(screen.getByText('mean lean cat Suki')).toBeInTheDocument();
+    });
+
+    it('update when a cookie is removed', () => {
+      const cookies = new Cookies();
+      cookies.set('test', 'big fat cat Pacman');
+
+      render(
+        <CookiesProvider cookies={cookies}>
+          <TestComponent />
+        </CookiesProvider>,
+      );
+
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
+
+      act(() => {
+        cookies.remove('test');
+      });
+
+      expect(screen.queryByText('big fat cat Pacman')).not.toBeInTheDocument();
     });
 
     it('clear the change subscription on unmount', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
 
-      act(() => {
-        root.render(
-          <CookiesProvider cookies={cookies}>
-            <TestComponent />
-          </CookiesProvider>,
-        );
-      });
+      const { rerender } = render(
+        <CookiesProvider cookies={cookies}>
+          <TestComponent />
+        </CookiesProvider>,
+      );
 
       expect(cookies.changeListeners.length).toBe(1);
 
-      act(() => {
-        root.render(null);
-      });
+      rerender(null);
 
       expect(cookies.changeListeners.length).toBe(0);
     });
 
     it('re-render if a dependency changes', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
+      cookies.set('test', 'big fat cat Pacman');
 
-      const toRender = (
+      render(
         <CookiesProvider cookies={cookies}>
           <TestComponent dependencies={['test']} />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
-      act(() => {
-        cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
-      });
-
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('mean lean cat Suki');
+      expect(screen.getByText('mean lean cat Suki')).toBeInTheDocument();
     });
 
     it('re-render if a dependency changes multiple times', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
+      cookies.set('test', 'big fat cat Pacman');
 
-      const toRender = (
+      render(
         <CookiesProvider cookies={cookies}>
           <TestComponent dependencies={['test']} />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
-      act(() => {
-        cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
-      });
-
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('mean lean cat Suki');
+      expect(screen.getByText('mean lean cat Suki')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'good old Yuki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('good old Yuki');
+      expect(screen.getByText('good old Yuki')).toBeInTheDocument();
     });
 
     it('re-render if a dependency changes and go back', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
 
-      const toRender = (
+      render(
         <CookiesProvider cookies={cookies}>
           <TestComponent dependencies={['test']} />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
       act(() => {
         cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('mean lean cat Suki');
+      expect(screen.getByText('mean lean cat Suki')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
     });
 
     it('does not re-render if no dependency changes', () => {
       const cookies = new Cookies();
-      const node = document.createElement('div');
-      const root = ReactDOM.createRoot(node);
+      cookies.set('test', 'big fat cat Pacman');
 
-      const toRender = (
+      render(
         <CookiesProvider cookies={cookies}>
           <TestComponent dependencies={[]} />
-        </CookiesProvider>
+        </CookiesProvider>,
       );
 
-      act(() => {
-        cookies.set('test', 'big fat cat Pacman');
-        root.render(toRender);
-      });
-
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
 
       act(() => {
         cookies.set('test', 'mean lean cat Suki');
-        root.render(toRender);
       });
 
-      expect(node.innerHTML).toContain('big fat cat Pacman');
+      expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
     });
   });
 
