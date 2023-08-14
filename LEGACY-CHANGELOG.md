@@ -1,5 +1,9 @@
 # CHANGELOG
 
+# This file is no more maintained
+
+To see changelogs, please look at the release notes instead in GitHub.
+
 ## vNEXT
 
 - `react-cookie`: Fix withCookies bug with CommonJS (#293)
