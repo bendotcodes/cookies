@@ -9,8 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@babel/register": "^7.18.9",
-    "express": "^4.17.2",
+    "@babel/register": "^7.22.5",
+    "express": "^4.18.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-cookie": "^4.0.0",
@@ -18,10 +18,10 @@
     "universal-cookie-express": "^4.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.2",
+    "@babel/core": "^7.22.10",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.20.2",
-    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-react": "^7.22.5",
     "@babel/preset-stage-2": "^7.8.3",
     "@testing-library/react": "^14.0.0",
     "@types/testing-library__dom": "^7.5.0",
