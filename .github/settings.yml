@@ -1,8 +1,8 @@
 repository:
   name: cookies
   description: Load and save cookies within your Web application
-  private: true
-  default_branch: master
+  private: false
+  default_branch: main
   allow_auto_merge: true
   allow_squash_merge: true
   allow_merge_commit: true
