@@ -15,16 +15,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactivestack/cookies.git"
+    "url": "https://github.com/bendotcodes/cookies.git"
   },
-  "bugs": "https://github.com/reactivestack/cookies/issues",
-  "homepage": "https://github.com/reactivestack/cookies/tree/master/packages/universal-cookie#readme",
+  "bugs": "https://github.com/bendotcodes/cookies/issues",
+  "homepage": "https://github.com/bendotcodes/cookies/tree/main/packages/universal-cookie#readme",
   "keywords": [
     "universal",
     "isomophic",
     "cookie"
   ],
-  "author": "Benoit Tremblay <benoit@reactivestack.com>",
+  "author": "Benoit Tremblay <me@ben.codes>",
   "license": "MIT",
   "scripts": {
     "clean": "rimraf lib && rimraf es6 && rimraf cjs && rimraf umd",
