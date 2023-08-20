@@ -65,14 +65,12 @@ export default class Cookies {
   }
 
   public set(name: string, value: Cookie, options?: CookieSetOptions) {
-    if (typeof value === 'object') {
-      value = JSON.stringify(value);
-    }
-
+    const stringValue =
+      typeof value === 'string' ? value : JSON.stringify(value);
     this.cookies = { ...this.cookies, [name]: value };
 
     if (this.HAS_DOCUMENT_COOKIE) {
-      document.cookie = cookie.serialize(name, value, options);
+      document.cookie = cookie.serialize(name, stringValue, options);
     }
 
     this._emitChange({ name, value, options });
