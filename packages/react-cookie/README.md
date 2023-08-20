@@ -50,6 +50,8 @@ Set the user cookies
 
 On the server, the `cookies` props must be set using `req.universalCookies` or `new Cookie(cookieHeader)`
 
+- defaultSetOptions: You can set default values for when setting cookies.
+
 ## `useCookies([dependencies])`
 
 Access and modify cookies using React hooks.
@@ -96,6 +98,10 @@ Remove a cookie
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Can only the server access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
+
+### `updateCookies()`
+
+Read back the cookies and trigger changes accordingly. Useful is you change cookies server side or with other parties.
 
 ## `withCookies(Component)`
 
@@ -170,7 +176,7 @@ import { CookiesProvider } from 'react-cookie';
 
 export default function Root() {
   return (
-    <CookiesProvider>
+    <CookiesProvider defaultSetCookies={{ path: '/' }}>
       <App />
     </CookiesProvider>
   );
@@ -188,7 +194,7 @@ function App() {
   const [cookies, setCookie] = useCookies(['name']);
 
   function onChange(newName) {
-    setCookie('name', newName, { path: '/' });
+    setCookie('name', newName);
   }
 
   return (

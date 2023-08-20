@@ -25,31 +25,47 @@ export default class Cookies {
     this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
   }
 
-  private _updateBrowserValues() {
-    if (!this.HAS_DOCUMENT_COOKIE) {
-      return;
-    }
-
-    this.cookies = cookie.parse(document.cookie);
-  }
-
   private _emitChange(params: CookieChangeOptions) {
     for (let i = 0; i < this.changeListeners.length; ++i) {
       this.changeListeners[i](params);
     }
   }
 
+  private _checkChanges(newCookies: { [name: string]: Cookie }) {
+    const names = new Set(
+      Object.keys(newCookies).concat(Object.keys(this.cookies)),
+    );
+    for (const name in names) {
+      if (newCookies[name] !== this.cookies[name]) {
+        this._emitChange({
+          name,
+          value: readCookie(newCookies[name]),
+        });
+      }
+    }
+  }
+
+  public update() {
+    if (!this.HAS_DOCUMENT_COOKIE) {
+      return;
+    }
+
+    const newCookies = cookie.parse(document.cookie);
+    this._checkChanges(newCookies);
+    this.cookies = newCookies;
+  }
+
   public get(name: string, options?: CookieGetOptions): any;
   public get<T>(name: string, options?: CookieGetOptions): T;
   public get(name: string, options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+    this.update();
     return readCookie(this.cookies[name], options);
   }
 
   public getAll(options?: CookieGetOptions): any;
   public getAll<T>(options?: CookieGetOptions): T;
   public getAll(options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+    this.update();
     const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
@@ -71,7 +87,7 @@ export default class Cookies {
 
     const stringValue =
       typeof value === 'string' ? value : JSON.stringify(value);
-    this.cookies = { ...this.cookies, [name]: value };
+    this.cookies = { ...this.cookies, [name]: stringValue };
 
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, stringValue, options);
