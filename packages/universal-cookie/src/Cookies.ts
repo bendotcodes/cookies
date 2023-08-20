@@ -4,31 +4,33 @@ import {
   CookieChangeListener,
   CookieChangeOptions,
   CookieGetOptions,
-  CookieParseOptions,
   CookieSetOptions,
 } from './types';
 import { hasDocumentCookie, parseCookies, readCookie } from './utils';
 
 export default class Cookies {
   private cookies: { [name: string]: Cookie };
+  private defaultSetOptions: CookieSetOptions;
   private changeListeners: CookieChangeListener[] = [];
 
   private HAS_DOCUMENT_COOKIE: boolean = false;
 
-  constructor(cookies?: string | object | null, options?: CookieParseOptions) {
-    this.cookies = parseCookies(cookies, options);
+  constructor(
+    cookies?: string | object | null,
+    defaultSetOptions: CookieSetOptions = {},
+  ) {
+    this.cookies = parseCookies(cookies);
+    this.defaultSetOptions = defaultSetOptions;
 
-    new Promise(() => {
-      this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
-    }).catch(() => {});
+    this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
   }
 
-  private _updateBrowserValues(parseOptions?: CookieParseOptions) {
+  private _updateBrowserValues() {
     if (!this.HAS_DOCUMENT_COOKIE) {
       return;
     }
 
-    this.cookies = cookie.parse(document.cookie, parseOptions);
+    this.cookies = cookie.parse(document.cookie);
   }
 
   private _emitChange(params: CookieChangeOptions) {
@@ -39,22 +41,15 @@ export default class Cookies {
 
   public get(name: string, options?: CookieGetOptions): any;
   public get<T>(name: string, options?: CookieGetOptions): T;
-  public get(
-    name: string,
-    options: CookieGetOptions = {},
-    parseOptions?: CookieParseOptions,
-  ) {
-    this._updateBrowserValues(parseOptions);
+  public get(name: string, options: CookieGetOptions = {}) {
+    this._updateBrowserValues();
     return readCookie(this.cookies[name], options);
   }
 
   public getAll(options?: CookieGetOptions): any;
   public getAll<T>(options?: CookieGetOptions): T;
-  public getAll(
-    options: CookieGetOptions = {},
-    parseOptions?: CookieParseOptions,
-  ) {
-    this._updateBrowserValues(parseOptions);
+  public getAll(options: CookieGetOptions = {}) {
+    this._updateBrowserValues();
     const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
@@ -65,6 +60,15 @@ export default class Cookies {
   }
 
   public set(name: string, value: Cookie, options?: CookieSetOptions) {
+    if (options) {
+      options = {
+        ...this.defaultSetOptions,
+        ...options,
+      };
+    } else {
+      options = this.defaultSetOptions;
+    }
+
     const stringValue =
       typeof value === 'string' ? value : JSON.stringify(value);
     this.cookies = { ...this.cookies, [name]: value };

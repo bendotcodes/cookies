@@ -145,6 +145,38 @@ describe('Cookies', () => {
       });
     });
 
+    it('default options are used', () => {
+      const cookies = new Cookies(null, { path: '/meow' });
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+      cookies.set('test', 'test');
+
+      expect(onChange).toBeCalledWith({
+        name: 'test',
+        value: 'test',
+        options: {
+          path: '/meow',
+        },
+      });
+    });
+
+    it('options override the default options', () => {
+      const cookies = new Cookies(null, { path: '/meow' });
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+      cookies.set('test', 'test', { path: '/woof' });
+
+      expect(onChange).toBeCalledWith({
+        name: 'test',
+        value: 'test',
+        options: {
+          path: '/woof',
+        },
+      });
+    });
+
     it('detect removing a cookie', () => {
       const cookies = new Cookies();
 

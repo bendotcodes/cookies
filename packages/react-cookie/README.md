@@ -44,7 +44,7 @@ or in the browser (global variable `ReactCookie`):
 ></script>
 ```
 
-## `<CookiesProvider />`
+## `<CookiesProvider defaultSetOptions />`
 
 Set the user cookies
 

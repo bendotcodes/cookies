@@ -20,8 +20,9 @@ export interface CookieChangeOptions {
   options?: CookieSetOptions;
 }
 
-export interface CookieParseOptions {
-  decode: (value: string) => string;
+export interface CookieOptions {
+  decode?: (value: string) => string;
+  defaultSetOptions?: CookieSetOptions;
 }
 
 export type CookieChangeListener = (options: CookieChangeOptions) => void;

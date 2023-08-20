@@ -28,11 +28,19 @@ or in the browser (global variable `UniversalCookie`):
 
 ## API - Cookies class
 
-### `constructor([cookieHeader])`
+### `constructor([cookieHeader], [defaultSetOptions])`
 
 Create a cookies context
 
 - cookieHeader (string|object): specify the cookie header or object
+- defaultSetOptions (object): specify the default options when setting cookies
+  - path (string): cookie path, use `/` as the path if you want your cookie to be accessible on all pages
+  - expires (Date): absolute expiration date for the cookie
+  - maxAge (number): relative max age of the cookie from when the client receives it in seconds
+  - domain (string): domain for the cookie (sub.domain.com or .allsubdomains.com)
+  - secure (boolean): Is only accessible through HTTPS?
+  - httpOnly (boolean): Is only the server can access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
+  - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
 
 ### `get(name, [options])`
 
@@ -93,9 +101,9 @@ Remove a listener from the change callback.
 ```js
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+const cookies = new Cookies(null { path: '/' });
 
-cookies.set('myCat', 'Pacman', { path: '/' });
+cookies.set('myCat', 'Pacman');
 console.log(cookies.get('myCat')); // Pacman
 ```
 
@@ -104,7 +112,7 @@ console.log(cookies.get('myCat')); // Pacman
 ```js
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies(req.headers.cookie);
+const cookies = new Cookies(req.headers.cookie, { path: '/' });
 
 console.log(cookies.get('myCat')); // Pacman or undefined if not set yet
 ```
