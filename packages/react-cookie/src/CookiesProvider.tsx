@@ -16,7 +16,7 @@ export default class CookiesProvider extends React.Component<
     if (props.cookies) {
       this.cookies = props.cookies;
     } else {
-      this.cookies = new Cookies();
+      this.cookies = new Cookies(undefined, props.defaultSetOptions as any); // TODO: Remove the any after release v6
     }
   }
 
