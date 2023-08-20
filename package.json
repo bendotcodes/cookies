@@ -33,6 +33,11 @@
     "size-limit": "^8.2.6",
     "typescript": "^5.1.6"
   },
+  "overrides": {
+    "semver": "^7.5.4",
+    "minimatch": "^9.0.3",
+    "ansi-regex:": "^6.0.1"
+  },
   "scripts": {
     "test": "jest --coverage",
     "watch": "jest --watch",
