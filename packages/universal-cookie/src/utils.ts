@@ -27,19 +27,9 @@ export function parseCookies(
   }
 }
 
-export function isParsingCookie(value: Cookie, doNotParse?: boolean) {
-  if (typeof doNotParse === 'undefined') {
-    // We guess if the cookie start with { or [, it has been serialized
-    doNotParse =
-      !value || (value[0] !== '{' && value[0] !== '[' && value[0] !== '"');
-  }
-
-  return !doNotParse;
-}
-
 export function readCookie(value: Cookie, options: CookieGetOptions = {}) {
   const cleanValue = cleanupCookieValue(value);
-  if (isParsingCookie(cleanValue, options.doNotParse)) {
+  if (!options.doNotParse) {
     try {
       return JSON.parse(cleanValue);
     } catch (e) {

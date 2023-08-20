@@ -93,6 +93,12 @@ describe('Cookies', () => {
       cookies.set('test', { cat: 'meow' });
       expect(cookies.get('test').cat).toBe('meow');
     });
+
+    it('works for boolean', () => {
+      const cookies = new Cookies();
+      cookies.set('test', true);
+      expect(cookies.get('test')).toBe(true);
+    });
   });
 
   describe('remove(name, [options])', () => {
@@ -116,6 +122,23 @@ describe('Cookies', () => {
       expect(onChange).toBeCalledWith({
         name: 'test',
         value: 'meow',
+        options: {
+          path: '/',
+        },
+      });
+    });
+
+    it('keeps the value as original object', () => {
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+      cookies.set('test', [0, 1, 2], { path: '/' });
+
+      expect(onChange).toBeCalledTimes(1);
+      expect(onChange).toBeCalledWith({
+        name: 'test',
+        value: [0, 1, 2],
         options: {
           path: '/',
         },
