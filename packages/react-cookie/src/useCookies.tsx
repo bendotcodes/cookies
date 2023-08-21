@@ -49,7 +49,7 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   const setCookie = useMemo(() => cookies.set.bind(cookies), [cookies]);
   const removeCookie = useMemo(() => cookies.remove.bind(cookies), [cookies]);
 
-  return [allCookies, setCookie, removeCookie, (cookies as any).update]; // TODO: Remove any when v6 is published
+  return [allCookies, setCookie, removeCookie, cookies.update];
 }
 
 function shouldUpdate<U = { [K: string]: any }>(
