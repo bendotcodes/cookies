@@ -29,39 +29,17 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Find version to release
-        run: |
-          VERSION=${GITHUB_REF_NAME#v}
-          echo Version: $VERSION
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
-
-      - name: Update version for universal-cookie
-        working-directory: ./packages/universal-cookie
-        run: npm version --no-git-tag-version --new-version ${VERSION}
-
       - name: Publish universal-cookie to NPM
         working-directory: ./packages/universal-cookie
         run: npm publish
-
-      - name: Update version for react-cookie
-        working-directory: ./packages/react-cookie
-        run: npm version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish react-cookie to NPM
         working-directory: ./packages/react-cookie
         run: npm publish
 
-      - name: Update version for universal-cookie-express
-        working-directory: ./packages/universal-cookie-express
-        run: npm version --no-git-tag-version --new-version ${VERSION}
-
       - name: Publish universal-cookie-express to NPM
         working-directory: ./packages/universal-cookie-express
         run: npm publish
-
-      - name: Update version for universal-cookie-koa
-        working-directory: ./packages/universal-cookie-koa
-        run: npm version --no-git-tag-version --new-version ${VERSION}
 
       - name: Publish universal-cookie-koa to NPM
         working-directory: ./packages/universal-cookie-koa
