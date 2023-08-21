@@ -25,7 +25,6 @@
     "jest-environment-jsdom": "^29.6.2",
     "lint-staged": "^14.0.0",
     "prettier": "^3.0.2",
-    "remark": "^14.0.3",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.0",
     "rollup-plugin-node-resolve": "^5.2.0",
