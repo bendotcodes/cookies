@@ -17,7 +17,6 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   }
 
   const [allCookies, setCookies] = useState(() => cookies.getAll());
-  console.log('COOKIES', allCookies);
 
   if (isInBrowser()) {
     useLayoutEffect(() => {
@@ -27,7 +26,6 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
         });
 
         if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
-          console.log('SHOULD UPDATE', newCookies, allCookies);
           setCookies(newCookies);
         }
       }

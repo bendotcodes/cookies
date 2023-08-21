@@ -2,7 +2,6 @@ import React from 'react';
 import { func, string } from 'prop-types';
 
 export default function NameForm({ name, onChange }) {
-  console.log('NAME', name);
   return (
     <div>
       <h1>What&apos;s your name?</h1>
