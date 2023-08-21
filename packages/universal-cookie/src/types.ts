@@ -2,6 +2,7 @@ export type Cookie = any;
 
 export interface CookieGetOptions {
   doNotParse?: boolean;
+  doNotUpdate?: boolean;
 }
 
 export interface CookieSetOptions {

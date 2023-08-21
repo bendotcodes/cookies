@@ -19,7 +19,8 @@ export default class Cookies {
     cookies?: string | object | null,
     defaultSetOptions: CookieSetOptions = {},
   ) {
-    this.cookies = parseCookies(cookies);
+    const domCookies = typeof document === 'undefined' ? '' : document.cookie;
+    this.cookies = parseCookies(cookies || domCookies);
     this.defaultSetOptions = defaultSetOptions;
 
     this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
@@ -35,37 +36,34 @@ export default class Cookies {
     const names = new Set(
       Object.keys(newCookies).concat(Object.keys(this.cookies)),
     );
-    for (const name in names) {
+
+    names.forEach((name) => {
       if (newCookies[name] !== this.cookies[name]) {
         this._emitChange({
           name,
           value: readCookie(newCookies[name]),
         });
       }
-    }
-  }
-
-  public update() {
-    if (!this.HAS_DOCUMENT_COOKIE) {
-      return;
-    }
-
-    const newCookies = cookie.parse(document.cookie);
-    this._checkChanges(newCookies);
-    this.cookies = newCookies;
+    });
   }
 
   public get(name: string, options?: CookieGetOptions): any;
   public get<T>(name: string, options?: CookieGetOptions): T;
   public get(name: string, options: CookieGetOptions = {}) {
-    this.update();
+    if (!options.doNotUpdate) {
+      this.update();
+    }
+
     return readCookie(this.cookies[name], options);
   }
 
   public getAll(options?: CookieGetOptions): any;
   public getAll<T>(options?: CookieGetOptions): T;
   public getAll(options: CookieGetOptions = {}) {
-    this.update();
+    if (!options.doNotUpdate) {
+      this.update();
+    }
+
     const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
@@ -111,6 +109,16 @@ export default class Cookies {
     }
 
     this._emitChange({ name, value: undefined, options });
+  }
+
+  public update() {
+    if (!this.HAS_DOCUMENT_COOKIE) {
+      return;
+    }
+
+    const previousCookies = this.cookies;
+    this.cookies = cookie.parse(document.cookie);
+    this._checkChanges(previousCookies);
   }
 
   public addChangeListener(callback: CookieChangeListener) {

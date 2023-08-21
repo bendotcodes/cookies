@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { CookiesProvider } from 'react-cookie';
 
 import App from './components/App';
 
 const appEl = document.getElementById('main-app');
+const node = createRoot(appEl);
 
-ReactDOM.render(
+node.render(
   <CookiesProvider>
     <App />
   </CookiesProvider>,
-  appEl,
 );
