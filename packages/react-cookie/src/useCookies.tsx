@@ -9,32 +9,25 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   U,
   (name: T, value: Cookie, options?: CookieSetOptions) => void,
   (name: T, options?: CookieSetOptions) => void,
+  () => void,
 ] {
   const cookies = useContext(CookiesContext);
   if (!cookies) {
     throw new Error('Missing <CookiesProvider>');
   }
 
-  const initialCookies = cookies.getAll();
-  const [allCookies, setCookies] = useState(initialCookies);
-  const previousCookiesRef = useRef(allCookies);
+  const [allCookies, setCookies] = useState(() => cookies.getAll());
 
   if (isInBrowser()) {
     useLayoutEffect(() => {
       function onChange() {
-        const newCookies = cookies.getAll();
+        const newCookies = cookies.getAll({
+          doNotUpdate: true,
+        });
 
-        if (
-          shouldUpdate(
-            dependencies || null,
-            newCookies,
-            previousCookiesRef.current,
-          )
-        ) {
+        if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
           setCookies(newCookies);
         }
-
-        previousCookiesRef.current = newCookies;
       }
 
       cookies.addChangeListener(onChange);
@@ -42,13 +35,14 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
       return () => {
         cookies.removeChangeListener(onChange);
       };
-    }, [cookies]);
+    }, [cookies, allCookies]);
   }
 
   const setCookie = useMemo(() => cookies.set.bind(cookies), [cookies]);
   const removeCookie = useMemo(() => cookies.remove.bind(cookies), [cookies]);
+  const updateCookies = useMemo(() => cookies.update.bind(cookies), [cookies]);
 
-  return [allCookies, setCookie, removeCookie];
+  return [allCookies, setCookie, removeCookie, updateCookies];
 }
 
 function shouldUpdate<U = { [K: string]: any }>(

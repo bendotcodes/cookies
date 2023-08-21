@@ -19,18 +19,11 @@ export default class Cookies {
     cookies?: string | object | null,
     defaultSetOptions: CookieSetOptions = {},
   ) {
-    this.cookies = parseCookies(cookies);
+    const domCookies = typeof document === 'undefined' ? '' : document.cookie;
+    this.cookies = parseCookies(cookies || domCookies);
     this.defaultSetOptions = defaultSetOptions;
 
     this.HAS_DOCUMENT_COOKIE = hasDocumentCookie();
-  }
-
-  private _updateBrowserValues() {
-    if (!this.HAS_DOCUMENT_COOKIE) {
-      return;
-    }
-
-    this.cookies = cookie.parse(document.cookie);
   }
 
   private _emitChange(params: CookieChangeOptions) {
@@ -39,17 +32,38 @@ export default class Cookies {
     }
   }
 
+  private _checkChanges(newCookies: { [name: string]: Cookie }) {
+    const names = new Set(
+      Object.keys(newCookies).concat(Object.keys(this.cookies)),
+    );
+
+    names.forEach((name) => {
+      if (newCookies[name] !== this.cookies[name]) {
+        this._emitChange({
+          name,
+          value: readCookie(newCookies[name]),
+        });
+      }
+    });
+  }
+
   public get(name: string, options?: CookieGetOptions): any;
   public get<T>(name: string, options?: CookieGetOptions): T;
   public get(name: string, options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+    if (!options.doNotUpdate) {
+      this.update();
+    }
+
     return readCookie(this.cookies[name], options);
   }
 
   public getAll(options?: CookieGetOptions): any;
   public getAll<T>(options?: CookieGetOptions): T;
   public getAll(options: CookieGetOptions = {}) {
-    this._updateBrowserValues();
+    if (!options.doNotUpdate) {
+      this.update();
+    }
+
     const result: { [name: string]: any } = {};
 
     for (let name in this.cookies) {
@@ -71,7 +85,7 @@ export default class Cookies {
 
     const stringValue =
       typeof value === 'string' ? value : JSON.stringify(value);
-    this.cookies = { ...this.cookies, [name]: value };
+    this.cookies = { ...this.cookies, [name]: stringValue };
 
     if (this.HAS_DOCUMENT_COOKIE) {
       document.cookie = cookie.serialize(name, stringValue, options);
@@ -95,6 +109,16 @@ export default class Cookies {
     }
 
     this._emitChange({ name, value: undefined, options });
+  }
+
+  public update() {
+    if (!this.HAS_DOCUMENT_COOKIE) {
+      return;
+    }
+
+    const previousCookies = this.cookies;
+    this.cookies = cookie.parse(document.cookie);
+    this._checkChanges(previousCookies);
   }
 
   public addChangeListener(callback: CookieChangeListener) {

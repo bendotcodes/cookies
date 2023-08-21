@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie-koa",
-  "version": "0.0.0",
+  "version": "6.0.0",
   "description": "Hook cookies get/set on Koa for server-rendering",
   "main": "cjs/index.js",
   "module": "es6/index.js",
@@ -33,7 +33,7 @@
     "build-legacy": "babel es6 -D -d lib"
   },
   "dependencies": {
-    "universal-cookie": "^4.0.0"
+    "universal-cookie": "^6.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",

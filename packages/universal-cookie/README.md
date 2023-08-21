@@ -22,7 +22,7 @@ or in the browser (global variable `UniversalCookie`):
 ```html
 <script
   crossorigin
-  src="https://unpkg.com/universal-cookie@5/umd/universalCookie.min.js"
+  src="https://unpkg.com/universal-cookie@6/umd/universalCookie.min.js"
 ></script>
 ```
 
@@ -95,6 +95,10 @@ Add a listener to when a cookie is set or removed.
 ### `removeChangeListener(callback)`
 
 Remove a listener from the change callback.
+
+### `update()`
+
+Read back the cookies and trigger changes accordingly. Useful is you change cookies server side or with other parties.
 
 ## Browser Example
 

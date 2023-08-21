@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie",
-  "version": "0.0.0",
+  "version": "6.0.0",
   "description": "Universal cookies for JavaScript",
   "main": "cjs/index.js",
   "module": "es6/index.js",

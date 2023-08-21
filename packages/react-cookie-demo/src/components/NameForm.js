@@ -13,7 +13,7 @@ export default function NameForm({ name, onChange }) {
         <input
           type="text"
           placeholder="Enter your name"
-          defaultValue={name}
+          value={name}
           onChange={(e) => onChange(e.target.value)}
         />
       </form>
