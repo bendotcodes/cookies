@@ -4,9 +4,7 @@ import { useCookies } from 'react-cookie';
 import NameForm from './NameForm';
 
 function App() {
-  const [cookies, setCookie, removeCookie, updateCookies] = useCookies([
-    'name',
-  ]);
+  const [cookies, setCookie, removeCookie] = useCookies(['name']);
 
   function onChange(newName) {
     setCookie('name', newName, { path: '/' });
@@ -14,7 +12,6 @@ function App() {
 
   function onExternalCall() {
     document.cookie = 'name=Meow; path=/';
-    updateCookies();
   }
 
   function onClear() {

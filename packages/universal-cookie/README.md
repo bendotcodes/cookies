@@ -98,7 +98,7 @@ Remove a listener from the change callback.
 
 ### `update()`
 
-Read back the cookies and trigger changes accordingly. Useful is you change cookies server side or with other parties.
+Read back the cookies from the browser and triggers the change listeners. This should normally not be necessary because this library detects cookie changes automatically.
 
 ## Browser Example
 
