@@ -48,15 +48,15 @@
   "size-limit": [
     {
       "path": "./packages/universal-cookie/lib/index.js",
-      "limit": "3 KB"
+      "limit": "4 KB"
     },
     {
       "path": "./packages/universal-cookie-express/lib/index.js",
-      "limit": "3 KB"
+      "limit": "4 KB"
     },
     {
       "path": "./packages/universal-cookie-koa/lib/index.js",
-      "limit": "3 KB"
+      "limit": "4 KB"
     },
     {
       "path": "./packages/react-cookie/lib/index.js",

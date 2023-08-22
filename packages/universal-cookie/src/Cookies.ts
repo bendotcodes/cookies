@@ -12,6 +12,7 @@ export default class Cookies {
   private cookies: { [name: string]: Cookie };
   private defaultSetOptions: CookieSetOptions;
   private changeListeners: CookieChangeListener[] = [];
+  private pollingInterval?: NodeJS.Timeout;
 
   private HAS_DOCUMENT_COOKIE: boolean = false;
 
@@ -45,6 +46,16 @@ export default class Cookies {
         });
       }
     });
+  }
+
+  private _startPolling() {
+    this.pollingInterval = setInterval(this.update, 300);
+  }
+
+  private _stopPolling() {
+    if (this.pollingInterval) {
+      clearInterval(this.pollingInterval);
+    }
   }
 
   public get(name: string, options?: CookieGetOptions): any;
@@ -111,7 +122,7 @@ export default class Cookies {
     this._emitChange({ name, value: undefined, options });
   }
 
-  public update() {
+  public update = () => {
     if (!this.HAS_DOCUMENT_COOKIE) {
       return;
     }
@@ -119,16 +130,32 @@ export default class Cookies {
     const previousCookies = this.cookies;
     this.cookies = cookie.parse(document.cookie);
     this._checkChanges(previousCookies);
-  }
+  };
 
   public addChangeListener(callback: CookieChangeListener) {
     this.changeListeners.push(callback);
+
+    if (this.changeListeners.length === 1) {
+      if (typeof window === 'object' && 'cookieStore' in window) {
+        (window.cookieStore as any).addEventListener('change', this.update);
+      } else {
+        this._startPolling();
+      }
+    }
   }
 
   public removeChangeListener(callback: CookieChangeListener) {
     const idx = this.changeListeners.indexOf(callback);
     if (idx >= 0) {
       this.changeListeners.splice(idx, 1);
+    }
+
+    if (this.changeListeners.length === 0) {
+      if (typeof window === 'object' && 'cookieStore' in window) {
+        (window.cookieStore as any).removeEventListener('change', this.update);
+      } else {
+        this._stopPolling();
+      }
     }
   }
 }
