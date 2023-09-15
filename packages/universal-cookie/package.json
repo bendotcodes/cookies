@@ -42,7 +42,7 @@
   "devDependencies": {
     "@babel/cli": "^7.22.15",
     "rimraf": "^3.0.2",
-    "rollup": "^3.29.0",
+    "rollup": "^3.29.1",
     "typescript": "^5.2.2"
   }
 }
