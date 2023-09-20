@@ -1,5 +1,6 @@
 import Cookies from '../Cookies';
 import { cleanCookies } from '../utils';
+import * as cookie from "cookie";
 
 describe('Cookies', () => {
   beforeEach(() => {
@@ -105,6 +106,12 @@ describe('Cookies', () => {
     it('takes effect', () => {
       document.cookie = 'testingCookie=yes';
       const cookies = new Cookies();
+      cookies.remove('testingCookie');
+      expect(cookies.get('testingCookie')).toBeFalsy();
+    });
+    it('default options are used', () => {
+      document.cookie = 'testingCookie=yes; Path=/meow';
+      const cookies = new Cookies(null, {path: `/meow`});
       cookies.remove('testingCookie');
       expect(cookies.get('testingCookie')).toBeFalsy();
     });

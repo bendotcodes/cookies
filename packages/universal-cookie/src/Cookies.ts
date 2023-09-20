@@ -107,6 +107,7 @@ export default class Cookies {
 
   public remove(name: string, options?: CookieSetOptions) {
     const finalOptions = (options = {
+      ...this.defaultSetOptions,
       ...options,
       expires: new Date(1970, 1, 1, 0, 0, 1),
       maxAge: 0,
