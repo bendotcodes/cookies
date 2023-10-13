@@ -105,7 +105,7 @@ Read back the cookies from the browser and triggers the change listeners. This s
 ```js
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies(null { path: '/' });
+const cookies = new Cookies(null, { path: '/' });
 
 cookies.set('myCat', 'Pacman');
 console.log(cookies.get('myCat')); // Pacman
