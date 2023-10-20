@@ -37,7 +37,7 @@
     "build-legacy": "babel es6 -D -d lib"
   },
   "dependencies": {
-    "@types/hoist-non-react-statics": "^3.3.3",
+    "@types/hoist-non-react-statics": "^3.3.4",
     "hoist-non-react-statics": "^3.3.2",
     "universal-cookie": "^6.0.0"
   },
