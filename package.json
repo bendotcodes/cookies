@@ -13,7 +13,7 @@
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.4",
     "@rollup/plugin-terser": "^0.4.4",
-    "@size-limit/preset-small-lib": "^9.0.0",
+    "@size-limit/preset-small-lib": "^10.0.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.5.6",
