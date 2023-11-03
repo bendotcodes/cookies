@@ -1975,10 +1975,10 @@
     is-module "^1.0.0"
     resolve "^1.22.1"
 
-"@rollup/plugin-replace@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-5.0.4.tgz#fef548dc751d06747e8dca5b0e8e1fbf647ac7e1"
-  integrity sha512-E2hmRnlh09K8HGT0rOnnri9OTh+BILGr7NVJGB30S4E3cLRn3J0xjdiyOZ74adPs4NiAMgrjUMGAZNJDBgsdmQ==
+"@rollup/plugin-replace@^5.0.5":
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-5.0.5.tgz#33d5653dce6d03cb24ef98bef7f6d25b57faefdf"
+  integrity sha512-rYO4fOi8lMaTg/z5Jb+hKnrHHVn8j2lwkqwyS4kTRhKyWOLf2wST2sWXr4WzWiTcoHTp2sTjqUbqIj2E39slKQ==
   dependencies:
     "@rollup/pluginutils" "^5.0.1"
     magic-string "^0.30.3"
@@ -2080,29 +2080,29 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@size-limit/esbuild@10.0.1":
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/esbuild/-/esbuild-10.0.1.tgz#c0bbd964cf184e9c983a9c460052b32d26acd0dd"
-  integrity sha512-lQeVqx1HW0PJq66d3fQmBHBGtvPKa6vyRpO2Rrh2ejOe9xP3NJ5xq6DWF7fZxDToDpPuLU5mQkvo7aWh4cLKiA==
+"@size-limit/esbuild@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/esbuild/-/esbuild-10.0.2.tgz#7c65b7a29fdd8f3a09b17805ad88bbce5db2cf15"
+  integrity sha512-RaVAAp4BDxMBkSAzv23Mk6rWw/tgmvcqhO7g9EF8Co2q2sEH2vTK1ucAwisJyO1frVSmmkS+MuYLIrmjW8CxEw==
   dependencies:
     esbuild "^0.19.5"
     nanoid "^5.0.2"
 
-"@size-limit/file@10.0.1":
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-10.0.1.tgz#be434e582935416c57e75cf679da7ddb0ed68324"
-  integrity sha512-xQMh/Hy8QgyHaac+DSSKcwmcJlQglDTY67L5ouUf78SlDxiKQrr8QMiYdCj7Zl5KM+gmee/eIbl6v2qbpf/Vxw==
+"@size-limit/file@10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-10.0.2.tgz#98fa5726e45d0e22a2e29cbf2cdba9476be08ce7"
+  integrity sha512-27jzgQtER/2WP4+ciLe8aExkceSfqQFSDEbFVhXnbpFvQBqGZ7uEQG9bDX7a5VGxTdMtGwzZndMsCOlinmLzSg==
   dependencies:
     semver "7.5.4"
 
-"@size-limit/preset-small-lib@^10.0.1":
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-10.0.1.tgz#bfe03f2fb1770bcbfe4e07e645967ef3760a4035"
-  integrity sha512-VZL9aUezCpHddHudl9pUqtdFH+K48G5VrweBJjfe/NW5gbqn9ubJEW93Vl41bo500mvQ5EaLnAenGxM3mVq+Fw==
+"@size-limit/preset-small-lib@^10.0.2":
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-10.0.2.tgz#8d575e753b1548302cc6b6a769c9c1e595f40e28"
+  integrity sha512-VK9uKlGILqTYaBszvJ8eoiLoFbmb03/LpZanqs8jzKwdvexOEH86OHtfi9rin8VWseAfQYHHLklJ3xwbSb4xCQ==
   dependencies:
-    "@size-limit/esbuild" "10.0.1"
-    "@size-limit/file" "10.0.1"
-    size-limit "10.0.1"
+    "@size-limit/esbuild" "10.0.2"
+    "@size-limit/file" "10.0.2"
+    size-limit "10.0.2"
 
 "@testing-library/dom@*", "@testing-library/dom@^9.0.0":
   version "9.3.1"
@@ -2249,10 +2249,10 @@
   dependencies:
     "@types/istanbul-lib-report" "*"
 
-"@types/jest@^29.5.6":
-  version "29.5.6"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.6.tgz#f4cf7ef1b5b0bfc1aa744e41b24d9cc52533130b"
-  integrity sha512-/t9NnzkOpXb4Nfvg17ieHE6EeSjDS2SGSpNYfoLbUAeL/EOueU/RSdOWFpfQTXBEM7BguYW1XQ0EbM+6RlIh6w==
+"@types/jest@^29.5.7":
+  version "29.5.7"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-29.5.7.tgz#2c0dafe2715dd958a455bc10e2ec3e1ec47b5036"
+  integrity sha512-HLyetab6KVPSiF+7pFcUyMeLsx25LDNDemw9mGsJBkai/oouwrjTycocSDYopMEwFhN2Y4s9oPyOCZNofgSt2g==
   dependencies:
     expect "^29.0.0"
     pretty-format "^29.0.0"
@@ -2276,10 +2276,10 @@
   resolved "https://registry.npmjs.org/@types/node/-/node-20.5.0.tgz"
   integrity sha512-Mgq7eCtoTjT89FqNoTzzXg2XvCi5VMhRV6+I2aYanc6kQCBImeNaAYRs/DyoVqk1YEUJK5gN9VO7HRIdz4Wo3Q==
 
-"@types/node@20.8.9":
-  version "20.8.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.9.tgz#646390b4fab269abce59c308fc286dcd818a2b08"
-  integrity sha512-UzykFsT3FhHb1h7yD4CA4YhBHq545JC0YnEz41xkipN88eKQtL6rSgocL5tbAP6Ola9Izm/Aw4Ora8He4x0BHg==
+"@types/node@20.8.10":
+  version "20.8.10"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.8.10.tgz#a5448b895c753ae929c26ce85cab557c6d4a365e"
+  integrity sha512-TlgT8JntpcbmKUFzjhsyhGfP2fsiz1Mv56im6enJ905xG1DAYesxJaeSbGqQmAw8OWPdhyJGhGSQGKRNJ45u9w==
   dependencies:
     undici-types "~5.26.4"
 
@@ -6059,10 +6059,10 @@ sisteransi@^1.0.5:
   resolved "https://registry.npmjs.org/sisteransi/-/sisteransi-1.0.5.tgz"
   integrity sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==
 
-size-limit@10.0.1, size-limit@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-10.0.1.tgz#50f8208a883a961c948b8379e074aa0a00a76528"
-  integrity sha512-lANGZsG+kk5P9zv84J/ratfT6LPTbWR8IitFXNfy41OyfnxoDBHqsl5+JVcG4YSU1UYcmShbp99O/SEPlDs1ZA==
+size-limit@10.0.2, size-limit@^10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-10.0.2.tgz#81ee1aaee556b766fb3840eeb9816878ace37ea9"
+  integrity sha512-ULFHMr+OQjuyqdGSqkDGY3XfnGO0l3cIfJaNe6F6ZqO+QzWUYunZh9DYHovNctsN7R9fR9gzzzW4Ze8TiJ060g==
   dependencies:
     bytes-iec "^3.1.1"
     chokidar "^3.5.3"
