@@ -2,7 +2,11 @@ import * as cookie from 'cookie';
 import { Cookie, CookieGetOptions } from './types';
 
 export function hasDocumentCookie() {
-  const testingValue = (global as any).TEST_HAS_DOCUMENT_COOKIE;
+  const testingValue =
+    typeof global === 'undefined'
+      ? undefined
+      : (global as any).TEST_HAS_DOCUMENT_COOKIE;
+
   if (typeof testingValue === 'boolean') {
     return testingValue;
   }
