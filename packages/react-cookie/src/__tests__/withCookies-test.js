@@ -3,7 +3,7 @@ import { object } from 'prop-types';
 import { instanceOf } from 'prop-types';
 import ReactDOMServer from 'react-dom/server';
 import { CookiesProvider, withCookies, Cookies } from '../';
-import { cleanCookies } from 'universal-cookie/lib/utils';
+import { cleanCookies } from '../../../universal-cookie/src/utils';
 import { act, render, screen } from '@testing-library/react';
 
 function TestComponent({ cookies }) {

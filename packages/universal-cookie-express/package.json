@@ -3,12 +3,16 @@
   "version": "6.1.3",
   "description": "Hook cookies get/set on Express for server-rendering",
   "main": "cjs/index.js",
-  "module": "es6/index.js",
-  "types": "es6/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.mjs",
+      "require": "./cjs/index.js"
+    }
+  },
+  "types": "esm/index.d.ts",
   "sideEffects": false,
   "files": [
-    "lib",
-    "es6",
+    "esm",
     "cjs",
     "LICENSE"
   ],
@@ -27,11 +31,9 @@
   "author": "Benoit Tremblay <me@ben.codes>",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf lib && rimraf es6 && rimraf cjs",
-    "build": "npm run clean && npm run build-es6 && npm run build-cjs && npm run build-legacy",
-    "build-es6": "tsc",
-    "build-cjs": "babel es6 -D -d cjs",
-    "build-legacy": "babel es6 -D -d lib"
+    "prebuild": "rimraf esm && rimraf cjs",
+    "build": "rollup -c",
+    "postbuild": "rimraf -G cjs/*.d.ts"
   },
   "dependencies": {
     "universal-cookie": "^6.0.0"

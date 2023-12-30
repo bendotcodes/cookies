@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { cleanCookies } from 'universal-cookie/lib/utils';
+import { cleanCookies } from '../../../universal-cookie/src/utils';
 import { act, render, screen } from '@testing-library/react';
 
 import { CookiesProvider, useCookies, Cookies } from '../';

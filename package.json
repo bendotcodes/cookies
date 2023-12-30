@@ -9,10 +9,12 @@
     "@babel/preset-env": "^7.23.7",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-replace": "^5.0.5",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.5",
     "@size-limit/preset-small-lib": "^11.0.1",
     "@testing-library/jest-dom": "^6.1.6",
     "@testing-library/react": "^14.1.2",
@@ -30,6 +32,7 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "size-limit": "^11.0.1",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   },
   "scripts": {
@@ -47,19 +50,15 @@
   },
   "size-limit": [
     {
-      "path": "./packages/universal-cookie/lib/index.js",
+      "path": "./packages/universal-cookie-express/cjs/index.js",
       "limit": "4 KB"
     },
     {
-      "path": "./packages/universal-cookie-express/lib/index.js",
+      "path": "./packages/universal-cookie-koa/cjs/index.js",
       "limit": "4 KB"
     },
     {
-      "path": "./packages/universal-cookie-koa/lib/index.js",
-      "limit": "4 KB"
-    },
-    {
-      "path": "./packages/react-cookie/lib/index.js",
+      "path": "./packages/react-cookie/cjs/index.js",
       "limit": "10 KB"
     }
   ],
