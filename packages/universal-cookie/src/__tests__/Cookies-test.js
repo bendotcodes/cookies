@@ -4,6 +4,7 @@ import { cleanCookies } from '../utils';
 describe('Cookies', () => {
   beforeEach(() => {
     cleanCookies();
+    global.TEST_HAS_DOCUMENT_COOKIE = undefined;
   });
 
   describe('constructor()', () => {
@@ -125,14 +126,47 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'meow', { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'meow',
         options: {
           path: '/',
         },
       });
+    });
+
+    it('detect if the cookie was externally changed in the browser', async () => {
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+
+      document.cookie = `test="${JSON.stringify({ test: true })}"`;
+
+      await new Promise((r) => setTimeout(r, 500));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
+        name: 'test',
+        value: {
+          test: true,
+        },
+      });
+    });
+
+    it('ignore if the cookie was externally changed in the server', async () => {
+      global.TEST_HAS_DOCUMENT_COOKIE = false;
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+
+      document.cookie = 'test=meow';
+
+      await new Promise((r) => setTimeout(r, 500));
+
+      expect(onChange).not.toHaveBeenCalled();
     });
 
     it('keeps the value as original object', () => {
@@ -142,8 +176,8 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', [0, 1, 2], { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: [0, 1, 2],
         options: {
@@ -159,7 +193,7 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'test');
 
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'test',
         options: {
@@ -175,7 +209,7 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'test', { path: '/woof' });
 
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'test',
         options: {
@@ -191,8 +225,8 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.remove('test', { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: undefined,
         options: {
@@ -211,7 +245,7 @@ describe('Cookies', () => {
       cookies.removeChangeListener(onChange);
 
       cookies.remove('test', 'boom!');
-      expect(onChange).not.toBeCalled();
+      expect(onChange).not.toHaveBeenCalled();
     });
   });
 });

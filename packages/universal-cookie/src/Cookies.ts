@@ -33,16 +33,16 @@ export default class Cookies {
     }
   }
 
-  private _checkChanges(newCookies: { [name: string]: Cookie }) {
+  private _checkChanges(previousCookies: { [name: string]: Cookie }) {
     const names = new Set(
-      Object.keys(newCookies).concat(Object.keys(this.cookies)),
+      Object.keys(previousCookies).concat(Object.keys(this.cookies)),
     );
 
     names.forEach((name) => {
-      if (newCookies[name] !== this.cookies[name]) {
+      if (previousCookies[name] !== this.cookies[name]) {
         this._emitChange({
           name,
-          value: readCookie(newCookies[name]),
+          value: readCookie(this.cookies[name]),
         });
       }
     });
@@ -136,7 +136,7 @@ export default class Cookies {
   public addChangeListener(callback: CookieChangeListener) {
     this.changeListeners.push(callback);
 
-    if (this.changeListeners.length === 1) {
+    if (this.HAS_DOCUMENT_COOKIE && this.changeListeners.length === 1) {
       if (typeof window === 'object' && 'cookieStore' in window) {
         (window.cookieStore as any).addEventListener('change', this.update);
       } else {
@@ -151,7 +151,7 @@ export default class Cookies {
       this.changeListeners.splice(idx, 1);
     }
 
-    if (this.changeListeners.length === 0) {
+    if (this.HAS_DOCUMENT_COOKIE && this.changeListeners.length === 0) {
       if (typeof window === 'object' && 'cookieStore' in window) {
         (window.cookieStore as any).removeEventListener('change', this.update);
       } else {
