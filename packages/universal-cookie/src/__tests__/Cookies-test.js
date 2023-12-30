@@ -142,14 +142,16 @@ describe('Cookies', () => {
       const onChange = jest.fn();
       cookies.addChangeListener(onChange);
 
-      document.cookie = 'test=meow';
+      document.cookie = `test="${JSON.stringify({ test: true })}"`;
 
       await new Promise((r) => setTimeout(r, 500));
 
       expect(onChange).toHaveBeenCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith({
         name: 'test',
-        value: 'meow',
+        value: {
+          test: true,
+        },
       });
     });
 
