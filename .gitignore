@@ -7,3 +7,8 @@ dist
 .DS_Store
 package-lock.json
 coverage
+
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
