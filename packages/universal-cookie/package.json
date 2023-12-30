@@ -1,6 +1,6 @@
 {
   "name": "universal-cookie",
-  "version": "6.1.3",
+  "version": "7.0.0",
   "description": "Universal cookies for JavaScript",
   "main": "cjs/index.js",
   "exports": {

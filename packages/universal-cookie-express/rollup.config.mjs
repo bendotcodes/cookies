@@ -13,7 +13,7 @@ export default [
     output: {
       dir: './esm',
       format: 'esm',
-      entryFileNames: '[name].mjs'
+      entryFileNames: '[name].mjs',
     },
     plugins: [typescript({ outDir: './esm' })],
     external,
@@ -22,9 +22,12 @@ export default [
     input: 'src/index.ts',
     output: {
       dir: './cjs',
-      format: 'cjs'
+      format: 'cjs',
     },
-    plugins: [typescript({ outDir: './cjs' }), babel({ babelHelpers: 'bundled' })],
+    plugins: [
+      typescript({ outDir: './cjs' }),
+      babel({ babelHelpers: 'bundled' }),
+    ],
     external,
-  }
+  },
 ];
