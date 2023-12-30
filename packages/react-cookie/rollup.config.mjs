@@ -1,9 +1,9 @@
 import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
-
-const basePlugins = [resolve(), commonjs()];
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import babel from '@rollup/plugin-babel';
 
 const external = ['react', 'universal-cookie'];
 const globals = {
@@ -13,7 +13,29 @@ const globals = {
 
 export default [
   {
-    input: 'cjs/index.js',
+    input: 'src/index.ts',
+    output: {
+      dir: './esm',
+      format: 'esm',
+      entryFileNames: '[name].mjs',
+    },
+    plugins: [typescript({ outDir: './esm' })],
+    external,
+  },
+  {
+    input: 'src/index.ts',
+    output: {
+      dir: './cjs',
+      format: 'cjs',
+    },
+    plugins: [
+      typescript({ outDir: './cjs' }),
+      babel({ babelHelpers: 'bundled' }),
+    ],
+    external,
+  },
+  {
+    input: 'src/index.ts',
     output: {
       file: 'umd/reactCookie.js',
       format: 'umd',
@@ -21,13 +43,18 @@ export default [
       globals,
     },
     plugins: [
-      ...basePlugins,
-      replace({ 'process.env.NODE_ENV': '"development"' }),
+      commonjs(),
+      resolve(),
+      typescript({ outDir: 'umd' }),
+      replace({
+        preventAssignment: true,
+        'process.env.NODE_ENV': '"development"',
+      }),
     ],
     external,
   },
   {
-    input: 'cjs/index.js',
+    input: 'src/index.ts',
     output: {
       file: 'umd/reactCookie.min.js',
       format: 'umd',
@@ -35,8 +62,13 @@ export default [
       globals,
     },
     plugins: [
-      ...basePlugins,
-      replace({ 'process.env.NODE_ENV': '"production"' }),
+      commonjs(),
+      resolve(),
+      typescript({ outDir: 'umd' }),
+      replace({
+        preventAssignment: true,
+        'process.env.NODE_ENV': '"production"',
+      }),
       terser(),
     ],
     external,

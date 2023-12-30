@@ -1,9 +1,8 @@
 node_modules
 *.log
-es6
+esm
 cjs
 umd
-lib
 dist
 .DS_Store
 package-lock.json

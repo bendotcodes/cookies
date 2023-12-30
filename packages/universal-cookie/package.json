@@ -1,14 +1,18 @@
 {
   "name": "universal-cookie",
-  "version": "6.1.3",
+  "version": "7.0.0",
   "description": "Universal cookies for JavaScript",
   "main": "cjs/index.js",
-  "module": "es6/index.js",
-  "types": "es6/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/index.mjs",
+      "require": "./cjs/index.js"
+    }
+  },
+  "types": "esm/index.d.ts",
   "sideEffects": false,
   "files": [
-    "lib",
-    "es6",
+    "esm",
     "cjs",
     "umd",
     "index.d.ts",
@@ -28,12 +32,9 @@
   "author": "Benoit Tremblay <me@ben.codes>",
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf lib && rimraf es6 && rimraf cjs && rimraf umd",
-    "build": "npm run clean && npm run build-es6 && npm run build-cjs && npm run build-umd && npm run build-legacy",
-    "build-es6": "tsc",
-    "build-cjs": "babel es6 -D -d cjs",
-    "build-umd": "rollup -c",
-    "build-legacy": "babel es6 -D -d lib"
+    "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
+    "build": "rollup -c",
+    "postbuild": "rimraf -G {cjs,umd}/*.d.ts"
   },
   "dependencies": {
     "@types/cookie": "^0.6.0",

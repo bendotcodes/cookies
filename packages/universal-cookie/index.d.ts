@@ -1,1 +1,1 @@
-export * from './es6';
+export * from './esm';
