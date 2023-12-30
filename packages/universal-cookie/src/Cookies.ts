@@ -136,7 +136,7 @@ export default class Cookies {
   public addChangeListener(callback: CookieChangeListener) {
     this.changeListeners.push(callback);
 
-    if (this.changeListeners.length === 1) {
+    if (this.HAS_DOCUMENT_COOKIE && this.changeListeners.length === 1) {
       if (typeof window === 'object' && 'cookieStore' in window) {
         (window.cookieStore as any).addEventListener('change', this.update);
       } else {
@@ -151,7 +151,7 @@ export default class Cookies {
       this.changeListeners.splice(idx, 1);
     }
 
-    if (this.changeListeners.length === 0) {
+    if (this.HAS_DOCUMENT_COOKIE && this.changeListeners.length === 0) {
       if (typeof window === 'object' && 'cookieStore' in window) {
         (window.cookieStore as any).removeEventListener('change', this.update);
       } else {

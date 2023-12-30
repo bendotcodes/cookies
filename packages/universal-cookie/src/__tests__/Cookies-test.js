@@ -125,8 +125,8 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'meow', { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'meow',
         options: {
@@ -142,8 +142,8 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', [0, 1, 2], { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: [0, 1, 2],
         options: {
@@ -159,7 +159,7 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'test');
 
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'test',
         options: {
@@ -175,7 +175,7 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.set('test', 'test', { path: '/woof' });
 
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: 'test',
         options: {
@@ -191,8 +191,8 @@ describe('Cookies', () => {
       cookies.addChangeListener(onChange);
       cookies.remove('test', { path: '/' });
 
-      expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toBeCalledWith({
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
         name: 'test',
         value: undefined,
         options: {
@@ -211,7 +211,7 @@ describe('Cookies', () => {
       cookies.removeChangeListener(onChange);
 
       cookies.remove('test', 'boom!');
-      expect(onChange).not.toBeCalled();
+      expect(onChange).not.toHaveBeenCalled();
     });
   });
 });
