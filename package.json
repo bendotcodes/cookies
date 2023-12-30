@@ -9,6 +9,7 @@
     "@babel/preset-env": "^7.23.7",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
+    "@playwright/test": "^1.40.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -38,6 +39,7 @@
   "scripts": {
     "test": "jest --coverage",
     "watch": "jest --watch",
+    "e2e": "npx playwright test --ui",
     "build": "yarn build-universal && yarn build-react && yarn build-express && yarn build-koa && yarn build-demo",
     "build-universal": "cd packages/universal-cookie && yarn build",
     "build-react": "cd packages/react-cookie && yarn build",
