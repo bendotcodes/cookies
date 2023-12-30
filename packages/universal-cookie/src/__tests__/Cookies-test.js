@@ -4,6 +4,7 @@ import { cleanCookies } from '../utils';
 describe('Cookies', () => {
   beforeEach(() => {
     cleanCookies();
+    global.TEST_HAS_DOCUMENT_COOKIE = undefined;
   });
 
   describe('constructor()', () => {
@@ -133,6 +134,37 @@ describe('Cookies', () => {
           path: '/',
         },
       });
+    });
+
+    it('detect if the cookie was externally changed in the browser', async () => {
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+
+      document.cookie = 'test=meow';
+
+      await new Promise((r) => setTimeout(r, 500));
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith({
+        name: 'test',
+        value: 'meow',
+      });
+    });
+
+    it('ignore if the cookie was externally changed in the server', async () => {
+      global.TEST_HAS_DOCUMENT_COOKIE = false;
+      const cookies = new Cookies();
+
+      const onChange = jest.fn();
+      cookies.addChangeListener(onChange);
+
+      document.cookie = 'test=meow';
+
+      await new Promise((r) => setTimeout(r, 500));
+
+      expect(onChange).not.toHaveBeenCalled();
     });
 
     it('keeps the value as original object', () => {

@@ -33,16 +33,16 @@ export default class Cookies {
     }
   }
 
-  private _checkChanges(newCookies: { [name: string]: Cookie }) {
+  private _checkChanges(previousCookies: { [name: string]: Cookie }) {
     const names = new Set(
-      Object.keys(newCookies).concat(Object.keys(this.cookies)),
+      Object.keys(previousCookies).concat(Object.keys(this.cookies)),
     );
 
     names.forEach((name) => {
-      if (newCookies[name] !== this.cookies[name]) {
+      if (previousCookies[name] !== this.cookies[name]) {
         this._emitChange({
           name,
-          value: readCookie(newCookies[name]),
+          value: readCookie(this.cookies[name]),
         });
       }
     });

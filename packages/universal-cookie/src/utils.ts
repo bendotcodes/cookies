@@ -2,6 +2,11 @@ import * as cookie from 'cookie';
 import { Cookie, CookieGetOptions } from './types';
 
 export function hasDocumentCookie() {
+  const testingValue = (global as any).TEST_HAS_DOCUMENT_COOKIE;
+  if (typeof testingValue === 'boolean') {
+    return testingValue;
+  }
+
   // Can we get/set cookies on document.cookie?
   return typeof document === 'object' && typeof document.cookie === 'string';
 }
