@@ -3,13 +3,22 @@
   "version": "7.0.0",
   "description": "Universal cookies for JavaScript",
   "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "type": "module",
+  "module": "esm/index.mjs",
   "exports": {
     ".": {
-      "import": "./esm/index.mjs",
-      "require": "./cjs/index.js"
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      },
+      "default": "./build/index.js"
     }
   },
-  "types": "esm/index.d.ts",
   "sideEffects": false,
   "files": [
     "esm",
