@@ -13,10 +13,10 @@
         "default": "./esm/index.mjs"
       },
       "require": {
-        "types": "./build/index.d.ts",
-        "default": "./build/index.js"
+        "types": "./cjs/index.d.ts",
+        "default": "./cjs/index.js"
       },
-      "default": "./build/index.js"
+      "default": "./cjs/index.js"
     }
   },
   "sideEffects": false,
