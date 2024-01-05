@@ -34,8 +34,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
-    "build": "rollup -c",
-    "postbuild": "rimraf -G {cjs,umd}/*.d.ts"
+    "build": "rollup -c"
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.5",
@@ -47,7 +46,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^5.0.5",
-    "rollup": "^4.9.1",
+    "rollup": "^4.9.2",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
