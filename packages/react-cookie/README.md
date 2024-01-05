@@ -36,11 +36,11 @@ or in the browser (global variable `ReactCookie`):
 ></script>
 <script
   crossorigin
-  src="https://unpkg.com/universal-cookie@6/umd/universalCookie.min.js"
+  src="https://unpkg.com/universal-cookie@7/umd/universalCookie.min.js"
 ></script>
 <script
   crossorigin
-  src="https://unpkg.com/react-cookie@6/umd/reactCookie.min.js"
+  src="https://unpkg.com/react-cookie@7/umd/reactCookie.min.js"
 ></script>
 ```
 

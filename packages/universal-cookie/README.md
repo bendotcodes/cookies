@@ -22,7 +22,7 @@ or in the browser (global variable `UniversalCookie`):
 ```html
 <script
   crossorigin
-  src="https://unpkg.com/universal-cookie@6/umd/universalCookie.min.js"
+  src="https://unpkg.com/universal-cookie@7/umd/universalCookie.min.js"
 ></script>
 ```
 
