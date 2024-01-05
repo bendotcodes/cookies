@@ -33,8 +33,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
-    "build": "rollup -c",
-    "postbuild": "rimraf -G {cjs,umd}/*.d.ts"
+    "build": "rollup -c"
   },
   "dependencies": {
     "@types/cookie": "^0.6.0",
