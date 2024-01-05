@@ -3,13 +3,21 @@
   "version": "7.0.0",
   "description": "Universal cookies for React",
   "main": "cjs/index.js",
+  "types": "cjs/index.d.ts",
+  "module": "esm/index.mjs",
   "exports": {
     ".": {
-      "import": "./esm/index.mjs",
-      "require": "./cjs/index.js"
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.mjs"
+      },
+      "require": {
+        "types": "./cjs/index.d.ts",
+        "default": "./cjs/index.js"
+      },
+      "default": "./cjs/index.js"
     }
   },
-  "types": "esm/index.d.ts",
   "sideEffects": false,
   "files": [
     "esm",
