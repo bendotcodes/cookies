@@ -41,6 +41,7 @@ Create a cookies context
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
+  - partitioned (boolean): Indicates that the cookie should be stored using partitioned storage
 
 ### `get(name, [options])`
 
@@ -71,6 +72,7 @@ Set a cookie value
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
+  - partitioned (boolean): Indicates that the cookie should be stored using partitioned storage
 
 ### `remove(name, [options])`
 
@@ -85,6 +87,7 @@ Remove a cookie
   - secure (boolean): Is only accessible through HTTPS?
   - httpOnly (boolean): Is only the server can access the cookie? **Note: You cannot get or set httpOnly cookies from the browser, only the server.**
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
+  - partitioned (boolean): Indicates that the cookie should be stored using partitioned storage
 
 ### `addChangeListener(callback)`
 

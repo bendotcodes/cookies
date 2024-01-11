@@ -13,6 +13,7 @@ export interface CookieSetOptions {
   secure?: boolean;
   httpOnly?: boolean;
   sameSite?: boolean | 'none' | 'lax' | 'strict';
+  partitioned?: boolean;
 }
 export interface CookieChangeOptions {
   name: string;
