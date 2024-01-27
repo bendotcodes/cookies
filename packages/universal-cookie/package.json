@@ -47,9 +47,9 @@
     "cookie": "^0.6.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.23.4",
+    "@babel/cli": "^7.23.9",
     "rimraf": "^5.0.5",
-    "rollup": "^4.9.4",
+    "rollup": "^4.9.6",
     "typescript": "^5.3.3"
   }
 }
