@@ -47,7 +47,7 @@
     "build-demo": "cd packages/react-cookie-demo && yarn build",
     "format": "prettier . --check",
     "size": "size-limit",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "size-limit": [
     {
