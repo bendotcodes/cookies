@@ -23,7 +23,7 @@
     "@types/node": "20.11.0",
     "babel-jest": "^29.7.0",
     "babel-plugin-add-module-exports": "^1.0.4",
-    "husky": "^8.0.3",
+    "husky": "^9.0.6",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.0",
@@ -47,7 +47,7 @@
     "build-demo": "cd packages/react-cookie-demo && yarn build",
     "format": "prettier . --check",
     "size": "size-limit",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "size-limit": [
     {
