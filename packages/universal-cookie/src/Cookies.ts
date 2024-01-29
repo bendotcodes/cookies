@@ -1,4 +1,4 @@
-import * as cookie from 'cookie';
+import { parse, serialize } from 'cookie-es';
 import {
   Cookie,
   CookieChangeListener,
@@ -99,7 +99,7 @@ export default class Cookies {
     this.cookies = { ...this.cookies, [name]: stringValue };
 
     if (this.HAS_DOCUMENT_COOKIE) {
-      document.cookie = cookie.serialize(name, stringValue, options);
+      document.cookie = serialize(name, stringValue, options);
     }
 
     this._emitChange({ name, value, options });
@@ -117,7 +117,7 @@ export default class Cookies {
     delete this.cookies[name];
 
     if (this.HAS_DOCUMENT_COOKIE) {
-      document.cookie = cookie.serialize(name, '', finalOptions);
+      document.cookie = serialize(name, '', finalOptions);
     }
 
     this._emitChange({ name, value: undefined, options });
@@ -129,7 +129,7 @@ export default class Cookies {
     }
 
     const previousCookies = this.cookies;
-    this.cookies = cookie.parse(document.cookie);
+    this.cookies = parse(document.cookie);
     this._checkChanges(previousCookies);
   };
 

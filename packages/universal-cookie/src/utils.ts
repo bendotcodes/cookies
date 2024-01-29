@@ -1,4 +1,4 @@
-import * as cookie from 'cookie';
+import { parse } from 'cookie-es';
 import { Cookie, CookieGetOptions } from './types';
 
 export function hasDocumentCookie() {
@@ -25,7 +25,7 @@ export function cleanCookies() {
 
 export function parseCookies(cookies?: string | object | null) {
   if (typeof cookies === 'string') {
-    return cookie.parse(cookies);
+    return parse(cookies);
   } else if (typeof cookies === 'object' && cookies !== null) {
     return cookies;
   } else {
