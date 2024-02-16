@@ -1,4 +1,3 @@
-import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import terser from '@rollup/plugin-terser';
 import commonjs from '@rollup/plugin-commonjs';
@@ -19,7 +18,7 @@ export default [
       format: 'esm',
       entryFileNames: '[name].mjs',
     },
-    plugins: [typescript({ outDir: './esm' })],
+    plugins: [resolve(), commonjs(), typescript({ outDir: './esm' })],
     external,
   },
   {
@@ -43,8 +42,8 @@ export default [
       globals,
     },
     plugins: [
-      commonjs(),
       resolve(),
+      commonjs(),
       typescript({ outDir: 'umd' }),
       replace({
         preventAssignment: true,
@@ -62,8 +61,8 @@ export default [
       globals,
     },
     plugins: [
-      commonjs(),
       resolve(),
+      commonjs(),
       typescript({ outDir: 'umd' }),
       replace({
         preventAssignment: true,
