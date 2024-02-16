@@ -34,11 +34,7 @@ export default [
       format: 'umd',
       name: 'UniversalCookie',
     },
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript({ outDir: './umd' }),
-    ],
+    plugins: [resolve(), commonjs(), typescript({ outDir: './umd' })],
     external: [], // cookie library is not UMD compatible so we transform it
   },
   {
@@ -48,12 +44,7 @@ export default [
       format: 'umd',
       name: 'UniversalCookie',
     },
-    plugins: [
-      resolve(),
-      commonjs(),
-      typescript({ outDir: './umd' }),
-      terser(),
-    ],
+    plugins: [resolve(), commonjs(), typescript({ outDir: './umd' }), terser()],
     external: [], // cookie library is not UMD compatible so we transform it
   },
 ];
