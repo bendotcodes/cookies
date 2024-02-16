@@ -4,7 +4,7 @@
     "module": "es6",
     "moduleResolution": "node",
     "declaration": true,
-    "strict": true,
+    "strict": true
   },
-  "files": ["./src/index.ts"],
+  "files": ["./src/index.ts"]
 }
