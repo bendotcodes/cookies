@@ -1,10 +1,8 @@
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
+import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
-
-const mainFields = ['module', 'jsnext:main', 'main', 'browser'];
-const external = ['cookie'];
 
 export default [
   {
@@ -14,8 +12,8 @@ export default [
       format: 'esm',
       entryFileNames: '[name].mjs',
     },
-    plugins: [typescript({ outDir: './esm' })],
-    external,
+    plugins: [resolve(), commonjs(), typescript({ outDir: './esm' })],
+    external: [], // cookie library is not ESM compatible so we transform it
   },
   {
     input: 'src/index.ts',
@@ -27,7 +25,7 @@ export default [
       typescript({ outDir: './cjs' }),
       babel({ babelHelpers: 'bundled' }),
     ],
-    external,
+    external: ['cookie'],
   },
   {
     input: 'src/index.ts',
@@ -36,8 +34,8 @@ export default [
       format: 'umd',
       name: 'UniversalCookie',
     },
-    plugins: [resolve({ mainFields }), typescript({ outDir: './umd' })],
-    external,
+    plugins: [resolve(), commonjs(), typescript({ outDir: './umd' })],
+    external: [], // cookie library is not UMD compatible so we transform it
   },
   {
     input: 'src/index.ts',
@@ -46,11 +44,7 @@ export default [
       format: 'umd',
       name: 'UniversalCookie',
     },
-    plugins: [
-      resolve({ mainFields }),
-      typescript({ outDir: './umd' }),
-      terser(),
-    ],
-    external,
+    plugins: [resolve(), commonjs(), typescript({ outDir: './umd' }), terser()],
+    external: [], // cookie library is not UMD compatible so we transform it
   },
 ];

@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <script crossorigin src="umd/universalCookie.js"></script>
+    <script>
+      function load() {
+        var data = '{{data}}';
+
+        var cookies = new UniversalCookie(null, { path: '/' });
+        cookies.set('data_cookie', data, {
+          expires: data.expires_at,
+        });
+
+        document.body.innerHTML = cookies.get('data_cookie');
+      }
+      window.onload = load;
+    </script>
+  </head>
+  <body></body>
+</html>

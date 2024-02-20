@@ -8,6 +8,7 @@ const app = express();
 
 app
   .use('/assets', express.static('dist'))
+  .use('/umd', express.static('../universal-cookie/umd'))
   .use(cookiesMiddleware())
   .use(serverMiddleware);
 
