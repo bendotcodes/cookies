@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@babel/register": "^7.23.7",
-    "express": "^4.18.2",
+    "express": "^4.18.3",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-cookie": "^7.0.0",
@@ -18,9 +18,9 @@
     "universal-cookie-express": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
+    "@babel/core": "^7.24.0",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-stage-2": "^7.8.3",
     "@testing-library/react": "^14.2.1",
