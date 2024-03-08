@@ -9,7 +9,7 @@
     "@babel/preset-env": "^7.24.0",
     "@babel/preset-react": "^7.23.3",
     "@babel/preset-typescript": "^7.23.3",
-    "@playwright/test": "^1.42.0",
+    "@playwright/test": "^1.42.1",
     "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
@@ -20,7 +20,7 @@
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
-    "@types/node": "20.11.24",
+    "@types/node": "20.11.25",
     "babel-jest": "^29.7.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "husky": "^9.0.11",
@@ -29,11 +29,11 @@
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.5",
-    "rollup": "^4.12.0",
+    "rollup": "^4.12.1",
     "rollup-plugin-replace": "^2.2.0",
     "size-limit": "^11.0.2",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "scripts": {
     "test": "jest --coverage",
