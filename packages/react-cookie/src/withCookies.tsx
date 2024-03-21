@@ -48,7 +48,7 @@ export default function withCookies<T extends ReactCookieProps>(
 
     render() {
       const { forwardedRef, cookies, ...restProps } = this.props;
-      const allCookies = cookies.getAll();
+      const allCookies = cookies.getAll({ doNotUpdate: true });
       return (
         <WrappedComponent
           {...(restProps as T)}
