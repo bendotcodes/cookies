@@ -16,7 +16,9 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
     throw new Error('Missing <CookiesProvider>');
   }
 
-  const [allCookies, setCookies] = useState(() => cookies.getAll({ doNotUpdate: true }));
+  const [allCookies, setCookies] = useState(() =>
+    cookies.getAll({ doNotUpdate: true }),
+  );
 
   if (isInBrowser()) {
     useLayoutEffect(() => {
