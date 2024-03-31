@@ -9,10 +9,7 @@
     },
     {
       "packagePatterns": [".*"],
-      "schedule": ["before 6am on Friday"],
       "matchUpdateTypes": ["minor", "patch"],
-      "groupName": "all non-major dependencies",
-      "groupSlug": "all-minor-patch",
       "automerge": true
     }
   ]
