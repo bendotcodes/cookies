@@ -20,7 +20,10 @@ const promises = files
     await fs.rename(fullFile, newFullFile);
 
     const content = (await fs.readFile(newFullFile)).toString();
-    const newContent = content.replaceAll(/ from \'([^']+)\'/g, ` from '$1.d.mts'`);
+    const newContent = content.replaceAll(
+      / from \'([^']+)\'/g,
+      ` from '$1.d.mts'`,
+    );
 
     await fs.writeFile(newFullFile, newContent);
   });
