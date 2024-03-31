@@ -3,16 +3,16 @@
   "version": "7.1.1",
   "description": "Hook cookies get/set on Express for server-rendering",
   "main": "cjs/index.js",
-  "types": "cjs/index.d.ts",
+  "types": "cjs/index.d.mts",
   "module": "esm/index.mjs",
   "exports": {
     ".": {
       "import": {
-        "types": "./esm/index.d.ts",
+        "types": "./esm/index.d.mts",
         "default": "./esm/index.mjs"
       },
       "require": {
-        "types": "./cjs/index.d.ts",
+        "types": "./cjs/index.d.mts",
         "default": "./cjs/index.js"
       },
       "default": "./cjs/index.js"
@@ -40,7 +40,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "postbuild": "node ../../tools/rename-d-ts.mjs ./esm"
   },
   "dependencies": {
     "universal-cookie": "^7.0.0"

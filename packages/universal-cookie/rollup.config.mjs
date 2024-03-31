@@ -11,6 +11,9 @@ export default [
       dir: './esm',
       format: 'esm',
       entryFileNames: '[name].mjs',
+      assetFileNames: () => {
+        console.log(arguments);
+      }
     },
     plugins: [resolve(), commonjs(), typescript({ outDir: './esm' })],
     external: [], // cookie library is not ESM compatible so we transform it
