@@ -20,7 +20,7 @@ branches:
         contexts:
           - 'Test'
           - 'CodeQL'
-          - 'Analyze (javascript-typescript) (dynamic)'
+          - 'Analyze (javascript-typescript)'
       enforce_admins: true
       required_linear_history: true
       required_signatures: true
