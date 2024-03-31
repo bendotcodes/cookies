@@ -41,7 +41,7 @@
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
     "build": "rollup -c",
-    "postbuild": "node ../../tools/rename-d-ts.mjs ./esm"
+    "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
     "@types/cookie": "^0.6.0",

@@ -43,7 +43,7 @@
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
     "build": "rollup -c",
-    "postbuild": "node ../../tools/rename-d-ts.mjs ./esm"
+    "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.5",
