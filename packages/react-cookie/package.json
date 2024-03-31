@@ -3,16 +3,16 @@
   "version": "7.1.1",
   "description": "Universal cookies for React",
   "main": "cjs/index.js",
-  "types": "cjs/index.d.ts",
+  "types": "cjs/index.d.mts",
   "module": "esm/index.mjs",
   "exports": {
     ".": {
       "import": {
-        "types": "./esm/index.d.ts",
+        "types": "./esm/index.d.mts",
         "default": "./esm/index.mjs"
       },
       "require": {
-        "types": "./cjs/index.d.ts",
+        "types": "./cjs/index.d.mts",
         "default": "./cjs/index.js"
       },
       "default": "./cjs/index.js"
@@ -23,7 +23,7 @@
     "esm",
     "cjs",
     "umd",
-    "index.d.ts",
+    "index.d.mts",
     "LICENSE"
   ],
   "repository": {
@@ -42,7 +42,8 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf esm && rimraf cjs && rimraf umd",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
     "@types/hoist-non-react-statics": "^3.3.5",
