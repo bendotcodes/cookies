@@ -2,7 +2,7 @@
   "name": "universal-cookie",
   "version": "7.1.2",
   "description": "Universal cookies for JavaScript",
-  "types": "cjs/index.d.mts",
+  "types": "cjs/index.d.ts",
   "module": "esm/index.mjs",
   "exports": {
     ".": {
@@ -11,7 +11,7 @@
         "default": "./esm/index.mjs"
       },
       "require": {
-        "types": "./cjs/index.d.mts",
+        "types": "./cjs/index.d.ts",
         "default": "./cjs/index.js"
       },
       "default": "./cjs/index.js"
@@ -22,7 +22,6 @@
     "esm",
     "cjs",
     "umd",
-    "index.d.mts",
     "LICENSE"
   ],
   "repository": {
