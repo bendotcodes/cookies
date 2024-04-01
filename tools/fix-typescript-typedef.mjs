@@ -21,8 +21,8 @@ const promises = files
 
     const content = (await fs.readFile(newFullFile)).toString();
     const newContent = content.replaceAll(
-      / from \'([^']+)\'/g,
-      ` from '$1.d.mts'`,
+      / from \'\.([^']+)\'/g,
+      ` from '.$1.d.mts'`,
     );
 
     await fs.writeFile(newFullFile, newContent);
