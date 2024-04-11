@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.24.4",
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-stage-2": "^7.8.3",
-    "@testing-library/react": "^15.0.0",
+    "@testing-library/react": "^15.0.1",
     "@types/testing-library__dom": "^7.5.0",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.1.3",
