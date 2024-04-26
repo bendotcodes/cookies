@@ -51,8 +51,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.24.1",
-    "react": "^18.3.0",
-    "react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "rimraf": "^5.0.5",
     "rollup": "^4.16.4",
     "typescript": "^5.4.5"
