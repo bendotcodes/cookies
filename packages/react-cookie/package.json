@@ -50,11 +50,11 @@
     "universal-cookie": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.5",
+    "@babel/cli": "^7.24.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rimraf": "^5.0.7",
-    "rollup": "^4.17.2",
+    "rollup": "^4.18.0",
     "typescript": "^5.4.5"
   },
   "peerDependencies": {

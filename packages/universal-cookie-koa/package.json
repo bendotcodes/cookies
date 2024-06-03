@@ -47,7 +47,7 @@
     "universal-cookie": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.5",
+    "@babel/cli": "^7.24.6",
     "rimraf": "^5.0.7",
     "typescript": "^5.4.5"
   }
