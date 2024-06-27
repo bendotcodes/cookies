@@ -3,13 +3,20 @@
   "extends": ["config:base"],
   "rangeStrategy": "bump",
   "platformAutomerge": true,
+  "lockFileMaintenance": { "enabled": true },
   "packageRules": [
     {
       "matchDepTypes": ["peerDependencies"],
       "enabled": false
     },
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest",
+        "lockFileMaintenance"
+      ],
       "automerge": true
     },
     {
