@@ -6,7 +6,8 @@
   "main": "server.js",
   "scripts": {
     "build": "webpack",
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "dependencies": {
     "@babel/register": "^7.24.6",
