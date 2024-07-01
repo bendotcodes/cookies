@@ -50,6 +50,6 @@
     "@babel/cli": "^7.24.7",
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   }
 }
