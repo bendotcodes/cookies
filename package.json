@@ -20,7 +20,7 @@
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "babel-jest": "^29.7.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "husky": "^9.0.11",
