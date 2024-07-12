@@ -70,6 +70,7 @@ Let you optionally specify a list of cookie names your component depend on or th
 
 - options (object):
   - doNotParse (boolean): do not convert the cookie into an object no matter what
+  - doNotUpdate (boolean): do not update the cookies when the component mounts
 
 ```jsx
 const [cookies, setCookie, removeCookie] = useCookies(['cookie-name'], {
