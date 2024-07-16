@@ -70,7 +70,7 @@ Let you optionally specify a list of cookie names your component depend on or th
 
 Javascript object with all your cookies. The key is the cookie name.
 
-### `setCookie(name, value, [options])`
+### `setCookie(name, value, {options})`
 
 Set a cookie value
 
@@ -86,7 +86,7 @@ Set a cookie value
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
   - partitioned (boolean): Indicates that the cookie should be stored using partitioned storage
 
-### `removeCookie(name, [options])`
+### `removeCookie(name, {options})`
 
 Remove a cookie
 
@@ -124,7 +124,7 @@ NewComponent.WrappedComponent === MyComponent;
 
 ## Cookies
 
-### `get(name, [options])`
+### `get(name, {options})`
 
 Get a cookie value
 
@@ -132,14 +132,14 @@ Get a cookie value
 - options (object):
   - doNotParse (boolean): do not convert the cookie into an object no matter what
 
-### `getAll([options])`
+### `getAll({options})`
 
 Get all cookies
 
 - options (object):
   - doNotParse (boolean): do not convert the cookie into an object no matter what
 
-### `set(name, value, [options])`
+### `set(name, value, {options})`
 
 Set a cookie value
 
@@ -155,7 +155,7 @@ Set a cookie value
   - sameSite (boolean|none|lax|strict): Strict or Lax enforcement
   - partitioned (boolean): Indicates that the cookie should be stored using partitioned storage
 
-### `remove(name, [options])`
+### `remove(name, {options})`
 
 Remove a cookie
 
