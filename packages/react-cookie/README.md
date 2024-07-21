@@ -52,7 +52,7 @@ On the server, the `cookies` props must be set using `req.universalCookies` or `
 
 - defaultSetOptions: You can set default values for when setting cookies.
 
-## `useCookies([dependencies])`
+## `useCookies([dependencies], [options])`
 
 Access and modify cookies using React hooks.
 
@@ -65,6 +65,18 @@ const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
 ### `dependencies` (optional)
 
 Let you optionally specify a list of cookie names your component depend on or that should trigger a re-render. If unspecified, it will render on every cookie change.
+
+### `options` (optional)
+
+- options (object):
+  - doNotParse (boolean): do not convert the cookie into an object no matter what
+  - doNotUpdate (boolean): do not update the cookies when the component mounts
+
+```jsx
+const [cookies, setCookie, removeCookie] = useCookies(['cookie-name'], {
+  doNotParse: true,
+});
+```
 
 ### `cookies`
 

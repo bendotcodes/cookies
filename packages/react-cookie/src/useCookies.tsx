@@ -1,10 +1,11 @@
 import { useContext, useLayoutEffect, useState, useRef, useMemo } from 'react';
-import { Cookie, CookieSetOptions } from 'universal-cookie';
+import { Cookie, CookieSetOptions, CookieGetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 import { isInBrowser } from './utils';
 
 export default function useCookies<T extends string, U = { [K in T]?: any }>(
   dependencies?: T[],
+  options?: CookieGetOptions,
 ): [
   U,
   (name: T, value: Cookie, options?: CookieSetOptions) => void,
@@ -15,17 +16,16 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   if (!cookies) {
     throw new Error('Missing <CookiesProvider>');
   }
+  const defaultOptions = { doNotUpdate: true };
 
-  const [allCookies, setCookies] = useState(() =>
-    cookies.getAll({ doNotUpdate: true }),
-  );
+  const getOptions: CookieGetOptions = { ...defaultOptions, ...options };
+
+  const [allCookies, setCookies] = useState(() => cookies.getAll(getOptions));
 
   if (isInBrowser()) {
     useLayoutEffect(() => {
       function onChange() {
-        const newCookies = cookies.getAll({
-          doNotUpdate: true,
-        });
+        const newCookies = cookies.getAll(getOptions);
 
         if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
           setCookies(newCookies);
