@@ -33,7 +33,7 @@
     "rollup-plugin-replace": "^2.2.0",
     "size-limit": "^11.1.4",
     "tslib": "^2.6.3",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   },
   "scripts": {
     "test": "jest --coverage",
