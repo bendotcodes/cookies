@@ -66,5 +66,5 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,css,html,json,yml}": "prettier --write"
   },
-  "packageManager": "yarn@4.3.1"
+  "packageManager": "yarn@4.4.0"
 }
