@@ -22,13 +22,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/cli@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/cli@npm:7.24.8"
+"@babel/cli@npm:^7.25.6":
+  version: 7.25.6
+  resolution: "@babel/cli@npm:7.25.6"
   dependencies:
     "@jridgewell/trace-mapping": "npm:^0.3.25"
     "@nicolo-ribaudo/chokidar-2": "npm:2.1.8-no-fsevents.3"
-    chokidar: "npm:^3.4.0"
+    chokidar: "npm:^3.6.0"
     commander: "npm:^6.2.0"
     convert-source-map: "npm:^2.0.0"
     fs-readdir-recursive: "npm:^1.1.0"
@@ -45,7 +45,7 @@ __metadata:
   bin:
     babel: ./bin/babel.js
     babel-external-helpers: ./bin/babel-external-helpers.js
-  checksum: 10c0/b7f464ccb00db60aed63d71e980df823900d20c740bc2d9eb36c3abd4b3e2402cc438818382344085ef6603aeea2e6ee19af8f0ecb934966eccf077b87af7c7c
+  checksum: 10c0/861d3c2ed6c47b25a322c2f6127f56783d8d333fc2d02d3815f86301fe1102eca5f61b8a5c8610a6a2872d1ccfce24fd6d4a91f4f73536e43b8e2f28f9dcf5ed
   languageName: node
   linkType: hard
 
@@ -3460,7 +3460,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chokidar@npm:^3.4.0, chokidar@npm:^3.6.0":
+"chokidar@npm:^3.6.0":
   version: 3.6.0
   resolution: "chokidar@npm:3.6.0"
   dependencies:
@@ -6978,7 +6978,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-cookie@workspace:packages/react-cookie"
   dependencies:
-    "@babel/cli": "npm:^7.24.8"
+    "@babel/cli": "npm:^7.25.6"
     "@types/hoist-non-react-statics": "npm:^3.3.5"
     hoist-non-react-statics: "npm:^3.3.2"
     react: "npm:^18.3.1"
@@ -7343,7 +7343,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@babel/cli": "npm:^7.24.8"
+    "@babel/cli": "npm:^7.25.6"
     "@babel/core": "npm:^7.25.2"
     "@babel/preset-env": "npm:^7.25.4"
     "@babel/preset-react": "npm:^7.24.7"
@@ -8137,7 +8137,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "universal-cookie-express@workspace:packages/universal-cookie-express"
   dependencies:
-    "@babel/cli": "npm:^7.24.8"
+    "@babel/cli": "npm:^7.25.6"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.5.4"
     universal-cookie: "npm:^7.0.0"
@@ -8148,7 +8148,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "universal-cookie-koa@workspace:packages/universal-cookie-koa"
   dependencies:
-    "@babel/cli": "npm:^7.24.8"
+    "@babel/cli": "npm:^7.25.6"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.5.4"
     universal-cookie: "npm:^7.0.0"
@@ -8159,7 +8159,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "universal-cookie@workspace:packages/universal-cookie"
   dependencies:
-    "@babel/cli": "npm:^7.24.8"
+    "@babel/cli": "npm:^7.25.6"
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.6.0"
     rimraf: "npm:^6.0.1"
