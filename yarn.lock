@@ -3694,10 +3694,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "cookie@npm:0.7.2"
-  checksum: 10c0/9596e8ccdbf1a3a88ae02cf5ee80c1c50959423e1022e4e60b91dd87c622af1da309253d8abdb258fb5e3eacb4f08e579dc58b4897b8087574eee0fd35dfa5d2
+"cookie@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "cookie@npm:1.0.0"
+  checksum: 10c0/44b1af44e8d18d02dedda4e2c75340e2f038a16ee9502a42cc6363198cbca256db0c72ced2dac920d93ba985cf78f909aa6d18460580624e9029deb3d38a1781
   languageName: node
   linkType: hard
 
@@ -8089,7 +8089,7 @@ __metadata:
   dependencies:
     "@babel/cli": "npm:^7.25.7"
     "@types/cookie": "npm:^0.6.0"
-    cookie: "npm:^0.7.2"
+    cookie: "npm:^1.0.0"
     rimraf: "npm:^6.0.1"
     rollup: "npm:^4.24.0"
     typescript: "npm:^5.6.3"
