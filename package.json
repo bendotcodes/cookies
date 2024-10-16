@@ -17,7 +17,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.1",
     "@size-limit/preset-small-lib": "^11.1.6",
-    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/jest-dom": "^6.6.1",
     "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.13",
     "@types/node": "^20.16.11",
