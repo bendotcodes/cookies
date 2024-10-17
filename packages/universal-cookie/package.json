@@ -2,6 +2,7 @@
   "name": "universal-cookie",
   "version": "7.2.1",
   "description": "Universal cookies for JavaScript",
+  "main": "cjs/index.js",
   "types": "cjs/index.d.ts",
   "module": "esm/index.mjs",
   "exports": {
