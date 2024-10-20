@@ -20,7 +20,7 @@
     "@testing-library/jest-dom": "^6.6.2",
     "@testing-library/react": "^16.0.1",
     "@types/jest": "^29.5.13",
-    "@types/node": "^20.16.12",
+    "@types/node": "^20.16.13",
     "babel-jest": "^29.7.0",
     "babel-plugin-add-module-exports": "^1.0.4",
     "husky": "^9.1.6",
@@ -66,5 +66,5 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,md,css,html,json,yml}": "prettier --write"
   },
-  "packageManager": "yarn@4.5.0"
+  "packageManager": "yarn@4.5.1"
 }
