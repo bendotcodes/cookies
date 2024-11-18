@@ -6,9 +6,9 @@ __metadata:
   cacheKey: 10c0
 
 "@adobe/css-tools@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "@adobe/css-tools@npm:4.4.0"
-  checksum: 10c0/d65ddc719389bf469097df80fb16a8af48a973dea4b57565789d70ac8e7ab4987e6dc0095da3ed5dc16c1b6f8960214a7590312eeda8abd543d91fd0f59e6c94
+  version: 4.4.1
+  resolution: "@adobe/css-tools@npm:4.4.1"
+  checksum: 10c0/1a68ad9af490f45fce7b6e50dd2d8ac0c546d74431649c0d42ee4ceb1a9fa057fae0a7ef1e148effa12d84ec00ed71869ebfe0fb1dcdcc80bfcb6048c12abcc0
   languageName: node
   linkType: hard
 
@@ -165,9 +165,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-define-polyfill-provider@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "@babel/helper-define-polyfill-provider@npm:0.6.2"
+"@babel/helper-define-polyfill-provider@npm:^0.6.2, @babel/helper-define-polyfill-provider@npm:^0.6.3":
+  version: 0.6.3
+  resolution: "@babel/helper-define-polyfill-provider@npm:0.6.3"
   dependencies:
     "@babel/helper-compilation-targets": "npm:^7.22.6"
     "@babel/helper-plugin-utils": "npm:^7.22.5"
@@ -176,7 +176,7 @@ __metadata:
     resolve: "npm:^1.14.2"
   peerDependencies:
     "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10c0/f777fe0ee1e467fdaaac059c39ed203bdc94ef2465fb873316e9e1acfc511a276263724b061e3b0af2f6d7ad3ff174f2bb368fde236a860e0f650fda43d7e022
+  checksum: 10c0/4320e3527645e98b6a0d5626fef815680e3b2b03ec36045de5e909b0f01546ab3674e96f50bf3bc8413f8c9037e5ee1a5f560ebdf8210426dad1c2c03c96184a
   languageName: node
   linkType: hard
 
@@ -3101,15 +3101,15 @@ __metadata:
   linkType: hard
 
 "babel-plugin-polyfill-corejs2@npm:^0.4.10":
-  version: 0.4.11
-  resolution: "babel-plugin-polyfill-corejs2@npm:0.4.11"
+  version: 0.4.12
+  resolution: "babel-plugin-polyfill-corejs2@npm:0.4.12"
   dependencies:
     "@babel/compat-data": "npm:^7.22.6"
-    "@babel/helper-define-polyfill-provider": "npm:^0.6.2"
+    "@babel/helper-define-polyfill-provider": "npm:^0.6.3"
     semver: "npm:^6.3.1"
   peerDependencies:
     "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10c0/b2217bc8d5976cf8142453ed44daabf0b2e0e75518f24eac83b54a8892e87a88f1bd9089daa92fd25df979ecd0acfd29b6bc28c4182c1c46344cee15ef9bce84
+  checksum: 10c0/49150c310de2d472ecb95bd892bca1aa833cf5e84bbb76e3e95cf9ff2c6c8c3b3783dd19d70ba50ff6235eb8ce1fa1c0affe491273c95a1ef6a2923f4d5a3819
   languageName: node
   linkType: hard
 
@@ -3126,13 +3126,13 @@ __metadata:
   linkType: hard
 
 "babel-plugin-polyfill-regenerator@npm:^0.6.1":
-  version: 0.6.2
-  resolution: "babel-plugin-polyfill-regenerator@npm:0.6.2"
+  version: 0.6.3
+  resolution: "babel-plugin-polyfill-regenerator@npm:0.6.3"
   dependencies:
-    "@babel/helper-define-polyfill-provider": "npm:^0.6.2"
+    "@babel/helper-define-polyfill-provider": "npm:^0.6.3"
   peerDependencies:
     "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10c0/bc541037cf7620bc84ddb75a1c0ce3288f90e7d2799c070a53f8a495c8c8ae0316447becb06f958dd25dcce2a2fce855d318ecfa48036a1ddb218d55aa38a744
+  checksum: 10c0/40164432e058e4b5c6d56feecacdad22692ae0534bd80c92d5399ed9e1a6a2b6797c8fda837995daddd4ca391f9aa2d58c74ad465164922e0f73631eaf9c4f76
   languageName: node
   linkType: hard
 
@@ -3840,9 +3840,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.41":
-  version: 1.5.55
-  resolution: "electron-to-chromium@npm:1.5.55"
-  checksum: 10c0/1b9e0970a591d342cf4d4c95b63bcdb8bffed01edb7c8baed8dd54ea769c8b33c07484c94a031a20363a8129ca2ad1d612ce4ca55ec831244240ae1e6bcdf07c
+  version: 1.5.62
+  resolution: "electron-to-chromium@npm:1.5.62"
+  checksum: 10c0/93dc628f0359df0cae475cf5e91fa0cf357611f14da7cf15c28fe92f89dede7def20c04b24787e6166181ae582b060d02b252e906d7ec84020485579a95bc8e9
   languageName: node
   linkType: hard
 
