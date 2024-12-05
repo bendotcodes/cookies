@@ -2463,13 +2463,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hoist-non-react-statics@npm:^3.3.5":
-  version: 3.3.5
-  resolution: "@types/hoist-non-react-statics@npm:3.3.5"
+"@types/hoist-non-react-statics@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "@types/hoist-non-react-statics@npm:3.3.6"
   dependencies:
     "@types/react": "npm:*"
     hoist-non-react-statics: "npm:^3.3.0"
-  checksum: 10c0/2a3b64bf3d9817d7830afa60ee314493c475fb09570a64e7737084cd482d2177ebdddf888ce837350bac51741278b077683facc9541f052d4bbe8487b4e3e618
+  checksum: 10c0/149a4c217d81f21f8a1e152160a59d5b99b6a9aa6d354385d5f5bc02760cbf1e170a8442ba92eb653befff44b0c5bc2234bb77ce33e0d11a65f779e8bab5c321
   languageName: node
   linkType: hard
 
@@ -6826,7 +6826,7 @@ __metadata:
   resolution: "react-cookie@workspace:packages/react-cookie"
   dependencies:
     "@babel/cli": "npm:^7.26.4"
-    "@types/hoist-non-react-statics": "npm:^3.3.5"
+    "@types/hoist-non-react-statics": "npm:^3.3.6"
     hoist-non-react-statics: "npm:^3.3.2"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
