@@ -45,7 +45,7 @@
     "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
-    "@types/hoist-non-react-statics": "^3.3.5",
+    "@types/hoist-non-react-statics": "^3.3.6",
     "hoist-non-react-statics": "^3.3.2",
     "universal-cookie": "^7.0.0"
   },
