@@ -5741,9 +5741,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:^15.3.0":
-  version: 15.3.0
-  resolution: "lint-staged@npm:15.3.0"
+"lint-staged@npm:^15.4.0":
+  version: 15.4.0
+  resolution: "lint-staged@npm:15.4.0"
   dependencies:
     chalk: "npm:~5.4.1"
     commander: "npm:~12.1.0"
@@ -5757,7 +5757,7 @@ __metadata:
     yaml: "npm:~2.6.1"
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 10c0/1ddf9488c523c0b65c85b755428d4ad74fac3aa6ccb2e28e9bff5b8d86503158fe241d20d5433a11146872050b43580644901a5ef4c924b1ad7017c224a07339
+  checksum: 10c0/ada9a79a984840c4e51e9e77a00e995151d4a1a410c7aceee8a0403d63fb94ec57531fa752081874c97da12f8809aa6d7645a8b321be0d099a43fe0ac856a9af
   languageName: node
   linkType: hard
 
@@ -7217,7 +7217,7 @@ __metadata:
     husky: "npm:^9.1.7"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
-    lint-staged: "npm:^15.3.0"
+    lint-staged: "npm:^15.4.0"
     prettier: "npm:^3.4.2"
     rimraf: "npm:^6.0.1"
     rollup: "npm:^4.30.1"
