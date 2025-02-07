@@ -6816,7 +6816,7 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     rimraf: "npm:^6.0.1"
-    rollup: "npm:^4.34.5"
+    rollup: "npm:^4.34.6"
     typescript: "npm:^5.7.3"
     universal-cookie: "npm:^7.0.0"
   peerDependencies:
@@ -7126,7 +7126,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^4.34.5":
+"rollup@npm:^4.34.6":
   version: 4.34.6
   resolution: "rollup@npm:4.34.6"
   dependencies:
@@ -7227,7 +7227,7 @@ __metadata:
     lint-staged: "npm:^15.4.3"
     prettier: "npm:^3.4.2"
     rimraf: "npm:^6.0.1"
-    rollup: "npm:^4.34.5"
+    rollup: "npm:^4.34.6"
     rollup-plugin-replace: "npm:^2.2.0"
     size-limit: "npm:^11.1.6"
     tslib: "npm:^2.8.1"
@@ -8015,7 +8015,7 @@ __metadata:
     "@types/cookie": "npm:^0.6.0"
     cookie: "npm:^0.7.2"
     rimraf: "npm:^6.0.1"
-    rollup: "npm:^4.34.5"
+    rollup: "npm:^4.34.6"
     typescript: "npm:^5.7.3"
   languageName: unknown
   linkType: soft
