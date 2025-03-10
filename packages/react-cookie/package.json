@@ -8,7 +8,7 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./esm/index.d.mts",
+        "types": "./esm/index.d.ts",
         "default": "./esm/index.mjs"
       },
       "require": {
