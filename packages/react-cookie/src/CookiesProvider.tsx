@@ -4,23 +4,16 @@ import { ReactCookieProps } from './types';
 
 import { Provider } from './CookiesContext';
 
-export default class CookiesProvider extends React.Component<
-  ReactCookieProps,
-  any
-> {
-  cookies: Cookies;
-
-  constructor(props: ReactCookieProps) {
-    super(props);
-
+const CookiesProvider: React.FC<ReactCookieProps> = (props) => {
+  const cookies = React.useMemo(() => {
     if (props.cookies) {
-      this.cookies = props.cookies;
+      return props.cookies;
     } else {
-      this.cookies = new Cookies(undefined, props.defaultSetOptions);
+      return new Cookies(undefined, props.defaultSetOptions);
     }
-  }
+  }, [props.cookies, props.defaultSetOptions]);
 
-  render() {
-    return <Provider value={this.cookies}>{this.props.children}</Provider>;
-  }
-}
+  return <Provider value={cookies}>{props.children}</Provider>;
+};
+
+export default CookiesProvider;

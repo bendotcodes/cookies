@@ -25,6 +25,10 @@ export default function useCookies<T extends string, U = { [K in T]?: any }>(
   if (isInBrowser()) {
     useLayoutEffect(() => {
       function onChange() {
+        if (!cookies) {
+          throw new Error('Missing <CookiesProvider>');
+        }
+
         const newCookies = cookies.getAll(getOptions);
 
         if (shouldUpdate(dependencies || null, newCookies, allCookies)) {
