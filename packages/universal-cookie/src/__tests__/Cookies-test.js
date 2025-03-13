@@ -142,7 +142,7 @@ describe('Cookies', () => {
       const onChange = jest.fn();
       cookies.addChangeListener(onChange);
 
-      document.cookie = `test="${JSON.stringify({ test: true })}"`;
+      document.cookie = `test=${JSON.stringify({ test: true })}`;
 
       await new Promise((r) => setTimeout(r, 500));
 
