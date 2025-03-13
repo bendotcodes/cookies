@@ -172,4 +172,10 @@ describe('useCookies', () => {
       expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
     });
   });
+
+  it('throws error without the provider', () => {
+    expect(() => {
+      render(<TestComponent />);
+    }).toThrow('Missing <CookiesProvider>');
+  });
 });
