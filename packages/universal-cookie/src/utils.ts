@@ -16,11 +16,13 @@ export function hasDocumentCookie() {
 }
 
 export function cleanCookies() {
-  document.cookie.split(';').forEach(function (c) {
-    document.cookie = c
-      .replace(/^ +/, '')
-      .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
-  });
+  if (typeof document !== 'undefined') {
+    document.cookie.split(';').forEach(function (c) {
+      document.cookie = c
+        .replace(/^ +/, '')
+        .replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+    });
+  }
 }
 
 export function parseCookies(cookies?: string | object | null) {

@@ -4,10 +4,9 @@ import { CookiesProvider } from 'react-cookie';
 
 import App from './components/App';
 
-const appEl = document.getElementById('main-app');
-const node = createRoot(appEl);
+const root = createRoot(document.getElementById('main-app'));
 
-node.render(
+root.render(
   <CookiesProvider>
     <App />
   </CookiesProvider>,
