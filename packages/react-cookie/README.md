@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  Universal cookies for <a href="https://facebook.github.io/react">React</a><br />
+  Universal cookies for <a href="https://react.dev/">React</a><br />
   <a href="https://badge.fury.io/js/react-cookie"><img src="https://badge.fury.io/js/react-cookie.svg" /></a>
   <img src="https://github.com/github/docs/actions/workflows/test.yml/badge.svg" alt="Test Status" />
 </p>
