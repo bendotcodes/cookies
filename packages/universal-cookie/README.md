@@ -99,6 +99,10 @@ Add a listener to when a cookie is set or removed.
 
 Remove a listener from the change callback.
 
+### `removeAllChangeListeners()`
+
+Remove all change listeners that were previously added with `addChangeListener()`.
+
 ### `update()`
 
 Read back the cookies from the browser and triggers the change listeners. This should normally not be necessary because this library detects cookie changes automatically.
