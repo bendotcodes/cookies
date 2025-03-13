@@ -15,10 +15,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
-      - name: Setup NodeJS 20
+      - name: Setup NodeJS 22
         uses: actions/setup-node@v4
         with:
-          node-version: '20.18.3'
+          node-version: '22.14.0'
           cache: yarn
 
       - name: Enable Yarn 4
