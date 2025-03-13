@@ -1,18 +1,11 @@
 import React from 'react';
-import { object } from 'prop-types';
-import { instanceOf } from 'prop-types';
-import ReactDOMServer from 'react-dom/server';
-import { CookiesProvider, withCookies, Cookies } from '../';
+import { CookiesProvider, withCookies, Cookies } from '..';
 import { cleanCookies } from '../../../universal-cookie/src/utils';
 import { act, render, screen } from '@testing-library/react';
 
 function TestComponent({ cookies }) {
   return <div>{cookies.get('test')}</div>;
 }
-
-TestComponent.propTypes = {
-  cookies: instanceOf(Cookies).isRequired,
-};
 
 function AllCookiesComponent({ allCookies }) {
   return (
@@ -25,14 +18,6 @@ function AllCookiesComponent({ allCookies }) {
     </ul>
   );
 }
-
-AllCookiesComponent.propTypes = {
-  allCookies: object.isRequired,
-};
-
-TestComponent.propTypes = {
-  cookies: instanceOf(Cookies).isRequired,
-};
 
 class TestRefComponent extends React.Component {
   testValue = 'Suki is pretty';
@@ -130,23 +115,6 @@ describe('withCookies(Component)', () => {
       const MyNameComponent = () => null;
       const Component = withCookies(MyNameComponent);
       expect(Component.displayName).toBe('withCookies(MyNameComponent)');
-    });
-  });
-
-  describe('on the server', () => {
-    it('provides the cookies', () => {
-      const cookies = new Cookies('test="big fat cat"');
-      cookies.HAS_DOCUMENT_COOKIE = false;
-
-      const Component = withCookies(TestComponent);
-
-      const html = ReactDOMServer.renderToString(
-        <CookiesProvider cookies={cookies}>
-          <Component />
-        </CookiesProvider>,
-      );
-
-      expect(html).toContain('big fat cat');
     });
   });
 });

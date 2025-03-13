@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import { cleanCookies } from '../../../universal-cookie/src/utils';
 import { act, render, screen } from '@testing-library/react';
 
-import { CookiesProvider, useCookies, Cookies } from '../';
-import * as Utils from '../utils';
+import { CookiesProvider, useCookies, Cookies } from '..';
 
 function TestComponent({ dependencies }) {
   const [cookies] = useCookies(dependencies);
@@ -172,38 +170,6 @@ describe('useCookies', () => {
       });
 
       expect(screen.getByText('big fat cat Pacman')).toBeInTheDocument();
-    });
-  });
-
-  describe('on the server', () => {
-    beforeEach(() => {
-      jest.spyOn(Utils, 'isInBrowser').mockReturnValue(false);
-    });
-
-    it('provides the cookies', () => {
-      const cookies = new Cookies('test="big fat cat"');
-      cookies.HAS_DOCUMENT_COOKIE = false;
-
-      const html = ReactDOMServer.renderToString(
-        <CookiesProvider cookies={cookies}>
-          <TestComponent />
-        </CookiesProvider>,
-      );
-
-      expect(html).toContain('big fat cat');
-    });
-
-    it('does not track changes', () => {
-      const cookies = new Cookies('test="big fat cat"');
-      jest.spyOn(React, 'useLayoutEffect');
-
-      ReactDOMServer.renderToString(
-        <CookiesProvider cookies={cookies}>
-          <TestComponent />
-        </CookiesProvider>,
-      );
-
-      expect(React.useLayoutEffect).not.toHaveBeenCalled();
     });
   });
 });

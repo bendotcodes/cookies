@@ -1,5 +1,4 @@
 import React from 'react';
-import { func, string } from 'prop-types';
 
 export default function NameForm({ name, onChange }) {
   return (
@@ -20,8 +19,3 @@ export default function NameForm({ name, onChange }) {
     </div>
   );
 }
-
-NameForm.propTypes = {
-  name: string,
-  onChange: func.isRequired,
-};

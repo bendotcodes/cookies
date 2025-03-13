@@ -1,5 +1,4 @@
 import React from 'react';
-import { string } from 'prop-types';
 
 export default function Html({ markup }) {
   return (
@@ -11,7 +10,3 @@ export default function Html({ markup }) {
     </html>
   );
 }
-
-Html.propTypes = {
-  markup: string.isRequired,
-};

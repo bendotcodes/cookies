@@ -244,16 +244,11 @@ export default function Root() {
 ```js
 // App.jsx
 import React, { Component } from 'react';
-import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
 class App extends Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired,
-  };
-
   constructor(props) {
     super(props);
 
@@ -337,18 +332,17 @@ export default function middleware(req, res) {
 ```js
 // src/client.js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { CookiesProvider } from 'react-cookie';
 
 import App from './components/App';
 
-const appEl = document.getElementById('main-app');
+const root = createRoot(document.getElementById('main-app'));
 
-ReactDOM.render(
+root.render(
   <CookiesProvider>
     <App />
   </CookiesProvider>,
-  appEl,
 );
 ```
 
