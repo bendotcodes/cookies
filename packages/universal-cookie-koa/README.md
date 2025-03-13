@@ -25,8 +25,8 @@
 ## Example
 
 ```js
-const Koa = require('koa');
-const cookiesMiddleware = require('universal-cookie-koa');
+import Koa from 'koa';
+import cookiesMiddleware from 'universal-cookie-koa';
 
 const app = new Koa();
 

@@ -294,8 +294,8 @@ export default withCookies(App);
 
 ## Server-Rendering Example
 
-```js
-// src/components/App.js
+```ts
+// src/components/App.ts
 import React from 'react';
 import { useCookies } from 'react-cookie';
 
@@ -304,7 +304,7 @@ import NameForm from './NameForm';
 function App() {
   const [cookies, setCookie] = useCookies(['name']);
 
-  function onChange(newName) {
+  function onChange(newName: string) {
     setCookie('name', newName, { path: '/' });
   }
 
@@ -319,16 +319,17 @@ function App() {
 export default App;
 ```
 
-```js
-// src/server.js
+```ts
+// src/server.ts
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { CookiesProvider } from 'react-cookie';
+import { Request, Response } from 'express';
 
 import Html from './components/Html';
 import App from './components/App';
 
-export default function middleware(req, res) {
+export default function middleware(req: Request, res: Response) {
   const markup = ReactDOMServer.renderToString(
     <CookiesProvider cookies={req.universalCookies}>
       <App />
@@ -341,8 +342,8 @@ export default function middleware(req, res) {
 }
 ```
 
-```js
-// src/client.js
+```ts
+// src/client.ts
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { CookiesProvider } from 'react-cookie';
@@ -358,20 +359,15 @@ root.render(
 );
 ```
 
-```js
-// server.js
-require('@babel/register');
-
-const express = require('express');
-const serverMiddleware = require('./src/server').default;
-const cookiesMiddleware = require('universal-cookie-express');
+```ts
+// server.ts
+import express from 'express';
+import serverMiddleware from './src/server';
+import cookiesMiddleware from 'universal-cookie-express';
 
 const app = express();
 
-app
-  .use('/assets', express.static('dist'))
-  .use(cookiesMiddleware())
-  .use(serverMiddleware);
+app.use(cookiesMiddleware()).use(serverMiddleware);
 
 app.listen(8080, function () {
   console.log('Listening on 8080...');

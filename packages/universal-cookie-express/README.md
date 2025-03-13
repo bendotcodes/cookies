@@ -24,13 +24,13 @@
 
 ## Example
 
-```js
-const express = require('express');
-const cookiesMiddleware = require('universal-cookie-express');
+```ts
+import express, { Request, Response } from 'express';
+import cookiesMiddleware from 'universal-cookie-express';
 
 const app = express();
 
-app.use(cookiesMiddleware()).use(function (req, res) {
+app.use(cookiesMiddleware()).use(function (req: Request, res: Response) {
   // get the user cookies using universal-cookie
   req.universalCookies.get('myCat');
 });
