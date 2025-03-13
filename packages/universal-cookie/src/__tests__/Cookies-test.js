@@ -247,5 +247,25 @@ describe('Cookies', () => {
       cookies.remove('test', 'boom!');
       expect(onChange).not.toHaveBeenCalled();
     });
+
+    it('removes all listeners at once', () => {
+      const cookies = new Cookies();
+
+      const onChange1 = jest.fn();
+      const onChange2 = jest.fn();
+      const onChange3 = jest.fn();
+
+      cookies.addChangeListener(onChange1);
+      cookies.addChangeListener(onChange2);
+      cookies.addChangeListener(onChange3);
+
+      cookies.removeAllChangeListeners();
+
+      cookies.set('test', 'value');
+
+      expect(onChange1).not.toHaveBeenCalled();
+      expect(onChange2).not.toHaveBeenCalled();
+      expect(onChange3).not.toHaveBeenCalled();
+    });
   });
 });

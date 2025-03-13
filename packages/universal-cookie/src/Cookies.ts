@@ -159,4 +159,10 @@ export default class Cookies {
       }
     }
   }
+
+  public removeAllChangeListeners() {
+    while (this.changeListeners.length > 0) {
+      this.removeChangeListener(this.changeListeners[0]);
+    }
+  }
 }
