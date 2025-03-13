@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "main": "server.js",
+  "type": "module",
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "start": "node server.js"
+    "start": "tsx server.ts"
   },
   "dependencies": {
     "@babel/register": "^7.25.9",
@@ -23,12 +23,21 @@
     "@babel/preset-env": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-stage-2": "^7.8.3",
+    "@babel/preset-typescript": "^7.26.0",
     "@testing-library/react": "^16.2.0",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/testing-library__dom": "^7.5.0",
     "babel-jest": "^29.7.0",
     "babel-loader": "^10.0.0",
     "jest": "^29.7.0",
     "react-test-renderer": "^19.0.0",
+    "ts-loader": "^9.5.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.4.3",
     "webpack": "^5.98.0",
     "webpack-cli": "^6.0.1"
   }

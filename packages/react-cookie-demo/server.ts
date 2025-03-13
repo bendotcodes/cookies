@@ -1,8 +1,6 @@
-require('@babel/register');
-
-const express = require('express');
-const serverMiddleware = require('./src/server');
-const cookiesMiddleware = require('universal-cookie-express');
+import express from 'express';
+import serverMiddleware from './src/server';
+import cookiesMiddleware from 'universal-cookie-express';
 
 const app = express();
 

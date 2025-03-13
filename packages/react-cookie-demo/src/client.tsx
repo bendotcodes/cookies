@@ -4,7 +4,10 @@ import { CookiesProvider } from 'react-cookie';
 
 import App from './components/App';
 
-const root = createRoot(document.getElementById('main-app'));
+const rootElement = document.getElementById('main-app');
+if (!rootElement) throw new Error('Failed to find the root element');
+
+const root = createRoot(rootElement);
 
 root.render(
   <CookiesProvider>

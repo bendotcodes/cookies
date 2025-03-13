@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function NameForm({ name, onChange }) {
+interface Props {
+  name: string;
+  onChange: (name: string) => void;
+}
+
+export default function NameForm({
+  name,
+  onChange,
+}: Props): React.ReactElement {
   return (
     <div>
       <h1>What&apos;s your name?</h1>

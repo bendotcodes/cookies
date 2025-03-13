@@ -9,12 +9,21 @@ module.exports = {
     filename: 'bundle.js',
   },
 
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
+
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         include: [path.resolve('./src')],
         loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        include: [path.resolve('./src')],
+        use: 'ts-loader',
       },
     ],
   },

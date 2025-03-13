@@ -184,13 +184,13 @@ Remove a cookie
 
 ## Simple Example with React hooks
 
-```js
-// Root.jsx
+```tsx
+// Root.tsx
 import React from 'react';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 
-export default function Root() {
+export default function Root(): React.ReactElement {
   return (
     <CookiesProvider defaultSetOptions={{ path: '/' }}>
       <App />
@@ -199,23 +199,27 @@ export default function Root() {
 }
 ```
 
-```js
-// App.jsx
+```tsx
+// App.tsx
 import React from 'react';
 import { useCookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-function App() {
-  const [cookies, setCookie] = useCookies(['name']);
+interface CookieValues {
+  name?: string;
+}
 
-  function onChange(newName) {
+function App(): React.ReactElement {
+  const [cookies, setCookie] = useCookies<'name', CookieValues>(['name']);
+
+  function onChange(newName: string): void {
     setCookie('name', newName);
   }
 
   return (
     <div>
-      <NameForm name={cookies.name} onChange={onChange} />
+      <NameForm name={cookies.name || ''} onChange={onChange} />
       {cookies.name && <h1>Hello {cookies.name}!</h1>}
     </div>
   );
@@ -226,13 +230,13 @@ export default App;
 
 ## Simple Example with Higher-Order Component
 
-```js
-// Root.jsx
+```tsx
+// Root.tsx
 import React from 'react';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 
-export default function Root() {
+export default function Root(): React.ReactElement {
   return (
     <CookiesProvider>
       <App />
@@ -241,15 +245,23 @@ export default function Root() {
 }
 ```
 
-```js
-// App.jsx
+```tsx
+// App.tsx
 import React, { Component } from 'react';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies, Cookies, ReactCookieProps } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-class App extends Component {
-  constructor(props) {
+interface State {
+  name: string;
+}
+
+interface Props extends ReactCookieProps {
+  cookies: Cookies;
+}
+
+class App extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { cookies } = props;
@@ -258,14 +270,14 @@ class App extends Component {
     };
   }
 
-  handleNameChange(name) {
+  handleNameChange(name: string): void {
     const { cookies } = this.props;
 
     cookies.set('name', name, { path: '/' });
     this.setState({ name });
   }
 
-  render() {
+  render(): React.ReactNode {
     const { name } = this.state;
 
     return (
