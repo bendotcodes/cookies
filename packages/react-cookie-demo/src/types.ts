@@ -1,5 +1,5 @@
-import { Cookies as UniversalCookies } from 'universal-cookie';
-import { Request, Response } from 'express';
+import { Cookie as UniversalCookies } from 'universal-cookie';
+import { Request } from 'express';
 
 export interface AppRequest extends Request {
   universalCookies: UniversalCookies;
