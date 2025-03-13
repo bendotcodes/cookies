@@ -1,6 +1,10 @@
 import React from 'react';
 
-export default function Html({ markup }) {
+interface Props {
+  markup: string;
+}
+
+export default function Html({ markup }: Props): React.ReactElement {
   return (
     <html>
       <body>

@@ -1,20 +1,22 @@
 import React from 'react';
 import { useCookies } from 'react-cookie';
-
+import { CookieValues } from '../types';
 import NameForm from './NameForm';
 
-function App() {
-  const [cookies, setCookie, removeCookie] = useCookies(['name']);
+export default function App(): React.ReactElement {
+  const [cookies, setCookie, removeCookie] = useCookies<'name', CookieValues>([
+    'name',
+  ]);
 
-  function onChange(newName) {
+  function onChange(newName: string): void {
     setCookie('name', newName, { path: '/' });
   }
 
-  function onExternalCall() {
+  function onExternalCall(): void {
     document.cookie = 'name=Meow; path=/';
   }
 
-  function onClear() {
+  function onClear(): void {
     removeCookie('name');
   }
 
@@ -31,5 +33,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

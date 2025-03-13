@@ -184,13 +184,13 @@ Remove a cookie
 
 ## Simple Example with React hooks
 
-```js
-// Root.jsx
+```tsx
+// Root.tsx
 import React from 'react';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 
-export default function Root() {
+export default function Root(): React.ReactElement {
   return (
     <CookiesProvider defaultSetOptions={{ path: '/' }}>
       <App />
@@ -199,23 +199,27 @@ export default function Root() {
 }
 ```
 
-```js
-// App.jsx
+```tsx
+// App.tsx
 import React from 'react';
 import { useCookies } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-function App() {
-  const [cookies, setCookie] = useCookies(['name']);
+interface CookieValues {
+  name?: string;
+}
 
-  function onChange(newName) {
+function App(): React.ReactElement {
+  const [cookies, setCookie] = useCookies<'name', CookieValues>(['name']);
+
+  function onChange(newName: string): void {
     setCookie('name', newName);
   }
 
   return (
     <div>
-      <NameForm name={cookies.name} onChange={onChange} />
+      <NameForm name={cookies.name || ''} onChange={onChange} />
       {cookies.name && <h1>Hello {cookies.name}!</h1>}
     </div>
   );
@@ -226,13 +230,13 @@ export default App;
 
 ## Simple Example with Higher-Order Component
 
-```js
-// Root.jsx
+```tsx
+// Root.tsx
 import React from 'react';
 import App from './App';
 import { CookiesProvider } from 'react-cookie';
 
-export default function Root() {
+export default function Root(): React.ReactElement {
   return (
     <CookiesProvider>
       <App />
@@ -241,15 +245,23 @@ export default function Root() {
 }
 ```
 
-```js
-// App.jsx
+```tsx
+// App.tsx
 import React, { Component } from 'react';
-import { withCookies, Cookies } from 'react-cookie';
+import { withCookies, Cookies, ReactCookieProps } from 'react-cookie';
 
 import NameForm from './NameForm';
 
-class App extends Component {
-  constructor(props) {
+interface State {
+  name: string;
+}
+
+interface Props extends ReactCookieProps {
+  cookies: Cookies;
+}
+
+class App extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { cookies } = props;
@@ -258,14 +270,14 @@ class App extends Component {
     };
   }
 
-  handleNameChange(name) {
+  handleNameChange(name: string): void {
     const { cookies } = this.props;
 
     cookies.set('name', name, { path: '/' });
     this.setState({ name });
   }
 
-  render() {
+  render(): React.ReactNode {
     const { name } = this.state;
 
     return (
@@ -282,8 +294,8 @@ export default withCookies(App);
 
 ## Server-Rendering Example
 
-```js
-// src/components/App.js
+```ts
+// src/components/App.ts
 import React from 'react';
 import { useCookies } from 'react-cookie';
 
@@ -292,7 +304,7 @@ import NameForm from './NameForm';
 function App() {
   const [cookies, setCookie] = useCookies(['name']);
 
-  function onChange(newName) {
+  function onChange(newName: string) {
     setCookie('name', newName, { path: '/' });
   }
 
@@ -307,16 +319,17 @@ function App() {
 export default App;
 ```
 
-```js
-// src/server.js
+```ts
+// src/server.ts
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { CookiesProvider } from 'react-cookie';
+import { Request, Response } from 'express';
 
 import Html from './components/Html';
 import App from './components/App';
 
-export default function middleware(req, res) {
+export default function middleware(req: Request, res: Response) {
   const markup = ReactDOMServer.renderToString(
     <CookiesProvider cookies={req.universalCookies}>
       <App />
@@ -329,8 +342,8 @@ export default function middleware(req, res) {
 }
 ```
 
-```js
-// src/client.js
+```ts
+// src/client.ts
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { CookiesProvider } from 'react-cookie';
@@ -346,20 +359,15 @@ root.render(
 );
 ```
 
-```js
-// server.js
-require('@babel/register');
-
-const express = require('express');
-const serverMiddleware = require('./src/server').default;
-const cookiesMiddleware = require('universal-cookie-express');
+```ts
+// server.ts
+import express from 'express';
+import serverMiddleware from './src/server';
+import cookiesMiddleware from 'universal-cookie-express';
 
 const app = express();
 
-app
-  .use('/assets', express.static('dist'))
-  .use(cookiesMiddleware())
-  .use(serverMiddleware);
+app.use(cookiesMiddleware()).use(serverMiddleware);
 
 app.listen(8080, function () {
   console.log('Listening on 8080...');
