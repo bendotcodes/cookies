@@ -63,7 +63,7 @@ export default function withCookies<T extends ReactCookieProps>(
   const ForwardedComponent: any = React.forwardRef((props: any, ref: any) => {
     return (
       <Consumer>
-        {(cookies: Cookies) => (
+        {(cookies: Cookies | null) => (
           <CookieWrapper cookies={cookies} {...props} forwardedRef={ref} />
         )}
       </Consumer>
