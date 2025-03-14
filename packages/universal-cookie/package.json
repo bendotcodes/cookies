@@ -44,7 +44,6 @@
     "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
-    "@types/cookie": "^1.0.0",
     "cookie": "^1.0.2"
   },
   "devDependencies": {

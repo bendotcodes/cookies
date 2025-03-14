@@ -2440,12 +2440,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cookie@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "@types/cookie@npm:1.0.0"
-  dependencies:
-    cookie: "npm:*"
-  checksum: 10c0/d471539d289c6d9c6ab2986a881b10a55c9e489c2d35da0d1bdbbabdca9a8125de4cbc007bb525060265c64c14288c690f991ba6d84eea8c6ddacaa150179557
+"@types/cookie@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "@types/cookie@npm:0.6.0"
+  checksum: 10c0/5b326bd0188120fb32c0be086b141b1481fec9941b76ad537f9110e10d61ee2636beac145463319c71e4be67a17e85b81ca9e13ceb6e3bb63b93d16824d6c149
   languageName: node
   linkType: hard
 
@@ -2509,7 +2507,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hoist-non-react-statics@npm:^3.3.6":
+"@types/hoist-non-react-statics@npm:^3.3.5, @types/hoist-non-react-statics@npm:^3.3.6":
   version: 3.3.6
   resolution: "@types/hoist-non-react-statics@npm:3.3.6"
   dependencies:
@@ -3658,17 +3656,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:*, cookie@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "cookie@npm:1.0.2"
-  checksum: 10c0/fd25fe79e8fbcfcaf6aa61cd081c55d144eeeba755206c058682257cb38c4bd6795c6620de3f064c740695bb65b7949ebb1db7a95e4636efb8357a335ad3f54b
-  languageName: node
-  linkType: hard
-
 "cookie@npm:0.7.1":
   version: 0.7.1
   resolution: "cookie@npm:0.7.1"
   checksum: 10c0/5de60c67a410e7c8dc8a46a4b72eb0fe925871d057c9a5d2c0e8145c4270a4f81076de83410c4d397179744b478e33cd80ccbcc457abf40a9409ad27dcd21dde
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "cookie@npm:0.7.2"
+  checksum: 10c0/9596e8ccdbf1a3a88ae02cf5ee80c1c50959423e1022e4e60b91dd87c622af1da309253d8abdb258fb5e3eacb4f08e579dc58b4897b8087574eee0fd35dfa5d2
+  languageName: node
+  linkType: hard
+
+"cookie@npm:^1.0.2":
+  version: 1.0.2
+  resolution: "cookie@npm:1.0.2"
+  checksum: 10c0/fd25fe79e8fbcfcaf6aa61cd081c55d144eeeba755206c058682257cb38c4bd6795c6620de3f064c740695bb65b7949ebb1db7a95e4636efb8357a335ad3f54b
   languageName: node
   linkType: hard
 
@@ -6839,7 +6844,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"react-cookie@npm:^7.0.0, react-cookie@workspace:packages/react-cookie":
+"react-cookie@npm:^7.0.0":
+  version: 7.2.2
+  resolution: "react-cookie@npm:7.2.2"
+  dependencies:
+    "@types/hoist-non-react-statics": "npm:^3.3.5"
+    hoist-non-react-statics: "npm:^3.3.2"
+    universal-cookie: "npm:^7.0.0"
+  peerDependencies:
+    react: ">= 16.3.0"
+  checksum: 10c0/22948a42b986e22dad0817ffbad72fe52c907a9cd09c82e683807e21eb85ec82adb7b5121f9869bae418d589a05570a1e1043b3c930c293e3d94ddeaa98602e0
+  languageName: node
+  linkType: hard
+
+"react-cookie@workspace:packages/react-cookie":
   version: 0.0.0-use.local
   resolution: "react-cookie@workspace:packages/react-cookie"
   dependencies:
@@ -8042,7 +8060,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-cookie-express@npm:^7.0.0, universal-cookie-express@workspace:packages/universal-cookie-express":
+"universal-cookie-express@npm:^7.0.0":
+  version: 7.2.2
+  resolution: "universal-cookie-express@npm:7.2.2"
+  dependencies:
+    universal-cookie: "npm:^7.0.0"
+  checksum: 10c0/c813d1405e9f8039c0c08f03cac79c5f8ffa50456f08a7f636600909620ebb4650f54043478264fc735e39911b81adde60718ebcd1a7b9cbf2888ca1f4758317
+  languageName: node
+  linkType: hard
+
+"universal-cookie-express@workspace:packages/universal-cookie-express":
   version: 0.0.0-use.local
   resolution: "universal-cookie-express@workspace:packages/universal-cookie-express"
   dependencies:
@@ -8064,12 +8091,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"universal-cookie@npm:^7.0.0, universal-cookie@workspace:packages/universal-cookie":
+"universal-cookie@npm:^7.0.0":
+  version: 7.2.2
+  resolution: "universal-cookie@npm:7.2.2"
+  dependencies:
+    "@types/cookie": "npm:^0.6.0"
+    cookie: "npm:^0.7.2"
+  checksum: 10c0/214c5cf72b12b6d98a72e11a10adb3f1d06dbeadbd9a2d46ded8c288d86387e9ff25499f85d2f85728809484d678c02028ac674cb8747257b38d2c17fb93e896
+  languageName: node
+  linkType: hard
+
+"universal-cookie@workspace:packages/universal-cookie":
   version: 0.0.0-use.local
   resolution: "universal-cookie@workspace:packages/universal-cookie"
   dependencies:
     "@babel/cli": "npm:^7.26.4"
-    "@types/cookie": "npm:^1.0.0"
     cookie: "npm:^1.0.2"
     rimraf: "npm:^6.0.1"
     rollup: "npm:^4.35.0"
