@@ -1,41 +1,25 @@
-# CLAUDE.md - Guidelines for this repository
+# Development Guidelines
 
-## Commands
+## Build Commands
 
 - Build all packages: `yarn build`
-- Run tests: `yarn test`
-- Run single test: `yarn test -t "test name pattern"`
-- Run e2e tests: `yarn e2e`
-- Check formatting: `yarn format`
-- Check bundle size: `yarn size`
+- Build specific package: `yarn build-universal`, `yarn build-react`, etc.
+- Test all: `yarn test`
+- Run single test: `jest packages/react-cookie/src/__tests__/my-test.js`
+- Test with watch mode: `yarn watch`
+- Run E2E tests: `yarn e2e`
+- Format check: `yarn format`
+- Code size analysis: `yarn size`
 
-## Code Style
+## Code Style Guidelines
 
-- TypeScript with strict mode
-- Prefer single quotes
-- Use semicolons
-- Max line length: 80 characters
-- React hooks naming: `use{Name}`
-- Components: PascalCase, other identifiers: camelCase
-- Use explicit return types for exported functions
-- Default to `const` over `let`, avoid `var`
-- Prefer arrow functions for callbacks
-
-## Project Structure
-
-- Monorepo with packages in `packages/`
-- Universal Cookie (core) → React Cookie (UI) → Express/Koa integration
-- End-to-end test suite in `e2e/`
-
-## Development Guidelines
-
-- Always cover all scenarios with unit tests
-- Prefer to reuse existing code
-- Do not change any library or technology without being explicitly asked
-- Security is a big concern, be careful with every value you receive
-
-## Error Handling
-
-- Use typed error objects where possible
-- Document error cases in comments
-- Add tests for error scenarios
+- TypeScript project with strict typing and React functional components
+- Use single quotes for strings
+- Explicit error handling with descriptive messages
+- Private methods/properties prefixed with underscore (\_)
+- Group related imports together
+- Prefer destructuring for props and imports
+- camelCase for variables/functions, PascalCase for components
+- Type interfaces for function parameters and return types
+- Use object spread (...) for merging options
+- Comprehensive test coverage required for all new features
