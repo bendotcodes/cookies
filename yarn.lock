@@ -8085,7 +8085,7 @@ __metadata:
     "@babel/cli": "npm:^7.26.4"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.8.2"
-    universal-cookie: "npm:^7.0.0"
+    universal-cookie: "npm:^8.0.0"
   languageName: unknown
   linkType: soft
 
@@ -8096,7 +8096,7 @@ __metadata:
     "@babel/cli": "npm:^7.26.4"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.8.2"
-    universal-cookie: "npm:^7.0.0"
+    universal-cookie: "npm:^8.0.0"
   languageName: unknown
   linkType: soft
 
