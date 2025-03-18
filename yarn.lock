@@ -6878,7 +6878,7 @@ __metadata:
     rimraf: "npm:^6.0.1"
     rollup: "npm:^4.36.0"
     typescript: "npm:^5.8.2"
-    universal-cookie: "npm:^7.0.0"
+    universal-cookie: "npm:^8.0.0"
   peerDependencies:
     react: ">= 16.3.0"
   languageName: unknown
@@ -8085,7 +8085,7 @@ __metadata:
     "@babel/cli": "npm:^7.26.4"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.8.2"
-    universal-cookie: "npm:^7.0.0"
+    universal-cookie: "npm:^8.0.0"
   languageName: unknown
   linkType: soft
 
@@ -8096,7 +8096,7 @@ __metadata:
     "@babel/cli": "npm:^7.26.4"
     rimraf: "npm:^6.0.1"
     typescript: "npm:^5.8.2"
-    universal-cookie: "npm:^7.0.0"
+    universal-cookie: "npm:^8.0.0"
   languageName: unknown
   linkType: soft
 
@@ -8110,7 +8110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"universal-cookie@workspace:packages/universal-cookie":
+"universal-cookie@npm:^8.0.0, universal-cookie@workspace:packages/universal-cookie":
   version: 0.0.0-use.local
   resolution: "universal-cookie@workspace:packages/universal-cookie"
   dependencies:

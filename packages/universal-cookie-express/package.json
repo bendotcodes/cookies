@@ -44,7 +44,7 @@
     "postbuild": "node ../../tools/fix-typescript-typedef.mjs ./esm"
   },
   "dependencies": {
-    "universal-cookie": "^7.0.0"
+    "universal-cookie": "^8.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.26.4",
