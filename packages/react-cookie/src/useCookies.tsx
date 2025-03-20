@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect, useState, useRef, useMemo } from 'react';
+import { useContext, useLayoutEffect, useState, useMemo } from 'react';
 import { Cookie, CookieSetOptions, CookieGetOptions } from 'universal-cookie';
 import CookiesContext from './CookiesContext';
 import { isInBrowser } from './utils';
