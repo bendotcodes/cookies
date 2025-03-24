@@ -2599,7 +2599,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^22.13.12":
+"@types/node@npm:^22.13.13":
   version: 22.13.13
   resolution: "@types/node@npm:22.13.13"
   dependencies:
@@ -6838,7 +6838,7 @@ __metadata:
     "@testing-library/react": "npm:^16.2.0"
     "@types/express": "npm:^5.0.1"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.13.12"
+    "@types/node": "npm:^22.13.13"
     "@types/react": "npm:^19.0.12"
     "@types/react-dom": "npm:^19.0.4"
     "@types/testing-library__dom": "npm:^7.5.0"
@@ -7285,7 +7285,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.2.0"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.13.12"
+    "@types/node": "npm:^22.13.13"
     babel-jest: "npm:^29.7.0"
     babel-plugin-add-module-exports: "npm:^1.0.4"
     husky: "npm:^9.1.7"
