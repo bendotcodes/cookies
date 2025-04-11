@@ -2590,12 +2590,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.14.0":
+"@types/node@npm:*":
   version: 22.14.0
   resolution: "@types/node@npm:22.14.0"
   dependencies:
     undici-types: "npm:~6.21.0"
   checksum: 10c0/9d79f3fa1af9c2c869514f419c4a4905b34c10e12915582fd1784868ac4e74c6d306cf5eb47ef889b6750ab85a31be96618227b86739c4a3e0b1c15063f384c6
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^22.14.1":
+  version: 22.14.1
+  resolution: "@types/node@npm:22.14.1"
+  dependencies:
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/d49c4d00403b1c2348cf0701b505fd636d80aabe18102105998dc62fdd36dcaf911e73c7a868c48c21c1022b825c67b475b65b1222d84b704d8244d152bb7f86
   languageName: node
   linkType: hard
 
@@ -6837,7 +6846,7 @@ __metadata:
     "@testing-library/react": "npm:^16.3.0"
     "@types/express": "npm:^5.0.1"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.14.0"
+    "@types/node": "npm:^22.14.1"
     "@types/react": "npm:^19.1.1"
     "@types/react-dom": "npm:^19.1.2"
     "@types/testing-library__dom": "npm:^7.5.0"
@@ -7273,7 +7282,7 @@ __metadata:
     "@testing-library/jest-dom": "npm:^6.6.3"
     "@testing-library/react": "npm:^16.3.0"
     "@types/jest": "npm:^29.5.14"
-    "@types/node": "npm:^22.14.0"
+    "@types/node": "npm:^22.14.1"
     babel-jest: "npm:^29.7.0"
     babel-plugin-add-module-exports: "npm:^1.0.4"
     husky: "npm:^9.1.7"
